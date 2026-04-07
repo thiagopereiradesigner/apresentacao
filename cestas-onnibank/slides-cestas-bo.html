@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cestas Onnibank — Backoffice (apresentação)</title>
+  <style>
+    :root {
+      --onnibank-900: #052e16;
+      --onnibank-800: #14532d;
+      --onnibank-700: #166534;
+      --onnibank-accent: #22c55e;
+      --onnibank-accent-soft: rgba(34, 197, 94, 0.25);
+      --text-on-dark: #f8fafc;
+      --text-muted-on-dark: #a7c4b0;
+      --text-body-on-dark: #cbd5e1;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--onnibank-900);
+      color: var(--text-on-dark);
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .deck {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: radial-gradient(120% 80% at 100% 0%, rgba(34, 197, 94, 0.12) 0%, transparent 55%),
+        radial-gradient(90% 70% at 0% 100%, rgba(22, 101, 52, 0.45) 0%, transparent 50%),
+        linear-gradient(165deg, var(--onnibank-800) 0%, var(--onnibank-900) 48%, #041910 100%);
+    }
+    .slide {
+      display: none;
+      min-height: 100vh;
+      min-height: 100dvh;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.75rem, 7vw, 5rem) clamp(6rem, 12vh, 8rem);
+      animation: fadeIn 0.4s ease;
+      position: relative;
+    }
+    .slide::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12%;
+      bottom: 12%;
+      width: 4px;
+      border-radius: 0 4px 4px 0;
+      background: linear-gradient(180deg, var(--onnibank-accent), transparent);
+      opacity: 0.85;
+    }
+    .slide.is-active { display: flex; }
+    .slide-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+      width: 100%;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide h1 {
+      font-size: clamp(2rem, 5.5vw, 3.35rem);
+      font-weight: 800;
+      margin: 0 0 0.65rem;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text-on-dark);
+    }
+    .slide h2 {
+      font-size: clamp(1.5rem, 3.8vw, 2.25rem);
+      font-weight: 700;
+      margin: 0 0 1.1rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--text-on-dark);
+    }
+    .slide p, .slide li {
+      font-size: clamp(1rem, 2.1vw, 1.2rem);
+      line-height: 1.6;
+      color: var(--text-body-on-dark);
+    }
+    .slide ul, .slide ol { margin: 0.65rem 0 0; padding-left: 1.35rem; }
+    .slide li { margin-bottom: 0.55rem; }
+    .slide strong { color: var(--text-on-dark); font-weight: 600; }
+    .kicker {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--onnibank-accent);
+      margin-bottom: 0.5rem;
+    }
+    .sub {
+      font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+      color: var(--text-muted-on-dark);
+      margin-top: 0.5rem;
+      line-height: 1.45;
+      max-width: 36em;
+    }
+    table.simple {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: clamp(0.88rem, 1.6vw, 1rem);
+      margin-top: 1rem;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    table.simple th, table.simple td {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.85rem 1rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.simple th {
+      background: rgba(255, 255, 255, 0.08);
+      font-weight: 700;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted-on-dark);
+    }
+    table.simple td { color: var(--text-body-on-dark); background: rgba(0, 0, 0, 0.12); }
+    table.simple tbody tr:nth-child(even) td { background: rgba(0, 0, 0, 0.06); }
+    .pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 9999px;
+      background: var(--onnibank-accent-soft);
+      color: #86efac;
+      margin-left: 0.35rem;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+    }
+    .future {
+      margin-top: 1.25rem;
+      padding: 1.15rem 1.35rem;
+      border-radius: 14px;
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+      background: rgba(0, 0, 0, 0.22);
+      font-size: clamp(0.92rem, 1.7vw, 1.05rem);
+      color: var(--text-muted-on-dark);
+      line-height: 1.55;
+    }
+    .future strong { color: var(--text-on-dark); }
+    .hint {
+      margin-top: 1.75rem;
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      color: var(--text-muted-on-dark);
+    }
+    .hint strong { color: #bbf7d0; }
+    .footer-note {
+      margin-top: 1.35rem;
+      color: var(--text-muted-on-dark);
+      font-size: clamp(0.92rem, 1.65vw, 1rem);
+    }
+    .nav {
+      position: fixed;
+      z-index: 10;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem clamp(1.25rem, 4vw, 2.5rem) calc(1rem + env(safe-area-inset-bottom, 0));
+      background: linear-gradient(to top, rgba(5, 46, 22, 0.92) 0%, rgba(5, 46, 22, 0.55) 55%, transparent 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .nav-btns { display: flex; gap: 0.65rem; }
+    .nav button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.65rem 1.15rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-on-dark);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .nav button:hover:not(:disabled) {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: rgba(34, 197, 94, 0.55);
+    }
+    .nav button:active:not(:disabled) { transform: scale(0.98); }
+    .nav button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .nav button svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .counter {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-muted-on-dark);
+      font-variant-numeric: tabular-nums;
+    }
+    .counter span:first-child { color: #bbf7d0; }
+    .cover .logo-row {
+      display: flex;
+      align-items: flex-start;
+      gap: clamp(1rem, 3vw, 1.5rem);
+      margin-bottom: 0.5rem;
+    }
+    .cover .big-logo {
+      width: clamp(56px, 12vw, 76px);
+      height: clamp(56px, 12vw, 76px);
+      border-radius: 18px;
+      background: linear-gradient(145deg, var(--onnibank-700), var(--onnibank-800));
+      color: #fff;
+      font-weight: 800;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      flex-shrink: 0;
+    }
+    abbr[title] { text-decoration: underline dotted; cursor: help; text-underline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <div class="deck">
+        <!-- 0 Capa -->
+        <section class="slide cover is-active" data-i="0" aria-label="Capa">
+          <div class="slide-inner">
+            <div class="logo-row">
+              <div class="big-logo">OB</div>
+              <div>
+                <p class="kicker">Onnibank · Backoffice</p>
+                <h1>Cestas no Backoffice</h1>
+                <p class="sub">Como cadastramos parceiros e benefícios, montamos pacotes e ajustamos tudo por empresa.</p>
+              </div>
+            </div>
+            <p class="hint">Use as setas embaixo ou as teclas <strong>←</strong> e <strong>→</strong> do teclado.</p>
+          </div>
+        </section>
+
+        <!-- 1 -->
+        <section class="slide" data-i="1" aria-label="Slide 1">
+          <div class="slide-inner">
+            <p class="kicker">Visão geral</p>
+            <h2>O que é este módulo?</h2>
+            <p>No Backoffice nós <strong>organizamos a oferta de benefícios</strong> que o colaborador pode contratar no app:</p>
+            <ul>
+              <li><strong>O que</strong> entra no pacote (parceiros + benefícios da conta digital);</li>
+              <li><strong>Quanto</strong> custa para cada <abbr title="Empresa cliente — quem contrata o pacote para os colaboradores">empresa cliente (EC)</abbr>;</li>
+              <li><strong>Quem</strong> já contratou, com <strong>assinaturas por colaborador</strong>.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 2 -->
+        <section class="slide" data-i="2" aria-label="Slide 2">
+          <div class="slide-inner">
+            <p class="kicker">Organização</p>
+            <h2>Três “andares” do cadastro</h2>
+            <table class="simple">
+              <thead>
+                <tr>
+                  <th>Onde</th>
+                  <th>O que você faz</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Catálogo de benefícios</strong></td>
+                  <td>Cadastra <strong>parceiros</strong> e <strong>benefícios da conta digital</strong> (TED, PIX, etc.). São as <strong>peças</strong>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Catálogo de cestas</strong></td>
+                  <td><strong>Monta o pacote</strong>: vincula parceiros e benefícios numa cesta (Básica, Onnibank+, …).</td>
+                </tr>
+                <tr>
+                  <td><strong>Contrato da empresa (EC)</strong></td>
+                  <td>Define <strong>quais cestas</strong> aquela empresa oferece, <strong>preços</strong>, o que <strong>aparece ou some</strong> no app.</td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="margin-top:1.25rem;"><strong>Em uma frase:</strong> peças → pacote → regra por empresa.</p>
+          </div>
+        </section>
+
+        <!-- 3 -->
+        <section class="slide" data-i="3" aria-label="Slide 3">
+          <div class="slide-inner">
+            <p class="kicker">Catálogo de benefícios</p>
+            <h2>Parceiros e conta digital</h2>
+            <ul>
+              <li><strong>Parceiro:</strong> marca externa (ex.: loja de pets, academia) — com cadastro, identidade e categorias.</li>
+              <li><strong>Benefício genérico:</strong> regras do <strong>produto conta digital</strong> no app — limites, excedentes, textos para o cliente.</li>
+            </ul>
+            <p style="margin-top:1rem;">Neste catálogo você <strong>não fecha o negócio por empresa</strong>; o ajuste fino de preço e visibilidade por empresa vem no <strong>contrato da EC</strong>.</p>
+          </div>
+        </section>
+
+        <!-- 4 -->
+        <section class="slide" data-i="4" aria-label="Slide 4">
+          <div class="slide-inner">
+            <p class="kicker">Catálogo de cestas</p>
+            <h2>Montando o pacote</h2>
+            <p>Uma <strong>cesta</strong> é um pacote que <strong>vincula</strong> vários benefícios (parceiros + conta digital) numa ordem definida.</p>
+            <ul>
+              <li>É o “<strong>plano</strong>” que o colaborador reconhece no app;</li>
+              <li>O detalhe de <strong>quanto cada empresa paga</strong> e <strong>o que fica visível</strong> é configurado depois, no contrato da EC.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 5 -->
+        <section class="slide" data-i="5" aria-label="Slide 5">
+          <div class="slide-inner">
+            <p class="kicker">Contrato da empresa (EC)</p>
+            <h2>Onde o negócio vira realidade</h2>
+            <p>Para cada <strong>empresa cliente</strong> você pode:</p>
+            <ul>
+              <li><strong>Vincular</strong> quais cestas ela oferece aos colaboradores;</li>
+              <li><strong>Alterar o preço</strong> da cesta quando houver negociação;</li>
+              <li><strong>Ocultar</strong> um parceiro ou um benefício <strong>só para aquela empresa</strong>, sem apagar o catálogo global;</li>
+              <li>Configurar <strong>campanhas</strong> (tags) e destaque <strong>recomendado</strong> no app, quando fizer sentido por empresa.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 6 -->
+        <section class="slide" data-i="6" aria-label="Slide 6">
+          <div class="slide-inner">
+            <p class="kicker">Preço da cesta “aberto”</p>
+            <h2>Valor por benefício e visão de futuro</h2>
+            <p>Se o <strong>preço da cesta não estiver fechado</strong> no contrato, a ideia é <strong>mostrar o valor de cada benefício individualmente</strong> (parceiros e itens da conta digital), em vez de um único número fechado no pacote.</p>
+            <div class="future">
+              <strong>No futuro (visão de produto):</strong> o colaborador poderia <strong>escolher quais benefícios e parceiros</strong> quer contratar e <strong>pagar o valor de cada um separadamente</strong>. No fim, o sistema soma o que foi escolhido (parceiros + benefícios da conta). Isso reforça a <strong>estrutura de catálogo por item</strong> e abre caminho para um <strong>marketplace</strong> de benefícios — ainda não é o fluxo de hoje, mas o cadastro já prepara o terreno.
+            </div>
+          </div>
+        </section>
+
+        <!-- 7 -->
+        <section class="slide" data-i="7" aria-label="Slide 7">
+          <div class="slide-inner">
+            <p class="kicker">Operação</p>
+            <h2>Assinaturas e comparação de planos</h2>
+            <ul>
+              <li><strong>Assinaturas:</strong> acompanhar por <strong>colaborador</strong> — situação (ativo, pausado, cancelado), histórico e ações de suporte quando existirem.</li>
+              <li><strong>Comparar planos:</strong> uma <strong>tabela por empresa (EC)</strong> para montar o texto de comparação no app, com <strong>preços alinhados ao contrato</strong> daquela empresa — não é um “preço genérico” solto.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 8 -->
+        <section class="slide" data-i="8" aria-label="Slide 8">
+          <div class="slide-inner">
+            <p class="kicker">Resumo</p>
+            <h2>Ordem do trabalho</h2>
+            <ol style="margin:0;padding-left:1.35rem;line-height:1.75;">
+              <li>Cadastrar <strong>benefícios e parceiros</strong> (peças).</li>
+              <li>Montar as <strong>cestas</strong> (pacotes).</li>
+              <li>Ajustar no <strong>contrato da EC</strong>: cestas, preços, visibilidade, campanhas.</li>
+              <li>Operar <strong>assinaturas</strong> e manter a <strong>comparação de planos</strong> coerente com cada empresa.</li>
+            </ol>
+            <p class="footer-note">Obrigado — dúvidas, siga o wireframe do Backoffice ou o PRD de Cestas.</p>
+          </div>
+        </section>
+
+    <nav class="nav" aria-label="Navegação da apresentação">
+      <span class="counter"><span id="slide-num">1</span> / <span id="slide-total">9</span></span>
+      <div class="nav-btns">
+        <button type="button" id="btn-prev" aria-label="Slide anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+          Anterior
+        </button>
+        <button type="button" id="btn-next" aria-label="Próximo slide">
+          Próximo
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var idx = 0;
+  var numEl = document.getElementById('slide-num');
+  var totalEl = document.getElementById('slide-total');
+  var btnPrev = document.getElementById('btn-prev');
+  var btnNext = document.getElementById('btn-next');
+
+  if (totalEl) totalEl.textContent = String(total);
+
+  function show(i) {
+    idx = Math.max(0, Math.min(total - 1, i));
+    slides.forEach(function (s, j) {
+      s.classList.toggle('is-active', j === idx);
+    });
+    if (numEl) numEl.textContent = String(idx + 1);
+    if (btnPrev) btnPrev.disabled = idx === 0;
+    if (btnNext) btnNext.disabled = idx === total - 1;
+  }
+
+  if (btnPrev) btnPrev.addEventListener('click', function () { show(idx - 1); });
+  if (btnNext) btnNext.addEventListener('click', function () { show(idx + 1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(idx - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(idx + 1); }
+  });
+
+  show(0);
+})();
+  </script>
+</body>
+</html>
