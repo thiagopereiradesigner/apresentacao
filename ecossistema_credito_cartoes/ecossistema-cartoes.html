@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecossistema de Cartões & Crédito</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+  :root{
+    --bg:#0a0c10;--surface:#111318;--surface2:#1a1d24;--border:#252830;
+    --blue:#4f8ef7;--green:#2dd4a0;--yellow:#f5c842;--red:#f75f5f;
+    --purple:#a78bfa;--orange:#fb923c;--teal:#22d3ee;--pink:#f472b6;
+    --text:#e8eaf0;--muted:#6b7280;--dim:#9ca3af;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(79,142,247,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,247,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+  .page{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:40px 24px 80px;}
+
+  .header{text-align:center;margin-bottom:36px;animation:fadeDown .6s ease forwards;}
+  .header-label{font-size:11px;letter-spacing:.25em;color:var(--blue);text-transform:uppercase;margin-bottom:10px;}
+  .header h1{font-family:'Syne',sans-serif;font-size:clamp(20px,4vw,40px);font-weight:800;line-height:1.1;background:linear-gradient(135deg,#e8eaf0 0%,#4f8ef7 50%,#2dd4a0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .header p{margin-top:8px;color:var(--muted);font-size:10px;letter-spacing:.05em;line-height:1.7;}
+  .version{display:inline-block;margin-top:8px;font-size:9px;padding:3px 10px;border-radius:20px;background:rgba(79,142,247,.1);color:var(--blue);border:1px solid rgba(79,142,247,.2);}
+
+  .tabs{display:flex;gap:3px;margin-bottom:18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px;flex-wrap:wrap;}
+  .tab{flex:1;min-width:65px;padding:7px 6px;border-radius:7px;font-size:9px;font-family:'IBM Plex Mono',monospace;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all .2s ease;text-align:center;}
+  .tab.active{background:var(--surface2);color:var(--text);border:1px solid var(--border);}
+  .tab:hover:not(.active){color:var(--dim);}
+  .panel{display:none;}.panel.active{display:block;}
+
+  .st{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+  .st::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  .sc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
+  .sl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+
+  .tc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:15px;transition:all .2s ease;cursor:default;}
+  .tc:hover{border-color:var(--blue);background:var(--surface2);}
+  .tag{display:inline-block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:4px;margin-bottom:8px;font-weight:600;}
+  .t-taxa{background:rgba(79,142,247,.15);color:var(--blue);}
+  .t-risco{background:rgba(247,95,95,.15);color:var(--red);}
+  .t-prod{background:rgba(167,139,250,.15);color:var(--purple);}
+  .t-infra{background:rgba(45,212,160,.15);color:var(--green);}
+  .t-ciclo{background:rgba(245,200,66,.15);color:var(--yellow);}
+  .t-fraude{background:rgba(251,146,60,.15);color:var(--orange);}
+  .t-legal{background:rgba(167,139,250,.12);color:var(--purple);}
+  .t-inv{background:rgba(34,211,238,.15);color:var(--teal);}
+  .t-seg{background:rgba(244,114,182,.15);color:var(--pink);}
+  .t-vc{background:rgba(79,142,247,.2);color:var(--blue);}
+  .t-bias{background:rgba(251,146,60,.2);color:var(--orange);}
+  .tn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);}
+  .td{font-size:11px;color:var(--muted);line-height:1.7;}
+  .tv{margin-top:8px;font-size:11px;font-weight:600;color:var(--green);}
+
+  .rr{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border);font-size:11px;gap:12px;}
+  .rr:last-child{border-bottom:none;}
+  .rk{color:var(--muted);flex-shrink:0;max-width:50%;}.rv{color:var(--text);font-weight:500;text-align:right;}
+  .rv.d{color:var(--red);}.rv.o{color:var(--green);}.rv.w{color:var(--yellow);}
+
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
+  .g5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px;}
+
+  .pc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;transition:all .25s ease;position:relative;overflow:hidden;}
+  .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;background:var(--ac,var(--border));}
+  .pc:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(0,0,0,.4);}
+  .pi{font-size:22px;margin-bottom:6px;}.pn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:5px;}
+  .pe{font-size:10px;color:var(--muted);line-height:1.7;margin-bottom:8px;}
+  .pg{font-size:10px;padding:5px 9px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);color:var(--dim);line-height:1.5;}
+
+  .txf{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+  .txs{flex:1;padding:14px 10px;border-right:1px solid var(--border);}
+  .txs:last-child{border-right:none;}
+  .txn{font-size:22px;font-weight:800;font-family:'Syne',sans-serif;color:var(--border);line-height:1;margin-bottom:4px;}
+  .txt{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:3px;}
+  .txd{font-size:10px;color:var(--muted);line-height:1.6;}
+  .txtime{margin-top:5px;font-size:10px;color:var(--green);}
+
+  .mbar{height:40px;border-radius:10px;overflow:hidden;display:flex;margin-bottom:12px;}
+  .ms{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#000;}
+  .ms-ic{background:var(--blue);flex:1.3;}.ms-sf{background:var(--yellow);flex:.1;}
+  .ms-adq{background:var(--green);flex:.7;}.ms-rsk{background:var(--red);flex:.15;}
+  .mleg{display:flex;gap:12px;flex-wrap:wrap;}
+  .mli{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--dim);}
+  .mld{width:8px;height:8px;border-radius:3px;flex-shrink:0;}
+  .mlp{font-weight:600;color:var(--text);}
+
+  .tirc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 8px;text-align:center;transition:all .2s ease;position:relative;overflow:hidden;}
+  .tirc:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.4);}
+  .tirc::after{content:'';position:absolute;inset:0;opacity:.05;background:var(--tc);}
+  .tirn{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;margin-bottom:8px;color:var(--tc);}
+  .tiri{font-size:18px;font-weight:700;font-family:'Syne',sans-serif;color:var(--text);line-height:1;}
+  .tirl{font-size:9px;color:var(--muted);margin-top:3px;margin-bottom:6px;letter-spacing:.1em;}
+  .tirm{font-size:9px;color:var(--dim);padding:3px 7px;background:var(--surface2);border-radius:5px;}
+
+  .ebar{display:flex;flex-direction:column;gap:9px;margin:12px 0;}
+  .ei{display:grid;grid-template-columns:105px 1fr 105px;align-items:center;gap:9px;font-size:11px;}
+  .el{color:var(--dim);}
+  .etr{height:22px;background:var(--surface2);border-radius:6px;overflow:hidden;}
+  .ef{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:7px;font-size:9px;font-weight:600;color:#000;}
+  .ev{text-align:right;font-weight:600;font-family:'Syne',sans-serif;font-size:11px;}
+
+  .rotv{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;display:grid;grid-template-columns:1fr 1px 1fr;gap:22px;margin-bottom:16px;}
+  .rotd{background:var(--border);}
+  .rott{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .rotb{font-size:9px;padding:3px 8px;border-radius:4px;font-weight:600;}
+  .b-ok{background:rgba(45,212,160,.15);color:var(--green);}
+  .b-warn{background:rgba(247,95,95,.15);color:var(--red);}
+
+  .cdim{background:var(--surface2);border-radius:10px;padding:14px;border:1px solid var(--border);}
+  .cdir{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--green);line-height:1;}
+  .cdip{font-size:10px;color:var(--muted);margin-top:4px;}
+
+  .sbar{height:40px;border-radius:10px;overflow:hidden;display:flex;margin:10px 0;}
+  .ss{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#000;}
+
+  .eva-flow{display:flex;align-items:center;gap:0;margin:14px 0;flex-wrap:wrap;}
+  .eva-box{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-align:center;flex:1;min-width:100px;}
+  .eva-op{padding:0 7px;color:var(--muted);font-size:16px;font-weight:700;flex-shrink:0;}
+  .eva-label{font-size:9px;color:var(--muted);margin-bottom:3px;letter-spacing:.08em;text-transform:uppercase;}
+  .eva-val{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;}
+
+  .wacc-bar{height:36px;border-radius:10px;overflow:hidden;display:flex;margin:12px 0;}
+  .wacc-debt{background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#000;}
+  .wacc-eq{background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#000;}
+
+  .chain{display:flex;flex-direction:column;}
+  .chain-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .chain-item:last-child{border-bottom:none;}
+  .chain-num{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--border);line-height:1;flex-shrink:0;width:28px;}
+  .chain-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:3px;}
+  .chain-desc{font-size:11px;color:var(--muted);line-height:1.7;}
+
+  .cbf{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-bottom:16px;}
+  .cbs{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 8px;text-align:center;position:relative;}
+  .cbs::after{content:'→';position:absolute;right:-7px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:11px;z-index:2;}
+  .cbs:last-child::after{display:none;}
+  .cbi{font-size:16px;margin-bottom:4px;}.cbt{font-size:9px;font-weight:600;font-family:'Syne',sans-serif;margin-bottom:2px;}.cbd{font-size:9px;color:var(--muted);line-height:1.5;}
+  .cbr{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+  .cbrc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;}
+  .cbrct{font-size:10px;font-weight:700;font-family:'Syne',sans-serif;margin-bottom:7px;padding-bottom:7px;border-bottom:1px solid var(--border);}
+  .cbri{font-size:10px;color:var(--muted);line-height:1.8;display:flex;align-items:flex-start;gap:4px;}
+  .cbri::before{content:'·';color:var(--red);flex-shrink:0;}
+  .thbar{display:flex;height:26px;border-radius:8px;overflow:hidden;margin:10px 0 7px;}
+  .th-ok{background:var(--green);flex:1;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#000;}
+  .th-warn{background:var(--yellow);flex:.15;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#000;}
+  .th-danger{background:var(--red);flex:.1;display:flex;align-items:center;justify-content:center;font-size:9px;color:#000;}
+
+  .vc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center;}
+  .vi{font-size:20px;margin-bottom:5px;}.vn{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:3px;}.vd{font-size:10px;color:var(--muted);line-height:1.6;}
+
+  .pci-journey{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+  .pci-step{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);}
+  .pci-step:last-child{border-bottom:none;}
+  .pci-icon{font-size:18px;flex-shrink:0;width:28px;text-align:center;}
+  .pci-title{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:2px;}
+  .pci-desc{font-size:10px;color:var(--muted);line-height:1.5;}
+  .pci-badge{font-size:9px;padding:3px 8px;border-radius:4px;font-weight:600;flex-shrink:0;margin-left:auto;}
+  .badge-loj{background:rgba(247,95,95,.15);color:var(--red);}
+  .badge-adq{background:rgba(45,212,160,.15);color:var(--green);}
+
+  .token-demo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin:12px 0;padding:14px;background:var(--surface2);border-radius:10px;border:1px solid var(--border);}
+  .token-val{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;text-align:center;}
+  .token-arrow{color:var(--muted);font-size:18px;text-align:center;}
+  .token-label{font-size:9px;color:var(--muted);text-align:center;margin-top:3px;letter-spacing:.08em;text-transform:uppercase;}
+
+  .resp-matrix{overflow-x:auto;margin:12px 0;}
+  .resp-table{width:100%;border-collapse:collapse;font-size:11px;}
+  .resp-table th{text-align:left;padding:7px 10px;color:var(--muted);font-weight:600;letter-spacing:.08em;font-size:9px;border-bottom:1px solid var(--border);}
+  .resp-table td{padding:8px 10px;border-bottom:1px solid var(--border);}
+  .resp-table tr:last-child td{border-bottom:none;}
+
+  .lvl-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;}
+  .lvl-num{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;margin-bottom:5px;}
+  .lvl-vol{font-size:10px;color:var(--muted);margin-bottom:6px;line-height:1.5;}
+  .lvl-req{font-size:10px;color:var(--dim);line-height:1.6;}
+
+  .note{margin-top:12px;font-size:11px;color:var(--muted);padding:11px;background:var(--surface2);border-radius:8px;line-height:1.7;border-left:3px solid var(--teal);}
+  .note-warn{border-left-color:var(--red);}
+  .note-yellow{border-left-color:var(--yellow);}
+
+  /* VC SPECIFIC */
+  .round-timeline{display:flex;align-items:stretch;margin-bottom:20px;overflow:hidden;border-radius:14px;border:1px solid var(--border);}
+  .round-stage{flex:1;padding:16px 10px;text-align:center;border-right:1px solid var(--border);position:relative;}
+  .round-stage:last-child{border-right:none;}
+  .round-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;margin-bottom:6px;}
+  .round-val{font-size:11px;font-weight:600;margin-bottom:5px;}
+  .round-metric{font-size:9px;color:var(--muted);line-height:1.6;}
+  .round-risk{margin-top:8px;font-size:9px;padding:3px 6px;border-radius:4px;display:inline-block;font-weight:600;}
+
+  .dilution-demo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px;background:var(--surface2);border-radius:12px;border:1px solid var(--border);margin:14px 0;}
+  .dil-side{text-align:center;}
+  .dil-pct{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;line-height:1;}
+  .dil-label{font-size:10px;color:var(--muted);margin-top:4px;}
+  .dil-arrow{font-size:24px;color:var(--muted);text-align:center;}
+
+  .power-law{display:flex;align-items:flex-end;gap:8px;height:120px;padding:14px;background:var(--surface2);border-radius:12px;border:1px solid var(--border);margin:14px 0;}
+  .pl-bar{flex:1;border-radius:4px 4px 0 0;display:flex;align-items:flex-start;justify-content:center;padding-top:6px;font-size:9px;font-weight:700;color:#000;min-width:0;}
+  .pl-label{font-size:9px;color:var(--muted);text-align:center;margin-top:4px;}
+  .pl-wrap{display:flex;flex-direction:column;flex:1;}
+
+  .phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;}
+  .phase-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;border-top:3px solid var(--pc);}
+  .phase-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;color:var(--pc);margin-bottom:8px;}
+  .phase-metric{font-size:10px;color:var(--muted);line-height:1.8;}
+  .phase-metric strong{color:var(--text);}
+
+  .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+  .scenario{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;border-top:3px solid var(--sc);}
+  .scenario-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--sc);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+
+  .bias-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+  .bias-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;border-left:3px solid var(--orange);}
+  .bias-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--orange);margin-bottom:6px;}
+  .bias-desc{font-size:11px;color:var(--muted);line-height:1.7;}
+  .bias-quote{font-size:11px;color:var(--dim);font-style:italic;margin-top:8px;padding:6px 10px;background:var(--surface2);border-radius:6px;}
+
+  .rj-timeline{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+  .rj-step{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border-bottom:1px solid var(--border);}
+  .rj-step:last-child{border-bottom:none;}
+  .rj-icon{font-size:18px;flex-shrink:0;margin-top:2px;}
+  .rj-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:3px;}
+  .rj-desc{font-size:11px;color:var(--muted);line-height:1.7;}
+  .rj-badge{font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600;display:inline-block;margin-top:5px;}
+
+  .unit-econ{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+  .ue-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;}
+  .ue-name{font-size:10px;color:var(--muted);margin-bottom:5px;letter-spacing:.08em;text-transform:uppercase;}
+  .ue-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--text);line-height:1;}
+  .ue-desc{font-size:10px;color:var(--muted);margin-top:5px;line-height:1.5;}
+
+  .glossario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+
+  .foot{text-align:center;font-size:10px;color:var(--muted);padding-top:16px;border-top:1px solid var(--border);letter-spacing:.05em;line-height:1.8;margin-top:32px;}
+
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  .anim{animation:fadeUp .45s ease both;}
+
+  @media(max-width:900px){
+    .round-timeline{flex-direction:column;}
+    .round-stage{border-right:none;border-bottom:1px solid var(--border);}
+    .round-stage:last-child{border-bottom:none;}
+    .phase-grid{grid-template-columns:repeat(2,1fr);}
+    .scenario-grid{grid-template-columns:1fr;}
+    .bias-grid,.cbr,.g3{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:768px){
+    .g2,.g3,.g4,.g5,.cbf,.cbr,.phase-grid,.unit-econ{grid-template-columns:repeat(2,1fr);}
+    .txf{flex-direction:column;}.txs{border-right:none;border-bottom:1px solid var(--border);}
+    .rotv{grid-template-columns:1fr;}.rotd{display:none;}
+    .eva-flow{flex-direction:column;}
+    .ei{grid-template-columns:85px 1fr 85px;}
+    .token-demo{grid-template-columns:1fr;}
+    .dilution-demo{grid-template-columns:1fr;}
+  }
+  @media(max-width:480px){
+    .g2,.g3,.g4,.g5,.cbf,.cbr,.phase-grid,.unit-econ,.bias-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header-label">// Mapa de Referência</div>
+  <h1>Ecossistema de Cartões & Crédito</h1>
+  <p>Participantes · MDR · Tiers · Encargos · CDI · CDB · Split · Crébito · WACC · EVA · FIDC · PCI-DSS · VC · Rodadas · Recuperação Judicial</p>
+  <span class="version">v5 — completo</span>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showPanel('eco',this)">Ecossistema</button>
+  <button class="tab" onclick="showPanel('taxas',this)">Taxas & MDR</button>
+  <button class="tab" onclick="showPanel('tiers',this)">Tiers</button>
+  <button class="tab" onclick="showPanel('encargos',this)">Encargos</button>
+  <button class="tab" onclick="showPanel('cdi',this)">CDI & CDB</button>
+  <button class="tab" onclick="showPanel('split',this)">Split & Crébito</button>
+  <button class="tab" onclick="showPanel('eva',this)">WACC & EVA</button>
+  <button class="tab" onclick="showPanel('mercado',this)">FIDC & Ações</button>
+  <button class="tab" onclick="showPanel('vc',this)">VC & Rodadas 🚀</button>
+  <button class="tab" onclick="showPanel('rj',this)">Rec. Judicial ⚠️</button>
+  <button class="tab" onclick="showPanel('pci',this)">PCI-DSS 🔒</button>
+  <button class="tab" onclick="showPanel('chargeback',this)">Chargeback</button>
+  <button class="tab" onclick="showPanel('glossario',this)">Glossário</button>
+</div>
+
+<!-- ══════ ECOSSISTEMA -->
+<div id="panel-eco" class="panel active anim">
+  <div class="st">Os 4 participantes do modelo de 4 partes</div>
+  <div class="g4" style="margin-bottom:20px">
+    <div class="pc" style="--ac:var(--purple)"><div class="pi">👤</div><div class="pn" style="color:var(--purple)">Portador</div><div class="pe">Cliente final · PF ou PJ</div><div class="pg">Usa o cartão, paga fatura, acumula pontos</div></div>
+    <div class="pc" style="--ac:var(--blue)"><div class="pi">🏦</div><div class="pn" style="color:var(--blue)">Emissor</div><div class="pe">Nubank · Itaú · Onnibank<br>C6 · Inter · XP</div><div class="pg">Ganha: IC + Juros rotativos + Anuidade + Float</div></div>
+    <div class="pc" style="--ac:var(--yellow)"><div class="pi">🏷️</div><div class="pn" style="color:var(--yellow)">Bandeira</div><div class="pe">Visa · Mastercard · Elo<br>Amex · Hipercard</div><div class="pg">Ganha: Scheme fee dos dois lados</div></div>
+    <div class="pc" style="--ac:var(--green)"><div class="pi">📟</div><div class="pn" style="color:var(--green)">Adquirente</div><div class="pe">Cielo · Stone · PagSeguro<br>Rede · Getnet · SumUp</div><div class="pg">Ganha: MDR − IC − Scheme fee − Operacional</div></div>
+  </div>
+  <div class="st">Fluxo de uma compra em tempo real</div>
+  <div class="txf">
+    <div class="txs"><div class="txn">01</div><div class="txt">Captura</div><div class="txd">Portador passa o cartão na maquininha (POS)</div></div>
+    <div class="txs"><div class="txn">02</div><div class="txt">Roteamento</div><div class="txd">Adquirente envia para a rede da bandeira</div></div>
+    <div class="txs"><div class="txn">03</div><div class="txt">Autorização</div><div class="txd">Emissor verifica limite, saldo e risco</div></div>
+    <div class="txs"><div class="txn">04</div><div class="txt">Resposta</div><div class="txd">Bandeira devolve ao adquirente</div><div class="txtime">⚡ ~1 segundo</div></div>
+    <div class="txs"><div class="txn">05</div><div class="txt">Liquidação</div><div class="txd">Lojista recebe D+1 (débito) ou D+30 (crédito)</div></div>
+  </div>
+  <div class="st">Vouchers — rede semi-fechada</div>
+  <div class="g4">
+    <div class="vc"><div class="vi">🍽️</div><div class="vn" style="color:var(--green)">Alimentação</div><div class="vd">Supermercados. Regulado pelo PAT</div></div>
+    <div class="vc"><div class="vi">🥘</div><div class="vn" style="color:var(--orange)">Refeição</div><div class="vd">Restaurantes. MCC 5812. PAT</div></div>
+    <div class="vc"><div class="vi">⛽</div><div class="vn" style="color:var(--yellow)">Combustível</div><div class="vd">Postos. MCC específico. Frota</div></div>
+    <div class="vc"><div class="vi">💊</div><div class="vn" style="color:var(--blue)">Outros</div><div class="vd">Farmácia, cultura, mobilidade</div></div>
+  </div>
+</div>
+
+<!-- ══════ TAXAS -->
+<div id="panel-taxas" class="panel anim">
+  <div class="st">Decomposição do MDR — crédito Platinum</div>
+  <div class="sc">
+    <div class="sl">Compra de R$ 100 — MDR total: ~2,20%</div>
+    <div class="mbar"><div class="ms ms-ic">IC 1,30%</div><div class="ms ms-sf"></div><div class="ms ms-adq">Adq 0,70%</div><div class="ms ms-rsk">Rsk</div></div>
+    <div class="mleg">
+      <div class="mli"><div class="mld" style="background:var(--blue)"></div>IC <span class="mlp">~1,30%</span> → emissor</div>
+      <div class="mli"><div class="mld" style="background:var(--yellow)"></div>Scheme fee <span class="mlp">~0,10%</span> → bandeira</div>
+      <div class="mli"><div class="mld" style="background:var(--green)"></div>Adquirente <span class="mlp">~0,70%</span></div>
+      <div class="mli"><div class="mld" style="background:var(--red)"></div>Provisão <span class="mlp">~0,10%</span></div>
+    </div>
+  </div>
+  <div class="g3">
+    <div class="tc"><div class="tag t-taxa">Débito</div><div class="tn">MDR Débito</div><div class="td">Risco menor — sem float, débito imediato</div><div class="tv">~0,70% – 1,20%</div></div>
+    <div class="tc"><div class="tag t-taxa">Crédito à vista</div><div class="tn">MDR Crédito</div><div class="td">Float de 30 dias aumenta risco e taxa</div><div class="tv">~1,80% – 2,50%</div></div>
+    <div class="tc"><div class="tag t-taxa">Parcelado</div><div class="tn">MDR Parcelado</div><div class="td">Float de até 12x. Adquirente financia o lojista</div><div class="tv">~2,50% – 3,50%+</div></div>
+  </div>
+</div>
+
+<!-- ══════ TIERS -->
+<div id="panel-tiers" class="panel anim">
+  <div class="st">Tiers de cartão e IC aproximado</div>
+  <div class="g5">
+    <div class="tirc" style="--tc:#9ca3af"><div class="tirn">Classic</div><div class="tiri">0,75%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~1,60%</div></div>
+    <div class="tirc" style="--tc:#f5c842"><div class="tirn">Gold</div><div class="tiri">1,00%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~1,90%</div></div>
+    <div class="tirc" style="--tc:#a78bfa"><div class="tirn">Platinum</div><div class="tiri">1,30%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~2,20%</div></div>
+    <div class="tirc" style="--tc:#e8eaf0"><div class="tirn">Black</div><div class="tiri">1,60%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~2,60%</div></div>
+    <div class="tirc" style="--tc:var(--orange)"><div class="tirn">Titanium</div><div class="tiri">2,00%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~3,00%+</div></div>
+  </div>
+  <div class="st">MCC — Merchant Category Code</div>
+  <div class="g4">
+    <div class="vc"><div class="vn" style="color:var(--green)">MCC 5411</div><div class="vd">Supermercados</div></div>
+    <div class="vc"><div class="vn" style="color:var(--orange)">MCC 5812</div><div class="vd">Restaurantes</div></div>
+    <div class="vc"><div class="vn" style="color:var(--blue)">MCC 5541</div><div class="vd">Postos de Gasolina</div></div>
+    <div class="vc"><div class="vn" style="color:var(--purple)">MCC 7011</div><div class="vd">Hotéis e Hospedagem</div></div>
+  </div>
+</div>
+
+<!-- ══════ ENCARGOS -->
+<div id="panel-encargos" class="panel anim">
+  <div class="st">TAC e CET</div>
+  <div class="sc">
+    <div class="g2">
+      <div>
+        <div class="rr"><span class="rk">TAC</span><span class="rv">Cobrada na concessão — antes de usar</span></div>
+        <div class="rr"><span class="rk">Exemplo</span><span class="rv">Limite R$ 5.000 → TAC R$ 150</span></div>
+        <div class="rr"><span class="rk">Regulação</span><span class="rv w">BACEN limitou em crédito PF</span></div>
+      </div>
+      <div>
+        <div class="rr"><span class="rk">CET</span><span class="rv">TAC + juros + IOF + seguros</span></div>
+        <div class="rr"><span class="rk">Exemplo</span><span class="rv">Juros 3,5% a.m. + TAC + IOF = CET 4,8%</span></div>
+        <div class="rr"><span class="rk">Obrigatório</span><span class="rv o">Res. BACEN 3.517</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="st">Encargos por Atraso</div>
+  <div class="sc">
+    <div class="sl">Fatura R$ 1.000 — pagou só o mínimo (R$ 150) — saldo: R$ 850</div>
+    <div class="ebar">
+      <div class="ei"><span class="el">1. Multa</span><div class="etr"><div class="ef" style="width:5%;background:var(--yellow)">2%</div></div><span class="ev" style="color:var(--yellow)">R$ 17 — 1x</span></div>
+      <div class="ei"><span class="el">2. Mora</span><div class="etr"><div class="ef" style="width:10%;background:var(--orange)">1%/mês</div></div><span class="ev" style="color:var(--orange)">R$ 8,50/mês</span></div>
+      <div class="ei"><span class="el">3. Rotativo</span><div class="etr"><div class="ef" style="width:85%;background:var(--red)">~15%/mês</div></div><span class="ev" style="color:var(--red)">R$ 127/mês</span></div>
+    </div>
+  </div>
+  <div class="st">Produtos de crédito — mesmo princípio</div>
+  <div class="sc">
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:11px;">
+        <thead><tr style="border-bottom:1px solid var(--border)">
+          <th style="text-align:left;padding:7px 10px;color:var(--muted);font-size:9px;font-weight:600">PRODUTO</th>
+          <th style="text-align:left;padding:7px 10px;color:var(--muted);font-size:9px;font-weight:600">GARANTIA</th>
+          <th style="text-align:left;padding:7px 10px;color:var(--muted);font-size:9px;font-weight:600">TAXA</th>
+          <th style="text-align:left;padding:7px 10px;color:var(--muted);font-size:9px;font-weight:600">RISCO</th>
+        </tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 10px">Rotativo</td><td style="padding:8px 10px;color:var(--muted)">Nenhuma</td><td style="padding:8px 10px;color:var(--red);font-weight:600">~15% a.m.</td><td style="padding:8px 10px;color:var(--red)">Máximo</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 10px">Empréstimo pessoal</td><td style="padding:8px 10px;color:var(--muted)">CPF / histórico</td><td style="padding:8px 10px;color:var(--orange);font-weight:600">~5–8% a.m.</td><td style="padding:8px 10px;color:var(--orange)">Alto</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 10px">Consignado</td><td style="padding:8px 10px;color:var(--muted)">Desconto em folha</td><td style="padding:8px 10px;color:var(--yellow);font-weight:600">~1,5–3% a.m.</td><td style="padding:8px 10px;color:var(--yellow)">Baixo</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 10px">Financiamento</td><td style="padding:8px 10px;color:var(--muted)">O bem comprado</td><td style="padding:8px 10px;color:var(--green);font-weight:600">~1–2% a.m.</td><td style="padding:8px 10px;color:var(--green)">Mínimo</td></tr>
+          <tr><td style="padding:8px 10px">Cartão crédito</td><td style="padding:8px 10px;color:var(--muted)">Limite pré-aprovado</td><td style="padding:8px 10px;color:var(--red);font-weight:600">~15% a.m. rotativo</td><td style="padding:8px 10px;color:var(--orange)">Médio-alto</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ CDI & CDB -->
+<div id="panel-cdi" class="panel anim">
+  <div class="st">CDI — o preço do dinheiro entre bancos</div>
+  <div class="sc">
+    <div class="g3" style="margin-bottom:14px">
+      <div class="cdim"><div class="cdir">14,65%</div><div class="cdip">CDI ao ano (abr/2026)</div></div>
+      <div class="cdim"><div class="cdir">1,14%</div><div class="cdip">CDI ao mês</div></div>
+      <div class="cdim"><div class="cdir">0,054%</div><div class="cdip">CDI ao dia</div></div>
+    </div>
+    <div class="rr"><span class="rk">Selic (BACEN)</span><span class="rv">~14,75% a.a. — CDI sempre ~0,10% abaixo</span></div>
+  </div>
+  <div class="st">CDB — contrato de dívida simples</div>
+  <div class="sc">
+    <div class="g2">
+      <div>
+        <div class="rr"><span class="rk">É só um contrato?</span><span class="rv o">Sim — você empresta, banco devolve com juros</span></div>
+        <div class="rr"><span class="rk">Garantia</span><span class="rv o">FGC até R$ 250k por CPF por banco</span></div>
+        <div class="rr"><span class="rk">Taxa</span><span class="rv">Expressa em % do CDI</span></div>
+      </div>
+      <div>
+        <div class="rr"><span class="rk">Banco capta (CDB)</span><span class="rv">~100% CDI = ~14,65% a.a.</span></div>
+        <div class="rr"><span class="rk">Banco empresta (rotativo)</span><span class="rv d">~200% a.a.</span></div>
+        <div class="rr"><span class="rk">Spread bruto</span><span class="rv o">~185% a.a. — é aí que está o lucro</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="st">CDI como referência de investimento</div>
+  <div class="sc">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+      <div class="cdim"><div class="cdip" style="margin-bottom:4px">Poupança</div><div class="cdir" style="color:var(--red);font-size:18px">~70% CDI</div></div>
+      <div class="cdim"><div class="cdip" style="margin-bottom:4px">Fundo DI</div><div class="cdir" style="color:var(--yellow);font-size:18px">~95–99%</div></div>
+      <div class="cdim"><div class="cdip" style="margin-bottom:4px">Tesouro Selic</div><div class="cdir" style="font-size:18px">~100% CDI</div></div>
+      <div class="cdim"><div class="cdip" style="margin-bottom:4px">CDB banco grande</div><div class="cdir" style="font-size:18px">90–100%</div></div>
+      <div class="cdim"><div class="cdip" style="margin-bottom:4px">CDB banco pequeno</div><div class="cdir" style="color:var(--blue);font-size:18px">110–130%</div></div>
+      <div class="cdim"><div class="cdip" style="margin-bottom:4px">LCI/LCA (isento IR)</div><div class="cdir" style="color:var(--purple);font-size:18px">85–95%</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SPLIT & CRÉBITO -->
+<div id="panel-split" class="panel anim">
+  <div class="st">Split — divisão de uma transação</div>
+  <div class="g2">
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">Marketplace — múltiplos recebedores</div>
+      <div class="sbar"><div class="ss" style="background:var(--green);flex:.85">Restaurante 85%</div><div class="ss" style="background:var(--blue);flex:.10">iFood 10%</div><div class="ss" style="background:var(--yellow);flex:.05">5%</div></div>
+      <div class="rr"><span class="rk">Compra</span><span class="rv">R$ 300 no iFood</span></div>
+      <div class="rr"><span class="rk">→ Restaurante</span><span class="rv o">R$ 255</span></div>
+      <div class="rr"><span class="rk">→ iFood</span><span class="rv w">R$ 30</span></div>
+    </div>
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">Crébito — duas modalidades</div>
+      <div class="sbar"><div class="ss" style="background:var(--purple);flex:.375">Débito R$ 300</div><div class="ss" style="background:var(--blue);flex:.625">Crédito R$ 500</div></div>
+      <div class="rr"><span class="rk">Saldo conta</span><span class="rv">R$ 300 → sai agora</span></div>
+      <div class="rr"><span class="rk">Limite crédito</span><span class="rv">R$ 500 → fatura</span></div>
+      <div class="rr"><span class="rk">Criado por</span><span class="rv">Elo — exclusivo do Brasil</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ WACC & EVA -->
+<div id="panel-eva" class="panel anim">
+  <div class="st">WACC — Custo Médio Ponderado de Capital</div>
+  <div class="sc">
+    <div class="wacc-bar"><div class="wacc-debt" style="flex:.6">Dívida 60% × 12% = 7,2%</div><div class="wacc-eq" style="flex:.4">Equity 40% × 18% = 7,2%</div></div>
+    <div style="text-align:center;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--teal);margin:10px 0 4px">WACC = 14,4% a.a.</div>
+    <div class="g2" style="margin-top:14px">
+      <div><div class="rr"><span class="rk">CDI alto →</span><span class="rv d">WACC sobe</span></div><div class="rr"><span class="rk">CDI baixo →</span><span class="rv o">WACC cai</span></div></div>
+      <div><div class="rr"><span class="rk">Rende 10%, WACC 14%</span><span class="rv d">Destrói valor</span></div><div class="rr"><span class="rk">Rende 20%, WACC 14%</span><span class="rv o">Cria valor</span></div></div>
+    </div>
+  </div>
+  <div class="st">EVA aplicado ao produto</div>
+  <div class="sc">
+    <div class="eva-flow">
+      <div class="eva-box"><div class="eva-label">Receita Op.</div><div class="eva-val" style="color:var(--green)">R$ 8M</div></div>
+      <div class="eva-op">−</div>
+      <div class="eva-box"><div class="eva-label">Inadimplência</div><div class="eva-val" style="color:var(--red)">R$ 2M</div></div>
+      <div class="eva-op">−</div>
+      <div class="eva-box"><div class="eva-label">Operacional</div><div class="eva-val" style="color:var(--red)">R$ 1,5M</div></div>
+      <div class="eva-op">=</div>
+      <div class="eva-box"><div class="eva-label">Lucro Op.</div><div class="eva-val" style="color:var(--yellow)">R$ 4,5M</div></div>
+      <div class="eva-op">−</div>
+      <div class="eva-box"><div class="eva-label">Capital × WACC</div><div class="eva-val" style="color:var(--red)">R$ 4,32M</div></div>
+      <div class="eva-op">=</div>
+      <div class="eva-box" style="border-color:var(--yellow)"><div class="eva-label">EVA</div><div class="eva-val" style="color:var(--yellow)">+R$ 180K ⚠️</div></div>
+    </div>
+    <div class="note">💡 EVA próximo de zero → qualquer aumento de inadimplência coloca o produto no negativo. Revisão de pricing justificada.</div>
+  </div>
+</div>
+
+<!-- ══════ FIDC & AÇÕES -->
+<div id="panel-mercado" class="panel anim">
+  <div class="st">FIDC — securitização de recebíveis</div>
+  <div class="sc">
+    <div class="g3" style="margin-bottom:14px">
+      <div class="tc"><div class="tag t-inv">Menor risco</div><div class="tn">Cota Sênior</div><div class="td">Recebe primeiro. Comprada por fundos conservadores.</div><div class="tv">CDI + 1–2% a.a.</div></div>
+      <div class="tc"><div class="tag t-ciclo">Médio</div><div class="tn">Cota Mezanino</div><div class="td">Recebe depois da sênior. Risco intermediário.</div><div class="tv">CDI + 3–5% a.a.</div></div>
+      <div class="tc"><div class="tag t-risco">Maior risco</div><div class="tn">Cota Júnior</div><div class="td">Absorve perdas primeiro. Geralmente fica com o banco — skin in the game.</div><div class="tv">Retorno residual</div></div>
+    </div>
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title" style="color:var(--purple)">Você paga consignado</div><div class="chain-desc">Parcela descontada em folha. Risco quase zero.</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title" style="color:var(--blue)">Banco empacota num FIDC</div><div class="chain-desc">Securitiza. Vende cotas. Recebe caixa agora.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title" style="color:var(--teal)">Fundo de pensão compra cotas</div><div class="chain-desc">Recebe CDI + spread. Paga aposentadoria.</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title" style="color:var(--green)">Investidor analisa o EVA do banco</div><div class="chain-desc">EVA positivo e consistente → ação valoriza.</div></div></div>
+    </div>
+  </div>
+  <div class="st">CDI como custo de oportunidade</div>
+  <div class="sc">
+    <div class="g2">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--red)">CDI Alto (~14,65%)</div>
+        <div class="rr"><span class="rk">Renda fixa paga bem</span><span class="rv d">Dinheiro sai da bolsa</span></div>
+        <div class="rr"><span class="rk">Custo dívida sobe</span><span class="rv d">Margem das empresas cai</span></div>
+        <div class="rr"><span class="rk">WACC sobe</span><span class="rv d">EVA mais difícil de ser positivo</span></div>
+      </div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--green)">CDI Baixo (~2% — 2021)</div>
+        <div class="rr"><span class="rk">Renda fixa paga pouco</span><span class="rv o">Dinheiro entra na bolsa</span></div>
+        <div class="rr"><span class="rk">Custo dívida cai</span><span class="rv o">Margem das empresas sobe</span></div>
+        <div class="rr"><span class="rk">WACC cai</span><span class="rv o">EVA mais fácil de ser positivo</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ VC & RODADAS (NOVO) -->
+<div id="panel-vc" class="panel anim">
+  <div class="st">A lógica do Venture Capital — diferente do investidor comum</div>
+  <div class="sc">
+    <div class="sl">Power Law — a distribuição de retornos em VC não é normal, é exponencial</div>
+    <div style="margin:16px 0">
+      <div style="display:flex;align-items:flex-end;gap:8px;height:110px;padding:12px;background:var(--surface2);border-radius:10px;border:1px solid var(--border)">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--red);border-radius:4px 4px 0 0;height:10%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">0x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 1</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--red);border-radius:4px 4px 0 0;height:10%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">0x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 2</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--orange);border-radius:4px 4px 0 0;height:15%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">1x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 3</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--yellow);border-radius:4px 4px 0 0;height:20%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">2x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 4</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--yellow);border-radius:4px 4px 0 0;height:25%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">3x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 5</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--green);border-radius:4px 4px 0 0;height:30%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">5x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 6</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--green);border-radius:4px 4px 0 0;height:40%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">8x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 7</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:55%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">12x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 8</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--purple);border-radius:4px 4px 0 0;height:70%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">20x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 9</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--teal);border-radius:4px 4px 0 0;height:100%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">50x 🏆</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 10</div>
+        </div>
+      </div>
+      <div class="note">💡 A startup 10 sozinha paga todas as 9 perdas e ainda deixa o fundo no lucro. Por isso VC não precisa que toda empresa funcione — precisa que <strong style="color:var(--text)">uma seja enorme</strong>.</div>
+    </div>
+  </div>
+
+  <div class="st">Fases de rodada — quem investe e o que olham</div>
+  <div class="round-timeline">
+    <div class="round-stage" style="background:rgba(167,139,250,.04)">
+      <div class="round-name" style="color:var(--purple)">Pre-Seed</div>
+      <div class="round-val" style="color:var(--purple)">R$ 500k–2M</div>
+      <div class="round-metric"><strong>Quem:</strong> Anjos, família<br><strong>Olham:</strong> Founder, ideia<br><strong>Risco:</strong> Máximo</div>
+      <span class="round-risk" style="background:rgba(247,95,95,.15);color:var(--red)">Ideia → MVP</span>
+    </div>
+    <div class="round-stage" style="background:rgba(79,142,247,.04)">
+      <div class="round-name" style="color:var(--blue)">Seed</div>
+      <div class="round-val" style="color:var(--blue)">R$ 2M–10M</div>
+      <div class="round-metric"><strong>Quem:</strong> Fundos seed<br><strong>Olham:</strong> PMF inicial, usuários<br><strong>Risco:</strong> Alto</div>
+      <span class="round-risk" style="background:rgba(251,146,60,.15);color:var(--orange)">MVP → Tração</span>
+    </div>
+    <div class="round-stage" style="background:rgba(245,200,66,.04)">
+      <div class="round-name" style="color:var(--yellow)">Série A</div>
+      <div class="round-val" style="color:var(--yellow)">R$ 10M–50M</div>
+      <div class="round-metric"><strong>Quem:</strong> Fundos VC médios<br><strong>Olham:</strong> Retenção, NPS, Churn<br><strong>Risco:</strong> Médio-alto</div>
+      <span class="round-risk" style="background:rgba(245,200,66,.15);color:var(--yellow)">PMF → Escala</span>
+    </div>
+    <div class="round-stage" style="background:rgba(45,212,160,.04)">
+      <div class="round-name" style="color:var(--green)">Série B</div>
+      <div class="round-val" style="color:var(--green)">R$ 50M–200M</div>
+      <div class="round-metric"><strong>Quem:</strong> Fundos grandes<br><strong>Olham:</strong> ARR, GMV, crescimento<br><strong>Risco:</strong> Médio</div>
+      <span class="round-risk" style="background:rgba(45,212,160,.15);color:var(--green)">Escala → Dominância</span>
+    </div>
+    <div class="round-stage" style="background:rgba(34,211,238,.04)">
+      <div class="round-name" style="color:var(--teal)">Série C+ / IPO</div>
+      <div class="round-val" style="color:var(--teal)">R$ 200M+</div>
+      <div class="round-metric"><strong>Quem:</strong> Growth equity, bolsa<br><strong>Olham:</strong> EBITDA, free cash flow<br><strong>Risco:</strong> Baixo-médio</div>
+      <span class="round-risk" style="background:rgba(34,211,238,.15);color:var(--teal)">Lucro → Bolsa</span>
+    </div>
+  </div>
+
+  <div class="st">Por que investidor existente entra na nova rodada?</div>
+  <div class="sc">
+    <div class="sl">Diluição — a matemática que explica o pro-rata</div>
+    <div class="dilution-demo">
+      <div class="dil-side">
+        <div class="dil-pct" style="color:var(--blue)">20%</div>
+        <div class="dil-label">Sua participação<br>após o Seed</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">Nova rodada entra</div>
+        <div style="display:flex;gap:8px;justify-content:center">
+          <div style="text-align:center">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:3px">Não entra</div>
+            <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--red)">12%</div>
+            <div style="font-size:9px;color:var(--muted)">diluído</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:3px">Entra (pro-rata)</div>
+            <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--green)">20%</div>
+            <div style="font-size:9px;color:var(--muted)">mantém</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:3px">Entra mais</div>
+            <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--teal)">25%</div>
+            <div style="font-size:9px;color:var(--muted)">doubled down</div>
+          </div>
+        </div>
+      </div>
+      <div class="dil-side">
+        <div class="dil-pct" style="color:var(--teal);font-size:20px">R$ 1B?</div>
+        <div class="dil-label">Valuation potencial<br>se a empresa vingar</div>
+      </div>
+    </div>
+    <div class="note">💡 A pergunta do investidor: "Prefiro 20% de uma empresa que pode valer R$ 1 bilhão, ou 12% da mesma empresa?" — Se acredita no potencial, a matemática favorece entrar de novo mesmo sem lucro.</div>
+  </div>
+
+  <div class="st">O que VC olha antes do break-even</div>
+  <div class="phase-grid">
+    <div class="phase-card" style="--pc:var(--purple)">
+      <div class="phase-name">Pre-Seed / Seed</div>
+      <div class="phase-metric"><strong>Churn</strong> — usuários voltam?<br><strong>NPS</strong> — recomendam?<br><strong>Founder</strong> — executa bem?</div>
+    </div>
+    <div class="phase-card" style="--pc:var(--blue)">
+      <div class="phase-name">Série A</div>
+      <div class="phase-metric"><strong>PMF</strong> — produto encaixa?<br><strong>Retenção</strong> — mês a mês<br><strong>Crescimento orgânico</strong></div>
+    </div>
+    <div class="phase-card" style="--pc:var(--green)">
+      <div class="phase-name">Série B</div>
+      <div class="phase-metric"><strong>ARR</strong> — receita recorrente<br><strong>GMV</strong> — volume total<br><strong>Velocidade de crescimento</strong></div>
+    </div>
+    <div class="phase-card" style="--pc:var(--teal)">
+      <div class="phase-name">Série C+</div>
+      <div class="phase-metric"><strong>CAC</strong> — custo de aquisição<br><strong>LTV</strong> — valor do cliente<br><strong>Payback period</strong></div>
+    </div>
+  </div>
+
+  <div class="st">Vieses que levam à decisão "irracional" de reinvestir</div>
+  <div class="bias-grid">
+    <div class="bias-card">
+      <div class="bias-name">Sunk Cost Fallacy</div>
+      <div class="bias-desc">Dificuldade de abandonar algo onde já investiu muito, mesmo que o racional seja parar.</div>
+      <div class="bias-quote">"Já coloquei R$ 10M, não posso deixar morrer agora."</div>
+    </div>
+    <div class="bias-card">
+      <div class="bias-name">FOMO</div>
+      <div class="bias-desc">Fear of Missing Out. Medo de ficar de fora do próximo grande sucesso.</div>
+      <div class="bias-quote">"E se essa for a próxima Nubank e eu não entrei?"</div>
+    </div>
+    <div class="bias-card">
+      <div class="bias-name">Assimetria de Informação</div>
+      <div class="bias-desc">O founder sempre sabe mais que o investidor. Pitch deck é sempre otimista por natureza.</div>
+      <div class="bias-quote">"Os números do deck parecem promissores."</div>
+    </div>
+    <div class="bias-card">
+      <div class="bias-name">Pressão de Deploy</div>
+      <div class="bias-desc">Fundo captou dinheiro dos LPs e precisa investir dentro de um prazo contratual.</div>
+      <div class="bias-quote">"Melhor startup imperfeita que dinheiro parado."</div>
+    </div>
+    <div class="bias-card">
+      <div class="bias-name">Write-down Avoidance</div>
+      <div class="bias-desc">Admitir que a empresa perdeu valor força o fundo a registrar perda contábil para seus cotistas.</div>
+      <div class="bias-quote">"Melhor tentar mais uma rodada que marcar como zero."</div>
+    </div>
+    <div class="bias-card">
+      <div class="bias-name">Optimism Bias</div>
+      <div class="bias-desc">Tendência de superestimar chances de sucesso próprias e subestimar riscos sistêmicos.</div>
+      <div class="bias-quote">"Nossa empresa é diferente das que falharam."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ RECUPERAÇÃO JUDICIAL (NOVO) -->
+<div id="panel-rj" class="panel anim">
+  <div class="st">Dois cenários — o que separa quem vinga de quem vai para RJ</div>
+  <div class="scenario-grid">
+    <div class="scenario" style="--sc:var(--green)">
+      <div class="scenario-title">✅ Cenário 1 — Empresa que vinga</div>
+      <div class="rr"><span class="rk">Crescimento</span><span class="rv o">Acelerado e consistente</span></div>
+      <div class="rr"><span class="rk">Unit economics</span><span class="rv o">LTV > CAC (saudável)</span></div>
+      <div class="rr"><span class="rk">Rodadas</span><span class="rv o">Cada rodada valida a anterior</span></div>
+      <div class="rr"><span class="rk">Break-even</span><span class="rv o">Visível no horizonte</span></div>
+      <div class="rr"><span class="rk">Próximo passo</span><span class="rv o">Série C → IPO → lucro</span></div>
+      <div class="rr"><span class="rk">Exemplos BR</span><span class="rv o">Nubank · Stone · Totvs</span></div>
+    </div>
+    <div class="scenario" style="--sc:var(--red)">
+      <div class="scenario-title">⚠️ Cenário 2 — Empresa que vai para RJ</div>
+      <div class="rr"><span class="rk">Crescimento</span><span class="rv d">Desacelerou sem motivo claro</span></div>
+      <div class="rr"><span class="rk">Unit economics</span><span class="rv d">CAC > LTV (destruindo valor)</span></div>
+      <div class="rr"><span class="rk">Rodadas</span><span class="rv d">Cada rodada posterga o problema</span></div>
+      <div class="rr"><span class="rk">Break-even</span><span class="rv d">Sempre "no próximo ano"</span></div>
+      <div class="rr"><span class="rk">Dependência</span><span class="rv d">Sobrevive só com nova rodada</span></div>
+      <div class="rr"><span class="rk">Resultado</span><span class="rv d">Rodada não vem → caixa acaba → RJ</span></div>
+    </div>
+  </div>
+
+  <div class="st">O que causou o boom de recuperações judiciais 2022–2024</div>
+  <div class="rj-timeline">
+    <div class="rj-step" style="background:rgba(45,212,160,.03)">
+      <div class="rj-icon">💸</div>
+      <div>
+        <div class="rj-title" style="color:var(--green)">2020–2021 — Dinheiro fácil</div>
+        <div class="rj-desc">Selic a 2% a.a. CDB não paga nada. VC com capital abundante buscando retorno. Rodadas supervalorizadas. Qualquer startup captava.</div>
+        <span class="rj-badge" style="background:rgba(45,212,160,.15);color:var(--green)">Selic ~2% a.a.</span>
+      </div>
+    </div>
+    <div class="rj-step" style="background:rgba(245,200,66,.03)">
+      <div class="rj-icon">📈</div>
+      <div>
+        <div class="rj-title" style="color:var(--yellow)">2022 — Virada do ciclo</div>
+        <div class="rj-desc">BACEN sobe Selic agressivamente para controlar inflação. CDI volta a pagar bem. Investidor não precisa mais arriscar em startup — vai para renda fixa.</div>
+        <span class="rj-badge" style="background:rgba(245,200,66,.15);color:var(--yellow)">Selic 13% → 13,75%</span>
+      </div>
+    </div>
+    <div class="rj-step" style="background:rgba(247,95,95,.03)">
+      <div class="rj-icon">🚰</div>
+      <div>
+        <div class="rj-title" style="color:var(--red)">2023–2024 — Torneira fechada</div>
+        <div class="rj-desc">Rodadas secaram. Empresas que dependiam de nova rodada para sobreviver ficaram sem caixa. Unit economics ruins não sustentavam operação sem funding externo.</div>
+        <span class="rj-badge" style="background:rgba(247,95,95,.15);color:var(--red)">Americanas · 123milhas · Tok&Stok</span>
+      </div>
+    </div>
+    <div class="rj-step">
+      <div class="rj-icon">⚖️</div>
+      <div>
+        <div class="rj-title" style="color:var(--muted)">Recuperação Judicial — o que é</div>
+        <div class="rj-desc">Mecanismo legal (Lei 11.101/2005) que permite à empresa negociar dívidas com credores sob supervisão judicial. A empresa continua operando enquanto reestrutura. Não é falência — mas pode virar.</div>
+        <span class="rj-badge" style="background:rgba(79,142,247,.15);color:var(--blue)">Prazo típico: 2 anos para plano aprovado</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="st">Unit Economics — o que separa as que sobrevivem</div>
+  <div class="unit-econ">
+    <div class="ue-card">
+      <div class="ue-name">CAC</div>
+      <div class="ue-val" style="color:var(--blue)">R$ 200</div>
+      <div class="ue-desc">Custo de Aquisição de Cliente. Quanto custa trazer 1 novo usuário.</div>
+    </div>
+    <div class="ue-card">
+      <div class="ue-name">LTV</div>
+      <div class="ue-val" style="color:var(--green)">R$ 800</div>
+      <div class="ue-desc">Lifetime Value. Quanto esse cliente gera de receita ao longo do tempo.</div>
+    </div>
+    <div class="ue-card">
+      <div class="ue-name">LTV/CAC</div>
+      <div class="ue-val" style="color:var(--green)">4x ✅</div>
+      <div class="ue-desc">Referência saudável: acima de 3x. Abaixo de 1x = destruindo valor por cliente.</div>
+    </div>
+    <div class="ue-card">
+      <div class="ue-name">Payback</div>
+      <div class="ue-val" style="color:var(--yellow)">8 meses</div>
+      <div class="ue-desc">Tempo para recuperar o CAC. Abaixo de 12 meses = saudável para a maioria dos setores.</div>
+    </div>
+    <div class="ue-card">
+      <div class="ue-name">Churn</div>
+      <div class="ue-val" style="color:var(--orange)">3%/mês</div>
+      <div class="ue-desc">Taxa de cancelamento/abandono mensal. Acima de 5% ao mês é sinal crítico de problema de PMF.</div>
+    </div>
+    <div class="ue-card">
+      <div class="ue-name">Break-even</div>
+      <div class="ue-val" style="color:var(--purple)">Mês 18</div>
+      <div class="ue-desc">Quando receita supera custos totais. Empresas saudáveis têm data visível — não "no próximo ano" eterno.</div>
+    </div>
+  </div>
+
+  <div class="note note-warn">🚨 <strong style="color:var(--text)">O que você identificou corretamente:</strong> Se o custo de servir um cliente é maior que o que ele paga (CAC > LTV), nenhuma quantidade de rodadas resolve — só posterga. O dinheiro do investidor está sendo usado para pagar a diferença, não para crescer. Quando o dinheiro acaba, a empresa some.</div>
+
+  <div class="st" style="margin-top:20px">Por que mesmo assim pessoas investem em empresas sem lucro</div>
+  <div class="sc">
+    <div class="sl">O modelo "queima de caixa para ganhar mercado" — quando funciona e quando não funciona</div>
+    <div class="g2" style="margin-top:14px">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--green)">✅ Quando funciona</div>
+        <div class="rr"><span class="rk">Mercado</span><span class="rv o">Grande o suficiente (TAM bilionário)</span></div>
+        <div class="rr"><span class="rk">Network effects</span><span class="rv o">Produto fica melhor com mais usuários</span></div>
+        <div class="rr"><span class="rk">Winner-takes-all</span><span class="rv o">Quem capturar mercado agora domina</span></div>
+        <div class="rr"><span class="rk">Exemplos BR</span><span class="rv o">Nubank · iFood · Mercado Livre</span></div>
+      </div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--red)">❌ Quando não funciona</div>
+        <div class="rr"><span class="rk">Mercado</span><span class="rv d">Nicho pequeno, crescimento limitado</span></div>
+        <div class="rr"><span class="rk">Sem network effect</span><span class="rv d">Produto não melhora com escala</span></div>
+        <div class="rr"><span class="rk">Comoditizado</span><span class="rv d">Concorrência faz a mesma coisa</span></div>
+        <div class="rr"><span class="rk">Risco</span><span class="rv d">Fintechs/healthtechs/edutechs BR menores</span></div>
+      </div>
+    </div>
+    <div class="note note-yellow">💡 Você acertou na intuição: uma OpenAI pode justificar perdas enormes por ter mercado global e efeitos de rede fortíssimos. Uma fintech brasileira de nicho tem um mercado 1000x menor — a mesma lógica raramente se aplica.</div>
+  </div>
+</div>
+
+<!-- ══════ PCI-DSS -->
+<div id="panel-pci" class="panel anim">
+  <div class="st">PCI-DSS — padrão de segurança criado pelas bandeiras</div>
+  <div class="sc">
+    <div class="sl">Payment Card Industry Data Security Standard — requisito contratual, não lei</div>
+    <div class="g3" style="margin-top:14px">
+      <div class="tc"><div class="tag t-seg">Rede</div><div class="tn">Rede Segura</div><div class="td">Firewall configurado. Senhas padrão alteradas. Segmentação.</div></div>
+      <div class="tc"><div class="tag t-seg">Dados</div><div class="tn">Proteger Dados</div><div class="td">Nunca armazenar CVV. Criptografar PAN se armazenado.</div></div>
+      <div class="tc"><div class="tag t-seg">Acesso</div><div class="tn">Controle</div><div class="td">Acesso mínimo necessário. Autenticação única. Logs de tudo.</div></div>
+    </div>
+  </div>
+  <div class="st">Jornada do dado — quem é responsável em cada ponto</div>
+  <div class="pci-journey">
+    <div class="pci-step" style="background:rgba(45,212,160,.04)"><div class="pci-icon">💳</div><div><div class="pci-title">Portador passa o cartão</div><div class="pci-desc">Maquininha captura — hardware certificado pelo adquirente</div></div><span class="pci-badge badge-adq">Adquirente</span></div>
+    <div class="pci-step" style="background:rgba(247,95,95,.04)"><div class="pci-icon">🌐</div><div><div class="pci-title">Dado trafega pela rede interna do lojista</div><div class="pci-desc">Entre o POS e o sistema de gestão — responsabilidade do lojista</div></div><span class="pci-badge badge-loj">Lojista</span></div>
+    <div class="pci-step" style="background:rgba(247,95,95,.04)"><div class="pci-icon">🖥️</div><div><div class="pci-title">Sistema e banco de dados do lojista</div><div class="pci-desc">Se armazenar qualquer dado de cartão, precisa estar criptografado</div></div><span class="pci-badge badge-loj">Lojista</span></div>
+    <div class="pci-step" style="background:rgba(45,212,160,.04)"><div class="pci-icon">📡</div><div><div class="pci-title">Adquirente recebe e roteia</div><div class="pci-desc">Transmissão criptografada — responsabilidade do adquirente</div></div><span class="pci-badge badge-adq">Adquirente</span></div>
+  </div>
+  <div class="st">Tokenização e 3DS</div>
+  <div class="g2">
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">Tokenização</div>
+      <div class="token-demo">
+        <div><div class="token-val" style="color:var(--red)">4111 1111 1111 1234</div><div class="token-label">PAN real</div></div>
+        <div class="token-arrow">→</div>
+        <div><div class="token-val" style="color:var(--green)">8f3k-92mc-xx71</div><div class="token-label">Token — inútil se vazar</div></div>
+      </div>
+    </div>
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">3DS — 3D Secure</div>
+      <div class="rr" style="margin-top:10px"><span class="rk">Sem 3DS + fraude</span><span class="rv d">Lojista paga o chargeback</span></div>
+      <div class="rr"><span class="rk">Com 3DS + fraude</span><span class="rv o">Emissor absorve o chargeback</span></div>
+      <div class="rr"><span class="rk">O que é</span><span class="rv">Autenticação extra antes de finalizar compra</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ CHARGEBACK -->
+<div id="panel-chargeback" class="panel anim">
+  <div class="st">Chargeback — fluxo completo</div>
+  <div class="cbf">
+    <div class="cbs"><div class="cbi">😤</div><div class="cbt">Portador contesta</div><div class="cbd">Não reconhece ou alega problema</div></div>
+    <div class="cbs"><div class="cbi">🏦</div><div class="cbt">Emissor analisa</div><div class="cbd">Investiga. Até 45 dias</div></div>
+    <div class="cbs"><div class="cbi">🏷️</div><div class="cbt">Bandeira notifica</div><div class="cbd">Instrui adquirente a debitar</div></div>
+    <div class="cbs"><div class="cbi">📟</div><div class="cbt">Adquirente debita</div><div class="cbd">Desconta do lojista + multa</div></div>
+    <div class="cbs"><div class="cbi">✅</div><div class="cbt">Portador reembolsado</div><div class="cbd">Estornado na fatura</div></div>
+  </div>
+  <div class="cbr">
+    <div class="cbrc"><div class="cbrct" style="color:var(--blue)">🏦 Emissor absorve</div><div class="cbri">Fraude com chip + senha</div><div class="cbri">Token comprometido</div></div>
+    <div class="cbrc"><div class="cbrct" style="color:var(--green)">📟 Adquirente / Lojista</div><div class="cbri">Compra online sem 3DS</div><div class="cbri">Lojista sem PCI-DSS</div></div>
+    <div class="cbrc"><div class="cbrct" style="color:var(--orange)">⚠️ Friendly Fraud</div><div class="cbri">Portador fez e contesta depois</div><div class="cbri">~20–40% dos chargebacks</div></div>
+  </div>
+  <div class="sc">
+    <div class="sl">Thresholds</div>
+    <div class="thbar"><div class="th-ok">Normal → até 1%</div><div class="th-warn">1–2%</div><div class="th-danger">2%+</div></div>
+    <div style="display:flex;gap:14px;font-size:10px;color:var(--muted)"><span>✅ &lt;1% ok</span><span>⚠️ 1–2% monitoramento</span><span>🚨 &gt;2% descredenciamento</span></div>
+  </div>
+</div>
+
+<!-- ══════ GLOSSÁRIO -->
+<div id="panel-glossario" class="panel anim">
+  <div class="st">Glossário completo — 35 termos</div>
+  <div class="glossario-grid">
+    <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">MDR</div><div class="td">Taxa total cobrada do lojista. Inclui IC, scheme fee e margem do adquirente.</div><div class="tv">Débito ~0,7–1,2% · Crédito ~1,8–3,5%</div></div>
+    <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">IC — Interchange</div><div class="td">Parte do MDR repassada ao emissor. Principal receita de volume do banco.</div><div class="tv">Classic ~0,75% · Titanium ~2,00%</div></div>
+    <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">Scheme Fee</div><div class="td">Taxa da bandeira cobrada dos dois lados. Por transação ou por cartão ativo.</div><div class="tv">~0,05–0,15% por transação</div></div>
+    <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">TAC</div><div class="td">Taxa de Abertura de Crédito. Cobrada na concessão — nada a ver com atraso.</div><div class="tv">Limitada pelo BACEN em crédito PF</div></div>
+    <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">CET</div><div class="td">Custo Efetivo Total. Consolida juros + TAC + IOF + seguros. Obrigatório por lei.</div><div class="tv">Resolução BACEN 3.517</div></div>
+    <div class="tc"><div class="tag t-ciclo">Ciclo</div><div class="tn">Float</div><div class="td">Prazo entre a compra e o pagamento. Banco aplica no CDI durante esse período.</div><div class="tv">Gap médio ~30–40 dias</div></div>
+    <div class="tc"><div class="tag t-ciclo">Ciclo</div><div class="tn">CDI</div><div class="td">Taxa que os bancos cobram entre si. Referência de rendimento. Segue a Selic.</div><div class="tv">~14,65% a.a. · ~1,14% a.m.</div></div>
+    <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">CDB</div><div class="td">Certificado de Depósito Bancário. Contrato de dívida simples. Garantia FGC até R$ 250k.</div><div class="tv">90–130% do CDI</div></div>
+    <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">WACC</div><div class="td">Custo Médio Ponderado de Capital. Mínimo que empresa precisa render para não destruir valor.</div><div class="tv">WACC = % dívida × custo + % equity × retorno</div></div>
+    <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">EVA</div><div class="td">Economic Value Added. Lucro op. menos custo do capital. Mede se criou valor real.</div><div class="tv">EVA = Lucro Op. − (Capital × WACC)</div></div>
+    <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">FIDC</div><div class="td">Fundo de Investimento em Direitos Creditórios. Securitização de carteiras de crédito.</div><div class="tv">Cotas sênior, mezanino e júnior</div></div>
+    <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">Taxa Livre de Risco</div><div class="td">Piso mínimo que qualquer investimento precisa superar. Brasil = CDI. EUA = T-Bill.</div><div class="tv">Brasil ~14,65% a.a.</div></div>
+    <div class="tc"><div class="tag t-vc">VC</div><div class="tn">Venture Capital</div><div class="td">Investimento em startups com alto risco e potencial de retorno exponencial. Lógica da power law.</div><div class="tv">1 acerto de 10 paga todas as perdas</div></div>
+    <div class="tc"><div class="tag t-vc">VC</div><div class="tn">Power Law</div><div class="td">Distribuição de retornos em VC: a maioria perde, uma startup retorna 50x+. Uma só acerta o portfólio inteiro.</div><div class="tv">Motivo pelo qual VC não precisa de 100% de acerto</div></div>
+    <div class="tc"><div class="tag t-vc">VC</div><div class="tn">Pro-rata</div><div class="td">Direito do investidor de participar de rodadas futuras para manter sua porcentagem sem diluição.</div><div class="tv">Mantém % mesmo com entrada de novos investidores</div></div>
+    <div class="tc"><div class="tag t-vc">VC</div><div class="tn">Diluição</div><div class="td">Redução da participação percentual de um investidor quando novos investidores entram.</div><div class="tv">Seed 20% → nova rodada → 12% se não entrar</div></div>
+    <div class="tc"><div class="tag t-vc">VC</div><div class="tn">PMF</div><div class="td">Product-Market Fit. Quando o produto resolve um problema real de um mercado real. Usuários voltam por conta própria.</div><div class="tv">Sem PMF, nenhuma rodada resolve</div></div>
+    <div class="tc"><div class="tag t-vc">VC</div><div class="tn">CAC</div><div class="td">Custo de Aquisição de Cliente. Quanto custa trazer 1 novo usuário pagante.</div><div class="tv">Saudável: LTV/CAC > 3x</div></div>
+    <div class="tc"><div class="tag t-vc">VC</div><div class="tn">LTV</div><div class="td">Lifetime Value. Quanto um cliente gera de receita ao longo de toda a relação com a empresa.</div><div class="tv">LTV = ticket médio × frequência × tempo</div></div>
+    <div class="tc"><div class="tag t-vc">VC</div><div class="tn">Churn</div><div class="td">Taxa de cancelamento ou abandono mensal. Acima de 5% ao mês é sinal crítico de problema de PMF.</div><div class="tv">Saudável: &lt;2%/mês · Crítico: &gt;5%/mês</div></div>
+    <div class="tc"><div class="tag t-vc">VC</div><div class="tn">ARR</div><div class="td">Annual Recurring Revenue. Receita recorrente anualizada. Métrica central para startups SaaS e de assinatura.</div><div class="tv">Principal métrica de Série B em diante</div></div>
+    <div class="tc"><div class="tag t-vc">VC</div><div class="tn">Break-even</div><div class="td">Ponto onde receita = custos totais. Empresa para de depender de capital externo para operar.</div><div class="tv">Saudável: data visível no horizonte</div></div>
+    <div class="tc"><div class="tag t-vc">VC</div><div class="tn">IPO</div><div class="td">Initial Public Offering. Abertura de capital na bolsa de valores. Empresa passa a ter ações negociadas publicamente.</div><div class="tv">Liquida investidores → acessa capital público</div></div>
+    <div class="tc"><div class="tag t-legal">Legal</div><div class="tn">Recuperação Judicial</div><div class="td">Mecanismo legal (Lei 11.101/2005) para negociar dívidas com credores sob supervisão judicial. Empresa continua operando.</div><div class="tv">Prazo típico: 2 anos para plano aprovado</div></div>
+    <div class="tc"><div class="tag t-bias">Viés</div><div class="tn">Sunk Cost Fallacy</div><div class="td">Dificuldade de abandonar algo onde já investiu muito, mesmo que o racional seja parar.</div><div class="tv">"Não posso parar agora depois de tudo que investi"</div></div>
+    <div class="tc"><div class="tag t-bias">Viés</div><div class="tn">FOMO</div><div class="td">Fear of Missing Out. Medo de ficar de fora do próximo grande sucesso do mercado.</div><div class="tv">"E se for a próxima Nubank?"</div></div>
+    <div class="tc"><div class="tag t-risco">Encargo</div><div class="tn">Rotativo</div><div class="td">Juros sobre saldo não pago. Limitado ao dobro da dívida original (BACEN 2024).</div><div class="tv">~15% a.m. · teto 100% da dívida</div></div>
+    <div class="tc"><div class="tag t-prod">Produto</div><div class="tn">Crébito</div><div class="td">Modalidade híbrida: parte a débito, parte a crédito. Criado pela Elo. Exclusivo do Brasil.</div><div class="tv">IC duplo + float na parte crédito</div></div>
+    <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">Split</div><div class="td">Divisão de transação em múltiplos recebedores (marketplace) ou modalidades (Crébito).</div><div class="tv">iFood · Mercado Livre · Elo Crébito</div></div>
+    <div class="tc"><div class="tag t-seg">Segurança</div><div class="tn">PCI-DSS</div><div class="td">Padrão de segurança criado pelas bandeiras. Requisito contratual para quem aceita cartões.</div><div class="tv">4 níveis por volume · multa + descredenciamento</div></div>
+    <div class="tc"><div class="tag t-seg">Segurança</div><div class="tn">Tokenização</div><div class="td">Substitui o PAN por token inútil fora do contexto. Se vazar, não serve para nada.</div><div class="tv">Apple Pay · Google Pay · e-commerce</div></div>
+    <div class="tc"><div class="tag t-seg">Segurança</div><div class="tn">3DS</div><div class="td">Autenticação extra no e-commerce. Com 3DS, se houver fraude a responsabilidade vai para o emissor.</div><div class="tv">Sem 3DS + fraude = lojista paga</div></div>
+    <div class="tc"><div class="tag t-fraude">Fraude</div><div class="tn">Chargeback</div><div class="td">Contestação de cobrança. Dinheiro volta ao portador, debitado do lojista/adquirente.</div><div class="tv">Saudável: &lt;1% · Crítico: &gt;2%</div></div>
+    <div class="tc"><div class="tag t-fraude">Fraude</div><div class="tn">Friendly Fraud</div><div class="td">Portador faz a compra e contesta depois. Crescente no e-commerce.</div><div class="tv">~20–40% dos chargebacks no e-com</div></div>
+    <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">MCC</div><div class="td">Merchant Category Code. Código de 4 dígitos que classifica o estabelecimento.</div><div class="tv">5411 = Supermercado · 5812 = Restaurante</div></div>
+  </div>
+</div>
+
+<div class="foot">
+  ⚠️ Taxas e valores são aproximações de mercado para fins didáticos · Valores reais variam por emissor, bandeira, volume e negociação<br>
+  Fontes: BACEN · Visa/Mastercard Interchange · ABECS · Código Civil · B3 · CVM · PCI Security Standards Council · Lei 11.101/2005
+</div>
+
+</div>
+<script>
+  function showPanel(id,el){
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    const p=document.getElementById('panel-'+id);
+    p.classList.add('active');
+    void p.offsetWidth;
+    el.classList.add('active');
+  }
+</script>
+</body>
+</html>
