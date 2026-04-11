@@ -1,27 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){try{var k='ecossistema-cartoes-theme',t=localStorage.getItem(k);if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);return;}if(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.setAttribute('data-theme','light');}catch(e){}})();
+</script>
 <title>Ecossistema de Cartões & Crédito</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
   :root{
+    color-scheme:dark;
     --bg:#0a0c10;--surface:#111318;--surface2:#1a1d24;--border:#252830;
     --blue:#4f8ef7;--green:#2dd4a0;--yellow:#f5c842;--red:#f75f5f;
     --purple:#a78bfa;--orange:#fb923c;--teal:#22d3ee;--pink:#f472b6;
-    --text:#e8eaf0;--muted:#6b7280;--dim:#9ca3af;
+    --text:#e8eaf0;--muted:#9ca3af;--dim:#a8adb8;
+    --grid-line:rgba(79,142,247,0.04);
+    --grad-1:#e8eaf0;--grad-2:#4f8ef7;--grad-3:#2dd4a0;
+    --step-num:#6b7280;
+    --shadow-elevate:rgba(0,0,0,.4);
+    --bar-fg:#0f172a;
+    --version-bg:rgba(79,142,247,.1);--version-border:rgba(79,142,247,.28);
+  }
+  [data-theme="light"]{
+    color-scheme:light;
+    --bg:#f1f5f9;--surface:#ffffff;--surface2:#e8eef4;--border:#cbd5e1;
+    --blue:#1d4ed8;--green:#047857;--yellow:#b45309;--red:#b91c1c;
+    --purple:#6d28d9;--orange:#c2410c;--teal:#0e7490;--pink:#be185d;
+    --text:#0f172a;--muted:#475569;--dim:#64748b;
+    --grid-line:rgba(29,78,216,0.07);
+    --grad-1:#0f172a;--grad-2:#2563eb;--grad-3:#0d9488;
+    --step-num:#64748b;
+    --shadow-elevate:rgba(15,23,42,.12);
+    --bar-fg:#0f172a;
+    --version-bg:rgba(29,78,216,.08);--version-border:rgba(29,78,216,.22);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;min-height:100vh;overflow-x:hidden;}
-  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(79,142,247,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,247,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;min-height:100vh;overflow-x:hidden;transition:background-color .2s ease,color .15s ease;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
   .page{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:40px 24px 80px;}
+
+  .theme-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+  .theme-bar-label{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
+  .theme-seg{display:inline-flex;border:1px solid var(--border);border-radius:10px;padding:3px;background:var(--surface);gap:2px;}
+  .theme-seg button{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;padding:8px 14px;border:none;border-radius:7px;cursor:pointer;
+    background:transparent;color:var(--muted);transition:background .15s ease,color .15s ease,box-shadow .15s ease;
+  }
+  .theme-seg button[aria-pressed="true"]{background:var(--surface2);color:var(--text);box-shadow:0 0 0 1px var(--border);}
+  .theme-seg button:focus{outline:none;}
+  .theme-seg button:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+  @media (prefers-reduced-motion:reduce){
+    body{transition:none;}
+  }
 
   .header{text-align:center;margin-bottom:36px;animation:fadeDown .6s ease forwards;}
   .header-label{font-size:11px;letter-spacing:.25em;color:var(--blue);text-transform:uppercase;margin-bottom:10px;}
-  .header h1{font-family:'Syne',sans-serif;font-size:clamp(20px,4vw,40px);font-weight:800;line-height:1.1;background:linear-gradient(135deg,#e8eaf0 0%,#4f8ef7 50%,#2dd4a0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .header h1{font-family:'Syne',sans-serif;font-size:clamp(20px,4vw,40px);font-weight:800;line-height:1.1;background:linear-gradient(135deg,var(--grad-1) 0%,var(--grad-2) 50%,var(--grad-3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
   .header p{margin-top:8px;color:var(--muted);font-size:10px;letter-spacing:.05em;line-height:1.7;}
-  .version{display:inline-block;margin-top:8px;font-size:9px;padding:3px 10px;border-radius:20px;background:rgba(79,142,247,.1);color:var(--blue);border:1px solid rgba(79,142,247,.2);}
+  .version{display:inline-block;margin-top:8px;font-size:9px;padding:3px 10px;border-radius:20px;background:var(--version-bg);color:var(--blue);border:1px solid var(--version-border);}
 
   .tabs{display:flex;gap:3px;margin-bottom:18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px;flex-wrap:wrap;}
   .tab{flex:1;min-width:65px;padding:7px 6px;border-radius:7px;font-size:9px;font-family:'IBM Plex Mono',monospace;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all .2s ease;text-align:center;}
@@ -49,6 +86,31 @@
   .t-seg{background:rgba(244,114,182,.15);color:var(--pink);}
   .t-vc{background:rgba(79,142,247,.2);color:var(--blue);}
   .t-bias{background:rgba(251,146,60,.2);color:var(--orange);}
+  [data-theme="light"] .t-taxa{background:color-mix(in srgb,var(--blue) 16%,transparent);}
+  [data-theme="light"] .t-risco{background:color-mix(in srgb,var(--red) 16%,transparent);}
+  [data-theme="light"] .t-prod{background:color-mix(in srgb,var(--purple) 16%,transparent);}
+  [data-theme="light"] .t-infra{background:color-mix(in srgb,var(--green) 16%,transparent);}
+  [data-theme="light"] .t-ciclo{background:color-mix(in srgb,var(--yellow) 18%,transparent);}
+  [data-theme="light"] .t-fraude{background:color-mix(in srgb,var(--orange) 16%,transparent);}
+  [data-theme="light"] .t-legal{background:color-mix(in srgb,var(--purple) 14%,transparent);}
+  [data-theme="light"] .t-inv{background:color-mix(in srgb,var(--teal) 16%,transparent);}
+  [data-theme="light"] .t-seg{background:color-mix(in srgb,var(--pink) 16%,transparent);}
+  [data-theme="light"] .t-vc{background:color-mix(in srgb,var(--blue) 18%,transparent);}
+  [data-theme="light"] .t-bias{background:color-mix(in srgb,var(--orange) 18%,transparent);}
+  [data-theme="light"] .b-ok{background:color-mix(in srgb,var(--green) 16%,transparent);}
+  [data-theme="light"] .b-warn{background:color-mix(in srgb,var(--red) 16%,transparent);}
+  [data-theme="light"] .badge-loj{background:color-mix(in srgb,var(--red) 16%,transparent);}
+  [data-theme="light"] .badge-adq{background:color-mix(in srgb,var(--green) 16%,transparent);}
+
+  .tirc[data-tier="classic"]{--tc:#9ca3af;}
+  .tirc[data-tier="gold"]{--tc:#f5c842;}
+  .tirc[data-tier="platinum"]{--tc:#a78bfa;}
+  .tirc[data-tier="black"]{--tc:#e8eaf0;}
+  .tirc[data-tier="titanium"]{--tc:var(--orange);}
+  [data-theme="light"] .tirc[data-tier="classic"]{--tc:#57534e;}
+  [data-theme="light"] .tirc[data-tier="gold"]{--tc:#a16207;}
+  [data-theme="light"] .tirc[data-tier="platinum"]{--tc:#6d28d9;}
+  [data-theme="light"] .tirc[data-tier="black"]{--tc:#1e293b;}
   .tn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);}
   .td{font-size:11px;color:var(--muted);line-height:1.7;}
   .tv{margin-top:8px;font-size:11px;font-weight:600;color:var(--green);}
@@ -65,7 +127,7 @@
 
   .pc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;transition:all .25s ease;position:relative;overflow:hidden;}
   .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;background:var(--ac,var(--border));}
-  .pc:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(0,0,0,.4);}
+  .pc:hover{transform:translateY(-4px);box-shadow:0 18px 36px var(--shadow-elevate);}
   .pi{font-size:22px;margin-bottom:6px;}.pn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:5px;}
   .pe{font-size:10px;color:var(--muted);line-height:1.7;margin-bottom:8px;}
   .pg{font-size:10px;padding:5px 9px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);color:var(--dim);line-height:1.5;}
@@ -73,13 +135,13 @@
   .txf{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:20px;}
   .txs{flex:1;padding:14px 10px;border-right:1px solid var(--border);}
   .txs:last-child{border-right:none;}
-  .txn{font-size:22px;font-weight:800;font-family:'Syne',sans-serif;color:var(--border);line-height:1;margin-bottom:4px;}
+  .txn{font-size:22px;font-weight:800;font-family:'Syne',sans-serif;color:var(--step-num);line-height:1;margin-bottom:4px;}
   .txt{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:3px;}
   .txd{font-size:10px;color:var(--muted);line-height:1.6;}
   .txtime{margin-top:5px;font-size:10px;color:var(--green);}
 
   .mbar{height:40px;border-radius:10px;overflow:hidden;display:flex;margin-bottom:12px;}
-  .ms{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#000;}
+  .ms{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--bar-fg);}
   .ms-ic{background:var(--blue);flex:1.3;}.ms-sf{background:var(--yellow);flex:.1;}
   .ms-adq{background:var(--green);flex:.7;}.ms-rsk{background:var(--red);flex:.15;}
   .mleg{display:flex;gap:12px;flex-wrap:wrap;}
@@ -88,7 +150,7 @@
   .mlp{font-weight:600;color:var(--text);}
 
   .tirc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 8px;text-align:center;transition:all .2s ease;position:relative;overflow:hidden;}
-  .tirc:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.4);}
+  .tirc:hover{transform:translateY(-3px);box-shadow:0 10px 24px var(--shadow-elevate);}
   .tirc::after{content:'';position:absolute;inset:0;opacity:.05;background:var(--tc);}
   .tirn{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;margin-bottom:8px;color:var(--tc);}
   .tiri{font-size:18px;font-weight:700;font-family:'Syne',sans-serif;color:var(--text);line-height:1;}
@@ -99,7 +161,7 @@
   .ei{display:grid;grid-template-columns:105px 1fr 105px;align-items:center;gap:9px;font-size:11px;}
   .el{color:var(--dim);}
   .etr{height:22px;background:var(--surface2);border-radius:6px;overflow:hidden;}
-  .ef{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:7px;font-size:9px;font-weight:600;color:#000;}
+  .ef{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:7px;font-size:9px;font-weight:600;color:var(--bar-fg);}
   .ev{text-align:right;font-weight:600;font-family:'Syne',sans-serif;font-size:11px;}
 
   .rotv{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;display:grid;grid-template-columns:1fr 1px 1fr;gap:22px;margin-bottom:16px;}
@@ -114,7 +176,7 @@
   .cdip{font-size:10px;color:var(--muted);margin-top:4px;}
 
   .sbar{height:40px;border-radius:10px;overflow:hidden;display:flex;margin:10px 0;}
-  .ss{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:#000;}
+  .ss{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--bar-fg);}
 
   .eva-flow{display:flex;align-items:center;gap:0;margin:14px 0;flex-wrap:wrap;}
   .eva-box{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-align:center;flex:1;min-width:100px;}
@@ -123,13 +185,13 @@
   .eva-val{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;}
 
   .wacc-bar{height:36px;border-radius:10px;overflow:hidden;display:flex;margin:12px 0;}
-  .wacc-debt{background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#000;}
-  .wacc-eq{background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#000;}
+  .wacc-debt{background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--bar-fg);}
+  .wacc-eq{background:var(--purple);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--bar-fg);}
 
   .chain{display:flex;flex-direction:column;}
   .chain-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
   .chain-item:last-child{border-bottom:none;}
-  .chain-num{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--border);line-height:1;flex-shrink:0;width:28px;}
+  .chain-num{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--step-num);line-height:1;flex-shrink:0;width:28px;}
   .chain-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:3px;}
   .chain-desc{font-size:11px;color:var(--muted);line-height:1.7;}
 
@@ -144,9 +206,9 @@
   .cbri{font-size:10px;color:var(--muted);line-height:1.8;display:flex;align-items:flex-start;gap:4px;}
   .cbri::before{content:'·';color:var(--red);flex-shrink:0;}
   .thbar{display:flex;height:26px;border-radius:8px;overflow:hidden;margin:10px 0 7px;}
-  .th-ok{background:var(--green);flex:1;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#000;}
-  .th-warn{background:var(--yellow);flex:.15;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#000;}
-  .th-danger{background:var(--red);flex:.1;display:flex;align-items:center;justify-content:center;font-size:9px;color:#000;}
+  .th-ok{background:var(--green);flex:1;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:var(--bar-fg);}
+  .th-warn{background:var(--yellow);flex:.15;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:var(--bar-fg);}
+  .th-danger{background:var(--red);flex:.1;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--bar-fg);}
 
   .vc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center;}
   .vi{font-size:20px;margin-bottom:5px;}.vn{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:3px;}.vd{font-size:10px;color:var(--muted);line-height:1.6;}
@@ -197,7 +259,7 @@
   .dil-arrow{font-size:24px;color:var(--muted);text-align:center;}
 
   .power-law{display:flex;align-items:flex-end;gap:8px;height:120px;padding:14px;background:var(--surface2);border-radius:12px;border:1px solid var(--border);margin:14px 0;}
-  .pl-bar{flex:1;border-radius:4px 4px 0 0;display:flex;align-items:flex-start;justify-content:center;padding-top:6px;font-size:9px;font-weight:700;color:#000;min-width:0;}
+  .pl-bar{flex:1;border-radius:4px 4px 0 0;display:flex;align-items:flex-start;justify-content:center;padding-top:6px;font-size:9px;font-weight:700;color:var(--bar-fg);min-width:0;}
   .pl-label{font-size:9px;color:var(--muted);text-align:center;margin-top:4px;}
   .pl-wrap{display:flex;flex-direction:column;flex:1;}
 
@@ -263,6 +325,14 @@
 </head>
 <body>
 <div class="page">
+
+<div class="theme-bar">
+  <span class="theme-bar-label" id="theme-label">Aparência</span>
+  <div class="theme-seg" role="group" aria-labelledby="theme-label">
+    <button type="button" id="btn-theme-light" aria-pressed="false">Claro</button>
+    <button type="button" id="btn-theme-dark" aria-pressed="true">Escuro</button>
+  </div>
+</div>
 
 <div class="header">
   <div class="header-label">// Mapa de Referência</div>
@@ -337,11 +407,11 @@
 <div id="panel-tiers" class="panel anim">
   <div class="st">Tiers de cartão e IC aproximado</div>
   <div class="g5">
-    <div class="tirc" style="--tc:#9ca3af"><div class="tirn">Classic</div><div class="tiri">0,75%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~1,60%</div></div>
-    <div class="tirc" style="--tc:#f5c842"><div class="tirn">Gold</div><div class="tiri">1,00%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~1,90%</div></div>
-    <div class="tirc" style="--tc:#a78bfa"><div class="tirn">Platinum</div><div class="tiri">1,30%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~2,20%</div></div>
-    <div class="tirc" style="--tc:#e8eaf0"><div class="tirn">Black</div><div class="tiri">1,60%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~2,60%</div></div>
-    <div class="tirc" style="--tc:var(--orange)"><div class="tirn">Titanium</div><div class="tiri">2,00%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~3,00%+</div></div>
+    <div class="tirc" data-tier="classic"><div class="tirn">Classic</div><div class="tiri">0,75%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~1,60%</div></div>
+    <div class="tirc" data-tier="gold"><div class="tirn">Gold</div><div class="tiri">1,00%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~1,90%</div></div>
+    <div class="tirc" data-tier="platinum"><div class="tirn">Platinum</div><div class="tiri">1,30%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~2,20%</div></div>
+    <div class="tirc" data-tier="black"><div class="tirn">Black</div><div class="tiri">1,60%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~2,60%</div></div>
+    <div class="tirc" data-tier="titanium"><div class="tirn">Titanium</div><div class="tiri">2,00%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~3,00%+</div></div>
   </div>
   <div class="st">MCC — Merchant Category Code</div>
   <div class="g4">
@@ -533,43 +603,43 @@
     <div style="margin:16px 0">
       <div style="display:flex;align-items:flex-end;gap:8px;height:110px;padding:12px;background:var(--surface2);border-radius:10px;border:1px solid var(--border)">
         <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-          <div style="width:100%;background:var(--red);border-radius:4px 4px 0 0;height:10%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">0x</div>
+          <div style="width:100%;background:var(--red);border-radius:4px 4px 0 0;height:10%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">0x</div>
           <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 1</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-          <div style="width:100%;background:var(--red);border-radius:4px 4px 0 0;height:10%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">0x</div>
+          <div style="width:100%;background:var(--red);border-radius:4px 4px 0 0;height:10%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">0x</div>
           <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 2</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-          <div style="width:100%;background:var(--orange);border-radius:4px 4px 0 0;height:15%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">1x</div>
+          <div style="width:100%;background:var(--orange);border-radius:4px 4px 0 0;height:15%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">1x</div>
           <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 3</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-          <div style="width:100%;background:var(--yellow);border-radius:4px 4px 0 0;height:20%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">2x</div>
+          <div style="width:100%;background:var(--yellow);border-radius:4px 4px 0 0;height:20%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">2x</div>
           <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 4</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-          <div style="width:100%;background:var(--yellow);border-radius:4px 4px 0 0;height:25%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">3x</div>
+          <div style="width:100%;background:var(--yellow);border-radius:4px 4px 0 0;height:25%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">3x</div>
           <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 5</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-          <div style="width:100%;background:var(--green);border-radius:4px 4px 0 0;height:30%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">5x</div>
+          <div style="width:100%;background:var(--green);border-radius:4px 4px 0 0;height:30%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">5x</div>
           <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 6</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-          <div style="width:100%;background:var(--green);border-radius:4px 4px 0 0;height:40%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">8x</div>
+          <div style="width:100%;background:var(--green);border-radius:4px 4px 0 0;height:40%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">8x</div>
           <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 7</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-          <div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:55%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">12x</div>
+          <div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:55%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">12x</div>
           <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 8</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-          <div style="width:100%;background:var(--purple);border-radius:4px 4px 0 0;height:70%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">20x</div>
+          <div style="width:100%;background:var(--purple);border-radius:4px 4px 0 0;height:70%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">20x</div>
           <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 9</div>
         </div>
         <div style="flex:1;display:flex;flex-direction:column;align-items:center">
-          <div style="width:100%;background:var(--teal);border-radius:4px 4px 0 0;height:100%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:#000">50x 🏆</div>
+          <div style="width:100%;background:var(--teal);border-radius:4px 4px 0 0;height:100%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">50x 🏆</div>
           <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 10</div>
         </div>
       </div>
@@ -937,6 +1007,31 @@
     void p.offsetWidth;
     el.classList.add('active');
   }
+  (function(){
+    var KEY='ecossistema-cartoes-theme';
+    var root=document.documentElement;
+    var btnL=document.getElementById('btn-theme-light');
+    var btnD=document.getElementById('btn-theme-dark');
+    function apply(theme){
+      var t=theme==='light'?'light':'dark';
+      root.setAttribute('data-theme',t);
+      try{localStorage.setItem(KEY,t);}catch(e){}
+      if(btnL&&btnD){
+        btnL.setAttribute('aria-pressed',t==='light'?'true':'false');
+        btnD.setAttribute('aria-pressed',t==='dark'?'true':'false');
+      }
+    }
+    function init(){
+      var stored=null;
+      try{stored=localStorage.getItem(KEY);}catch(e){}
+      if(stored==='light'||stored==='dark'){apply(stored);return;}
+      if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches){apply('light');}
+      else{apply('dark');}
+    }
+    init();
+    if(btnL)btnL.addEventListener('click',function(){apply('light');});
+    if(btnD)btnD.addEventListener('click',function(){apply('dark');});
+  })();
 </script>
 </body>
 </html>
