@@ -8,99 +8,111 @@
 </script>
 <title>Ecossistema de Cartões & Crédito</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
   :root{
     color-scheme:dark;
-    --bg:#0a0c10;--surface:#111318;--surface2:#1a1d24;--border:#252830;
-    --blue:#4f8ef7;--green:#2dd4a0;--yellow:#f5c842;--red:#f75f5f;
-    --purple:#a78bfa;--orange:#fb923c;--teal:#22d3ee;--pink:#f472b6;
-    --text:#e8eaf0;--muted:#9ca3af;--dim:#a8adb8;
-    --grid-line:rgba(79,142,247,0.04);
-    --grad-1:#e8eaf0;--grad-2:#4f8ef7;--grad-3:#2dd4a0;
-    --step-num:#6b7280;
-    --shadow-elevate:rgba(0,0,0,.4);
-    --bar-fg:#0f172a;
-    --version-bg:rgba(79,142,247,.1);--version-border:rgba(79,142,247,.28);
+    --bg:#0c0c0c;--surface:#141414;--surface2:#1c1c1c;--border:rgba(255,255,255,.14);
+    --accent:#f97316;--accent-soft:rgba(249,115,22,.12);
+    --blue:#60a5fa;--green:#4ade80;--yellow:#fbbf24;--red:#f87171;
+    --purple:#c4b5fd;--orange:#fb923c;--teal:#22d3ee;--pink:#f472b6;
+    --text:#fafafa;--muted:#a1a1aa;--dim:#71717a;
+    --step-num:#52525b;
+    --shadow-elevate:rgba(0,0,0,.45);
+    --bar-fg:#0a0a0a;
+    --version-bg:var(--accent-soft);--version-border:rgba(249,115,22,.4);
+    --tab-active-bg:#ffffff;--tab-active-fg:#0a0a0a;
+    --radius:8px;--radius-sm:6px;
   }
   [data-theme="light"]{
     color-scheme:light;
-    --bg:#f1f5f9;--surface:#ffffff;--surface2:#e8eef4;--border:#cbd5e1;
-    --blue:#1d4ed8;--green:#047857;--yellow:#b45309;--red:#b91c1c;
+    --bg:#f4f4f5;--surface:#ffffff;--surface2:#ececee;--border:rgba(0,0,0,.12);
+    --accent:#ea580c;--accent-soft:rgba(234,88,12,.1);
+    --blue:#2563eb;--green:#15803d;--yellow:#b45309;--red:#b91c1c;
     --purple:#6d28d9;--orange:#c2410c;--teal:#0e7490;--pink:#be185d;
-    --text:#0f172a;--muted:#475569;--dim:#64748b;
-    --grid-line:rgba(29,78,216,0.07);
-    --grad-1:#0f172a;--grad-2:#2563eb;--grad-3:#0d9488;
-    --step-num:#64748b;
-    --shadow-elevate:rgba(15,23,42,.12);
-    --bar-fg:#0f172a;
-    --version-bg:rgba(29,78,216,.08);--version-border:rgba(29,78,216,.22);
+    --text:#0a0a0a;--muted:#52525b;--dim:#71717a;
+    --step-num:#a1a1aa;
+    --shadow-elevate:rgba(0,0,0,.08);
+    --bar-fg:#fafafa;
+    --version-bg:var(--accent-soft);--version-border:rgba(234,88,12,.35);
+    --tab-active-bg:#0a0a0a;--tab-active-fg:#fafafa;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;min-height:100vh;overflow-x:hidden;transition:background-color .2s ease,color .15s ease;}
-  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
-  .page{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:40px 24px 80px;}
+  html{font-family:'Inter',system-ui,-apple-system,sans-serif;}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:13px;font-variant-numeric:tabular-nums;min-height:100vh;overflow-x:hidden;transition:background-color .2s ease,color .15s ease;-webkit-font-smoothing:antialiased;}
+  .page{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:48px 28px 88px;}
 
-  .theme-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
-  .theme-bar-label{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
-  .theme-seg{display:inline-flex;border:1px solid var(--border);border-radius:10px;padding:3px;background:var(--surface);gap:2px;}
+  .theme-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:32px;flex-wrap:wrap;}
+  .theme-bar-label{font-size:10px;color:var(--muted);letter-spacing:.22em;text-transform:uppercase;font-weight:600;}
+  .theme-seg{display:inline-flex;border:1px solid var(--border);border-radius:var(--radius-sm);padding:3px;background:var(--surface);gap:0;}
   .theme-seg button{
-    font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;padding:8px 14px;border:none;border-radius:7px;cursor:pointer;
-    background:transparent;color:var(--muted);transition:background .15s ease,color .15s ease,box-shadow .15s ease;
+    font-family:inherit;font-size:11px;font-weight:600;padding:8px 16px;border:none;border-radius:4px;cursor:pointer;
+    background:transparent;color:var(--muted);transition:background .15s ease,color .15s ease;
   }
-  .theme-seg button[aria-pressed="true"]{background:var(--surface2);color:var(--text);box-shadow:0 0 0 1px var(--border);}
+  .theme-seg button[aria-pressed="true"]{background:var(--tab-active-bg);color:var(--tab-active-fg);}
   .theme-seg button:focus{outline:none;}
-  .theme-seg button:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+  .theme-seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   @media (prefers-reduced-motion:reduce){
     body{transition:none;}
   }
 
-  .header{text-align:center;margin-bottom:36px;animation:fadeDown .6s ease forwards;}
-  .header-label{font-size:11px;letter-spacing:.25em;color:var(--blue);text-transform:uppercase;margin-bottom:10px;}
-  .header h1{font-family:'Syne',sans-serif;font-size:clamp(20px,4vw,40px);font-weight:800;line-height:1.1;background:linear-gradient(135deg,var(--grad-1) 0%,var(--grad-2) 50%,var(--grad-3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-  .header p{margin-top:8px;color:var(--muted);font-size:10px;letter-spacing:.05em;line-height:1.7;}
-  .version{display:inline-block;margin-top:8px;font-size:9px;padding:3px 10px;border-radius:20px;background:var(--version-bg);color:var(--blue);border:1px solid var(--version-border);}
+  .header{text-align:center;margin-bottom:40px;animation:fadeDown .6s ease forwards;max-width:720px;margin-left:auto;margin-right:auto;}
+  .header-label{font-size:10px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;font-weight:600;}
+  .header h1{font-family:'Inter',system-ui,sans-serif;font-size:clamp(28px,5vw,46px);font-weight:700;letter-spacing:-.035em;line-height:1.05;color:var(--text);}
+  .header h1 .h1-muted{color:var(--muted);font-weight:600;}
+  .header p{margin-top:14px;color:var(--muted);font-size:12px;letter-spacing:.01em;line-height:1.65;max-width:560px;margin-left:auto;margin-right:auto;}
+  .version{display:inline-block;margin-top:14px;font-size:10px;font-weight:600;padding:5px 12px;border-radius:999px;background:transparent;color:var(--accent);border:1px solid var(--version-border);letter-spacing:.06em;text-transform:uppercase;}
 
-  .tabs{display:flex;gap:3px;margin-bottom:18px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:4px;flex-wrap:wrap;}
-  .tab{flex:1;min-width:65px;padding:7px 6px;border-radius:7px;font-size:9px;font-family:'IBM Plex Mono',monospace;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all .2s ease;text-align:center;}
-  .tab.active{background:var(--surface2);color:var(--text);border:1px solid var(--border);}
-  .tab:hover:not(.active){color:var(--dim);}
+  .tabs{display:flex;gap:4px;margin-bottom:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:5px;flex-wrap:wrap;}
+  .tab{flex:1;min-width:68px;padding:9px 8px;border-radius:4px;font-size:10px;font-family:inherit;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:background .15s ease,color .15s ease;text-align:center;letter-spacing:.02em;}
+  .tab.active{background:var(--tab-active-bg);color:var(--tab-active-fg);}
+  .tab:hover:not(.active){color:var(--text);}
+  .tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .panel{display:none;}.panel.active{display:block;}
 
-  .st{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+  details.panel-terms{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface2);margin-bottom:22px;overflow:hidden;}
+  details.panel-terms > summary.pt-summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:48px;padding:12px 16px;user-select:none;-webkit-tap-highlight-color:transparent;}
+  details.panel-terms > summary.pt-summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px;}
+  details.panel-terms > summary.pt-summary::-webkit-details-marker{display:none;}
+  details.panel-terms > summary.pt-summary::marker{display:none;}
+  summary.pt-summary::-moz-list-bullet{list-style:none;}
+  .pt-chevron{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:22px;height:22px;font-size:10px;line-height:1;color:var(--accent);transition:transform .2s ease;}
+  details[open].panel-terms > summary.pt-summary .pt-chevron{transform:rotate(90deg);}
+  details.panel-terms .pt-head{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0;}
+  details.panel-terms .pt-inner{padding:0 16px 16px 16px;border-top:1px solid var(--border);}
+  details.panel-terms .pt-dl{margin:0;padding:0;}
+  details.panel-terms .pt-dl dt{font-size:12px;font-weight:700;color:var(--text);margin-top:10px;}
+  details.panel-terms .pt-dl dt:first-child{margin-top:0;}
+  details.panel-terms .pt-dl dd{font-size:11px;color:var(--muted);line-height:1.55;margin:4px 0 0 0;padding:0;}
+  details.panel-terms .pt-more{margin:14px 0 0 0;font-size:11px;color:var(--dim);}
+  details.panel-terms .pt-gloss-btn{font:inherit;font-size:11px;font-weight:600;color:var(--accent);background:none;border:none;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+  details.panel-terms .pt-gloss-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+  details.panel-terms .pt-intro{font-size:11px;color:var(--muted);line-height:1.6;margin:0;}
+  [data-theme="light"] .sc,[data-theme="light"] .pc,[data-theme="light"] .tc,[data-theme="light"] .tirc,[data-theme="light"] .vc{box-shadow:0 1px 3px rgba(0,0,0,.06);}
+
+  .st{font-family:'Inter',system-ui,sans-serif;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
   .st::after{content:'';flex:1;height:1px;background:var(--border);}
 
-  .sc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
-  .sl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+  .sc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:18px;}
+  .sl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:600;}
 
-  .tc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:15px;transition:all .2s ease;cursor:default;}
-  .tc:hover{border-color:var(--blue);background:var(--surface2);}
-  .tag{display:inline-block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:4px;margin-bottom:8px;font-weight:600;}
-  .t-taxa{background:rgba(79,142,247,.15);color:var(--blue);}
-  .t-risco{background:rgba(247,95,95,.15);color:var(--red);}
-  .t-prod{background:rgba(167,139,250,.15);color:var(--purple);}
-  .t-infra{background:rgba(45,212,160,.15);color:var(--green);}
-  .t-ciclo{background:rgba(245,200,66,.15);color:var(--yellow);}
-  .t-fraude{background:rgba(251,146,60,.15);color:var(--orange);}
-  .t-legal{background:rgba(167,139,250,.12);color:var(--purple);}
-  .t-inv{background:rgba(34,211,238,.15);color:var(--teal);}
-  .t-seg{background:rgba(244,114,182,.15);color:var(--pink);}
-  .t-vc{background:rgba(79,142,247,.2);color:var(--blue);}
-  .t-bias{background:rgba(251,146,60,.2);color:var(--orange);}
-  [data-theme="light"] .t-taxa{background:color-mix(in srgb,var(--blue) 16%,transparent);}
-  [data-theme="light"] .t-risco{background:color-mix(in srgb,var(--red) 16%,transparent);}
-  [data-theme="light"] .t-prod{background:color-mix(in srgb,var(--purple) 16%,transparent);}
-  [data-theme="light"] .t-infra{background:color-mix(in srgb,var(--green) 16%,transparent);}
-  [data-theme="light"] .t-ciclo{background:color-mix(in srgb,var(--yellow) 18%,transparent);}
-  [data-theme="light"] .t-fraude{background:color-mix(in srgb,var(--orange) 16%,transparent);}
-  [data-theme="light"] .t-legal{background:color-mix(in srgb,var(--purple) 14%,transparent);}
-  [data-theme="light"] .t-inv{background:color-mix(in srgb,var(--teal) 16%,transparent);}
-  [data-theme="light"] .t-seg{background:color-mix(in srgb,var(--pink) 16%,transparent);}
-  [data-theme="light"] .t-vc{background:color-mix(in srgb,var(--blue) 18%,transparent);}
-  [data-theme="light"] .t-bias{background:color-mix(in srgb,var(--orange) 18%,transparent);}
-  [data-theme="light"] .b-ok{background:color-mix(in srgb,var(--green) 16%,transparent);}
-  [data-theme="light"] .b-warn{background:color-mix(in srgb,var(--red) 16%,transparent);}
-  [data-theme="light"] .badge-loj{background:color-mix(in srgb,var(--red) 16%,transparent);}
-  [data-theme="light"] .badge-adq{background:color-mix(in srgb,var(--green) 16%,transparent);}
+  .tc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;transition:border-color .2s ease,background .2s ease;cursor:default;}
+  .tc:hover{border-color:color-mix(in srgb,var(--accent) 45%,transparent);background:var(--surface2);}
+  .tag{display:inline-block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;border-radius:4px;margin-bottom:8px;font-weight:600;}
+  .t-taxa{background:color-mix(in srgb,var(--blue) 20%,transparent);color:var(--blue);}
+  .t-risco{background:color-mix(in srgb,var(--red) 20%,transparent);color:var(--red);}
+  .t-prod{background:color-mix(in srgb,var(--purple) 18%,transparent);color:var(--purple);}
+  .t-infra{background:color-mix(in srgb,var(--green) 20%,transparent);color:var(--green);}
+  .t-ciclo{background:color-mix(in srgb,var(--yellow) 22%,transparent);color:var(--yellow);}
+  .t-fraude{background:color-mix(in srgb,var(--orange) 20%,transparent);color:var(--orange);}
+  .t-legal{background:color-mix(in srgb,var(--purple) 16%,transparent);color:var(--purple);}
+  .t-inv{background:color-mix(in srgb,var(--teal) 20%,transparent);color:var(--teal);}
+  .t-seg{background:color-mix(in srgb,var(--pink) 20%,transparent);color:var(--pink);}
+  .t-vc{background:color-mix(in srgb,var(--blue) 22%,transparent);color:var(--blue);}
+  .t-bias{background:color-mix(in srgb,var(--orange) 22%,transparent);color:var(--orange);}
+  .b-ok{background:color-mix(in srgb,var(--green) 20%,transparent);color:var(--green);}
+  .b-warn{background:color-mix(in srgb,var(--red) 20%,transparent);color:var(--red);}
+  .badge-loj{background:color-mix(in srgb,var(--red) 20%,transparent);color:var(--red);}
+  .badge-adq{background:color-mix(in srgb,var(--green) 20%,transparent);color:var(--green);}
 
   .tirc[data-tier="classic"]{--tc:#9ca3af;}
   .tirc[data-tier="gold"]{--tc:#f5c842;}
@@ -111,7 +123,7 @@
   [data-theme="light"] .tirc[data-tier="gold"]{--tc:#a16207;}
   [data-theme="light"] .tirc[data-tier="platinum"]{--tc:#6d28d9;}
   [data-theme="light"] .tirc[data-tier="black"]{--tc:#1e293b;}
-  .tn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);}
+  .tn{font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);}
   .td{font-size:11px;color:var(--muted);line-height:1.7;}
   .tv{margin-top:8px;font-size:11px;font-weight:600;color:var(--green);}
 
@@ -125,18 +137,18 @@
   .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
   .g5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px;}
 
-  .pc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;transition:all .25s ease;position:relative;overflow:hidden;}
-  .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;background:var(--ac,var(--border));}
-  .pc:hover{transform:translateY(-4px);box-shadow:0 18px 36px var(--shadow-elevate);}
-  .pi{font-size:22px;margin-bottom:6px;}.pn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:5px;}
+  .pc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 14px;text-align:center;transition:transform .2s ease,box-shadow .2s ease;position:relative;overflow:hidden;}
+  .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:var(--radius) var(--radius) 0 0;background:var(--ac,var(--border));}
+  .pc:hover{transform:translateY(-2px);box-shadow:0 16px 48px var(--shadow-elevate);}
+  .pi{font-size:22px;margin-bottom:6px;}.pn{font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:700;margin-bottom:5px;}
   .pe{font-size:10px;color:var(--muted);line-height:1.7;margin-bottom:8px;}
   .pg{font-size:10px;padding:5px 9px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);color:var(--dim);line-height:1.5;}
 
-  .txf{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+  .txf{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:20px;}
   .txs{flex:1;padding:14px 10px;border-right:1px solid var(--border);}
   .txs:last-child{border-right:none;}
-  .txn{font-size:22px;font-weight:800;font-family:'Syne',sans-serif;color:var(--step-num);line-height:1;margin-bottom:4px;}
-  .txt{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:3px;}
+  .txn{font-size:22px;font-weight:800;font-family:'Inter',system-ui,sans-serif;color:var(--step-num);line-height:1;margin-bottom:4px;}
+  .txt{font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;margin-bottom:3px;}
   .txd{font-size:10px;color:var(--muted);line-height:1.6;}
   .txtime{margin-top:5px;font-size:10px;color:var(--green);}
 
@@ -149,11 +161,11 @@
   .mld{width:8px;height:8px;border-radius:3px;flex-shrink:0;}
   .mlp{font-weight:600;color:var(--text);}
 
-  .tirc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 8px;text-align:center;transition:all .2s ease;position:relative;overflow:hidden;}
-  .tirc:hover{transform:translateY(-3px);box-shadow:0 10px 24px var(--shadow-elevate);}
+  .tirc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 8px;text-align:center;transition:transform .2s ease,box-shadow .2s ease;position:relative;overflow:hidden;}
+  .tirc:hover{transform:translateY(-2px);box-shadow:0 12px 32px var(--shadow-elevate);}
   .tirc::after{content:'';position:absolute;inset:0;opacity:.05;background:var(--tc);}
-  .tirn{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;margin-bottom:8px;color:var(--tc);}
-  .tiri{font-size:18px;font-weight:700;font-family:'Syne',sans-serif;color:var(--text);line-height:1;}
+  .tirn{font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:800;margin-bottom:8px;color:var(--tc);}
+  .tiri{font-size:18px;font-weight:700;font-family:'Inter',system-ui,sans-serif;color:var(--text);line-height:1;}
   .tirl{font-size:9px;color:var(--muted);margin-top:3px;margin-bottom:6px;letter-spacing:.1em;}
   .tirm{font-size:9px;color:var(--dim);padding:3px 7px;background:var(--surface2);border-radius:5px;}
 
@@ -162,17 +174,15 @@
   .el{color:var(--dim);}
   .etr{height:22px;background:var(--surface2);border-radius:6px;overflow:hidden;}
   .ef{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:7px;font-size:9px;font-weight:600;color:var(--bar-fg);}
-  .ev{text-align:right;font-weight:600;font-family:'Syne',sans-serif;font-size:11px;}
+  .ev{text-align:right;font-weight:600;font-family:'Inter',system-ui,sans-serif;font-size:11px;}
 
-  .rotv{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;display:grid;grid-template-columns:1fr 1px 1fr;gap:22px;margin-bottom:16px;}
+  .rotv{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:grid;grid-template-columns:1fr 1px 1fr;gap:22px;margin-bottom:16px;}
   .rotd{background:var(--border);}
-  .rott{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .rott{font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
   .rotb{font-size:9px;padding:3px 8px;border-radius:4px;font-weight:600;}
-  .b-ok{background:rgba(45,212,160,.15);color:var(--green);}
-  .b-warn{background:rgba(247,95,95,.15);color:var(--red);}
 
-  .cdim{background:var(--surface2);border-radius:10px;padding:14px;border:1px solid var(--border);}
-  .cdir{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--green);line-height:1;}
+  .cdim{background:var(--surface2);border-radius:var(--radius-sm);padding:14px;border:1px solid var(--border);}
+  .cdir{font-family:'Inter',system-ui,sans-serif;font-size:26px;font-weight:800;color:var(--green);line-height:1;}
   .cdip{font-size:10px;color:var(--muted);margin-top:4px;}
 
   .sbar{height:40px;border-radius:10px;overflow:hidden;display:flex;margin:10px 0;}
@@ -182,7 +192,7 @@
   .eva-box{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-align:center;flex:1;min-width:100px;}
   .eva-op{padding:0 7px;color:var(--muted);font-size:16px;font-weight:700;flex-shrink:0;}
   .eva-label{font-size:9px;color:var(--muted);margin-bottom:3px;letter-spacing:.08em;text-transform:uppercase;}
-  .eva-val{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;}
+  .eva-val{font-family:'Inter',system-ui,sans-serif;font-size:14px;font-weight:800;}
 
   .wacc-bar{height:36px;border-radius:10px;overflow:hidden;display:flex;margin:12px 0;}
   .wacc-debt{background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--bar-fg);}
@@ -191,18 +201,18 @@
   .chain{display:flex;flex-direction:column;}
   .chain-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
   .chain-item:last-child{border-bottom:none;}
-  .chain-num{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--step-num);line-height:1;flex-shrink:0;width:28px;}
-  .chain-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:3px;}
+  .chain-num{font-family:'Inter',system-ui,sans-serif;font-size:20px;font-weight:800;color:var(--step-num);line-height:1;flex-shrink:0;width:28px;}
+  .chain-title{font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;margin-bottom:3px;}
   .chain-desc{font-size:11px;color:var(--muted);line-height:1.7;}
 
   .cbf{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-bottom:16px;}
   .cbs{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 8px;text-align:center;position:relative;}
   .cbs::after{content:'→';position:absolute;right:-7px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:11px;z-index:2;}
   .cbs:last-child::after{display:none;}
-  .cbi{font-size:16px;margin-bottom:4px;}.cbt{font-size:9px;font-weight:600;font-family:'Syne',sans-serif;margin-bottom:2px;}.cbd{font-size:9px;color:var(--muted);line-height:1.5;}
+  .cbi{font-size:16px;margin-bottom:4px;}.cbt{font-size:9px;font-weight:600;font-family:'Inter',system-ui,sans-serif;margin-bottom:2px;}.cbd{font-size:9px;color:var(--muted);line-height:1.5;}
   .cbr{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
   .cbrc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;}
-  .cbrct{font-size:10px;font-weight:700;font-family:'Syne',sans-serif;margin-bottom:7px;padding-bottom:7px;border-bottom:1px solid var(--border);}
+  .cbrct{font-size:10px;font-weight:700;font-family:'Inter',system-ui,sans-serif;margin-bottom:7px;padding-bottom:7px;border-bottom:1px solid var(--border);}
   .cbri{font-size:10px;color:var(--muted);line-height:1.8;display:flex;align-items:flex-start;gap:4px;}
   .cbri::before{content:'·';color:var(--red);flex-shrink:0;}
   .thbar{display:flex;height:26px;border-radius:8px;overflow:hidden;margin:10px 0 7px;}
@@ -210,21 +220,19 @@
   .th-warn{background:var(--yellow);flex:.15;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:var(--bar-fg);}
   .th-danger{background:var(--red);flex:.1;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--bar-fg);}
 
-  .vc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center;}
-  .vi{font-size:20px;margin-bottom:5px;}.vn{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:3px;}.vd{font-size:10px;color:var(--muted);line-height:1.6;}
+  .vc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px;text-align:center;}
+  .vi{font-size:20px;margin-bottom:5px;}.vn{font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;margin-bottom:3px;}.vd{font-size:10px;color:var(--muted);line-height:1.6;}
 
-  .pci-journey{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+  .pci-journey{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:16px;}
   .pci-step{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);}
   .pci-step:last-child{border-bottom:none;}
   .pci-icon{font-size:18px;flex-shrink:0;width:28px;text-align:center;}
-  .pci-title{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:2px;}
+  .pci-title{font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;margin-bottom:2px;}
   .pci-desc{font-size:10px;color:var(--muted);line-height:1.5;}
   .pci-badge{font-size:9px;padding:3px 8px;border-radius:4px;font-weight:600;flex-shrink:0;margin-left:auto;}
-  .badge-loj{background:rgba(247,95,95,.15);color:var(--red);}
-  .badge-adq{background:rgba(45,212,160,.15);color:var(--green);}
 
-  .token-demo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin:12px 0;padding:14px;background:var(--surface2);border-radius:10px;border:1px solid var(--border);}
-  .token-val{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;text-align:center;}
+  .token-demo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin:12px 0;padding:14px;background:var(--surface2);border-radius:var(--radius-sm);border:1px solid var(--border);}
+  .token-val{font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;text-align:center;}
   .token-arrow{color:var(--muted);font-size:18px;text-align:center;}
   .token-label{font-size:9px;color:var(--muted);text-align:center;margin-top:3px;letter-spacing:.08em;text-transform:uppercase;}
 
@@ -235,7 +243,7 @@
   .resp-table tr:last-child td{border-bottom:none;}
 
   .lvl-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;}
-  .lvl-num{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;margin-bottom:5px;}
+  .lvl-num{font-family:'Inter',system-ui,sans-serif;font-size:26px;font-weight:800;margin-bottom:5px;}
   .lvl-vol{font-size:10px;color:var(--muted);margin-bottom:6px;line-height:1.5;}
   .lvl-req{font-size:10px;color:var(--dim);line-height:1.6;}
 
@@ -244,53 +252,53 @@
   .note-yellow{border-left-color:var(--yellow);}
 
   /* VC SPECIFIC */
-  .round-timeline{display:flex;align-items:stretch;margin-bottom:20px;overflow:hidden;border-radius:14px;border:1px solid var(--border);}
+  .round-timeline{display:flex;align-items:stretch;margin-bottom:20px;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border);}
   .round-stage{flex:1;padding:16px 10px;text-align:center;border-right:1px solid var(--border);position:relative;}
   .round-stage:last-child{border-right:none;}
-  .round-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;margin-bottom:6px;}
+  .round-name{font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:800;margin-bottom:6px;}
   .round-val{font-size:11px;font-weight:600;margin-bottom:5px;}
   .round-metric{font-size:9px;color:var(--muted);line-height:1.6;}
   .round-risk{margin-top:8px;font-size:9px;padding:3px 6px;border-radius:4px;display:inline-block;font-weight:600;}
 
-  .dilution-demo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px;background:var(--surface2);border-radius:12px;border:1px solid var(--border);margin:14px 0;}
+  .dilution-demo{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border);margin:14px 0;}
   .dil-side{text-align:center;}
-  .dil-pct{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;line-height:1;}
+  .dil-pct{font-family:'Inter',system-ui,sans-serif;font-size:32px;font-weight:800;line-height:1;}
   .dil-label{font-size:10px;color:var(--muted);margin-top:4px;}
   .dil-arrow{font-size:24px;color:var(--muted);text-align:center;}
 
-  .power-law{display:flex;align-items:flex-end;gap:8px;height:120px;padding:14px;background:var(--surface2);border-radius:12px;border:1px solid var(--border);margin:14px 0;}
+  .power-law{display:flex;align-items:flex-end;gap:8px;height:120px;padding:14px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border);margin:14px 0;}
   .pl-bar{flex:1;border-radius:4px 4px 0 0;display:flex;align-items:flex-start;justify-content:center;padding-top:6px;font-size:9px;font-weight:700;color:var(--bar-fg);min-width:0;}
   .pl-label{font-size:9px;color:var(--muted);text-align:center;margin-top:4px;}
   .pl-wrap{display:flex;flex-direction:column;flex:1;}
 
   .phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;}
-  .phase-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;border-top:3px solid var(--pc);}
-  .phase-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;color:var(--pc);margin-bottom:8px;}
+  .phase-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;border-top:2px solid var(--pc);}
+  .phase-name{font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:800;color:var(--pc);margin-bottom:8px;}
   .phase-metric{font-size:10px;color:var(--muted);line-height:1.8;}
   .phase-metric strong{color:var(--text);}
 
   .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
-  .scenario{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;border-top:3px solid var(--sc);}
-  .scenario-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--sc);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .scenario{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;border-top:2px solid var(--sc);}
+  .scenario-title{font-family:'Inter',system-ui,sans-serif;font-size:14px;font-weight:800;color:var(--sc);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 
   .bias-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
-  .bias-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;border-left:3px solid var(--orange);}
-  .bias-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--orange);margin-bottom:6px;}
+  .bias-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;border-left:2px solid var(--accent);}
+  .bias-name{font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px;}
   .bias-desc{font-size:11px;color:var(--muted);line-height:1.7;}
   .bias-quote{font-size:11px;color:var(--dim);font-style:italic;margin-top:8px;padding:6px 10px;background:var(--surface2);border-radius:6px;}
 
-  .rj-timeline{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px;}
+  .rj-timeline{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:16px;}
   .rj-step{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border-bottom:1px solid var(--border);}
   .rj-step:last-child{border-bottom:none;}
   .rj-icon{font-size:18px;flex-shrink:0;margin-top:2px;}
-  .rj-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:3px;}
+  .rj-title{font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;margin-bottom:3px;}
   .rj-desc{font-size:11px;color:var(--muted);line-height:1.7;}
   .rj-badge{font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600;display:inline-block;margin-top:5px;}
 
   .unit-econ{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
-  .ue-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;}
+  .ue-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center;}
   .ue-name{font-size:10px;color:var(--muted);margin-bottom:5px;letter-spacing:.08em;text-transform:uppercase;}
-  .ue-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--text);line-height:1;}
+  .ue-val{font-family:'Inter',system-ui,sans-serif;font-size:22px;font-weight:800;color:var(--text);line-height:1;}
   .ue-desc{font-size:10px;color:var(--muted);margin-top:5px;line-height:1.5;}
 
   .glossario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
@@ -335,30 +343,45 @@
 </div>
 
 <div class="header">
-  <div class="header-label">// Mapa de Referência</div>
-  <h1>Ecossistema de Cartões & Crédito</h1>
+  <div class="header-label">Mapa de referência</div>
+  <h1>Ecossistema de cartões <span class="h1-muted">&amp; crédito</span></h1>
   <p>Participantes · MDR · Tiers · Encargos · CDI · CDB · Split · Crébito · WACC · EVA · FIDC · PCI-DSS · VC · Rodadas · Recuperação Judicial</p>
   <span class="version">v5 — completo</span>
 </div>
 
 <div class="tabs">
-  <button class="tab active" onclick="showPanel('eco',this)">Ecossistema</button>
-  <button class="tab" onclick="showPanel('taxas',this)">Taxas & MDR</button>
-  <button class="tab" onclick="showPanel('tiers',this)">Tiers</button>
-  <button class="tab" onclick="showPanel('encargos',this)">Encargos</button>
-  <button class="tab" onclick="showPanel('cdi',this)">CDI & CDB</button>
-  <button class="tab" onclick="showPanel('split',this)">Split & Crébito</button>
-  <button class="tab" onclick="showPanel('eva',this)">WACC & EVA</button>
-  <button class="tab" onclick="showPanel('mercado',this)">FIDC & Ações</button>
-  <button class="tab" onclick="showPanel('vc',this)">VC & Rodadas 🚀</button>
-  <button class="tab" onclick="showPanel('rj',this)">Rec. Judicial ⚠️</button>
-  <button class="tab" onclick="showPanel('pci',this)">PCI-DSS 🔒</button>
-  <button class="tab" onclick="showPanel('chargeback',this)">Chargeback</button>
-  <button class="tab" onclick="showPanel('glossario',this)">Glossário</button>
+  <button type="button" class="tab active" onclick="showPanel('eco',this)">Ecossistema</button>
+  <button type="button" class="tab" onclick="showPanel('taxas',this)">Taxas & MDR</button>
+  <button type="button" class="tab" onclick="showPanel('tiers',this)">Tiers</button>
+  <button type="button" class="tab" onclick="showPanel('encargos',this)">Encargos</button>
+  <button type="button" class="tab" onclick="showPanel('cdi',this)">CDI & CDB</button>
+  <button type="button" class="tab" onclick="showPanel('split',this)">Split & Crébito</button>
+  <button type="button" class="tab" onclick="showPanel('eva',this)">WACC & EVA</button>
+  <button type="button" class="tab" onclick="showPanel('mercado',this)">FIDC & Ações</button>
+  <button type="button" class="tab" onclick="showPanel('vc',this)">VC & Rodadas 🚀</button>
+  <button type="button" class="tab" onclick="showPanel('rj',this)">Rec. Judicial ⚠️</button>
+  <button type="button" class="tab" onclick="showPanel('pci',this)">PCI-DSS 🔒</button>
+  <button type="button" class="tab" onclick="showPanel('chargeback',this)">Chargeback</button>
+  <button type="button" class="tab" id="tab-glossario" onclick="showPanel('glossario',this)">Glossário</button>
 </div>
 
 <!-- ══════ ECOSSISTEMA -->
 <div id="panel-eco" class="panel active anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Portador</dt><dd>Cliente (PF ou PJ) que usa o cartão e paga a fatura ao emissor.</dd>
+      <dt>Emissor</dt><dd>Banco ou instituição que concede o cartão, define limite e recebe IC e juros.</dd>
+      <dt>Bandeira</dt><dd>Rede (Visa, Mastercard, Elo…) que roteia e cobra scheme fee.</dd>
+      <dt>Adquirente</dt><dd>Empresa que equipa o lojista (POS) e liquida com o emissor; retém parte do MDR.</dd>
+      <dt>IC / MDR / Scheme fee</dt><dd>IC é a parte do MDR que vai ao emissor; MDR é a taxa total do lojista; scheme fee é a parcela da bandeira.</dd>
+      <dt>D+1 / D+30</dt><dd>Dias úteis até o lojista receber o valor (débito costuma ser mais rápido que crédito).</dd>
+      <dt>MCC</dt><dd>Código de 4 dígitos que classifica o tipo de estabelecimento (ex.: restaurante, posto).</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">Os 4 participantes do modelo de 4 partes</div>
   <div class="g4" style="margin-bottom:20px">
     <div class="pc" style="--ac:var(--purple)"><div class="pi">👤</div><div class="pn" style="color:var(--purple)">Portador</div><div class="pe">Cliente final · PF ou PJ</div><div class="pg">Usa o cartão, paga fatura, acumula pontos</div></div>
@@ -385,6 +408,19 @@
 
 <!-- ══════ TAXAS -->
 <div id="panel-taxas" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>MDR (Merchant Discount Rate)</dt><dd>Taxa total que o lojista paga sobre a venda; é repartida entre emissor, bandeira e adquirente.</dd>
+      <dt>IC (Interchange)</dt><dd>Parcela do MDR destinada ao banco emissor — principal receita de volume do cartão.</dd>
+      <dt>Scheme fee</dt><dd>Tarifa da bandeira, cobrada na cadeia da transação.</dd>
+      <dt>Provisão de risco</dt><dd>Reserva implícita no MDR para cobrir inadimplência e fraude.</dd>
+      <dt>Float</dt><dd>Intervalo entre a compra e o pagamento efetivo; no crédito aumenta risco e costuma aumentar o MDR.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">Decomposição do MDR — crédito Platinum</div>
   <div class="sc">
     <div class="sl">Compra de R$ 100 — MDR total: ~2,20%</div>
@@ -405,6 +441,18 @@
 
 <!-- ══════ TIERS -->
 <div id="panel-tiers" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Tier (Classic … Titanium)</dt><dd>Categoria do cartão; tiers mais altos costumam ter IC e MDR maiores e mais benefícios.</dd>
+      <dt>IC aproximado</dt><dd>Faixa típica de interchange usada nesta página para comparar tiers — valores reais negociados.</dd>
+      <dt>MDR ~</dt><dd>Ordem de grandeza do MDR total para o lojista naquele tier, ilustrativo.</dd>
+      <dt>MCC</dt><dd>Merchant Category Code — classifica o estabelecimento; pode afetar taxas e regras.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">Tiers de cartão e IC aproximado</div>
   <div class="g5">
     <div class="tirc" data-tier="classic"><div class="tirn">Classic</div><div class="tiri">0,75%</div><div class="tirl">IC APROX.</div><div class="tirm">MDR ~1,60%</div></div>
@@ -424,6 +472,18 @@
 
 <!-- ══════ ENCARGOS -->
 <div id="panel-encargos" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>TAC</dt><dd>Taxa de abertura de crédito — cobrada na concessão do cartão, antes de usar.</dd>
+      <dt>CET</dt><dd>Custo efetivo total — inclui juros, TAC, IOF e seguros; é o “preço real” do crédito.</dd>
+      <dt>Rotativo</dt><dd>Juros sobre o saldo não pago da fatura; costuma ser a parte mais cara do cartão.</dd>
+      <dt>Multa e mora</dt><dd>Encargos legais por atraso além dos juros do rotativo.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">TAC e CET</div>
   <div class="sc">
     <div class="g2">
@@ -472,6 +532,19 @@
 
 <!-- ══════ CDI & CDB -->
 <div id="panel-cdi" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>CDI</dt><dd>Taxa média de empréstimo entre bancos; referência de rendimento de renda fixa no Brasil.</dd>
+      <dt>Selic</dt><dd>Taxa básica de juros definida pelo BACEN; o CDI acompanha com pequena diferença.</dd>
+      <dt>CDB</dt><dd>Título de dívida do banco; em geral paga uma % do CDI e tem garantia do FGC até o limite legal.</dd>
+      <dt>FGC</dt><dd>Fundo que garante créditos de determinados investimentos (ex.: CDB) até o teto por instituição/CPF.</dd>
+      <dt>Spread</dt><dd>Diferença entre o que o banco paga ao captar (ex.: CDI) e o que cobra no crédito (ex.: rotativo).</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">CDI — o preço do dinheiro entre bancos</div>
   <div class="sc">
     <div class="g3" style="margin-bottom:14px">
@@ -511,6 +584,17 @@
 
 <!-- ══════ SPLIT & CRÉBITO -->
 <div id="panel-split" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Split</dt><dd>Divisão automática do valor da venda entre vários recebedores (ex.: marketplace + lojista).</dd>
+      <dt>Crébito</dt><dd>Modalidade brasileira em que parte do valor sai como débito e parte como crédito na mesma compra.</dd>
+      <dt>IC duplo</dt><dd>No Crébito há componentes de débito e de crédito, cada um com regras de taxa.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">Split — divisão de uma transação</div>
   <div class="g2">
     <div class="sc" style="margin-bottom:0">
@@ -532,10 +616,21 @@
 
 <!-- ══════ WACC & EVA -->
 <div id="panel-eva" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>WACC</dt><dd>Custo médio ponderado de capital — taxa mínima que o negócio precisa gerar para remunerar dívidas e sócios.</dd>
+      <dt>EVA</dt><dd>Economic Value Added — lucro operacional menos o custo de usar o capital (× WACC).</dd>
+      <dt>CDI no WACC</dt><dd>Quando o CDI sobe, o custo da dívida e muitas vezes o retorno exigido sobem — o WACC tende a subir.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">WACC — Custo Médio Ponderado de Capital</div>
   <div class="sc">
     <div class="wacc-bar"><div class="wacc-debt" style="flex:.6">Dívida 60% × 12% = 7,2%</div><div class="wacc-eq" style="flex:.4">Equity 40% × 18% = 7,2%</div></div>
-    <div style="text-align:center;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--teal);margin:10px 0 4px">WACC = 14,4% a.a.</div>
+    <div style="text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:18px;font-weight:800;color:var(--teal);margin:10px 0 4px">WACC = 14,4% a.a.</div>
     <div class="g2" style="margin-top:14px">
       <div><div class="rr"><span class="rk">CDI alto →</span><span class="rv d">WACC sobe</span></div><div class="rr"><span class="rk">CDI baixo →</span><span class="rv o">WACC cai</span></div></div>
       <div><div class="rr"><span class="rk">Rende 10%, WACC 14%</span><span class="rv d">Destrói valor</span></div><div class="rr"><span class="rk">Rende 20%, WACC 14%</span><span class="rv o">Cria valor</span></div></div>
@@ -562,6 +657,18 @@
 
 <!-- ══════ FIDC & AÇÕES -->
 <div id="panel-mercado" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>FIDC</dt><dd>Fundo que compra direitos de crédito (parcelas, recebíveis) e distribui risco em cotas.</dd>
+      <dt>Cotas (sênior / mezanino / júnior)</dt><dd>Ordem de prioridade na fila de pagamento — sênior mais segura, júnior mais arriscada.</dd>
+      <dt>Securitização</dt><dd>Transformar fluxos futuros de caixa em títulos negociáveis.</dd>
+      <dt>EVA e ação</dt><dd>Mercado reage quando a empresa cria valor econômico de forma consistente.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">FIDC — securitização de recebíveis</div>
   <div class="sc">
     <div class="g3" style="margin-bottom:14px">
@@ -580,13 +687,13 @@
   <div class="sc">
     <div class="g2">
       <div>
-        <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--red)">CDI Alto (~14,65%)</div>
+        <div style="font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--red)">CDI Alto (~14,65%)</div>
         <div class="rr"><span class="rk">Renda fixa paga bem</span><span class="rv d">Dinheiro sai da bolsa</span></div>
         <div class="rr"><span class="rk">Custo dívida sobe</span><span class="rv d">Margem das empresas cai</span></div>
         <div class="rr"><span class="rk">WACC sobe</span><span class="rv d">EVA mais difícil de ser positivo</span></div>
       </div>
       <div>
-        <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--green)">CDI Baixo (~2% — 2021)</div>
+        <div style="font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--green)">CDI Baixo (~2% — 2021)</div>
         <div class="rr"><span class="rk">Renda fixa paga pouco</span><span class="rv o">Dinheiro entra na bolsa</span></div>
         <div class="rr"><span class="rk">Custo dívida cai</span><span class="rv o">Margem das empresas sobe</span></div>
         <div class="rr"><span class="rk">WACC cai</span><span class="rv o">EVA mais fácil de ser positivo</span></div>
@@ -597,6 +704,19 @@
 
 <!-- ══════ VC & RODADAS (NOVO) -->
 <div id="panel-vc" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Venture Capital (VC)</dt><dd>Capital de risco em startups; busca retornos assimétricos (poucas empresas pagam o fundo inteiro).</dd>
+      <dt>Power Law</dt><dd>Poucos investimentos retornam muito; a maioria não devolve o capital — típico de portfólio de VC.</dd>
+      <dt>Rodadas (Seed, A, B…)</dt><dd>Capitais levantados em fases; cada fase olha métricas diferentes (tração, ARR, eficiência).</dd>
+      <dt>Diluição / Pro-rata</dt><dd>Nova entrada reduz seu %; pro-rata é o direito de investir de novo para manter a participação.</dd>
+      <dt>PMF, CAC, LTV, ARR, Churn</dt><dd>Encaixe produto-mercado; custo e valor do cliente; receita recorrente anualizada; cancelamento.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">A lógica do Venture Capital — diferente do investidor comum</div>
   <div class="sc">
     <div class="sl">Power Law — a distribuição de retornos em VC não é normal, é exponencial</div>
@@ -694,17 +814,17 @@
         <div style="display:flex;gap:8px;justify-content:center">
           <div style="text-align:center">
             <div style="font-size:10px;color:var(--muted);margin-bottom:3px">Não entra</div>
-            <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--red)">12%</div>
+            <div style="font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:800;color:var(--red)">12%</div>
             <div style="font-size:9px;color:var(--muted)">diluído</div>
           </div>
           <div style="text-align:center">
             <div style="font-size:10px;color:var(--muted);margin-bottom:3px">Entra (pro-rata)</div>
-            <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--green)">20%</div>
+            <div style="font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:800;color:var(--green)">20%</div>
             <div style="font-size:9px;color:var(--muted)">mantém</div>
           </div>
           <div style="text-align:center">
             <div style="font-size:10px;color:var(--muted);margin-bottom:3px">Entra mais</div>
-            <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--teal)">25%</div>
+            <div style="font-family:'Inter',system-ui,sans-serif;font-size:16px;font-weight:800;color:var(--teal)">25%</div>
             <div style="font-size:9px;color:var(--muted)">doubled down</div>
           </div>
         </div>
@@ -774,6 +894,18 @@
 
 <!-- ══════ RECUPERAÇÃO JUDICIAL (NOVO) -->
 <div id="panel-rj" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Recuperação Judicial (RJ)</dt><dd>Processo na Lei 11.101/2005 para renegociar dívidas com credores sem parar a operação (não é falência automática).</dd>
+      <dt>Selic / CDI</dt><dd>Quando a renda fixa paga bem, capital de risco perde atrativo — muda o fluxo para startups.</dd>
+      <dt>Unit economics</dt><dd>Relação entre o que você ganha por cliente (LTV) e o que gasta para trazê-lo (CAC).</dd>
+      <dt>Break-even</dt><dd>Ponto em que receita cobre custos; “sempre no próximo ano” sem plano é sinal de risco.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">Dois cenários — o que separa quem vinga de quem vai para RJ</div>
   <div class="scenario-grid">
     <div class="scenario" style="--sc:var(--green)">
@@ -873,14 +1005,14 @@
     <div class="sl">O modelo "queima de caixa para ganhar mercado" — quando funciona e quando não funciona</div>
     <div class="g2" style="margin-top:14px">
       <div>
-        <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--green)">✅ Quando funciona</div>
+        <div style="font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--green)">✅ Quando funciona</div>
         <div class="rr"><span class="rk">Mercado</span><span class="rv o">Grande o suficiente (TAM bilionário)</span></div>
         <div class="rr"><span class="rk">Network effects</span><span class="rv o">Produto fica melhor com mais usuários</span></div>
         <div class="rr"><span class="rk">Winner-takes-all</span><span class="rv o">Quem capturar mercado agora domina</span></div>
         <div class="rr"><span class="rk">Exemplos BR</span><span class="rv o">Nubank · iFood · Mercado Livre</span></div>
       </div>
       <div>
-        <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--red)">❌ Quando não funciona</div>
+        <div style="font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--red)">❌ Quando não funciona</div>
         <div class="rr"><span class="rk">Mercado</span><span class="rv d">Nicho pequeno, crescimento limitado</span></div>
         <div class="rr"><span class="rk">Sem network effect</span><span class="rv d">Produto não melhora com escala</span></div>
         <div class="rr"><span class="rk">Comoditizado</span><span class="rv d">Concorrência faz a mesma coisa</span></div>
@@ -893,6 +1025,18 @@
 
 <!-- ══════ PCI-DSS -->
 <div id="panel-pci" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>PCI-DSS</dt><dd>Conjunto de requisitos de segurança para quem armazena, processa ou transmite dados de cartão.</dd>
+      <dt>PAN</dt><dd>Número de 16 dígitos do cartão — dado sensível; só pode ser armazenado com controles PCI.</dd>
+      <dt>Tokenização</dt><dd>Substituir o PAN por um token inútil fora do ambiente seguro do pagamento.</dd>
+      <dt>3DS (3-D Secure)</dt><dd>Autenticação extra no e-commerce; muda a alocação de risco de fraude entre emissor e lojista.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">PCI-DSS — padrão de segurança criado pelas bandeiras</div>
   <div class="sc">
     <div class="sl">Payment Card Industry Data Security Standard — requisito contratual, não lei</div>
@@ -930,6 +1074,18 @@
 
 <!-- ══════ CHARGEBACK -->
 <div id="panel-chargeback" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Chargeback</dt><dd>Contestação da compra pelo portador; o valor pode ser estornado e debitado do lojista.</dd>
+      <dt>Friendly fraud</dt><dd>Cliente que comprou e contesta mesmo tendo recebido o bem/serviço.</dd>
+      <dt>Threshold</dt><dd>Faixa de % de chargeback que o adquirente tolera; acima disso há multa ou descredenciamento.</dd>
+      <dt>3DS e responsabilidade</dt><dd>Com autenticação forte, em muitos casos a fraude migra de responsabilidade conforme as regras da bandeira.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
   <div class="st">Chargeback — fluxo completo</div>
   <div class="cbf">
     <div class="cbs"><div class="cbi">😤</div><div class="cbt">Portador contesta</div><div class="cbd">Não reconhece ou alega problema</div></div>
@@ -952,7 +1108,13 @@
 
 <!-- ══════ GLOSSÁRIO -->
 <div id="panel-glossario" class="panel anim">
-  <div class="st">Glossário completo — 35 termos</div>
+  <details class="panel-terms panel-terms--intro">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Índice geral</span></summary>
+    <div class="pt-inner">
+    <p class="pt-intro">Todos os termos do mapa em um só lugar. Em cada aba há um resumo <strong>Termos nesta seção</strong> com o vocabulário daquele tema; use esta lista para buscar qualquer definição.</p>
+    </div>
+  </details>
+  <div class="st">35 termos</div>
   <div class="glossario-grid">
     <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">MDR</div><div class="td">Taxa total cobrada do lojista. Inclui IC, scheme fee e margem do adquirente.</div><div class="tv">Débito ~0,7–1,2% · Crédito ~1,8–3,5%</div></div>
     <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">IC — Interchange</div><div class="td">Parte do MDR repassada ao emissor. Principal receita de volume do banco.</div><div class="tv">Classic ~0,75% · Titanium ~2,00%</div></div>
