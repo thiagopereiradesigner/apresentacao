@@ -35,7 +35,7 @@
     --shadow-elevate:rgba(0,0,0,.08);
     --bar-fg:#fafafa;
     --version-bg:var(--accent-soft);--version-border:rgba(234,88,12,.35);
-    --tab-active-bg:#0a0a0a;--tab-active-fg:#fafafa;
+    --tab-active-bg:#ffffff;--tab-active-fg:#0a0a0a;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{font-family:'Inter',system-ui,-apple-system,sans-serif;}
@@ -63,11 +63,54 @@
   .header p{margin-top:14px;color:var(--muted);font-size:12px;letter-spacing:.01em;line-height:1.65;max-width:560px;margin-left:auto;margin-right:auto;}
   .version{display:inline-block;margin-top:14px;font-size:10px;font-weight:600;padding:5px 12px;border-radius:999px;background:transparent;color:var(--accent);border:1px solid var(--version-border);letter-spacing:.06em;text-transform:uppercase;}
 
-  .tabs{display:flex;gap:4px;margin-bottom:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:5px;flex-wrap:wrap;}
-  .tab{flex:1;min-width:68px;padding:9px 8px;border-radius:4px;font-size:10px;font-family:inherit;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:background .15s ease,color .15s ease;text-align:center;letter-spacing:.02em;}
+  .menu-story{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center;}
+  button.menu-chip{
+    display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;font-size:9px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;border:1px solid transparent;
+    font-family:inherit;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:transform .12s ease,box-shadow .15s ease,opacity .15s ease;
+  }
+  button.menu-chip:focus{outline:none;}
+  button.menu-chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  button.menu-chip:active{transform:scale(.98);}
+  .menu-chip--all{background:var(--surface2);color:var(--muted);border-color:var(--border);}
+  .menu-chip--fund{background:color-mix(in srgb,var(--teal) 18%,transparent);color:var(--teal);border-color:color-mix(in srgb,var(--teal) 32%,transparent);}
+  .menu-chip--cred{background:color-mix(in srgb,var(--blue) 18%,transparent);color:var(--blue);border-color:color-mix(in srgb,var(--blue) 32%,transparent);}
+  .menu-chip--pay{background:color-mix(in srgb,var(--green) 18%,transparent);color:var(--green);border-color:color-mix(in srgb,var(--green) 32%,transparent);}
+  .menu-chip--risk{background:color-mix(in srgb,var(--red) 18%,transparent);color:var(--red);border-color:color-mix(in srgb,var(--red) 32%,transparent);}
+  .menu-chip--mkt{background:color-mix(in srgb,var(--purple) 18%,transparent);color:var(--purple);border-color:color-mix(in srgb,var(--purple) 32%,transparent);}
+  .menu-chip[aria-pressed="true"]{box-shadow:0 0 0 2px currentColor;opacity:1;}
+  .menu-chip[aria-pressed="false"]{opacity:.88;}
+  .menu-chip--all[aria-pressed="true"]{color:var(--accent);border-color:var(--accent);box-shadow:0 0 0 2px var(--accent);}
+
+  .tabs{display:flex;gap:6px;margin-bottom:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;-webkit-overflow-scrolling:touch;}
+  .tabs::-webkit-scrollbar{height:7px;}
+  .tabs::-webkit-scrollbar-thumb{background:var(--border);border-radius:999px;}
+  .tab{flex:0 0 auto;min-width:136px;padding:9px 10px;border-radius:6px;font-size:10px;font-family:inherit;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:background .15s ease,color .15s ease,box-shadow .15s ease;text-align:center;letter-spacing:.02em;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:6px;}
   .tab.active{background:var(--tab-active-bg);color:var(--tab-active-fg);}
+  html[data-theme="light"] .tab.active{
+    background:color-mix(in srgb,var(--accent) 14%,var(--surface));
+    color:var(--accent);
+    box-shadow:inset 0 0 0 1.5px var(--accent);
+  }
+  html[data-theme="light"] .tab.active .tab-badge{
+    background:color-mix(in srgb,var(--accent) 22%,transparent);
+    color:#9a3412;
+  }
+  html[data-theme="light"] .theme-seg button[aria-pressed="true"]{
+    background:color-mix(in srgb,var(--accent) 12%,var(--surface));
+    color:var(--accent);
+    box-shadow:inset 0 0 0 1px var(--accent);
+  }
+  .tab.is-filtered-out{display:none !important;}
+  .tab-sep.is-filtered-out{display:none !important;}
   .tab:hover:not(.active){color:var(--text);}
   .tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .tab-badge{display:inline-flex;align-items:center;justify-content:center;padding:2px 6px;border-radius:4px;font-size:8px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;background:var(--surface2);color:var(--dim);}
+  .tab--fund .tab-badge{background:color-mix(in srgb,var(--teal) 24%,transparent);color:var(--teal);}
+  .tab--cred .tab-badge{background:color-mix(in srgb,var(--blue) 24%,transparent);color:var(--blue);}
+  .tab--pay .tab-badge{background:color-mix(in srgb,var(--green) 24%,transparent);color:var(--green);}
+  .tab--risk .tab-badge{background:color-mix(in srgb,var(--red) 24%,transparent);color:var(--red);}
+  .tab--mkt .tab-badge{background:color-mix(in srgb,var(--purple) 24%,transparent);color:var(--purple);}
+  .tab-sep{flex:0 0 1px;align-self:stretch;background:var(--border);margin:4px 1px;border-radius:999px;}
   .panel{display:none;}.panel.active{display:block;}
 
   details.panel-terms{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface2);margin-bottom:22px;overflow:hidden;}
@@ -326,9 +369,14 @@
     .ei{grid-template-columns:85px 1fr 85px;}
     .token-demo{grid-template-columns:1fr;}
     .dilution-demo{grid-template-columns:1fr;}
+    .tab{min-width:124px;padding:8px 9px;}
   }
   @media(max-width:480px){
     .g2,.g3,.g4,.g5,.cbf,.cbr,.phase-grid,.unit-econ,.bias-grid{grid-template-columns:1fr;}
+    .tab{min-width:114px;font-size:9px;}
+    .tab-badge{display:none;}
+    .menu-story{gap:6px;}
+    .menu-chip{font-size:8px;padding:3px 7px;}
   }
 </style>
 </head>
@@ -346,28 +394,45 @@
 <div class="header">
   <div class="header-label">Mapa de referência</div>
   <h1>Ecossistema de cartões <span class="h1-muted">&amp; crédito</span></h1>
-  <p>Participantes · MDR · Tiers · Encargos · CDI · CDB · Split · Crébito · WACC · EVA · FIDC · PCI-DSS · VC · Rodadas · Recuperação Judicial</p>
+  <p>Sistema Monetário · Inflação · Câmbio · Crédito · Pagamentos · Risco · Mercado de Capitais</p>
   <span class="version">v5 — completo</span>
 </div>
 
-<div class="tabs">
-  <button type="button" class="tab active" onclick="showPanel('eco',this)">Ecossistema</button>
-  <button type="button" class="tab" onclick="showPanel('taxas',this)">Taxas & MDR</button>
-  <button type="button" class="tab" onclick="showPanel('tiers',this)">Tiers</button>
-  <button type="button" class="tab" onclick="showPanel('encargos',this)">Encargos</button>
-  <button type="button" class="tab" onclick="showPanel('cdi',this)">CDI & CDB</button>
-  <button type="button" class="tab" onclick="showPanel('split',this)">Split & Crébito</button>
-  <button type="button" class="tab" onclick="showPanel('eva',this)">WACC & EVA</button>
-  <button type="button" class="tab" onclick="showPanel('mercado',this)">FIDC & Ações</button>
-  <button type="button" class="tab" onclick="showPanel('vc',this)">VC & Rodadas 🚀</button>
-  <button type="button" class="tab" onclick="showPanel('rj',this)">Rec. Judicial ⚠️</button>
-  <button type="button" class="tab" onclick="showPanel('pci',this)">PCI-DSS 🔒</button>
-  <button type="button" class="tab" onclick="showPanel('chargeback',this)">Chargeback</button>
-  <button type="button" class="tab" id="tab-glossario" onclick="showPanel('glossario',this)">Glossário</button>
+<div class="menu-story" role="group" aria-label="Filtrar seções do menu">
+  <button type="button" class="menu-chip menu-chip--all" data-filter="all" aria-pressed="true">Todos</button>
+  <button type="button" class="menu-chip menu-chip--fund" data-filter="fund" aria-pressed="false">Fundamentos</button>
+  <button type="button" class="menu-chip menu-chip--cred" data-filter="cred" aria-pressed="false">Crédito</button>
+  <button type="button" class="menu-chip menu-chip--pay" data-filter="pay" aria-pressed="false">Pagamentos</button>
+  <button type="button" class="menu-chip menu-chip--risk" data-filter="risk" aria-pressed="false">Risco</button>
+  <button type="button" class="menu-chip menu-chip--mkt" data-filter="mkt" aria-pressed="false">Mercado</button>
+</div>
+
+<div class="tabs" role="tablist" aria-label="Trilha narrativa">
+  <button type="button" class="tab tab--fund active" data-cat="fund" data-panel="sistema-monetario" onclick="showPanel('sistema-monetario',this)"><span class="tab-badge">Fund</span>Sistema Monetário</button>
+  <button type="button" class="tab tab--fund" data-cat="fund" data-panel="inflacao-juros" onclick="showPanel('inflacao-juros',this)"><span class="tab-badge">Fund</span>Inflação & Juros</button>
+  <button type="button" class="tab tab--fund" data-cat="fund" data-panel="sistema-global" onclick="showPanel('sistema-global',this)"><span class="tab-badge">Fund</span>Sistema Global</button>
+  <span class="tab-sep" aria-hidden="true"></span>
+  <button type="button" class="tab tab--cred" data-cat="cred" data-panel="cdi" onclick="showPanel('cdi',this)"><span class="tab-badge">Cred</span>CDI & CDB</button>
+  <button type="button" class="tab tab--cred" data-cat="cred" data-panel="titulos-credito" onclick="showPanel('titulos-credito',this)"><span class="tab-badge">Cred</span>Títulos & Crédito</button>
+  <button type="button" class="tab tab--cred" data-cat="cred" data-panel="encargos" onclick="showPanel('encargos',this)"><span class="tab-badge">Cred</span>Encargos</button>
+  <span class="tab-sep" aria-hidden="true"></span>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="eco" onclick="showPanel('eco',this)"><span class="tab-badge">Pay</span>Ecossistema</button>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="taxas" onclick="showPanel('taxas',this)"><span class="tab-badge">Pay</span>Taxas & MDR</button>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="tiers" onclick="showPanel('tiers',this)"><span class="tab-badge">Pay</span>Tiers</button>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="split" onclick="showPanel('split',this)"><span class="tab-badge">Pay</span>Split & Crébito</button>
+  <span class="tab-sep" aria-hidden="true"></span>
+  <button type="button" class="tab tab--risk" data-cat="risk" data-panel="pci" onclick="showPanel('pci',this)"><span class="tab-badge">Risco</span>PCI-DSS 🔒</button>
+  <button type="button" class="tab tab--risk" data-cat="risk" data-panel="chargeback" onclick="showPanel('chargeback',this)"><span class="tab-badge">Risco</span>Chargeback</button>
+  <button type="button" class="tab tab--risk" data-cat="risk" data-panel="rj" onclick="showPanel('rj',this)"><span class="tab-badge">Risco</span>Rec. Judicial ⚠️</button>
+  <span class="tab-sep" aria-hidden="true"></span>
+  <button type="button" class="tab tab--mkt" data-cat="mkt" data-panel="eva" onclick="showPanel('eva',this)"><span class="tab-badge">Mkt</span>WACC & EVA</button>
+  <button type="button" class="tab tab--mkt" data-cat="mkt" data-panel="mercado" onclick="showPanel('mercado',this)"><span class="tab-badge">Mkt</span>FIDC & Ações</button>
+  <button type="button" class="tab tab--mkt" data-cat="mkt" data-panel="vc" onclick="showPanel('vc',this)"><span class="tab-badge">Mkt</span>VC & Rodadas 🚀</button>
+  <button type="button" class="tab tab--mkt" data-cat="mkt" id="tab-glossario" data-panel="glossario" onclick="showPanel('glossario',this)"><span class="tab-badge">Mkt</span>Glossário</button>
 </div>
 
 <!-- ══════ ECOSSISTEMA -->
-<div id="panel-eco" class="panel active anim">
+<div id="panel-eco" class="panel anim">
   <details class="panel-terms">
     <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
     <div class="pt-inner">
@@ -1107,6 +1172,468 @@
   </div>
 </div>
 
+<!-- ══════ SISTEMA MONETÁRIO -->
+<div id="panel-sistema-monetario" class="panel active anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Reserva Fracionária</dt><dd>Sistema em que o banco mantém apenas uma fração dos depósitos em reserva e empresta o restante.</dd>
+      <dt>M0</dt><dd>Base monetária: notas, moedas e reservas bancárias no BACEN — dinheiro de liquidação imediata.</dd>
+      <dt>M2</dt><dd>Dinheiro amplo: M0 + depósitos e aplicações de alta liquidez do sistema bancário.</dd>
+      <dt>Compulsório</dt><dd>Percentual dos depósitos que deve ficar travado no BACEN, limitando a alavancagem bancária.</dd>
+      <dt>Moeda Escritural</dt><dd>Dinheiro que existe como lançamento contábil em conta, sem existir em papel-moeda equivalente.</dd>
+      <dt>Bank Run</dt><dd>Corrida bancária em que muitos depositantes tentam sacar ao mesmo tempo.</dd>
+      <dt>Multiplicador Monetário</dt><dd>Fator aproximado de expansão dos depósitos: 1 dividido pelo compulsório.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+
+  <div class="st">Reserva Fracionária — como R$ 100 viram R$ 500</div>
+  <div class="sc">
+    <div class="chain">
+      <div class="chain-item">
+        <div class="chain-num">01</div>
+        <div>
+          <div class="chain-title">Você deposita R$ 100 no Banco A</div>
+          <div class="chain-desc">Dinheiro entra no sistema bancário como depósito à vista.</div>
+        </div>
+      </div>
+      <div class="chain-item">
+        <div class="chain-num">02</div>
+        <div>
+          <div class="chain-title">Compulsório 20% → R$ 20 no BACEN, R$ 80 emprestado</div>
+          <div class="chain-desc">A reserva obrigatória fica travada; o restante volta para a economia via crédito.</div>
+        </div>
+      </div>
+      <div class="chain-item">
+        <div class="chain-num">03</div>
+        <div>
+          <div class="chain-title">João recebe R$ 80 e deposita no Banco B</div>
+          <div class="chain-desc">Banco B retém R$ 16 e consegue emprestar R$ 64.</div>
+        </div>
+      </div>
+      <div class="chain-item">
+        <div class="chain-num">04</div>
+        <div>
+          <div class="chain-title">Maria recebe R$ 64 e deposita no Banco C</div>
+          <div class="chain-desc">O processo continua em cascata, sempre retendo uma fração e emprestando o resto.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sc">
+    <div class="rr"><span class="rk">Total de depósitos no sistema</span><span class="rv o">~R$ 500</span></div>
+    <div class="rr"><span class="rk">Dinheiro físico original</span><span class="rv">R$ 100</span></div>
+    <div class="rr"><span class="rk">Dinheiro "fantasma" (moeda escritural)</span><span class="rv w">R$ 400</span></div>
+  </div>
+  <div class="note">Funciona porque ninguém saca tudo ao mesmo tempo. É uma aposta estatística — quando falha, é bank run (1929, 2008).</div>
+
+  <div class="st">M0 vs M2 — os dois tipos de dinheiro</div>
+  <div class="g2">
+    <div class="tc">
+      <div class="tag t-infra">Monetário</div>
+      <div class="tn">M0 (Base Monetária)</div>
+      <div class="td">Notas + moedas + reservas no BACEN. É o dinheiro de liquidação imediata, considerado o dinheiro "real".</div>
+      <div class="tv">Brasil: ~R$ 400 bilhões</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-inv">Monetário</div>
+      <div class="tn">M2 (Dinheiro Amplo)</div>
+      <div class="td">M0 + depósitos à vista + poupança + CDB + LCI + LCA + fundos. Inclui a parcela escritural criada pelos bancos.</div>
+      <div class="tv">Brasil: ~R$ 6 trilhões</div>
+    </div>
+  </div>
+  <div class="note">A diferença (~R$ 5,6 trilhões) existe só como registro contábil — promessa do banco de pagar. O banco tem só uma fração em caixa.</div>
+
+  <div class="st">Compulsório — o freio de mão do sistema</div>
+  <div class="g3">
+    <div class="tc">
+      <div class="tag t-risco">Função 1</div>
+      <div class="tn">Controle da criação de dinheiro</div>
+      <div class="td">Compulsório de 20% gera multiplicador de 5x. Compulsório de 50% gera multiplicador de 2x.</div>
+      <div class="tv">Quanto maior o compulsório, menor a criação de moeda escritural.</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-seg">Função 2</div>
+      <div class="tn">Colchão de segurança</div>
+      <div class="td">Parte do dinheiro fica travada no BACEN para absorver variações de saque acima do padrão.</div>
+      <div class="tv">Reduz risco de iliquidez no curto prazo.</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-taxa">Função 3</div>
+      <div class="tn">Política monetária</div>
+      <div class="td">BACEN sobe compulsório, bancos emprestam menos, crédito fica mais escasso e a inflação tende a ceder.</div>
+      <div class="tv">Canal direto de ajuste de liquidez.</div>
+    </div>
+  </div>
+  <div class="sc">
+    <div class="rr"><span class="rk">Brasil hoje — depósitos à vista</span><span class="rv">~42%</span></div>
+    <div class="rr"><span class="rk">Brasil hoje — CDB</span><span class="rv">~20%</span></div>
+    <div class="rr"><span class="rk">EUA (2020)</span><span class="rv d">0%</span></div>
+  </div>
+  <div class="note">Em 2008 o BACEN reduziu o compulsório para injetar liquidez — o inverso do aperto. Um banco que captou muito CDB a 140% do CDI e apostou em ativos de longo prazo (ex: precatórios) sofre exatamente do descompasso que o compulsório tenta mitigar: passivo curto financiando ativo longo.</div>
+
+  <div class="st">Por que o sistema não colapsa todo dia</div>
+  <div class="scenario-grid">
+    <div class="scenario" style="--sc:var(--green)">
+      <div class="scenario-title">✅ Dia normal</div>
+      <div class="rr"><span class="rk">Fluxo líquido</span><span class="rv o">Saques ≈ depósitos</span></div>
+      <div class="rr"><span class="rk">Estado do sistema</span><span class="rv">Equilibrado</span></div>
+      <div class="rr"><span class="rk">Caixa exigido do banco</span><span class="rv">Baixo</span></div>
+    </div>
+    <div class="scenario" style="--sc:var(--red)">
+      <div class="scenario-title">🚨 Bank run</div>
+      <div class="rr"><span class="rk">Gatilho</span><span class="rv d">Boato de quebra</span></div>
+      <div class="rr"><span class="rk">Dinâmica</span><span class="rv d">Todos sacam, banco não tem, boato se confirma</span></div>
+      <div class="rr"><span class="rk">Resultado</span><span class="rv d">Mais saques e colapso (self-fulfilling prophecy)</span></div>
+    </div>
+  </div>
+  <div class="note">FGC existe para interromper esse ciclo — se você sabe que recebe até R$ 250k de qualquer forma, o pânico não começa.</div>
+</div>
+
+<!-- ══════ INFLAÇÃO & JUROS -->
+<div id="panel-inflacao-juros" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Inflação</dt><dd>Aumento generalizado de preços por excesso de demanda, choque de oferta ou expansão monetária.</dd>
+      <dt>Deflação</dt><dd>Queda generalizada de preços que pode travar consumo, receita e emprego.</dd>
+      <dt>Selic</dt><dd>Taxa básica de juros definida pelo COPOM; principal ferramenta para controlar demanda agregada.</dd>
+      <dt>IPCA</dt><dd>Índice oficial de inflação no Brasil, calculado pelo IBGE e usado no regime de metas.</dd>
+      <dt>Open Market</dt><dd>Compra e venda de títulos pelo BACEN para ajustar liquidez no dia a dia.</dd>
+      <dt>Oferta e Demanda</dt><dd>Força central de precificação: quando demanda supera oferta, preços sobem; no inverso, caem.</dd>
+      <dt>COPOM</dt><dd>Comitê de Política Monetária do BACEN que define a Selic em reuniões periódicas.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+
+  <div class="st">Inflação — o que é de verdade</div>
+  <div class="sc">
+    <div class="sl">Conceito central</div>
+    <div class="rr"><span class="rk">Definição operacional</span><span class="rv">Inflação é desequilíbrio entre oferta e demanda.</span></div>
+  </div>
+  <div class="g2">
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">Inflação por demanda</div>
+      <div class="chain">
+        <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Governo injeta dinheiro na economia</div><div class="chain-desc">Ex.: auxílio, obra pública ou estímulo fiscal amplo.</div></div></div>
+        <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Mais dinheiro persegue a mesma quantidade de bens</div><div class="chain-desc">Demanda agregada cresce mais rápido que a capacidade de oferta.</div></div></div>
+        <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Demanda &gt; oferta → vendedor sobe preço</div><div class="chain-desc">Ajuste natural de mercado: preço vira o filtro de escassez.</div></div></div>
+        <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Exemplo: corrida por carros sem aumento de produção</div><div class="chain-desc">Todo mundo quer comprar, fábrica não produz mais, preço sobe.</div></div></div>
+      </div>
+    </div>
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">Inflação por oferta</div>
+      <div class="chain">
+        <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Seca destrói safra de soja</div><div class="chain-desc">Oferta cai com demanda estável.</div></div></div>
+        <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Menos produto disponível → preço sobe</div><div class="chain-desc">É inflação de custo por choque de oferta.</div></div></div>
+        <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Câmbio: dólar sobe, importados encarecem</div><div class="chain-desc">Inflação de câmbio repassa custos ao consumidor final.</div></div></div>
+        <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Exemplo em cascata: energia sobe</div><div class="chain-desc">Produção fica mais cara em toda a cadeia e preços sobem em sequência.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="note note-warn">Imprimir dinheiro CAUSA inflação (mais dinheiro, mesma oferta de bens). O governo não imprime para combater inflação — faz o oposto: sobe juros para reduzir demanda.</div>
+
+  <div class="st">Como o BACEN combate a inflação — os 3 instrumentos</div>
+  <div class="g3">
+    <div class="tc">
+      <div class="tag t-taxa">Instrumento 1</div>
+      <div class="tn">Selic (mais usado)</div>
+      <div class="td">BACEN sobe Selic, crédito encarece e a parcela do carro pode subir ~30%. Menos compras travam repasses de preço da montadora ao varejo.</div>
+      <div class="rr"><span class="rk">Efeito cascata</span><span class="rv">Fornecedor → transportador → varejo</span></div>
+      <div class="rr"><span class="rk">Resultado</span><span class="rv o">Demanda cai, preços estabilizam</span></div>
+      <div class="tv">Selic é o preço do dinheiro: mais alta = dinheiro caro = menos crédito circulando.</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-risco">Instrumento 2</div>
+      <div class="tn">Compulsório</div>
+      <div class="td">Se o BACEN sobe compulsório de 20% para 30%, o banco tem menos base para emprestar e o multiplicador monetário cai.</div>
+      <div class="rr"><span class="rk">Canal principal</span><span class="rv">Crédito mais escasso</span></div>
+      <div class="rr"><span class="rk">Impacto</span><span class="rv">Menos criação de dinheiro pelo sistema</span></div>
+      <div class="tv">Mais drástico que Selic; usado em momentos de maior estresse.</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-infra">Instrumento 3</div>
+      <div class="tn">Open Market</div>
+      <div class="td">BACEN vende títulos para bancos, retira liquidez e esfria a economia; quando compra títulos, injeta liquidez e estimula atividade.</div>
+      <div class="rr"><span class="rk">Venda de títulos</span><span class="rv d">Menos dinheiro circulando</span></div>
+      <div class="rr"><span class="rk">Compra de títulos</span><span class="rv o">Mais dinheiro circulando</span></div>
+      <div class="tv">Ajuste fino recorrente, operado continuamente durante as semanas.</div>
+    </div>
+  </div>
+
+  <div class="st">Sistema de Metas de Inflação</div>
+  <div class="sc">
+    <div class="rr"><span class="rk">Meta 2025</span><span class="rv">3% a.a. (± 1,5%)</span></div>
+    <div class="rr"><span class="rk">Se IPCA &gt; 4,5%</span><span class="rv d">BACEN é obrigado a agir</span></div>
+    <div class="rr"><span class="rk">Se IPCA &lt; 1,5%</span><span class="rv o">BACEN pode estimular a economia</span></div>
+    <div class="rr"><span class="rk">Accountability</span><span class="rv">Presidente do BACEN escreve carta ao Ministro da Fazenda explicando o descumprimento</span></div>
+  </div>
+  <div class="note">A grande tensão: governo quer juros baixos para crescer e ser popular. BACEN independente quer controlar inflação mesmo freando o crescimento. Briga estrutural em todo país.</div>
+
+  <div class="st">Oferta e Demanda — o mecanismo central de tudo</div>
+  <div class="g2">
+    <div class="tc">
+      <div class="tag t-risco">Cenário 1</div>
+      <div class="tn">Demanda sobe, oferta igual</div>
+      <div class="td">Preço sobe (inflação).</div>
+      <div class="tv">Ex.: governo distribui renda, todos querem comprar, preços sobem.</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-ciclo">Cenário 2</div>
+      <div class="tn">Demanda cai, oferta igual</div>
+      <div class="td">Preço cai (deflação/desinflação).</div>
+      <div class="tv">Ex.: Selic a 14% dobra parcela, menos gente compra imóvel.</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-fraude">Cenário 3</div>
+      <div class="tn">Oferta cai, demanda igual</div>
+      <div class="td">Preço sobe (inflação de custo).</div>
+      <div class="tv">Ex.: seca no Sul reduz soja e encarece frango.</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-inv">Cenário 4</div>
+      <div class="tn">Oferta sobe, demanda igual</div>
+      <div class="td">Preço cai.</div>
+      <div class="tv">Ex.: shale gas nos EUA aumenta petróleo e barateia gasolina.</div>
+    </div>
+  </div>
+  <div class="note">O CDI é o preço do dinheiro no mercado interbancário — também segue oferta e demanda. Muito dinheiro disponível entre bancos → CDI cai. Pouco dinheiro → CDI sobe. É autorregulável.</div>
+
+  <div class="st">Deflação — o lado oposto e igualmente perigoso</div>
+  <div class="sc">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Preços caem e consumidor posterga compra</div><div class="chain-desc">"Vai ficar mais barato depois", então o consumo atual encolhe.</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Empresas vendem menos e demitem</div><div class="chain-desc">Receita menor pressiona custos e eleva desemprego.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Desempregados gastam menos</div><div class="chain-desc">Demanda cai ainda mais e reforça a queda de preços.</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Ciclo deflacionário piora</div><div class="chain-desc">Exemplo histórico: Japão nos anos 90, a "década perdida".</div></div></div>
+    </div>
+  </div>
+  <div class="note note-yellow">Por isso o BACEN trabalha com banda de meta mínima e máxima: deflação persistente também é um risco macroeconômico.</div>
+</div>
+
+<!-- ══════ TÍTULOS & CRÉDITO -->
+<div id="panel-titulos-credito" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>CDB</dt><dd>Você empresta para o banco; o banco vira seu devedor e usa esse funding para emprestar adiante.</dd>
+      <dt>LCI / LCA</dt><dd>Letras de crédito com lastro direcionado (imobiliário e agro), geralmente com isenção de IR para PF.</dd>
+      <dt>Precatório</dt><dd>Dívida judicial da União negociável no mercado secundário com desconto e risco de prazo.</dd>
+      <dt>Moral Hazard</dt><dd>Risco moral: agente assume risco maior porque parte da perda será absorvida por terceiros.</dd>
+      <dt>Seleção Adversa</dt><dd>Contrato mal calibrado atrai os piores tomadores e expulsa os melhores.</dd>
+      <dt>Spread Bancário</dt><dd>Diferença entre custo de captação do banco e taxa cobrada no crédito.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+
+  <div class="st">CDB, LCI e LCA — a diferença de uma vez</div>
+  <div class="note note-warn"><strong style="color:var(--text)">Correção conceitual:</strong> CDB não é dívida de quem pega empréstimo — é o oposto. CDB = você EMPRESTA para o banco (você é credor). Empréstimo/consignado = banco EMPRESTA para você (você é devedor).</div>
+  <div class="g3">
+    <div class="tc">
+      <div class="tag t-inv">Título</div>
+      <div class="tn">CDB — Certificado de Depósito Bancário</div>
+      <div class="td">Você empresta para o banco, e ele usa esse recurso para emprestar a outros clientes.</div>
+      <div class="rr"><span class="rk">Taxa</span><span class="rv">90–130% do CDI</span></div>
+      <div class="rr"><span class="rk">Garantia</span><span class="rv o">FGC até R$ 250k por CPF por banco</span></div>
+      <div class="rr"><span class="rk">IR</span><span class="rv d">Sim — regressivo (22,5% até 2 anos, 15% acima de 2 anos)</span></div>
+      <div class="rr"><span class="rk">Liquidez</span><span class="rv">Depende do contrato; pode haver carência</span></div>
+      <div class="tv">Banco pagando 140% do CDI pode estar sinalizando necessidade agressiva de funding.</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-ciclo">Título</div>
+      <div class="tn">LCI — Letra de Crédito Imobiliário</div>
+      <div class="td">Você empresta para o banco com destinação ao financiamento imobiliário.</div>
+      <div class="rr"><span class="rk">Taxa</span><span class="rv">85–95% do CDI</span></div>
+      <div class="rr"><span class="rk">Garantia</span><span class="rv o">FGC até R$ 250k</span></div>
+      <div class="rr"><span class="rk">IR</span><span class="rv o">Isento para pessoa física</span></div>
+      <div class="rr"><span class="rk">Liquidez</span><span class="rv">Menor; prazo mínimo obrigatório de 90 dias</span></div>
+      <div class="tv">Existe como incentivo de funding para o mercado habitacional.</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-infra">Título</div>
+      <div class="tn">LCA — Letra de Crédito do Agronegócio</div>
+      <div class="td">Você empresta para o banco com destinação ao financiamento do agronegócio.</div>
+      <div class="rr"><span class="rk">Taxa</span><span class="rv">85–95% do CDI</span></div>
+      <div class="rr"><span class="rk">Garantia</span><span class="rv o">FGC até R$ 250k</span></div>
+      <div class="rr"><span class="rk">IR</span><span class="rv o">Isento para pessoa física</span></div>
+      <div class="rr"><span class="rk">Liquidez</span><span class="rv">Semelhante à LCI, com menor flexibilidade de prazo</span></div>
+      <div class="tv">Existe para direcionar crédito ao setor agrícola.</div>
+    </div>
+  </div>
+  <div class="sc">
+    <div class="sl">Comparação líquida (com IR)</div>
+    <div class="rr"><span class="rk">CDB a 100% do CDI (14,65% a.a.)</span><span class="rv">Após IR de 15% → 12,45% líquido</span></div>
+    <div class="rr"><span class="rk">LCI/LCA a 88% do CDI (12,89% a.a.)</span><span class="rv o">Isento de IR → 12,89% líquido</span></div>
+    <div class="rr"><span class="rk">Conclusão</span><span class="rv o">LCI/LCA vence mesmo com taxa nominal menor</span></div>
+  </div>
+  <div class="note">Todos os três aparecem no M2 — são promessas do banco de te pagar. O banco tem só uma fração em caixa (reserva fracionária).</div>
+
+  <div class="st">Precatórios — o que são e como viram investimento</div>
+  <div class="sc">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Origem</div><div class="chain-desc">Pessoa ou empresa processa o governo federal e ganha. Juiz condena a União a pagar (ex.: R$ 1 milhão), mas o pagamento entra em fila e pode levar 5, 10 ou 15 anos. Esse direito de receber é o precatório.</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">O negócio</div><div class="chain-desc">Credor cansado da fila vende o direito com desconto: recebe R$ 600 mil agora em troca de um crédito de R$ 1 milhão. Quando o governo paga, quem comprou captura a diferença.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Os riscos</div><div class="chain-desc">Prazo pode alongar; risco legislativo pode reprecificar; liquidez é baixa; e financiar ativo longo com passivo curto cria descompasso clássico de balanço com risco de dinâmica tipo Ponzi.</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Lição de oferta e demanda</div><div class="chain-desc">Precatório também tem preço de mercado: apetite alto comprime desconto (ex.: 80 centavos por real), risco alto amplia desconto (ex.: 50 centavos por real).</div></div></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">Exemplo econômico</div>
+      <div class="rr"><span class="rk">Compra do direito</span><span class="rv">R$ 600k hoje</span></div>
+      <div class="rr"><span class="rk">Recebimento futuro</span><span class="rv">R$ 1M quando a União paga</span></div>
+      <div class="rr"><span class="rk">Ganho bruto</span><span class="rv o">R$ 400k (66%)</span></div>
+    </div>
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">Riscos estruturais</div>
+      <div class="rr"><span class="rk">Prazo</span><span class="rv d">Atraso adicional trava capital</span></div>
+      <div class="rr"><span class="rk">Legislativo</span><span class="rv d">Mudanças legais derrubam preço</span></div>
+      <div class="rr"><span class="rk">Liquidez/balanço</span><span class="rv d">Passivo curto x ativo longo</span></div>
+    </div>
+  </div>
+
+  <div class="st">Moral Hazard — quando a garantia cria o risco</div>
+  <div class="sc">
+    <div class="sl">Conceito central</div>
+    <div class="rr"><span class="rk">Moral Hazard (Risco Moral)</span><span class="rv">Alguém assume risco excessivo porque sabe que o custo da perda será socializado.</span></div>
+  </div>
+  <div class="g2">
+    <div class="tc">
+      <div class="tag t-risco">Exemplo 1</div>
+      <div class="tn">Sistema bancário</div>
+      <div class="td">FGC até R$ 250k reduz incentivo do depositante a analisar risco. Banco capta a qualquer custo, aumenta aposta; se ganha, retém lucro; se perde, custo é repartido no sistema.</div>
+      <div class="tv">Garantia sem disciplina de risco pode incentivar alavancagem ruim.</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-fraude">Exemplo 2</div>
+      <div class="tn">Seleção adversa no crédito</div>
+      <div class="td">Sem boa análise, taxa média alta afasta bons tomadores e atrai os piores. A carteira piora, default sobe e o banco tenta compensar com ainda mais spread.</div>
+      <div class="tv">Assimetria de informação distorce quem aceita cada contrato.</div>
+    </div>
+  </div>
+  <div class="note">Compulsório e regulação prudencial do BACEN existem para mitigar moral hazard — forçar os bancos a terem skin in the game. Quando a supervisão falha em ver o risco a tempo, o sistema (ou o contribuinte) paga a conta.</div>
+</div>
+
+<!-- ══════ SISTEMA GLOBAL -->
+<div id="panel-sistema-global" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Reservas Internacionais</dt><dd>Dólares e ativos externos do BACEN usados como colchão de liquidez e defesa cambial.</dd>
+      <dt>Câmbio</dt><dd>Preço relativo entre moedas, determinado por oferta e demanda de divisas.</dd>
+      <dt>Bretton Woods / Padrão Ouro</dt><dd>Arquitetura do pós-guerra em que o dólar era conversível em ouro até 1971.</dd>
+      <dt>Privilégio Exorbitante</dt><dd>Capacidade dos EUA de financiar déficits em sua própria moeda, aceita globalmente.</dd>
+      <dt>Petrodólar</dt><dd>Convenção de precificação de petróleo em dólar, sustentando demanda estrutural pela moeda.</dd>
+      <dt>Fed</dt><dd>Banco central dos EUA; seus juros reprecificam risco e fluxo de capital no mundo inteiro.</dd>
+      <dt>Fuga de Capital</dt><dd>Saída de recursos de um país diante de risco ou retorno melhor em outros mercados.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+
+  <div class="st">Como seu dinheiro fantasma compra um iPhone</div>
+  <div class="sc">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Você tem R$ 3.000 na conta</div><div class="chain-desc">Esse saldo está no M2 brasileiro e pode ser moeda escritural.</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Banco converte para US$ 600 no câmbio do dia</div><div class="chain-desc">A operação usa a taxa vigente no mercado de câmbio.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Banco usa reservas em dólar mantidas no exterior</div><div class="chain-desc">A liquidação internacional exige disponibilidade em moeda forte.</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Transferência de US$ 600 para o banco da Apple nos EUA</div><div class="chain-desc">A compensação ocorre na infraestrutura financeira internacional.</div></div></div>
+      <div class="chain-item"><div class="chain-num">05</div><div><div class="chain-title">Apple recebe e o valor entra no M2 americano</div><div class="chain-desc">Depósito em dólar no sistema bancário dos EUA.</div></div></div>
+    </div>
+  </div>
+  <div class="note">O dinheiro fantasma brasileiro virou dinheiro fantasma americano. O sistema é consistente em todos os países — todos operam com reserva fracionária.</div>
+
+  <div class="st">De onde vêm as reservas em dólar do Brasil</div>
+  <div class="sc">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Brasil exporta soja, petróleo e minério</div><div class="chain-desc">As exportações geram entrada de dólares no país.</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Exportadoras vendem dólares ao BACEN</div><div class="chain-desc">Empresas precisam de reais para folha, impostos e operação local.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">BACEN acumula reservas internacionais</div><div class="chain-desc">Esse estoque funciona como proteção contra choques externos.</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Brasil hoje: ~US$ 370 bilhões em reservas</div><div class="chain-desc">É o principal amortecedor de confiança cambial.</div></div></div>
+    </div>
+  </div>
+  <div class="note note-warn">Esse é o lastro real para transações internacionais. Se acabar, o real colapsa e a inflação por câmbio explode.</div>
+  <div class="sc">
+    <div class="sl">Choque externo: Fed sobe juros</div>
+    <div class="rr"><span class="rk">Etapa 1</span><span class="rv">Capital sai do Brasil em busca de segurança nos EUA</span></div>
+    <div class="rr"><span class="rk">Etapa 2</span><span class="rv">Menos dólares no Brasil, real desvaloriza</span></div>
+    <div class="rr"><span class="rk">Etapa 3</span><span class="rv d">Importados ficam mais caros e inflação sobe</span></div>
+    <div class="rr"><span class="rk">Leitura</span><span class="rv">Brasil sofre mesmo sem erro doméstico: é oferta e demanda por dólar</span></div>
+  </div>
+
+  <div class="st">O Privilégio Exorbitante do Dólar</div>
+  <div class="sc">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">1944</div><div><div class="chain-title">Bretton Woods</div><div class="chain-desc">Dólar lastreado em ouro: US$ 35 por onça.</div></div></div>
+      <div class="chain-item"><div class="chain-num">1971</div><div><div class="chain-title">Nixon encerra padrão ouro</div><div class="chain-desc">Dólar passa a ser lastreado em confiança institucional.</div></div></div>
+      <div class="chain-item"><div class="chain-num">Hoje</div><div><div class="chain-title">~80% do comércio internacional em dólar</div><div class="chain-desc">Mesmo quando EUA não participam da transação.</div></div></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">O privilégio</div>
+      <div class="rr"><span class="rk">EUA</span><span class="rv o">Se endividam em dólar e pagam em dólar</span></div>
+      <div class="rr"><span class="rk">Outros países</span><span class="rv d">Precisam captar dólar para pagar dívida em dólar</span></div>
+      <div class="rr"><span class="rk">Brasil</span><span class="rv d">Se real cai, dívida em dólar fica mais cara em reais</span></div>
+    </div>
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">O que sustenta o dólar hoje</div>
+      <div class="rr"><span class="rk">Geopolítica</span><span class="rv">Força militar e arquitetura do petrodólar (desde 1974)</span></div>
+      <div class="rr"><span class="rk">Mercado financeiro</span><span class="rv">Maior liquidez e profundidade do planeta</span></div>
+      <div class="rr"><span class="rk">Convenção global</span><span class="rv">Ninguém quer quebrar sozinho o padrão vigente</span></div>
+      <div class="rr"><span class="rk">Âncora institucional</span><span class="rv">"The full faith and credit of the United States Government"</span></div>
+    </div>
+  </div>
+
+  <div class="st">As 3 Camadas de Controle Monetário</div>
+  <div class="chain" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:0 18px;margin-bottom:16px">
+    <div class="chain-item">
+      <div class="chain-num">1</div>
+      <div>
+        <div class="chain-title">Camada Local (reais)</div>
+        <div class="chain-desc">BACEN controla bem via Selic + compulsório + open market. M2 em reais é gerenciável; ferramentas disponíveis.</div>
+      </div>
+    </div>
+    <div class="chain-item">
+      <div class="chain-num">2</div>
+      <div>
+        <div class="chain-title">Camada Câmbio (real vs dólar)</div>
+        <div class="chain-desc">BACEN influencia, mas não controla totalmente. Reservas internacionais amortecem choques; fluxo externo pode desestabilizar. Ferramentas: compra/venda de dólar e swap cambial.</div>
+      </div>
+    </div>
+    <div class="chain-item">
+      <div class="chain-num">3</div>
+      <div>
+        <div class="chain-title">Camada Global (dólar)</div>
+        <div class="chain-desc">Quem manda é o Fed. Juros dos EUA priorizam a economia americana; emergentes absorvem o impacto. Ferramentas domésticas: praticamente nenhuma, além de diplomacia e acordos bilaterais.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="st">A Cadeia de Confiança — o que sustenta tudo</div>
+  <div class="sc">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Você confia no banco</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Banco confia no BACEN para socorro em crise</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">BACEN confia que governo honra títulos públicos</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Governo confia que vai arrecadar impostos</div></div></div>
+      <div class="chain-item"><div class="chain-num">05</div><div><div class="chain-title">Mercado internacional confia no Brasil</div><div class="chain-desc">Baseado em reservas, fiscal e fundamentos macro.</div></div></div>
+      <div class="chain-item"><div class="chain-num">06</div><div><div class="chain-title">Todos confiam que dólar será aceito amanhã</div></div></div>
+      <div class="chain-item"><div class="chain-num">07</div><div><div class="chain-title">Fed não tem ativo físico atrás do dólar</div></div></div>
+      <div class="chain-item"><div class="chain-num">08</div><div><div class="chain-title">No topo, só confiança coordenada nos EUA</div></div></div>
+    </div>
+  </div>
+  <div class="note note-yellow">O sistema monetário global inteiro roda em confiança coordenada. Quando a confiança quebra em qualquer elo — de um banco regional americano ao governo de um país emergente — o efeito cascata pode ser imprevisível. Oferta e demanda por confiança é o verdadeiro motor do sistema.</div>
+</div>
+
 <!-- ══════ GLOSSÁRIO -->
 <div id="panel-glossario" class="panel anim">
   <details class="panel-terms panel-terms--intro">
@@ -1115,7 +1642,7 @@
     <p class="pt-intro">Todos os termos do mapa em um só lugar. Em cada aba há um resumo <strong>Termos nesta seção</strong> com o vocabulário daquele tema; use esta lista para buscar qualquer definição.</p>
     </div>
   </details>
-  <div class="st">35 termos</div>
+  <div class="st">63 termos</div>
   <div class="glossario-grid">
     <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">MDR</div><div class="td">Taxa total cobrada do lojista. Inclui IC, scheme fee e margem do adquirente.</div><div class="tv">Débito ~0,7–1,2% · Crédito ~1,8–3,5%</div></div>
     <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">IC — Interchange</div><div class="td">Parte do MDR repassada ao emissor. Principal receita de volume do banco.</div><div class="tv">Classic ~0,75% · Titanium ~2,00%</div></div>
@@ -1124,7 +1651,7 @@
     <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">CET</div><div class="td">Custo Efetivo Total. Consolida juros + TAC + IOF + seguros. Obrigatório por lei.</div><div class="tv">Resolução BACEN 3.517</div></div>
     <div class="tc"><div class="tag t-ciclo">Ciclo</div><div class="tn">Float</div><div class="td">Prazo entre a compra e o pagamento. Banco aplica no CDI durante esse período.</div><div class="tv">Gap médio ~30–40 dias</div></div>
     <div class="tc"><div class="tag t-ciclo">Ciclo</div><div class="tn">CDI</div><div class="td">Taxa que os bancos cobram entre si. Referência de rendimento. Segue a Selic.</div><div class="tv">~14,65% a.a. · ~1,14% a.m.</div></div>
-    <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">CDB</div><div class="td">Certificado de Depósito Bancário. Contrato de dívida simples. Garantia FGC até R$ 250k.</div><div class="tv">90–130% do CDI</div></div>
+    <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">CDB</div><div class="td">Certificado de Depósito Bancário. Você empresta para o banco, com garantia FGC até R$ 250k, e IR incidindo sobre o rendimento.</div><div class="tv">Captação bancária típica: 90–130% do CDI</div></div>
     <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">WACC</div><div class="td">Custo Médio Ponderado de Capital. Mínimo que empresa precisa render para não destruir valor.</div><div class="tv">WACC = % dívida × custo + % equity × retorno</div></div>
     <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">EVA</div><div class="td">Economic Value Added. Lucro op. menos custo do capital. Mede se criou valor real.</div><div class="tv">EVA = Lucro Op. − (Capital × WACC)</div></div>
     <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">FIDC</div><div class="td">Fundo de Investimento em Direitos Creditórios. Securitização de carteiras de crédito.</div><div class="tv">Cotas sênior, mezanino e júnior</div></div>
@@ -1152,6 +1679,34 @@
     <div class="tc"><div class="tag t-fraude">Fraude</div><div class="tn">Chargeback</div><div class="td">Contestação de cobrança. Dinheiro volta ao portador, debitado do lojista/adquirente.</div><div class="tv">Saudável: &lt;1% · Crítico: &gt;2%</div></div>
     <div class="tc"><div class="tag t-fraude">Fraude</div><div class="tn">Friendly Fraud</div><div class="td">Portador faz a compra e contesta depois. Crescente no e-commerce.</div><div class="tv">~20–40% dos chargebacks no e-com</div></div>
     <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">MCC</div><div class="td">Merchant Category Code. Código de 4 dígitos que classifica o estabelecimento.</div><div class="tv">5411 = Supermercado · 5812 = Restaurante</div></div>
+    <div class="tc"><div class="tag t-ciclo">Monetário</div><div class="tn">Reserva Fracionária</div><div class="td">Sistema em que o banco guarda só uma fração dos depósitos e empresta o resto. Base do sistema bancário moderno.</div><div class="tv">Permite expansão de depósitos com a mesma base física</div></div>
+    <div class="tc"><div class="tag t-infra">Monetário</div><div class="tn">M0</div><div class="td">Base monetária: dinheiro físico e reservas bancárias no BACEN. É o dinheiro "real" de liquidação imediata.</div><div class="tv">Notas + moedas + reservas BACEN</div></div>
+    <div class="tc"><div class="tag t-inv">Monetário</div><div class="tn">M2</div><div class="td">Dinheiro amplo: M0 + depósitos e investimentos líquidos. Inclui o dinheiro "fantasma" criado no sistema bancário.</div><div class="tv">No Brasil, muito maior que M0</div></div>
+    <div class="tc"><div class="tag t-risco">Monetário</div><div class="tn">Compulsório</div><div class="td">Percentual do depósito que o banco é obrigado a manter travado no BACEN. Controla a criação de dinheiro e a liquidez.</div><div class="tv">Ferramenta direta de política monetária</div></div>
+    <div class="tc"><div class="tag t-prod">Monetário</div><div class="tn">Moeda Escritural</div><div class="td">Dinheiro que existe só como registro contábil, criado pelo sistema bancário via empréstimos sucessivos.</div><div class="tv">Não existe em cédulas equivalentes no cofre</div></div>
+    <div class="tc"><div class="tag t-fraude">Monetário</div><div class="tn">Bank Run (Corrida Bancária)</div><div class="td">Quando muitos depositantes sacam ao mesmo tempo. O sistema não tem dinheiro para todos e pode entrar em colapso.</div><div class="tv">Crise de confiança acelera o próprio problema</div></div>
+    <div class="tc"><div class="tag t-taxa">Monetário</div><div class="tn">Multiplicador Monetário</div><div class="td">Efeito pelo qual um depósito inicial se multiplica no sistema via reservas fracionárias.</div><div class="tv">Fórmula simplificada: 1 ÷ compulsório</div></div>
+    <div class="tc"><div class="tag t-risco">Macro</div><div class="tn">Inflação</div><div class="td">Aumento generalizado de preços. Causada por excesso de demanda, queda de oferta ou expansão monetária excessiva.</div><div class="tv">Corroe poder de compra e pressiona juros</div></div>
+    <div class="tc"><div class="tag t-ciclo">Macro</div><div class="tn">Deflação</div><div class="td">Queda generalizada de preços. Parece boa no curto prazo, mas incentiva postergação de consumo e pode aprofundar recessão.</div><div class="tv">Armadilha: consumo adiado → produção cai</div></div>
+    <div class="tc"><div class="tag t-taxa">Macro</div><div class="tn">Selic</div><div class="td">Taxa básica de juros definida pelo COPOM. É o preço do dinheiro na economia brasileira.</div><div class="tv">Sobe para conter inflação, cai para estimular crescimento</div></div>
+    <div class="tc"><div class="tag t-infra">Macro</div><div class="tn">IPCA</div><div class="td">Índice de Preços ao Consumidor Amplo. Principal medidor de inflação no Brasil, calculado pelo IBGE.</div><div class="tv">Referência oficial do sistema de metas</div></div>
+    <div class="tc"><div class="tag t-inv">Macro</div><div class="tn">Open Market</div><div class="td">Operações de compra e venda de títulos públicos pelo BACEN para controlar a liquidez do sistema.</div><div class="tv">Venda retira liquidez · compra injeta</div></div>
+    <div class="tc"><div class="tag t-ciclo">Macro</div><div class="tn">Oferta e Demanda</div><div class="td">Lei fundamental da economia: se demanda supera oferta, preço sobe; se oferta supera demanda, preço cai.</div><div class="tv">Base de preços, juros, câmbio e crédito</div></div>
+    <div class="tc"><div class="tag t-seg">Macro</div><div class="tn">COPOM</div><div class="td">Comitê de Política Monetária do BACEN. Define a Selic a cada 45 dias com base no cenário inflacionário.</div><div class="tv">Diretoria do BACEN em reuniões periódicas</div></div>
+    <div class="tc"><div class="tag t-ciclo">Título</div><div class="tn">LCI</div><div class="td">Letra de Crédito Imobiliário. Você empresta para o banco financiar imóveis. Isenta de IR para pessoa física e com prazo mínimo de 90 dias.</div><div class="tv">Perfil: taxa menor, líquido competitivo pela isenção</div></div>
+    <div class="tc"><div class="tag t-infra">Título</div><div class="tn">LCA</div><div class="td">Letra de Crédito do Agronegócio. Você empresta para o banco financiar agro. Isenta de IR para PF e similar à LCI em estrutura de prazo.</div><div class="tv">Mesmo perfil de risco/estrutura da LCI</div></div>
+    <div class="tc"><div class="tag t-legal">Título</div><div class="tn">Precatório</div><div class="td">Dívida da União reconhecida judicialmente. Pode ser negociada com desconto no mercado secundário e costuma ter baixa liquidez.</div><div class="tv">Ativo longo com risco de prazo e reprecificação</div></div>
+    <div class="tc"><div class="tag t-risco">Risco</div><div class="tn">Moral Hazard</div><div class="td">Quando um agente assume risco excessivo porque sabe que as perdas serão absorvidas por terceiros. Clássico em sistemas com garantia.</div><div class="tv">Lucro privatizado, perda socializada</div></div>
+    <div class="tc"><div class="tag t-fraude">Risco</div><div class="tn">Seleção Adversa</div><div class="td">Assimetria de informação que faz os piores candidatos aceitarem um contrato enquanto os bons saem da operação.</div><div class="tv">No crédito: tomador ruim aceita taxa alta, bom recusa</div></div>
+    <div class="tc"><div class="tag t-taxa">Risco</div><div class="tn">Spread Bancário</div><div class="td">Diferença entre o custo de captação do banco e a taxa cobrada no crédito ao cliente final.</div><div class="tv">Ex.: capta ~100% CDI e empresta no rotativo com taxa muito maior</div></div>
+    <div class="tc"><div class="tag t-infra">Global</div><div class="tn">Reservas Internacionais</div><div class="td">Dólares e outros ativos que o BACEN acumula via exportações e fluxos externos. Lastro do câmbio e proteção contra crises.</div><div class="tv">Brasil: ~US$ 370 bilhões</div></div>
+    <div class="tc"><div class="tag t-ciclo">Global</div><div class="tn">Câmbio</div><div class="td">Preço de uma moeda em relação a outra. Segue oferta e demanda por divisas.</div><div class="tv">Mais dólares no Brasil: real valoriza · menos dólares: real desvaloriza</div></div>
+    <div class="tc"><div class="tag t-legal">Global</div><div class="tn">Padrão Ouro</div><div class="td">Sistema em que moedas eram conversíveis em quantidade fixa de ouro. Abandonado pelos EUA em 1971 (Nixon Shock).</div><div class="tv">Âncora física do sistema pré-fiat</div></div>
+    <div class="tc"><div class="tag t-risco">Global</div><div class="tn">Privilégio Exorbitante</div><div class="td">Vantagem dos EUA de se endividarem na própria moeda, aceita globalmente. Termo cunhado por Valéry Giscard d'Estaing.</div><div class="tv">Exclusividade geopolítica/financeira americana</div></div>
+    <div class="tc"><div class="tag t-prod">Global</div><div class="tn">Petrodólar</div><div class="td">Convenção (desde 1974) de cotação e pagamento do petróleo em dólar, sustentando demanda global pela moeda.</div><div class="tv">Energia global ancorando fluxo em dólar</div></div>
+    <div class="tc"><div class="tag t-inv">Global</div><div class="tn">Bretton Woods</div><div class="td">Acordo de 1944 que organizou o sistema monetário internacional do pós-guerra com dólar como reserva global lastreada em ouro.</div><div class="tv">Base histórica da arquitetura monetária moderna</div></div>
+    <div class="tc"><div class="tag t-seg">Global</div><div class="tn">Fed (Federal Reserve)</div><div class="td">Banco central dos EUA. Define juros americanos (Fed Funds Rate) e influencia fluxos de capital globais.</div><div class="tv">Decisões locais com efeito mundial</div></div>
+    <div class="tc"><div class="tag t-fraude">Global</div><div class="tn">Fuga de Capital</div><div class="td">Saída de recursos de um país quando investidores percebem risco maior ou retorno melhor no exterior.</div><div class="tv">Pressiona câmbio e pode acelerar inflação importada</div></div>
   </div>
 </div>
 
@@ -1170,6 +1725,40 @@
     void p.offsetWidth;
     el.classList.add('active');
   }
+  function setTabCategoryFilter(cat){
+    var tabsWrap=document.querySelector('.tabs');
+    if(!tabsWrap)return;
+    var showAll=cat==='all';
+    tabsWrap.querySelectorAll('.tab').forEach(function(tab){
+      var c=tab.getAttribute('data-cat');
+      if(showAll||c===cat){tab.classList.remove('is-filtered-out');}
+      else{tab.classList.add('is-filtered-out');}
+    });
+    tabsWrap.querySelectorAll('.tab-sep').forEach(function(sep){
+      if(showAll){sep.classList.remove('is-filtered-out');}
+      else{sep.classList.add('is-filtered-out');}
+    });
+    document.querySelectorAll('.menu-story [data-filter]').forEach(function(chip){
+      chip.setAttribute('aria-pressed',chip.getAttribute('data-filter')===cat?'true':'false');
+    });
+    var active=document.querySelector('.tab.active');
+    if(active&&active.classList.contains('is-filtered-out')){
+      var first=tabsWrap.querySelector('.tab:not(.is-filtered-out)');
+      if(first){
+        var pid=first.getAttribute('data-panel');
+        if(pid)showPanel(pid,first);
+      }
+    }
+    var vis=document.querySelector('.tab.active');
+    if(vis&&typeof vis.scrollIntoView==='function'){try{vis.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});}catch(e){vis.scrollIntoView(false);}}
+  }
+  (function(){
+    document.querySelectorAll('.menu-story [data-filter]').forEach(function(chip){
+      chip.addEventListener('click',function(){
+        setTabCategoryFilter(chip.getAttribute('data-filter')||'all');
+      });
+    });
+  })();
   (function(){
     var KEY='ecossistema-cartoes-theme';
     var root=document.documentElement;
