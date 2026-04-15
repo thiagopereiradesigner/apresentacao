@@ -415,12 +415,14 @@
   <button type="button" class="tab tab--fund active" data-cat="fund" data-panel="sistema-monetario" onclick="showPanel('sistema-monetario',this)"><span class="tab-badge">Fund</span>Sistema Monetário</button>
   <button type="button" class="tab tab--fund" data-cat="fund" data-panel="inflacao-juros" onclick="showPanel('inflacao-juros',this)"><span class="tab-badge">Fund</span>Inflação & Juros</button>
   <button type="button" class="tab tab--fund" data-cat="fund" data-panel="sistema-global" onclick="showPanel('sistema-global',this)"><span class="tab-badge">Fund</span>Sistema Global</button>
+  <button type="button" class="tab tab--fund" data-cat="fund" data-panel="sfn-licencas" onclick="showPanel('sfn-licencas',this)"><span class="tab-badge">Fund</span>SFN & Licenças</button>
   <span class="tab-sep" aria-hidden="true"></span>
   <button type="button" class="tab tab--cred" data-cat="cred" data-panel="cdi" onclick="showPanel('cdi',this)"><span class="tab-badge">Cred</span>CDI & CDB</button>
   <button type="button" class="tab tab--cred" data-cat="cred" data-panel="titulos-credito" onclick="showPanel('titulos-credito',this)"><span class="tab-badge">Cred</span>Títulos & Crédito</button>
   <button type="button" class="tab tab--cred" data-cat="cred" data-panel="encargos" onclick="showPanel('encargos',this)"><span class="tab-badge">Cred</span>Encargos</button>
   <span class="tab-sep" aria-hidden="true"></span>
   <button type="button" class="tab tab--pay" data-cat="pay" data-panel="eco" onclick="showPanel('eco',this)"><span class="tab-badge">Pay</span>Ecossistema</button>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="infra-bancaria" onclick="showPanel('infra-bancaria',this)"><span class="tab-badge">Pay</span>Infra Bancária</button>
   <button type="button" class="tab tab--pay" data-cat="pay" data-panel="taxas" onclick="showPanel('taxas',this)"><span class="tab-badge">Pay</span>Taxas & MDR</button>
   <button type="button" class="tab tab--pay" data-cat="pay" data-panel="tiers" onclick="showPanel('tiers',this)"><span class="tab-badge">Pay</span>Tiers</button>
   <button type="button" class="tab tab--pay" data-cat="pay" data-panel="split" onclick="showPanel('split',this)"><span class="tab-badge">Pay</span>Split & Crébito</button>
@@ -474,6 +476,65 @@
     <div class="vc"><div class="vi">⛽</div><div class="vn" style="color:var(--yellow)">Combustível</div><div class="vd">Postos. MCC específico. Frota</div></div>
     <div class="vc"><div class="vi">💊</div><div class="vn" style="color:var(--blue)">Outros</div><div class="vd">Farmácia, cultura, mobilidade</div></div>
   </div>
+</div>
+
+<!-- ══════ INFRA BANCÁRIA -->
+<div id="panel-infra-bancaria" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>BaaS</dt><dd>Infraestrutura que oferece licença regulatória + APIs para terceiros operarem produtos financeiros.</dd>
+      <dt>TaaS / Core Bancário</dt><dd>Fornece tecnologia bancária (ledger, contas, motores) sem emprestar licença regulatória.</dd>
+      <dt>CCD</dt><dd>Cédula de Crédito Bancário que formaliza o crédito consignado e exige originador com licença adequada.</dd>
+      <dt>CIP / SPB / SPI / STR</dt><dd>Camadas da infraestrutura de pagamentos e liquidação do sistema financeiro brasileiro.</dd>
+      <dt>Banco Liquidante</dt><dd>Instituição que participa diretamente das câmaras e liquida operações para parceiros.</dd>
+      <dt>BIN / BIN Sponsor</dt><dd>Prefixo emissor do cartão e banco parceiro que cede BIN para um program manager operar.</dd>
+      <dt>Program Manager</dt><dd>Empresa que controla produto e experiência, enquanto o sponsor carrega a relação de emissão.</dd>
+      <dt>Boleto Registrado</dt><dd>Boleto que precisa de registro em infraestrutura autorizada para cobrança e liquidação.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+
+  <div class="st">Licença, tecnologia e trilho de liquidação são camadas diferentes</div>
+  <div class="g3">
+    <div class="tc">
+      <div class="tag t-seg">Regulatório</div>
+      <div class="tn">BaaS</div>
+      <div class="td">Resolve o problema de licença para quem quer lançar conta, Pix, boleto ou crédito sem virar banco.</div>
+      <div class="tv">"Use minha licença + minha API"</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-infra">Tecnologia</div>
+      <div class="tn">TaaS / Core Bancário</div>
+      <div class="td">Entrega o sistema operacional bancário, mas a responsabilidade regulatória continua com a instituição contratante.</div>
+      <div class="tv">"Use meu software + sua licença"</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-ciclo">Liquidação</div>
+      <div class="tn">CIP / SPB / SPI / STR</div>
+      <div class="td">Camada onde o dinheiro de fato liquida. Sem acesso direto, a operação precisa de banco liquidante.</div>
+      <div class="tv">Canal crítico para Pix, TED e boletos</div>
+    </div>
+  </div>
+
+  <div class="st">Quem resolve cada limite da IP no dia a dia</div>
+  <div class="sc">
+    <div class="rr"><span class="rk">Consignado (crédito)</span><span class="rv">Precisa de originador com licença de crédito para emitir <strong>CCD</strong></span></div>
+    <div class="rr"><span class="rk">Pix / TED</span><span class="rv">Pix pode ser direto; TED exige trilho de liquidação e, em muitos casos, banco liquidante</span></div>
+    <div class="rr"><span class="rk">Boleto</span><span class="rv">Precisa de parceiro com acesso de registro e liquidação para boleto registrado</span></div>
+    <div class="rr"><span class="rk">Cartão corporativo</span><span class="rv">Program manager opera produto; BIN Sponsor dá o lastro de emissão</span></div>
+  </div>
+
+  <div class="st">Fluxo típico de crédito consignado com parceiro originador</div>
+  <div class="chain">
+    <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Usuário solicita no app da fintech</div><div class="chain-desc">Canal de distribuição e relacionamento com cliente.</div></div></div>
+    <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Parceiro originador analisa e emite a CCD</div><div class="chain-desc">Documento jurídico de formalização da operação.</div></div></div>
+    <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Desconto em folha e liquidação do contrato</div><div class="chain-desc">Baixo risco relativo por ter desconto em fonte de renda.</div></div></div>
+    <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Fintech recebe comissão e mantém experiência</div><div class="chain-desc">Monetização via distribuição, sem carregar toda a camada regulatória.</div></div></div>
+  </div>
+  <div class="note">Separar "quem vende", "quem emite" e "quem liquida" evita confusão de arquitetura e ajuda a enxergar risco regulatório de cada produto.</div>
 </div>
 
 <!-- ══════ TAXAS -->
@@ -1638,6 +1699,79 @@
   <div class="note note-yellow">O sistema monetário global inteiro roda em confiança coordenada. Quando a confiança quebra em qualquer elo — de um banco regional americano ao governo de um país emergente — o efeito cascata pode ser imprevisível. Oferta e demanda por confiança é o verdadeiro motor do sistema.</div>
 </div>
 
+<!-- ══════ SFN & LICENÇAS -->
+<div id="panel-sfn-licencas" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>SFN</dt><dd>Sistema Financeiro Nacional: conjunto de instituições, normas e infraestruturas que viabilizam o dinheiro no país.</dd>
+      <dt>CMN</dt><dd>Órgão normativo máximo que define diretrizes de política monetária e crédito.</dd>
+      <dt>BCB / BACEN</dt><dd>Regulador e supervisor que autoriza instituições e fiscaliza regras do sistema.</dd>
+      <dt>S1 / S2</dt><dd>Classificação de bancos de maior porte e complexidade, com exigências prudenciais elevadas.</dd>
+      <dt>IP</dt><dd>Instituição de Pagamento: opera conta de pagamento e meios de pagamento, mas sem captação à vista.</dd>
+      <dt>SCD / SFD</dt><dd>Licença voltada a crédito com recursos próprios, sem captar depósitos do público como banco tradicional.</dd>
+      <dt>ESD</dt><dd>Modelo para operar folha com maior controle da relação salário-conta, sujeito a barreira regulatória alta.</dd>
+      <dt>Basileia III</dt><dd>Conjunto de exigências de capital e gestão de risco para resiliência do sistema bancário.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+
+  <div class="st">Quem decide regra e quem executa no topo do sistema</div>
+  <div class="g2">
+    <div class="tc">
+      <div class="tag t-legal">Norma</div>
+      <div class="tn">CMN</div>
+      <div class="td">Define o que pode e o que não pode no desenho macro de crédito, moeda e estabilidade financeira.</div>
+      <div class="tv">Define diretrizes e limites</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-seg">Supervisão</div>
+      <div class="tn">BCB / BACEN</div>
+      <div class="td">Autoriza instituições, fiscaliza conduta e aplica medidas prudenciais e sancionatórias.</div>
+      <div class="tv">Executa, supervisiona e intervém</div>
+    </div>
+  </div>
+
+  <div class="st">Escada de licenças — mais poder, mais exigência</div>
+  <div class="g4">
+    <div class="tc">
+      <div class="tag t-infra">Banco S1/S2</div>
+      <div class="tn">Licença plena</div>
+      <div class="td">Capta depósitos, concede crédito amplo e participa profundamente da infraestrutura financeira.</div>
+      <div class="tv">Alta exigência de capital e governança</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-ciclo">SCD / SFD</div>
+      <div class="tn">Camada de crédito</div>
+      <div class="td">Concede crédito com recursos próprios, sem virar banco universal de depósitos.</div>
+      <div class="tv">Ponte entre IP e banco completo</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-prod">IP</div>
+      <div class="tn">Camada de pagamentos</div>
+      <div class="td">Conta de pagamento, Pix, cartões e boleto com limites claros de captação e crédito próprio.</div>
+      <div class="tv">Base de muitas fintechs de distribuição</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-vc">ESD</div>
+      <div class="tn">Evolução estratégica</div>
+      <div class="td">Aproxima a instituição do fluxo de folha e da conta principal do trabalhador.</div>
+      <div class="tv">Barreira regulatória elevada</div>
+    </div>
+  </div>
+
+  <div class="st">Por que a licença muda a arquitetura de produto</div>
+  <div class="sc">
+    <div class="rr"><span class="rk">Sem licença de crédito</span><span class="rv d">Crédito depende de parceiro originador</span></div>
+    <div class="rr"><span class="rk">Sem licença plena de banco</span><span class="rv w">Captação à vista e certos trilhos ficam restritos</span></div>
+    <div class="rr"><span class="rk">Com licença adequada</span><span class="rv o">Mais controle de margem, risco e experiência</span></div>
+    <div class="rr"><span class="rk">Basileia III</span><span class="rv">Quanto maior a licença, maior a obrigação de capital e disciplina prudencial</span></div>
+  </div>
+  <div class="note">Produto financeiro não escala só com tecnologia: cada degrau de licença altera custo de capital, modelo de risco e autonomia operacional.</div>
+</div>
+
 <!-- ══════ GLOSSÁRIO -->
 <div id="panel-glossario" class="panel anim">
   <details class="panel-terms panel-terms--intro">
@@ -1646,7 +1780,7 @@
     <p class="pt-intro">Todos os termos do mapa em um só lugar. Em cada aba há um resumo <strong>Termos nesta seção</strong> com o vocabulário daquele tema; use esta lista para buscar qualquer definição.</p>
     </div>
   </details>
-  <div class="st">63 termos</div>
+  <div class="st">86 termos</div>
   <div class="glossario-grid">
     <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">MDR</div><div class="td">Taxa total cobrada do lojista. Inclui IC, scheme fee e margem do adquirente.</div><div class="tv">Débito ~0,7–1,2% · Crédito ~1,8–3,5%</div></div>
     <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">IC — Interchange</div><div class="td">Parte do MDR repassada ao emissor. Principal receita de volume do banco.</div><div class="tv">Classic ~0,75% · Titanium ~2,00%</div></div>
@@ -1711,6 +1845,29 @@
     <div class="tc"><div class="tag t-inv">Global</div><div class="tn">Bretton Woods</div><div class="td">Acordo de 1944 que organizou o sistema monetário internacional do pós-guerra com dólar como reserva global lastreada em ouro.</div><div class="tv">Base histórica da arquitetura monetária moderna</div></div>
     <div class="tc"><div class="tag t-seg">Global</div><div class="tn">Fed (Federal Reserve)</div><div class="td">Banco central dos EUA. Define juros americanos (Fed Funds Rate) e influencia fluxos de capital globais.</div><div class="tv">Decisões locais com efeito mundial</div></div>
     <div class="tc"><div class="tag t-fraude">Global</div><div class="tn">Fuga de Capital</div><div class="td">Saída de recursos de um país quando investidores percebem risco maior ou retorno melhor no exterior.</div><div class="tv">Pressiona câmbio e pode acelerar inflação importada</div></div>
+    <div class="tc"><div class="tag t-infra">Instituição</div><div class="tn">SFN</div><div class="td">Sistema Financeiro Nacional. Conjunto de instituições, instrumentos e infraestruturas que organizam o dinheiro no Brasil.</div><div class="tv">Arcabouço geral do sistema financeiro</div></div>
+    <div class="tc"><div class="tag t-legal">Instituição</div><div class="tn">CMN</div><div class="td">Conselho Monetário Nacional. Órgão normativo máximo que define diretrizes de política monetária e de crédito.</div><div class="tv">Define regras; BACEN executa e fiscaliza</div></div>
+    <div class="tc"><div class="tag t-seg">Instituição</div><div class="tn">BCB / BACEN</div><div class="td">Banco Central do Brasil. Autoriza instituições, supervisiona o sistema e aplica regulação prudencial.</div><div class="tv">Regulador central do SFN</div></div>
+    <div class="tc"><div class="tag t-risco">Instituição</div><div class="tn">S1 / S2</div><div class="td">Segmentos de bancos de maior porte/complexidade, com exigências mais fortes de capital, governança e controle de risco.</div><div class="tv">Camada de bancos com maior impacto sistêmico</div></div>
+    <div class="tc"><div class="tag t-seg">Instituição</div><div class="tn">Basileia III</div><div class="td">Conjunto internacional de regras para capital, liquidez e gestão de risco em bancos.</div><div class="tv">Base prudencial da resiliência bancária</div></div>
+    <div class="tc"><div class="tag t-prod">Licença</div><div class="tn">IP — Instituição de Pagamento</div><div class="td">Permite conta de pagamento, Pix e cartão, mas sem captação à vista típica de banco tradicional.</div><div class="tv">Modelo comum de fintech de pagamentos</div></div>
+    <div class="tc"><div class="tag t-ciclo">Licença</div><div class="tn">SCD / SFD</div><div class="td">Licença orientada a crédito com recursos próprios, sem captar depósitos à vista como banco universal.</div><div class="tv">Camada intermediária entre IP e banco</div></div>
+    <div class="tc"><div class="tag t-vc">Licença</div><div class="tn">ESD</div><div class="td">Estrutura para operar salário de forma mais direta com empregadores, elevando controle de relacionamento e dados.</div><div class="tv">Alta barreira de implementação regulatória</div></div>
+    <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">BaaS</div><div class="td">Banking as a Service. Provedor que combina licença regulatória e APIs para terceiros ofertarem serviços financeiros.</div><div class="tv">"Licença + tecnologia" como serviço</div></div>
+    <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">TaaS / Core Bancário</div><div class="td">Technology as a Service. Entrega plataforma bancária sem emprestar licença regulatória.</div><div class="tv">"Tecnologia sem licença"</div></div>
+    <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">CIP</div><div class="td">Infraestrutura usada para registro e liquidação de cobranças como boletos, entre outros fluxos.</div><div class="tv">Camada crítica para cobrança bancária</div></div>
+    <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">SPB</div><div class="td">Sistema de Pagamentos Brasileiro. Conjunto de trilhos e câmaras que suportam compensação e liquidação no país.</div><div class="tv">Espinha dorsal dos pagamentos</div></div>
+    <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">SPI</div><div class="td">Sistema de Pagamentos Instantâneos, trilho operacional do Pix para liquidação em tempo real.</div><div class="tv">Motor de liquidação do Pix</div></div>
+    <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">STR</div><div class="td">Sistema de Transferência de Reservas. Infraestrutura de liquidação bruta em tempo real entre participantes autorizados.</div><div class="tv">Base de liquidação interbancária</div></div>
+    <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">DICT</div><div class="td">Diretório de identificadores de contas no ecossistema Pix (chaves), usado para roteamento e validação.</div><div class="tv">Cadastro central das chaves Pix</div></div>
+    <div class="tc"><div class="tag t-legal">Crédito</div><div class="tn">CCD</div><div class="td">Cédula de Crédito Bancário. Instrumento jurídico que formaliza operações de crédito como o consignado.</div><div class="tv">Documento central da originação</div></div>
+    <div class="tc"><div class="tag t-infra">Cobrança</div><div class="tn">Boleto Registrado</div><div class="td">Boleto com dados registrados em infraestrutura autorizada, permitindo rastreabilidade e liquidação formal.</div><div class="tv">Padrão obrigatório de cobrança bancária</div></div>
+    <div class="tc"><div class="tag t-prod">Distribuição</div><div class="tn">Correspondente Bancário</div><div class="td">Canal terceiro que distribui serviços financeiros em nome de uma instituição contratante, sob responsabilidade desta.</div><div class="tv">Extensão comercial da instituição</div></div>
+    <div class="tc"><div class="tag t-seg">Cartão</div><div class="tn">BIN</div><div class="td">Bank Identification Number. Prefixo do cartão que identifica emissor e bandeira na rede de pagamentos.</div><div class="tv">Identidade técnica do emissor</div></div>
+    <div class="tc"><div class="tag t-seg">Cartão</div><div class="tn">BIN Sponsor</div><div class="td">Banco parceiro que cede BIN para uma operação de cartões conduzida por outra empresa.</div><div class="tv">Modelo comum de emissão indireta</div></div>
+    <div class="tc"><div class="tag t-ciclo">Cartão</div><div class="tn">Program Manager</div><div class="td">Empresa que opera produto, experiência e distribuição do cartão, enquanto sponsor sustenta a emissão regulatória.</div><div class="tv">Separação entre experiência e licença</div></div>
+    <div class="tc"><div class="tag t-infra">Open Finance</div><div class="tn">ITP</div><div class="td">Iniciador de Transação de Pagamento. Inicia pagamento em nome do usuário sem necessariamente custodiar a conta.</div><div class="tv">Camada de iniciação no Open Finance</div></div>
+    <div class="tc"><div class="tag t-ciclo">Liquidação</div><div class="tn">Banco Liquidante</div><div class="td">Instituição que liquida operações financeiras em câmaras e sistemas para si e, em alguns casos, para parceiros.</div><div class="tv">Ponto final da liquidação financeira</div></div>
   </div>
 </div>
 
