@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
-(function(){try{var k='ecossistema-cartoes-theme',h=document.documentElement,t=localStorage.getItem(k);if(t==='light'||t==='dark'){h.setAttribute('data-theme',t);}else if(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches){h.setAttribute('data-theme','light');}else{h.setAttribute('data-theme','dark');}var th=h.getAttribute('data-theme');h.style.colorScheme=th==='light'?'only light':'dark';}catch(e){}})();
+(function(){try{var k='mapa-sistema-financeiro-theme',h=document.documentElement,t=localStorage.getItem(k);if(t==='light'||t==='dark'){h.setAttribute('data-theme',t);}else if(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches){h.setAttribute('data-theme','light');}else{h.setAttribute('data-theme','dark');}var th=h.getAttribute('data-theme');h.style.colorScheme=th==='light'?'only light':'dark';}catch(e){}})();
 </script>
 <meta id="meta-color-scheme" name="color-scheme" content="dark">
 <meta id="meta-theme-color" name="theme-color" content="#0c0c0c">
 <script>
 (function(){try{var h=document.documentElement,th=h.getAttribute('data-theme')||'dark',m=document.getElementById('meta-color-scheme'),tc=document.getElementById('meta-theme-color');if(m)m.setAttribute('content',th==='light'?'light':'dark');if(tc)tc.setAttribute('content',th==='light'?'#f4f4f5':'#0c0c0c');}catch(e){}})();
 </script>
-<title>Ecossistema de Cartões & Crédito</title>
+<title>Mapa do Sistema Financeiro, Pagamentos e Crédito</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
   :root{
@@ -396,10 +396,10 @@
 </div>
 
 <div class="header">
-  <div class="header-label">Mapa de referência</div>
-  <h1>Ecossistema de cartões <span class="h1-muted">&amp; crédito</span></h1>
-  <p>Sistema Monetário · Inflação · Câmbio · Crédito · Pagamentos · Risco · Mercado de Capitais</p>
-  <span class="version">v5 — completo</span>
+  <div class="header-label">Mapa de referência integrado</div>
+  <h1>Mapa do sistema financeiro <span class="h1-muted">pagamentos &amp; crédito</span></h1>
+  <p>SFN · Sistema Monetário · Inflação · Câmbio · Crédito · Pagamentos · Risco · Mercado de Capitais</p>
+  <span class="version">v6 — integrado</span>
 </div>
 
 <div class="menu-story" role="group" aria-label="Filtrar seções do menu">
@@ -476,6 +476,7 @@
     <div class="vc"><div class="vi">⛽</div><div class="vn" style="color:var(--yellow)">Combustível</div><div class="vd">Postos. MCC específico. Frota</div></div>
     <div class="vc"><div class="vi">💊</div><div class="vn" style="color:var(--blue)">Outros</div><div class="vd">Farmácia, cultura, mobilidade</div></div>
   </div>
+  <div class="note">Ver também: <strong style="color:var(--text)">SFN & Licenças</strong> para entender quem pode emitir/originar cada produto e <strong style="color:var(--text)">Infra Bancária</strong> para os trilhos e parceiros de liquidação.</div>
 </div>
 
 <!-- ══════ INFRA BANCÁRIA -->
@@ -534,7 +535,7 @@
     <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Desconto em folha e liquidação do contrato</div><div class="chain-desc">Baixo risco relativo por ter desconto em fonte de renda.</div></div></div>
     <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Fintech recebe comissão e mantém experiência</div><div class="chain-desc">Monetização via distribuição, sem carregar toda a camada regulatória.</div></div></div>
   </div>
-  <div class="note">Separar "quem vende", "quem emite" e "quem liquida" evita confusão de arquitetura e ajuda a enxergar risco regulatório de cada produto.</div>
+  <div class="note">Separar "quem vende", "quem emite" e "quem liquida" evita confusão de arquitetura e ajuda a enxergar risco regulatório de cada produto. Ver também: <strong style="color:var(--text)">Ecossistema</strong> (modelo de 4 partes) e <strong style="color:var(--text)">Títulos & Crédito</strong> (funding e risco).</div>
 </div>
 
 <!-- ══════ TAXAS -->
@@ -1710,7 +1711,7 @@
       <dt>BCB / BACEN</dt><dd>Regulador e supervisor que autoriza instituições e fiscaliza regras do sistema.</dd>
       <dt>S1 / S2</dt><dd>Classificação de bancos de maior porte e complexidade, com exigências prudenciais elevadas.</dd>
       <dt>IP</dt><dd>Instituição de Pagamento: opera conta de pagamento e meios de pagamento, mas sem captação à vista.</dd>
-      <dt>SCD / SFD</dt><dd>Licença voltada a crédito com recursos próprios, sem captar depósitos do público como banco tradicional.</dd>
+      <dt>SCD / SEP</dt><dd>Licenças de crédito reguladas pelo BACEN, sem captação à vista típica de banco comercial.</dd>
       <dt>ESD</dt><dd>Modelo para operar folha com maior controle da relação salário-conta, sujeito a barreira regulatória alta.</dd>
       <dt>Basileia III</dt><dd>Conjunto de exigências de capital e gestão de risco para resiliência do sistema bancário.</dd>
     </dl>
@@ -1734,20 +1735,8 @@
     </div>
   </div>
 
-  <div class="st">Escada de licenças — mais poder, mais exigência</div>
+  <div class="st">Escada de licenças (evolução linear) — mais poder, mais exigência</div>
   <div class="g4">
-    <div class="tc">
-      <div class="tag t-infra">Banco S1/S2</div>
-      <div class="tn">Licença plena</div>
-      <div class="td">Capta depósitos, concede crédito amplo e participa profundamente da infraestrutura financeira.</div>
-      <div class="tv">Alta exigência de capital e governança</div>
-    </div>
-    <div class="tc">
-      <div class="tag t-ciclo">SCD / SFD</div>
-      <div class="tn">Camada de crédito</div>
-      <div class="td">Concede crédito com recursos próprios, sem virar banco universal de depósitos.</div>
-      <div class="tv">Ponte entre IP e banco completo</div>
-    </div>
     <div class="tc">
       <div class="tag t-prod">IP</div>
       <div class="tn">Camada de pagamentos</div>
@@ -1755,10 +1744,22 @@
       <div class="tv">Base de muitas fintechs de distribuição</div>
     </div>
     <div class="tc">
+      <div class="tag t-ciclo">SCD / SEP</div>
+      <div class="tn">Camada de crédito</div>
+      <div class="td">Amplia o poder de originação de crédito sob regras prudenciais específicas, sem virar banco universal.</div>
+      <div class="tv">Ponte entre IP e banco completo</div>
+    </div>
+    <div class="tc">
+      <div class="tag t-infra">Banco S1/S2</div>
+      <div class="tn">Licença plena</div>
+      <div class="td">Capta depósitos, concede crédito amplo e participa profundamente da infraestrutura financeira.</div>
+      <div class="tv">Alta exigência de capital e governança</div>
+    </div>
+    <div class="tc">
       <div class="tag t-vc">ESD</div>
-      <div class="tn">Evolução estratégica</div>
-      <div class="td">Aproxima a instituição do fluxo de folha e da conta principal do trabalhador.</div>
-      <div class="tv">Barreira regulatória elevada</div>
+      <div class="tn">Trilha estratégica (não linear)</div>
+      <div class="td">Capacidade orientada à folha e conta salário; pode existir em estratégias distintas e não substitui os degraus de licença.</div>
+      <div class="tv">Aprofunda distribuição e relacionamento</div>
     </div>
   </div>
 
@@ -1769,7 +1770,7 @@
     <div class="rr"><span class="rk">Com licença adequada</span><span class="rv o">Mais controle de margem, risco e experiência</span></div>
     <div class="rr"><span class="rk">Basileia III</span><span class="rv">Quanto maior a licença, maior a obrigação de capital e disciplina prudencial</span></div>
   </div>
-  <div class="note">Produto financeiro não escala só com tecnologia: cada degrau de licença altera custo de capital, modelo de risco e autonomia operacional.</div>
+  <div class="note">Produto financeiro não escala só com tecnologia: cada degrau de licença altera custo de capital, modelo de risco e autonomia operacional. Ver também: <strong style="color:var(--text)">Infra Bancária</strong> para entender quando a licença própria ainda depende de trilho/parceiro operacional.</div>
 </div>
 
 <!-- ══════ GLOSSÁRIO -->
@@ -1851,7 +1852,7 @@
     <div class="tc"><div class="tag t-risco">Instituição</div><div class="tn">S1 / S2</div><div class="td">Segmentos de bancos de maior porte/complexidade, com exigências mais fortes de capital, governança e controle de risco.</div><div class="tv">Camada de bancos com maior impacto sistêmico</div></div>
     <div class="tc"><div class="tag t-seg">Instituição</div><div class="tn">Basileia III</div><div class="td">Conjunto internacional de regras para capital, liquidez e gestão de risco em bancos.</div><div class="tv">Base prudencial da resiliência bancária</div></div>
     <div class="tc"><div class="tag t-prod">Licença</div><div class="tn">IP — Instituição de Pagamento</div><div class="td">Permite conta de pagamento, Pix e cartão, mas sem captação à vista típica de banco tradicional.</div><div class="tv">Modelo comum de fintech de pagamentos</div></div>
-    <div class="tc"><div class="tag t-ciclo">Licença</div><div class="tn">SCD / SFD</div><div class="td">Licença orientada a crédito com recursos próprios, sem captar depósitos à vista como banco universal.</div><div class="tv">Camada intermediária entre IP e banco</div></div>
+    <div class="tc"><div class="tag t-ciclo">Licença</div><div class="tn">SCD / SEP</div><div class="td">Licenças orientadas a crédito reguladas pelo BACEN, sem captação à vista típica de banco comercial.</div><div class="tv">Camada intermediária entre IP e banco</div></div>
     <div class="tc"><div class="tag t-vc">Licença</div><div class="tn">ESD</div><div class="td">Estrutura para operar salário de forma mais direta com empregadores, elevando controle de relacionamento e dados.</div><div class="tv">Alta barreira de implementação regulatória</div></div>
     <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">BaaS</div><div class="td">Banking as a Service. Provedor que combina licença regulatória e APIs para terceiros ofertarem serviços financeiros.</div><div class="tv">"Licença + tecnologia" como serviço</div></div>
     <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">TaaS / Core Bancário</div><div class="td">Technology as a Service. Entrega plataforma bancária sem emprestar licença regulatória.</div><div class="tv">"Tecnologia sem licença"</div></div>
@@ -1921,7 +1922,7 @@
     });
   })();
   (function(){
-    var KEY='ecossistema-cartoes-theme';
+    var KEY='mapa-sistema-financeiro-theme';
     var root=document.documentElement;
     var btnL=document.getElementById('btn-theme-light');
     var btnD=document.getElementById('btn-theme-dark');
