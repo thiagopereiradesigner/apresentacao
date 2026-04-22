@@ -11,7 +11,7 @@
 <script>
 (function(){try{var h=document.documentElement,th=h.getAttribute('data-theme')||'dark',m=document.getElementById('meta-color-scheme'),tc=document.getElementById('meta-theme-color');if(m)m.setAttribute('content',th==='light'?'light':'dark');if(tc)tc.setAttribute('content',th==='light'?'#f4f4f5':'#0c0c0c');}catch(e){}})();
 </script>
-<title>Mapa do Sistema Financeiro, Pagamentos e Crédito</title>
+<title>Ecossistema de cartões &amp; crédito</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
   :root{
@@ -351,6 +351,58 @@
 
   .glossario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
 
+  .sfn-map-wrap{display:grid;grid-template-columns:1fr minmax(260px,320px);gap:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:18px;background:var(--surface);}
+  .sfn-map-main{padding:18px 16px;overflow-y:auto;max-height:min(78vh,720px);}
+  .sfn-map-side{border-left:1px solid var(--border);background:var(--surface2);padding:14px 14px 18px;overflow-y:auto;max-height:min(78vh,720px);}
+  .sfn-tier-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:18px 0 10px;display:flex;align-items:center;gap:8px;font-weight:600;}
+  .sfn-tier-label:first-child{margin-top:0;}
+  .sfn-tier-line{flex:1;height:1px;background:var(--border);}
+  .sfn-cards-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px;}
+  .sfn-card{position:relative;border:1px solid var(--border);border-radius:var(--radius-sm);padding:24px 10px 10px 10px;cursor:pointer;transition:transform .12s ease,border-color .15s ease,box-shadow .15s ease;background:var(--surface);min-width:132px;flex:0 1 auto;text-align:left;font:inherit;-webkit-tap-highlight-color:transparent;}
+  .sfn-card:hover{border-color:color-mix(in srgb,var(--accent) 45%,transparent);transform:translateY(-1px);}
+  .sfn-card:focus{outline:none;}
+  .sfn-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .sfn-card.sfn-card--active{box-shadow:0 0 0 2px var(--accent);}
+  .sfn-card-ico{font-size:16px;margin-bottom:4px;line-height:1;}
+  .sfn-card-title{font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px;}
+  .sfn-card-sub{font-size:9px;color:var(--dim);line-height:1.35;}
+  .sfn-card-badge{position:absolute;top:8px;right:8px;font-size:8px;padding:2px 5px;border-radius:3px;font-weight:700;}
+  .sb-r{background:color-mix(in srgb,var(--red) 22%,transparent);color:var(--red);}
+  .sb-b{background:color-mix(in srgb,var(--blue) 22%,transparent);color:var(--blue);}
+  .sb-c{background:color-mix(in srgb,var(--teal) 22%,transparent);color:var(--teal);}
+  .sb-g{background:color-mix(in srgb,var(--green) 22%,transparent);color:var(--green);}
+  .sb-y{background:color-mix(in srgb,var(--yellow) 22%,transparent);color:var(--yellow);}
+  .sb-p{background:color-mix(in srgb,var(--purple) 22%,transparent);color:var(--purple);}
+  .sfn-conn{font-size:10px;color:var(--dim);padding:3px 0 6px 14px;border-left:2px solid var(--border);margin:2px 0 2px 10px;line-height:1.5;}
+  .sfn-side-hint{text-align:center;color:var(--muted);font-size:11px;padding:36px 10px;line-height:1.65;}
+  .sfn-side-hint span{display:block;font-size:20px;margin-bottom:8px;opacity:.85;}
+  .sfn-side-title{font-size:13px;font-weight:700;margin-bottom:3px;color:var(--text);}
+  .sfn-side-type{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;line-height:1.4;}
+  .sfn-side-desc{font-size:11px;color:var(--muted);line-height:1.65;margin-bottom:10px;}
+  .sfn-side-list{margin:0;padding:0 0 0 14px;font-size:10px;color:var(--muted);line-height:1.5;}
+  .sfn-side-list li{margin:5px 0;}
+  .sfn-tag-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+  .sfn-tag{font-size:9px;padding:2px 6px;border:1px solid var(--border);border-radius:4px;color:var(--dim);background:var(--surface);}
+  .sfn-example,.sfn-onni{font-size:10px;line-height:1.65;padding:10px 12px;border-radius:var(--radius-sm);margin-top:10px;}
+  .sfn-example{border-left:3px solid var(--teal);background:var(--surface);}
+  .sfn-onni{border-left:3px solid var(--blue);background:color-mix(in srgb,var(--blue) 10%,var(--surface));color:var(--muted);}
+  .sfn-onni strong{color:var(--text);}
+  .cred-prose{font-size:11px;color:var(--muted);line-height:1.75;margin-bottom:14px;}
+  .cred-prose strong{color:var(--text);}
+  .cred-callout{border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin:14px 0;font-size:11px;line-height:1.7;}
+  .cred-callout .cc-t{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
+  .cc-y{border-left:3px solid var(--yellow);background:color-mix(in srgb,var(--yellow) 8%,var(--surface));}
+  .cc-y .cc-t{color:var(--yellow);}
+  .cc-r{border-left:3px solid var(--red);background:color-mix(in srgb,var(--red) 8%,var(--surface));}
+  .cc-r .cc-t{color:var(--red);}
+  .cc-p{border-left:3px solid var(--purple);background:color-mix(in srgb,var(--purple) 8%,var(--surface));}
+  .cc-p .cc-t{color:var(--purple);}
+  .cc-o{border-left:3px solid var(--orange);background:color-mix(in srgb,var(--orange) 8%,var(--surface));}
+  .cc-o .cc-t{color:var(--orange);}
+  .cc-g{border-left:3px solid var(--green);background:color-mix(in srgb,var(--green) 8%,var(--surface));}
+  .cc-g .cc-t{color:var(--green);}
+  .cred-minihead{font-size:10px;font-weight:700;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin:18px 0 8px;}
+
   .foot{text-align:center;font-size:10px;color:var(--muted);padding-top:16px;border-top:1px solid var(--border);letter-spacing:.05em;line-height:1.8;margin-top:32px;}
 
   @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
@@ -366,6 +418,9 @@
     .bias-grid,.cbr,.g3{grid-template-columns:repeat(2,1fr);}
   }
   @media(max-width:768px){
+    .sfn-map-wrap{grid-template-columns:1fr;}
+    .sfn-map-side{border-left:none;border-top:1px solid var(--border);max-height:45vh;}
+    .sfn-map-main{max-height:none;}
     .g2,.g3,.g4,.g5,.cbf,.cbr,.phase-grid,.unit-econ{grid-template-columns:repeat(2,1fr);}
     .txf{flex-direction:column;}.txs{border-right:none;border-bottom:1px solid var(--border);}
     .rotv{grid-template-columns:1fr;}.rotd{display:none;}
@@ -397,9 +452,9 @@
 
 <div class="header">
   <div class="header-label">Mapa de referência integrado</div>
-  <h1>Mapa do sistema financeiro <span class="h1-muted">pagamentos &amp; crédito</span></h1>
+  <h1>Ecossistema de cartões <span class="h1-muted">&amp; crédito</span></h1>
   <p>SFN · Sistema Monetário · Inflação · Câmbio · Crédito · Pagamentos · Risco · Mercado de Capitais</p>
-  <span class="version">v6 — integrado</span>
+  <span class="version">v7 — Brasil + economia do crédito</span>
 </div>
 
 <div class="menu-story" role="group" aria-label="Filtrar seções do menu">
@@ -416,10 +471,12 @@
   <button type="button" class="tab tab--fund" data-cat="fund" data-panel="inflacao-juros" onclick="showPanel('inflacao-juros',this)"><span class="tab-badge">Fund</span>Inflação & Juros</button>
   <button type="button" class="tab tab--fund" data-cat="fund" data-panel="sistema-global" onclick="showPanel('sistema-global',this)"><span class="tab-badge">Fund</span>Sistema Global</button>
   <button type="button" class="tab tab--fund" data-cat="fund" data-panel="sfn-licencas" onclick="showPanel('sfn-licencas',this)"><span class="tab-badge">Fund</span>SFN & Licenças</button>
+  <button type="button" class="tab tab--fund" data-cat="fund" data-panel="sfn-brasil" onclick="showPanel('sfn-brasil',this)"><span class="tab-badge">Fund</span>Mapa SFN (BR)</button>
   <span class="tab-sep" aria-hidden="true"></span>
   <button type="button" class="tab tab--cred" data-cat="cred" data-panel="cdi" onclick="showPanel('cdi',this)"><span class="tab-badge">Cred</span>CDI & CDB</button>
   <button type="button" class="tab tab--cred" data-cat="cred" data-panel="titulos-credito" onclick="showPanel('titulos-credito',this)"><span class="tab-badge">Cred</span>Títulos & Crédito</button>
   <button type="button" class="tab tab--cred" data-cat="cred" data-panel="encargos" onclick="showPanel('encargos',this)"><span class="tab-badge">Cred</span>Encargos</button>
+  <button type="button" class="tab tab--cred" data-cat="cred" data-panel="economia-credito" onclick="showPanel('economia-credito',this)"><span class="tab-badge">Cred</span>Economia do crédito</button>
   <span class="tab-sep" aria-hidden="true"></span>
   <button type="button" class="tab tab--pay" data-cat="pay" data-panel="eco" onclick="showPanel('eco',this)"><span class="tab-badge">Pay</span>Ecossistema</button>
   <button type="button" class="tab tab--pay" data-cat="pay" data-panel="infra-bancaria" onclick="showPanel('infra-bancaria',this)"><span class="tab-badge">Pay</span>Infra Bancária</button>
@@ -477,6 +534,7 @@
     <div class="vc"><div class="vi">💊</div><div class="vn" style="color:var(--blue)">Outros</div><div class="vd">Farmácia, cultura, mobilidade</div></div>
   </div>
   <div class="note">Ver também: <strong style="color:var(--text)">SFN & Licenças</strong> para entender quem pode emitir/originar cada produto e <strong style="color:var(--text)">Infra Bancária</strong> para os trilhos e parceiros de liquidação.</div>
+  <div class="note">Leitura em cadeia: em segundos a compra envolve <strong>portador, emissor, bandeira e credenciadora</strong>. O emissor captura interchange; a credenciadora serve o lojista e retém parte da MDR. O quadro de atores e o fluxo detalhado estão no <strong>Mapa SFN (BR)</strong> (cards Bandeiras e Credenciadora) e em <strong>Taxas &amp; MDR</strong>.</div>
 </div>
 
 <!-- ══════ INFRA BANCÁRIA -->
@@ -536,6 +594,7 @@
     <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Fintech recebe comissão e mantém experiência</div><div class="chain-desc">Monetização via distribuição, sem carregar toda a camada regulatória.</div></div></div>
   </div>
   <div class="note">Separar "quem vende", "quem emite" e "quem liquida" evita confusão de arquitetura e ajuda a enxergar risco regulatório de cada produto. Ver também: <strong style="color:var(--text)">Ecossistema</strong> (modelo de 4 partes) e <strong style="color:var(--text)">Títulos & Crédito</strong> (funding e risco).</div>
+  <div class="note"><strong>BaaS</strong> empresta licença + tecnologia; <strong>TaaS / core</strong> empresta só o sistema — quem responde perante o BCB continua sendo a instituição contratante. Para <strong>boleto registrado</strong>, quem não é participante direto da CIP precisa de IF ou BaaS com acesso. Alguns provedores (ex.: Celcoin) combinam modos conforme o cliente. O <strong>Mapa SFN (BR)</strong> posiciona BaaS, TaaS e boleto na camada de infraestrutura.</div>
 </div>
 
 <!-- ══════ TAXAS -->
@@ -660,6 +719,108 @@
       </table>
     </div>
   </div>
+</div>
+
+<!-- ══════ ECONOMIA DO CRÉDITO -->
+<div id="panel-economia-credito" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Spread</dt><dd>Diferença entre custo de captação (ex.: CDI) e taxa cobrada do cliente — margem bruta do crédito.</dd>
+      <dt>PDD</dt><dd>Provisão para devedores duvidosos; reserva contábil que reduz lucro conforme risco de inadimplência.</dd>
+      <dt>Interchange</dt><dd>Parcela da MDR que vai ao emissor; receita de quem paga a fatura em dia também gera interchange.</dd>
+      <dt>Rotativo</dt><dd>Saldo da fatura não pago em integral; taxa regulada (teto sobre principal em 30 dias).</dd>
+      <dt>Float</dt><dd>Dinheiro transitório aplicado pelo banco entre compra, liquidação e pagamento (ex.: parcelado lojista).</dd>
+      <dt>Limite pré-aprovado</dt><dd>Crédito já disponível na conta (cheque especial) sem contratação explícita.</dd>
+      <dt>CET</dt><dd>Custo efetivo total — juros + IOF + tarifas + seguros obrigatórios.</dd>
+      <dt>Score de crédito</dt><dd>Modelo que estima risco e define a taxa no crédito pessoal.</dd>
+      <dt>Viés do presente</dt><dd>Tendência a valorizar benefício imediato e subestimar custo futuro — explorado em produtos de baixa fricção.</dd>
+      <dt>Anatocismo</dt><dd>Juros sobre juros; acelera dívida em rotativo e cheque especial.</dd>
+      <dt>Portabilidade (cheque esp.)</dt><dd>Após 30 dias no limite, o banco deve oferecer migração para modalidade mais barata (regra BCB).</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+
+  <div class="st">A lógica universal do crédito bancário</div>
+  <p class="cred-prose">Em todo produto de crédito o banco tende a <strong>captar dinheiro mais barato</strong> (depósitos, CDB, referência CDI) e <strong>emprestar mais caro</strong>. A diferença é o <strong>spread</strong>. Do spread saem inadimplência e <strong>PDD</strong>, custo operacional, capital regulatório e impostos — o que sobra é lucro líquido.</p>
+  <div class="note">Analogia: o banco compra “dinheiro atacado” perto do CDI e vende “varejo” em linhas de crédito com margens diferentes conforme o risco.</div>
+
+  <div class="st">Decomposição didática (ordem de grandeza)</div>
+  <div class="sc">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num" style="color:var(--green)">+</div><div><div class="chain-title">Taxa cobrada do cliente</div><div class="chain-desc">Base 100% para comparar encargos.</div></div></div>
+      <div class="chain-item"><div class="chain-num" style="color:var(--dim)">−</div><div><div class="chain-title">Custo de captação (CDI)</div><div class="chain-desc">Referência de mercado para funding.</div></div></div>
+      <div class="chain-item"><div class="chain-num" style="color:var(--blue)">=</div><div><div class="chain-title">Spread bruto</div><div class="chain-desc">Margem antes de risco e operação.</div></div></div>
+      <div class="chain-item"><div class="chain-num" style="color:var(--red)">−</div><div><div class="chain-title">PDD e inadimplência</div><div class="chain-desc">Quanto mais arriscado o produto, maior a fatia.</div></div></div>
+      <div class="chain-item"><div class="chain-num" style="color:var(--yellow)">−</div><div><div class="chain-title">Operação + impostos</div><div class="chain-desc">Custo de manter a máquina e tributos.</div></div></div>
+      <div class="chain-item"><div class="chain-num" style="color:var(--green)">≈</div><div><div class="chain-title">Lucro líquido da operação</div><div class="chain-desc">O que resta para o acionista — alvo de gestão de risco e preço.</div></div></div>
+    </div>
+  </div>
+
+  <div class="st">Cartão de crédito — várias fontes de receita</div>
+  <p class="cred-prose">Além do <strong>rotativo</strong>, o cartão monetiza <strong>interchange</strong> em toda compra, <strong>float</strong> (especialmente parcelado lojista), <strong>anuidade</strong> e tarifas. Quem paga em dia ainda gera interchange; quem rota o saldo paga juros altos, mas também eleva provisão de risco.</p>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">Insight</div>
+    O banco não depende só de inadimplência para lucrar com cartão: <strong>volume com interchange + float</strong> já sustenta parte do modelo. O “ótimo” comercial costuma ser uso alto com pagamento em dia e uso ocasional de crédito remunerado.
+  </div>
+
+  <div class="st">Cheque especial — baixa fricção, alto spread</div>
+  <p class="cred-prose"><strong>Limite pré-aprovado</strong> na conta: o cliente usa sem contratar explicitamente. Taxa histórica muito alta; após regulação, <strong>teto de 8% ao mês</strong> e regra de <strong>portabilidade</strong> após 30 dias consecutivos no limite. <strong>Anatocismo</strong> acelera a dívida.</p>
+  <div class="cred-callout cc-r">
+    <div class="cc-t">Por que é caro</div>
+    Sem garantia real, uso em momento de aperto e pouca previsibilidade de uso para o banco — o preço compensa risco e seleção adversa.
+  </div>
+
+  <div class="st">Crédito pessoal — decisão ativa e score</div>
+  <p class="cred-prose">Há fricção intencional (pedido, prazo, contrato). A taxa reflete <strong>score de crédito</strong> e bureaus. O <strong>CET</strong> (não só a taxa nominal) mostra o custo real com IOF e tarifas. Para instituições digitais, o produto costuma ser <strong>porta de entrada</strong> para LTV maior no relacionamento.</p>
+  <div class="g3" style="margin-bottom:12px">
+    <div class="tc"><div class="tag t-bias">Score alto</div><div class="tn">~1,5% a.m.</div><div class="td">Perfil mais barato — risco menor.</div></div>
+    <div class="tc"><div class="tag t-ciclo">Score médio</div><div class="tn">~3,5% a.m.</div><div class="td">Faixa intermediária típica.</div></div>
+    <div class="tc"><div class="tag t-risco">Score baixo</div><div class="tn">7%+ a.m.</div><div class="td">Precificação de risco elevado.</div></div>
+  </div>
+  <div class="cred-callout cc-p">
+    <div class="cc-t">LTV e aquisição</div>
+    Crédito pessoal pode ter margem fina no contrato isolado, mas viabiliza <strong>cross-sell</strong> (cartão, seguros, investimentos) quando o CAC é diluído no tempo.
+  </div>
+
+  <div class="st">Comparativo rápido</div>
+  <div class="resp-matrix">
+    <table class="resp-table">
+      <thead><tr><th>Dimensão</th><th>Rotativo cartão</th><th>Cheque especial</th><th>Crédito pessoal</th></tr></thead>
+      <tbody>
+        <tr><td>Fricção</td><td>Automático após uso</td><td>Automático</td><td>Contratação explícita</td></tr>
+        <tr><td>Receita típica</td><td>IC + juros + float + anuidade</td><td>Sobretudo juros</td><td>Juros + tarifas + IOF</td></tr>
+        <tr><td>Regulação recente</td><td>Teto sobre principal (30 d)</td><td>Teto 8% a.m. + portabilidade</td><td>CET obrigatório</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cred-callout cc-o">
+    <div class="cc-t">Comportamento</div>
+    <strong>Viés do presente:</strong> quanto mais fácil usar crédito agora, maior tendência a subestimar o custo futuro — por isso produtos “zero clique” tendem a ser os mais caros.
+  </div>
+
+  <div class="st">IP (Instituição de Pagamento) e estes produtos</div>
+  <p class="cred-prose">Uma <strong>IP</strong> não concede crédito com recursos próprios nem capta depósito à vista como banco universal. <strong>Cartão pré-pago</strong> e <strong>antecipação salarial</strong> (adiantamento de salário já trabalhado, com acordo do empregador) costumam caber na licença; <strong>cartão de crédito</strong>, <strong>cheque especial</strong> e <strong>crédito pessoal</strong> em geral exigem <strong>parceiro</strong> com licença adequada (banco, SCD/SFD) ou modelo de sponsor.</p>
+  <div class="resp-matrix">
+    <table class="resp-table">
+      <thead><tr><th>Produto</th><th>IP sozinha</th><th>Como viabilizar</th></tr></thead>
+      <tbody>
+        <tr><td>Cartão pré-pago</td><td>Sim</td><td>Dentro da licença de IP.</td></tr>
+        <tr><td>Cartão de crédito</td><td>Não sozinha</td><td>BIN sponsor + banco emissor do crédito.</td></tr>
+        <tr><td>Cheque especial</td><td>Não</td><td>Licença bancária ou parceiro.</td></tr>
+        <tr><td>Crédito pessoal</td><td>Não sozinha</td><td>Originador SFD/banco (ex.: via BaaS).</td></tr>
+        <tr><td>Consignado</td><td>Distribuição</td><td>Parceiro emite CCD; IP faz canal e UX.</td></tr>
+        <tr><td>Antecipação salarial</td><td>Sim (caso típico)</td><td>Não é crédito novo — adiantamento devido.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cred-callout cc-g">
+    <div class="cc-t">Estratégia de plataforma</div>
+    Conta + folha + benefícios + cartão + crédito parceiro formam ecossistema: cada produto reforça dados, frequência e LTV — desde que a <strong>licença</strong> e o <strong>risco</strong> estejam no lugar certo (ver <strong>SFN &amp; Licenças</strong> e <strong>Mapa SFN (BR)</strong>).
+  </div>
+  <div class="note">Conexões: <strong>CDI &amp; CDB</strong> (custo de funding), <strong>Encargos</strong> (CET e rotativo), <strong>Taxas &amp; MDR</strong> (interchange), <strong>Ecossistema</strong> (quem ganha o quê na compra).</div>
 </div>
 
 <!-- ══════ CDI & CDB -->
@@ -1770,7 +1931,83 @@
     <div class="rr"><span class="rk">Com licença adequada</span><span class="rv o">Mais controle de margem, risco e experiência</span></div>
     <div class="rr"><span class="rk">Basileia III</span><span class="rv">Quanto maior a licença, maior a obrigação de capital e disciplina prudencial</span></div>
   </div>
+  <div class="note">Do ponto de vista do Estado, o <strong>CMN</strong> desenha regras macro (política monetária, tetos em linhas de crédito) e o <strong>BCB</strong> autoriza e fiscaliza cada instituição. Parcerias para CCD, CIP ou crédito não são “opcionais” por marketing — são consequência do perímetro legal até a próxima licença. O <strong>Mapa SFN (BR)</strong> visualiza essas camadas de cima para baixo.</div>
   <div class="note">Produto financeiro não escala só com tecnologia: cada degrau de licença altera custo de capital, modelo de risco e autonomia operacional. Ver também: <strong style="color:var(--text)">Infra Bancária</strong> para entender quando a licença própria ainda depende de trilho/parceiro operacional.</div>
+</div>
+
+<!-- ══════ MAPA SFN BRASIL (diagrama) -->
+<div id="panel-sfn-brasil" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>BCB / CMN</dt><dd>Apex regulatório: normas, autorização e supervisão do SFN.</dd>
+      <dt>S1 / S2</dt><dd>Bancos de maior porte e exigência prudencial; acesso direto a trilhos centrais.</dd>
+      <dt>IP / SFD / ESD</dt><dd>Instituição de Pagamento, Sociedade de Crédito Direto, Emissor de Salário Digital — licenças diferentes, poderes diferentes.</dd>
+      <dt>BaaS / TaaS</dt><dd>Licença+API vs. apenas tecnologia; confundir os dois quebra o desenho de risco.</dd>
+      <dt>Credenciadora</dt><dd>Adquirente que habilita lojista; MDR e liquidação D+n.</dd>
+      <dt>CCD</dt><dd>Cédula que formaliza crédito (ex.: consignado); exige originador licenciado.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="pt-gloss-btn" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+  <div class="st">Camadas do sistema — leitura de cima para baixo</div>
+  <p class="cred-prose">Cada card resume um papel no SFN brasileiro. <strong>Clique</strong> para ver responsabilidades, exemplos e uma coluna “exemplo ilustrativo” para o caso de uma <strong>IP de folha/benefícios</strong> (cartão corporativo, consignado parceiro, Pix). Valores e nomes de mercado são didáticos.</p>
+  <div class="sfn-map-wrap">
+    <div class="sfn-map-main">
+      <div class="sfn-tier-label" style="color:var(--red)"><span>Camada 1 — Reguladores</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('bcb',this)"><span class="sfn-card-badge sb-r">APEX</span><div class="sfn-card-ico" aria-hidden="true">🏛️</div><div class="sfn-card-title">Banco Central</div><div class="sfn-card-sub">BCB · autoriza e fiscaliza</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('cmn',this)"><span class="sfn-card-badge sb-r">NORMA</span><div class="sfn-card-ico" aria-hidden="true">⚖️</div><div class="sfn-card-title">CMN</div><div class="sfn-card-sub">Diretrizes macro</div></button>
+      </div>
+      <div class="sfn-conn">regula e autoriza as camadas abaixo</div>
+
+      <div class="sfn-tier-label" style="color:var(--blue)"><span>Camada 2 — IF plenas</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('banco_s1_s2',this)"><span class="sfn-card-badge sb-b">S1/S2</span><div class="sfn-card-ico" aria-hidden="true">🏦</div><div class="sfn-card-title">Banco múltiplo</div><div class="sfn-card-sub">Captação + crédito + SPB</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('banco_emissao',this)"><span class="sfn-card-badge sb-b">EMISSOR</span><div class="sfn-card-ico" aria-hidden="true">💳</div><div class="sfn-card-title">Emissor de cartão</div><div class="sfn-card-sub">Membro de bandeira</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('idic',this)"><span class="sfn-card-badge sb-b">FGC</span><div class="sfn-card-ico" aria-hidden="true">🛡️</div><div class="sfn-card-title">FGC / proteção</div><div class="sfn-card-sub">Depósitos vs. conta IP</div></button>
+      </div>
+      <div class="sfn-conn">infraestrutura habilitante para IPs e SFDs</div>
+
+      <div class="sfn-tier-label" style="color:var(--teal)"><span>Camada 3 — IP &amp; SFD</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('ip',this)"><span class="sfn-card-badge sb-c">IP</span><div class="sfn-card-ico" aria-hidden="true">⚡</div><div class="sfn-card-title">Instituição de Pagamento</div><div class="sfn-card-sub">Ex.: IP de folha · você está aqui</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('sfd',this)"><span class="sfn-card-badge sb-c">SFD</span><div class="sfn-card-ico" aria-hidden="true">🤝</div><div class="sfn-card-title">Sociedade de Crédito Direto</div><div class="sfn-card-sub">Crédito sem depósito</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('esd',this)"><span class="sfn-card-badge sb-c">ESD</span><div class="sfn-card-ico" aria-hidden="true">🚀</div><div class="sfn-card-title">Emissor Salário Digital</div><div class="sfn-card-sub">Folha direto na conta</div></button>
+      </div>
+      <div class="sfn-conn">habilitam produtos via contrato e API</div>
+
+      <div class="sfn-tier-label" style="color:var(--green)"><span>Camada 4 — Infra &amp; distribuição</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('baas',this)"><span class="sfn-card-badge sb-g">BaaS</span><div class="sfn-card-ico" aria-hidden="true">🔌</div><div class="sfn-card-title">Banking as a Service</div><div class="sfn-card-sub">Licença + API</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('correspondente',this)"><span class="sfn-card-badge sb-g">CORR</span><div class="sfn-card-ico" aria-hidden="true">🏪</div><div class="sfn-card-title">Correspondente</div><div class="sfn-card-sub">Distribui para IF</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('boleto',this)"><span class="sfn-card-badge sb-g">BOLETO</span><div class="sfn-card-ico" aria-hidden="true">📄</div><div class="sfn-card-title">Boleto registrado</div><div class="sfn-card-sub">CIP / câmaras</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('taas',this)"><span class="sfn-card-badge sb-g">TaaS</span><div class="sfn-card-ico" aria-hidden="true">🛠️</div><div class="sfn-card-title">Core / TaaS</div><div class="sfn-card-sub">Tech sem licença IF</div></button>
+      </div>
+      <div class="sfn-conn">chega ao usuário final via app e parceiros</div>
+
+      <div class="sfn-tier-label" style="color:var(--yellow)"><span>Camada 5 — Produtos</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('consignado',this)"><span class="sfn-card-badge sb-y">CRÉD</span><div class="sfn-card-ico" aria-hidden="true">💰</div><div class="sfn-card-title">Consignado / CCD</div><div class="sfn-card-sub">Desconto em folha</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('antecipacao',this)"><span class="sfn-card-badge sb-y">ANTEC</span><div class="sfn-card-ico" aria-hidden="true">⏩</div><div class="sfn-card-title">Antecipação salarial</div><div class="sfn-card-sub">Adiantamento devido</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('cartao_corp',this)"><span class="sfn-card-badge sb-y">CARTÃO</span><div class="sfn-card-ico" aria-hidden="true">🪙</div><div class="sfn-card-title">Cartão corporativo</div><div class="sfn-card-sub">Program manager</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('pix',this)"><span class="sfn-card-badge sb-y">PIX</span><div class="sfn-card-ico" aria-hidden="true">⚡</div><div class="sfn-card-title">Pix / TED</div><div class="sfn-card-sub">Trilhos BCB</div></button>
+      </div>
+
+      <div class="sfn-tier-label" style="color:var(--purple)"><span>Paralelo — rede de cartões</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('bandeiras',this)"><span class="sfn-card-badge sb-p">REDE</span><div class="sfn-card-ico" aria-hidden="true">🌐</div><div class="sfn-card-title">Bandeiras</div><div class="sfn-card-sub">Visa · MC · Elo</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('credenciadora',this)"><span class="sfn-card-badge sb-p">ADQ</span><div class="sfn-card-ico" aria-hidden="true">🖥️</div><div class="sfn-card-title">Credenciadora</div><div class="sfn-card-sub">Lojista · MDR</div></button>
+      </div>
+    </div>
+    <div class="sfn-map-side">
+      <div class="sfn-side-hint" id="sfn-map-hint"><span aria-hidden="true">🗺️</span>Clique em um card à esquerda para ver detalhes, tags e o encaixe com uma IP de folha/benefícios (exemplo ilustrativo).</div>
+      <div id="sfn-map-detail" style="display:none" class="sfn-map-detail-inner"></div>
+    </div>
+  </div>
+  <div class="note">Narrativa integrada: no modelo de <strong>quatro partes</strong> (portador, emissor, bandeira, adquirente), o emissor é quem concentra risco de crédito e interchange; a credenciadora serve o lojista. Ver aba <strong>Ecossistema</strong> para o fluxo da compra e <strong>Taxas &amp; MDR</strong> para a conta do lojista.</div>
+  <div class="note"><strong>BaaS vs. TaaS:</strong> BaaS oferece licença + tecnologia; TaaS vende sistema para quem já tem (ou busca) licença. Provedores como Celcoin podem operar nos dois modos conforme o cliente — o ponto é saber quem carrega o risco regulatório em cada contrato.</div>
 </div>
 
 <!-- ══════ GLOSSÁRIO -->
@@ -1781,8 +2018,21 @@
     <p class="pt-intro">Todos os termos do mapa em um só lugar. Em cada aba há um resumo <strong>Termos nesta seção</strong> com o vocabulário daquele tema; use esta lista para buscar qualquer definição.</p>
     </div>
   </details>
-  <div class="st">86 termos</div>
+  <div class="st">99 termos</div>
   <div class="glossario-grid">
+    <div class="tc"><div class="tag t-risco">Crédito</div><div class="tn">PDD</div><div class="td">Provisão para Devedores Duvidosos. Reserva contábil antecipando inadimplência; reduz lucro bruto conforme risco da carteira.</div><div class="tv">Mais PDD em rotativo e cheque especial</div></div>
+    <div class="tc"><div class="tag t-taxa">Crédito</div><div class="tn">IOF</div><div class="td">Imposto sobre Operações Financeiras. Entra no CET de crédito (alíquotas fixa e diária sobre o principal).</div><div class="tv">Sempre considerar no CET, não só nos juros</div></div>
+    <div class="tc"><div class="tag t-risco">Crédito</div><div class="tn">Anatocismo</div><div class="td">Juros sobre juros. Acelera o crescimento da dívida em rotativo e cheque especial.</div><div class="tv">Saldo cresce rápido sem amortização</div></div>
+    <div class="tc"><div class="tag t-legal">Crédito</div><div class="tn">Portabilidade — cheque esp.</div><div class="td">Após 30 dias consecutivos no limite do cheque especial, o banco deve oferecer migração para modalidade mais barata (regra BCB).</div><div class="tv">Cliente pode aceitar ou recusar</div></div>
+    <div class="tc"><div class="tag t-prod">Crédito</div><div class="tn">Limite pré-aprovado</div><div class="td">Crédito já disponível na conta sem contratação explícita — base do cheque especial.</div><div class="tv">Fricção zero → preço alto</div></div>
+    <div class="tc"><div class="tag t-bias">Comportamento</div><div class="tn">Viés do presente</div><div class="td">Valorizar benefício imediato e subestimar custo futuro; explorado em produtos de uso instantâneo.</div><div class="tv">Design de um clique</div></div>
+    <div class="tc"><div class="tag t-risco">Produto</div><div class="tn">Cheque especial</div><div class="td">Limite atrelado à conta corrente; juros desde o primeiro dia de uso do limite; teto regulatório mensal.</div><div class="tv">Linha cara após rotativo</div></div>
+    <div class="tc"><div class="tag t-prod">Produto</div><div class="tn">Crédito pessoal</div><div class="td">Empréstimo com contratação explícita, prazo e parcelas; precificação por score e bureaus.</div><div class="tv">CET obrigatório · cross-sell comum</div></div>
+    <div class="tc"><div class="tag t-risco">Crédito</div><div class="tn">Score de crédito</div><div class="td">Modelo que estima probabilidade de inadimplência; define faixa de taxa no pessoal.</div><div class="tv">Serasa · Boa Vista · modelos internos</div></div>
+    <div class="tc"><div class="tag t-infra">Parceiro</div><div class="tn">BMP (Money Plus)</div><div class="td">Instituição com licença para crédito e atuação como BaaS; exemplo frequente de originador de CCD em consignado para IPs.</div><div class="tv">Originador · APIs · CCD</div></div>
+    <div class="tc"><div class="tag t-infra">Parceiro</div><div class="tn">Celcoin</div><div class="td">Provedor com foco em BaaS e core; exemplo de operador com acesso a trilhos (CIP, SPB, SPI) para parceiros.</div><div class="tv">BaaS + TaaS conforme caso</div></div>
+    <div class="tc"><div class="tag t-inv">Funding</div><div class="tn">Debênture</div><div class="td">Título de dívida para captação no mercado; veículo comum para SFD financiar carteira sem depósito.</div><div class="tv">Alternativa ao depósito bancário</div></div>
+    <div class="tc"><div class="tag t-ciclo">Produto</div><div class="tn">Antecipação salarial</div><div class="td">Adiantamento de valores já trabalhados, com acordo do empregador; não é o mesmo que consignado novo.</div><div class="tv">IP pode operar em muitos desenhos</div></div>
     <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">MDR</div><div class="td">Taxa total cobrada do lojista. Inclui IC, scheme fee e margem do adquirente.</div><div class="tv">Débito ~0,7–1,2% · Crédito ~1,8–3,5%</div></div>
     <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">IC — Interchange</div><div class="td">Parte do MDR repassada ao emissor. Principal receita de volume do banco.</div><div class="tv">Classic ~0,75% · Titanium ~2,00%</div></div>
     <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">Scheme Fee</div><div class="td">Taxa da bandeira cobrada dos dois lados. Por transação ou por cartão ativo.</div><div class="tv">~0,05–0,15% por transação</div></div>
@@ -1886,6 +2136,42 @@
     p.classList.add('active');
     void p.offsetWidth;
     el.classList.add('active');
+  }
+  var SFN_MAP_DETAILS={
+    bcb:{title:'Banco Central do Brasil',type:'Regulador apex — BCB',desc:'Regulador máximo do SFN. Resoluções e circulares definem o que cada tipo de instituição pode fazer. Autoriza bancos, IPs, SFDs e ESDs.',responsibilities:['Emitir licenças','Supervisionar liquidez e patrimônio de referência','Regular Pix, TED e instrumentos de pagamento','Publicar normas (ex.: Res. 80/2021 — IPs)','Aplicar sanções e intervenções'],tags:['Res. BCB 80/2021','SFN','SPB'],example:'Toda mudança de licença ou produto regulado passa pelo BCB, com requisitos de capital, governança e compliance.',onni:null},
+    cmn:{title:'Conselho Monetário Nacional',type:'Normativo — CMN',desc:'Órgão normativo máximo. Define políticas monetárias e de crédito que o BCB executa. Composto por Min. da Fazenda, Min. do Planejamento e Presidente do BCB.',responsibilities:['Diretrizes de política monetária','Limites e regras de crédito','Marco de câmbio','Orientação sobre poupança e investimento'],tags:['Política monetária','Crédito'],example:'Ex.: tetos e regras de linhas de crédito (consignado privado etc.) partem do arcabouço CMN/BCB.',onni:null},
+    banco_s1_s2:{title:'Banco múltiplo / comercial',type:'IF — segmento S1 / S2',desc:'Licença plena: capta depósito à vista, concede crédito, emite CDB, câmbio. Maiores requisitos de capital e governança.',responsibilities:['Captar depósitos e CDB/LCI/LCA','Crédito amplo','Câmbio e derivativos','Participação no SPB','Basileia III'],tags:['Basileia III','Depósito à vista','SPB'],example:'Grandes bancos e digitais que migraram para licença bancária plena.',onni:'A IP exemplo apoia-se em banco S1/S2 para TED, custódia e, quando necessário, originação de crédito por parceiro.'},
+    banco_emissao:{title:'Banco emissor de cartão',type:'Emissor — membro de bandeira',desc:'Instituição que emite cartão ao portador: limite, fatura, liquidação com a bandeira. Cartão de crédito exige membro emissor.',responsibilities:['Emitir cartão físico/virtual','Gerir limite e cobrança','Liquidação com a bandeira','Chargeback e disputas','Risco de crédito do portador'],tags:['BIN sponsor','Chargeback','Tokenização'],example:'Emissão própria ou via parceiro que cede BIN enquanto o program manager cuida da UX.',onni:'Cartão corporativo costuma combinar program manager (IP) + BIN sponsor bancário.'},
+    idic:{title:'FGC — Fundo Garantidor de Crédito',type:'Garantia',desc:'Garante depósitos em IFs até o limite legal por CPF/CNPJ. Conta de pagamento em IP segue regime de segregação e custódia — não é o mesmo mecanismo do FGC em depósito bancário.',responsibilities:['Proteção a depositantes em IFs cobertas','Administração do fundo','Pagamento em liquidação/intervenção'],tags:['Limite legal','CPF/CNPJ'],example:'CDB em banco coberto x saldo em IP: regras de proteção diferem.',onni:'Recursos de clientes da IP ficam segregados e aplicados em ativos de baixo risco; custodiante costuma ser banco parceiro.'},
+    ip:{title:'Instituição de Pagamento',type:'IP — Res. BCB nº 80/2021',desc:'Conta de pagamento, Pix, boleto (com parceiros), cartão pré-pago. Não capta depósito à vista como banco nem concede crédito com recursos próprios.',responsibilities:['Contas de pagamento','Pix e transferências','Cartão pré-pago/débito','Segregação de recursos','Capital mínimo regulatório'],tags:['Conta de pagamento','Moeda eletrônica','Sem captação de depósito'],example:'Modelo de grandes apps de pagamento e wallet.',onni:'Uma IP de folha terceiriza originação de crédito (CCD, pessoal) para SFD/banco parceiro.'},
+    sfd:{title:'Sociedade de Crédito Direto',type:'SFD — crédito sem depósito público',desc:'Concede crédito com recursos próprios; capta via debêntures, FIDC etc., não via depósito de público em geral.',responsibilities:['Empréstimos e financiamentos','Funding via mercado de dívida / FIDC','Originar e ceder carteiras'],tags:['Crédito próprio','FIDC','Sem depósito'],example:'Parceiro típico para formalizar CCD em consignado quando a distribuição é feita por IP.',onni:'Evolução possível: a própria IP buscar SFD para reduzir dependência de um único originador.'},
+    esd:{title:'Emissor de Salário Digital',type:'ESD — Lei 13.986/2020',desc:'Recebe folha diretamente do empregador na conta de pagamento, sem banco intermediário na cadeia do salário.',responsibilities:['Homologação e operação da folha digital','Crédito em conta do trabalhador','Requisitos de segurança e resiliência'],tags:['Folha direta','Alta barreira regulatória'],example:'Muda aquisição, dados de folha e viabilidade de desconto na fonte para crédito.',onni:'Para a IP exemplo, ESD é salto de categoria: conta principal onde o salário cai, com efeito em CAC e risco de crédito.'},
+    baas:{title:'Banking as a Service (BaaS)',type:'Infraestrutura',desc:'IF/IP que abre licença e APIs para terceiros ofertarem serviços financeiros sem licença própria.',responsibilities:['APIs de conta, cartão, Pix, crédito','Compliance regulatório para parceiros','Liquidação junto ao BCB'],tags:['API-first','White-label'],example:'Parceiro origina CCD ou oferece trilho de boleto/CIP para quem não participa direto da câmara.',onni:'IP de folha costuma ser cliente de BaaS para crédito e cobrança; no futuro pode virar BaaS para empresas.'},
+    correspondente:{title:'Correspondente bancário',type:'Distribuição',desc:'Empresa que presta serviços ao público em nome da IF contratante, sem licença bancária própria.',responsibilities:['Saques, recebimentos, encaminhamento de propostas','Distribuição de produtos da IF'],tags:['Sem licença própria','Responsabilidade da IF'],example:'Rede física ou digital que estende o alcance do emissor.',onni:'Parceiros HR ou rede física podem atuar como correspondentes para antecipação ou produtos da IF.'},
+    boleto:{title:'Boleto registrado',type:'CIP / cobrança',desc:'Boleto registrado exige participação na infraestrutura de registro e liquidação (ex.: CIP). IPs em geral usam banco ou BaaS participante.',responsibilities:['Registro do título','Liquidação ao beneficiário','Baixa e reconciliação'],tags:['CIP','FEBRABAN'],example:'Cliente vê boleto “da marca”, mas o registro pode ser de IF participante da câmara.',onni:'A IP exemplo delega emissão/registro a IF com acesso CIP ou a BaaS com esse acesso.'},
+    taas:{title:'Tech as a Service (TaaS)',type:'Fornecedor de software',desc:'Core, ledger e motores sem licença financeira: a IF contratante responde pelo regulatório.',responsibilities:['Core bancário','Motores de crédito e integrações','SLA e continuidade'],tags:['Sem licença IF','Core banking'],example:'“Traga sua licença, use nossa plataforma”.',onni:'Diferente de BaaS: TaaS não empresta licença; só tecnologia.'},
+    consignado:{title:'Crédito consignado / CCD',type:'Produto',desc:'Desconto em folha; CCD formaliza a operação. Exige originador com poder de crédito (banco/SFD).',responsibilities:['Originador emite CCD','Empregador desconta em folha','Margem consignável regulada'],tags:['CCD','Desconto em folha'],example:'Fluxo típico: pedido no app da IP → análise do SFD → liberação → RH desconta.',onni:'IP exemplo distribui; SFD parceiro origina e carrega risco regulatório da CCD.'},
+    antecipacao:{title:'Antecipação salarial',type:'Produto — adiantamento',desc:'Acesso a valores já trabalhados antes do pagamento; com acordo do empregador. Não é novo empréstimo no mesmo sentido do consignado.',responsibilities:['Validação com empregador','Limite sobre saldo “ganho”','Desconto na folha do período'],tags:['Earned wage access','Menor barreira para IP'],example:'IP pode oferecer sem ser banco, desde estruturado como adiantamento.',onni:'Encaixa na licença de IP: frequência e hábito de uso sem exigir CCD.'},
+    cartao_corp:{title:'Cartão corporativo',type:'Produto',desc:'Em geral combina program manager (UX, limites, categorias) com emissor/BIN sponsor e bandeira.',responsibilities:['Program manager: app e políticas','Sponsor: BIN e lastro regulatório','Bandeira: rede e regras'],tags:['Pré-pago ou crédito','BIN sponsor'],example:'Mesmo padrão de várias fintechs antes de virarem emissoras diretos.',onni:'IP controla experiência; banco parceiro sustenta emissão perante a bandeira.'},
+    pix:{title:'Pix / TED',type:'Pagamentos — BCB / SPB',desc:'Pix operado pelo BCB; TED via STR. IPs grandes participam de Pix; TED frequentemente via banco liquidante.',responsibilities:['Pix: participação conforme escala','TED: acesso indireto se não for participante STR'],tags:['SPI','STR','DICT'],example:'Cliente vê tudo no app da IP; liquidação pode passar por parceiro.',onni:'Crescimento pode tornar relevante participação mais direta em trilhos, conforme licença.'},
+    bandeiras:{title:'Bandeiras de cartão',type:'Rede global',desc:'Conectam emissor e credenciadora; regras de segurança, chargeback e tarifas de rede.',responsibilities:['Autorização em tempo real','Regras de disputa','Certificação de participantes'],tags:['Interchange','Visa · Mastercard · Elo'],example:'Cada comprada passa pela rede da bandeira em frações de segundo.',onni:'IP emissora precisa de acordo de marca; pode ser direto ou via sponsor.'},
+    credenciadora:{title:'Credenciadora (adquirente)',type:'Lado do lojista',desc:'Credencia lojista, processa via bandeira, liquida valor líquido da MDR em D+n.',responsibilities:['POS e e-commerce','Antifraude e chargeback do lojista','Liquidação ao estabelecimento'],tags:['MDR','Stone · Cielo · Rede'],example:'Compra com cartão corporativo: adquirente do lojista + bandeira + emissor.',onni:'A IP exemplo está no lado emissor; entender MDR explica custo da aceitação.'}
+  };
+  function sfnMapShowDetail(key,btn){
+    var d=SFN_MAP_DETAILS[key];
+    if(!d)return;
+    document.querySelectorAll('#panel-sfn-brasil .sfn-card').forEach(function(c){c.classList.remove('sfn-card--active');});
+    if(btn)btn.classList.add('sfn-card--active');
+    var hint=document.getElementById('sfn-map-hint');
+    var box=document.getElementById('sfn-map-detail');
+    if(hint)hint.style.display='none';
+    if(!box)return;
+    box.style.display='block';
+    var tags=(d.tags||[]).map(function(t){return '<span class="sfn-tag">'+t+'</span>';}).join('');
+    var resp=(d.responsibilities||[]).map(function(r){return '<li>'+r+'</li>';}).join('');
+    var ex=d.example?'<div class="cred-minihead">Exemplo prático</div><div class="sfn-example">'+d.example+'</div>':'';
+    var on=d.onni?'<div class="cred-minihead">Exemplo — IP de folha / benefícios</div><div class="sfn-onni">'+d.onni+'</div>':'';
+    box.innerHTML='<div class="sfn-side-title">'+d.title+'</div><div class="sfn-side-type">'+d.type+'</div><p class="sfn-side-desc">'+d.desc+'</p><div class="sfn-tag-row">'+tags+'</div><div class="cred-minihead">Responsabilidades</div><ul class="sfn-side-list">'+resp+'</ul>'+ex+on;
   }
   function setTabCategoryFilter(cat){
     var tabsWrap=document.querySelector('.tabs');
