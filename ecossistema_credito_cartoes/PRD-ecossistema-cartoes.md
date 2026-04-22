@@ -1,8 +1,8 @@
 # PRD — Mapa do Sistema Financeiro, Pagamentos e Crédito
 
-**Artefato principal:** `mapa-sistema-financeiro.html`  
-**Artefato de conteúdo (compatibilidade):** `ecossistema-cartoes.html`  
-**Versão da página:** v6 — integrado
+**Artefato principal:** `index.html` (mapa + glossário + trilha guiada Onnibank)  
+**Atalhos legados:** `mapa-sistema-financeiro.html`, `ecossistema-cartoes.html` → redirecionam para `index.html`  
+**Versão da página:** v8 — bíblia integrada
 
 ---
 
@@ -65,7 +65,7 @@
 
 ---
 
-## 4. Coerência conceitual aplicada na v6
+## 4. Coerência conceitual aplicada na v8
 
 - A escada de licenças deixa de misturar poder regulatório com trilha de produto:
   - **linear:** `IP -> SCD/SEP -> Banco S1/S2`;
@@ -106,4 +106,4 @@
 
 ---
 
-*Documento atualizado a partir do conteúdo de `ecossistema-cartoes.html` e ponto de entrada `mapa-sistema-financeiro.html` na versão v6.*
+*Documento alinhado ao artefato único `index.html` (v8); atalhos legados redirecionam para o mesmo arquivo.*
