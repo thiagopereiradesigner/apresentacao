@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR" data-theme="dark" data-ds-theme="ringgo-dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
-(function(){try{var k='mapa-sistema-financeiro-theme',h=document.documentElement,t=localStorage.getItem(k);if(t==='light'||t==='dark'){h.setAttribute('data-theme',t);}else if(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches){h.setAttribute('data-theme','light');}else{h.setAttribute('data-theme','dark');}var th=h.getAttribute('data-theme');h.style.colorScheme=th==='light'?'only light':'dark';}catch(e){}})();
+(function(){try{var k='mapa-sistema-financeiro-theme',h=document.documentElement,t=localStorage.getItem(k);if(t==='light'||t==='dark'){h.setAttribute('data-theme',t);}else if(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches){h.setAttribute('data-theme','light');}else{h.setAttribute('data-theme','dark');}var th=h.getAttribute('data-theme');h.setAttribute('data-ds-theme',th==='light'?'ringgo':'ringgo-dark');h.style.colorScheme=th==='light'?'only light':'dark';}catch(e){}})();
 </script>
 <meta id="meta-color-scheme" name="color-scheme" content="dark">
-<meta id="meta-theme-color" name="theme-color" content="#0c0c0c">
+<meta id="meta-theme-color" name="theme-color" content="#0B0F14">
 <script>
-(function(){try{var h=document.documentElement,th=h.getAttribute('data-theme')||'dark',m=document.getElementById('meta-color-scheme'),tc=document.getElementById('meta-theme-color');if(m)m.setAttribute('content',th==='light'?'light':'dark');if(tc)tc.setAttribute('content',th==='light'?'#f4f4f5':'#0c0c0c');}catch(e){}})();
+(function(){try{var h=document.documentElement,th=h.getAttribute('data-theme')||'dark',m=document.getElementById('meta-color-scheme'),tc=document.getElementById('meta-theme-color');if(m)m.setAttribute('content',th==='light'?'light':'dark');if(tc)tc.setAttribute('content',th==='light'?'#FFFFFF':'#0B0F14');}catch(e){}})();
 </script>
 <title>Bíblia de estudo — Ecossistema de cartões &amp; crédito</title>
 <style>
@@ -480,6 +480,8 @@
     .menu-chip{font-size:8px;padding:3px 7px;}
   }
 </style>
+<link rel="stylesheet" href="../../../meu-design-system/demos/ds-demo-base.css">
+<link rel="stylesheet" href="ds-ringgo-bridge.css">
 </head>
 <body>
 <div class="page">
@@ -2533,12 +2535,13 @@
     function apply(theme){
       var t=theme==='light'?'light':'dark';
       root.setAttribute('data-theme',t);
+      root.setAttribute('data-ds-theme',t==='light'?'ringgo':'ringgo-dark');
       root.style.colorScheme=t==='light'?'only light':'dark';
       try{localStorage.setItem(KEY,t);}catch(e){}
       var metaCs=document.getElementById('meta-color-scheme');
       var metaTc=document.getElementById('meta-theme-color');
       if(metaCs)metaCs.setAttribute('content',t==='light'?'light':'dark');
-      if(metaTc)metaTc.setAttribute('content',t==='light'?'#f4f4f5':'#0c0c0c');
+      if(metaTc)metaTc.setAttribute('content',t==='light'?'#FFFFFF':'#0B0F14');
       if(btnL&&btnD){
         btnL.setAttribute('aria-pressed',t==='light'?'true':'false');
         btnD.setAttribute('aria-pressed',t==='dark'?'true':'false');

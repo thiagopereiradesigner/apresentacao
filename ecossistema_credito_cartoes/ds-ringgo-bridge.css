@@ -1,0 +1,75 @@
+/**
+ * Ponte: variáveis semânticas do ecossistema (--bg, --accent, chips, etc.)
+ * → tokens Ringgo do design system (carregar depois de ds-demo-base.css).
+ * data-ds-theme é definido no HTML em sincronia com data-theme (light → ringgo, dark → ringgo-dark).
+ */
+
+html[data-ds-theme="ringgo"] {
+  --bg: var(--ds-bg);
+  --surface: var(--ds-surface);
+  --surface2: var(--ds-bg-subtle);
+  --border: var(--ds-border);
+  --accent: var(--ds-success);
+  --accent-soft: color-mix(in srgb, var(--ds-success) 18%, transparent);
+  --blue: var(--ds-color-brand-secondary-400);
+  --green: var(--ds-primary-500);
+  --yellow: var(--ds-warning);
+  --red: var(--ds-color-brand-accent-rose-500);
+  --purple: var(--ds-color-brand-accent-500);
+  --orange: var(--ds-accent-warm);
+  --teal: var(--ds-accent-teal);
+  --pink: var(--ds-accent-rose);
+  --text: var(--ds-text-primary);
+  --muted: var(--ds-text-secondary);
+  --dim: var(--ds-text-tertiary);
+  --step-num: var(--ds-placeholder);
+  --shadow-elevate: rgba(0, 0, 0, 0.12);
+  --bar-fg: var(--ds-on-brand-primary);
+  --version-bg: var(--ds-success-bg);
+  --version-border: color-mix(in srgb, var(--ds-success) 40%, transparent);
+  --tab-active-bg: var(--ds-surface);
+  --tab-active-fg: var(--ds-text-primary);
+  --radius: var(--ds-radius-sm);
+  --radius-sm: var(--ds-radius-sm);
+  font-family: var(--ds-font-family);
+}
+
+html[data-ds-theme="ringgo-dark"] {
+  --bg: var(--ds-bg);
+  --surface: var(--ds-surface);
+  --surface2: var(--ds-bg-subtle);
+  --border: var(--ds-border);
+  --accent: var(--ds-success);
+  --accent-soft: color-mix(in srgb, var(--ds-success) 22%, transparent);
+  --blue: var(--ds-color-brand-secondary-400);
+  --green: var(--ds-primary-500);
+  --yellow: var(--ds-warning);
+  --red: var(--ds-color-brand-accent-rose-400);
+  --purple: var(--ds-color-brand-accent-400);
+  --orange: var(--ds-accent-warm);
+  --teal: var(--ds-accent-teal);
+  --pink: var(--ds-accent-rose);
+  --text: var(--ds-text-primary);
+  --muted: var(--ds-text-secondary);
+  --dim: var(--ds-text-tertiary);
+  --step-num: var(--ds-placeholder);
+  --shadow-elevate: rgba(0, 0, 0, 0.5);
+  --bar-fg: var(--ds-on-brand-primary);
+  --version-bg: var(--ds-success-bg);
+  --version-border: color-mix(in srgb, var(--ds-success) 48%, transparent);
+  --tab-active-bg: var(--ds-surface-elevated);
+  --tab-active-fg: var(--ds-text-primary);
+  --radius: var(--ds-radius-sm);
+  --radius-sm: var(--ds-radius-sm);
+  font-family: var(--ds-font-family);
+}
+
+html[data-ds-theme="ringgo"] .header h1,
+html[data-ds-theme="ringgo-dark"] .header h1 {
+  font-family: var(--ds-font-family-heading);
+}
+
+html[data-ds-theme="ringgo"] body,
+html[data-ds-theme="ringgo-dark"] body {
+  font-family: var(--ds-font-family);
+}
