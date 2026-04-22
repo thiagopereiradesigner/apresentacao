@@ -1,0 +1,2439 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root{
+  --ds-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Texto sobre fill de marca (--ds-success em botões primários, checkboxes). Padrão: branco; Ringgo: escuro para AA sobre #03D062. */
+  --ds-on-brand-primary: var(--ds-on-inverse);
+  /* Títulos; em temas sem override, segue o corpo. */
+  --ds-font-family-heading: var(--ds-font-family);
+
+  /* Semantic text/icon contract (theme-ready source of truth) */
+  --ds-text-primary: #1A1A1A;
+  --ds-text-secondary: #656976;
+  --ds-text-tertiary: #727272;
+  --ds-placeholder: #727272;
+
+  --ds-success: #04843B;
+  --ds-success-hover: #036d31;
+  --ds-border: #E0E0E0;
+  --ds-separator-light: #EEEEEE;
+  --ds-fg: var(--ds-text-primary);
+  --ds-fg-muted: var(--ds-text-secondary);
+  --ds-fg-subtle: var(--ds-text-tertiary);
+  --ds-content-primary: var(--ds-text-primary);
+  --ds-content-secondary: var(--ds-text-secondary);
+  --ds-content-tertiary: var(--ds-text-tertiary);
+  --ds-on-inverse: #FFFFFF;
+  --ds-icon-muted: #C6C6C6;
+  --ds-icon-accent: var(--ds-success);
+  --ds-n800: var(--ds-fg);
+  --ds-n500: var(--ds-fg-muted);
+  --ds-n200: #C6C6C6;
+
+  --ds-bg: #FFFFFF;
+  --ds-bg-subtle: #F9F9F9;
+  --ds-surface: #FFFFFF;
+  --ds-surface-elevated: #FFFFFF;
+
+  /* Semantic colors (defaults; white-label can override these CSS vars) */
+  --ds-success-bg: #E6F4ED;
+  --ds-success-fg: #004D16;
+  --ds-error: #DC2626;
+  --ds-error-bg: #FEE2E2;
+  --ds-error-fg: #B91C1C;
+  --ds-warning: #F59E0B;
+  --ds-warning-bg: #FEF3C7;
+  --ds-warning-fg: #92400E;
+  /* Texto sobre fill sólido --ds-warning (WCAG AA; não usar --ds-warning-fg, que é para superfícies suaves) */
+  --ds-warning-solid-fg: #78350F;
+  --ds-info: #3B82F6;
+  --ds-info-bg: #DBEAFE;
+  --ds-info-fg: #1E40AF;
+  --ds-neutral-bg: #F3F3F3;
+  --ds-neutral-fg: #656976;
+
+  --ds-n100: #F3F3F3;
+  --ds-pre-bg: var(--ds-n100);
+  --ds-pre-fg: #2B2B2B;
+
+  --ds-shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+  --ds-shadow-md: 0 12px 28px rgba(0,0,0,0.1);
+  --ds-shadow-success: 0 12px 32px rgba(4,132,59,0.18);
+  --ds-shadow-sidebar: 2px 0 12px rgba(0,0,0,0.03);
+  --ds-focus-ring: 0 0 0 3px rgba(4,132,59,0.14);
+  /* Overlay de drawer/modal (tema claro — escurece sobre fundo claro) */
+  --ds-backdrop-scrim: color-mix(in srgb, var(--ds-neutral-900) 44%, transparent);
+
+  /* ── Escala primary (brand / documentação — importável) ── */
+  --ds-primary-50: #E6F4ED;
+  --ds-primary-100: #CCE9DB;
+  --ds-primary-200: #99D3B7;
+  --ds-primary-300: #66BD93;
+  --ds-primary-400: #33A76F;
+  --ds-primary-500: #04843B;
+  --ds-primary-600: #067647;
+  --ds-primary-700: #005A1A;
+  --ds-primary-800: #004D16;
+  --ds-primary-900: #003D11;
+
+  /* ── Escala neutral (cinzas — importável) ── */
+  --ds-neutral-0: #FFFFFF;
+  --ds-neutral-50: #F9F9F9;
+  --ds-neutral-100: #F3F3F3;
+  --ds-neutral-200: #C6C6C6;
+  --ds-neutral-300: #999999;
+  --ds-neutral-400: #6C6C6C;
+  --ds-neutral-500: #656976;
+  --ds-neutral-600: #4D4D4D;
+  --ds-neutral-700: #333333;
+  --ds-neutral-800: #1A1A1A;
+  --ds-neutral-900: #000000;
+
+  /* ── Brand secondary (slate blue — âncora ~900) ── */
+  --ds-color-brand-secondary-50: #E6F3FF;
+  --ds-color-brand-secondary-100: #CDDCFF;
+  --ds-color-brand-secondary-200: #A8C4FF;
+  --ds-color-brand-secondary-300: #7FA8F2;
+  --ds-color-brand-secondary-400: #5B8AE8;
+  --ds-color-brand-secondary-500: #3D6BC9;
+  --ds-color-brand-secondary-600: #2F5599;
+  --ds-color-brand-secondary-700: #254478;
+  --ds-color-brand-secondary-800: #1C3358;
+  --ds-color-brand-secondary-900: #152847;
+
+  /* Accent violet (padrão) */
+  --ds-color-brand-accent-50: #F5F3FF;
+  --ds-color-brand-accent-100: #EDE9FE;
+  --ds-color-brand-accent-200: #DDD6FE;
+  --ds-color-brand-accent-300: #C4B5FD;
+  --ds-color-brand-accent-400: #A78BFA;
+  --ds-color-brand-accent-500: #8B5CF6;
+  --ds-color-brand-accent-600: #7C3AED;
+  --ds-color-brand-accent-700: #6D28D9;
+  --ds-color-brand-accent-800: #5B21B6;
+  --ds-color-brand-accent-900: #4C1D95;
+
+  /* Accent warm (coral) */
+  --ds-color-brand-accent-warm-50: #FFF7ED;
+  --ds-color-brand-accent-warm-100: #FFEDD5;
+  --ds-color-brand-accent-warm-200: #FED7AA;
+  --ds-color-brand-accent-warm-300: #FDBA74;
+  --ds-color-brand-accent-warm-400: #FB923C;
+  --ds-color-brand-accent-warm-500: #EA580C;
+  --ds-color-brand-accent-warm-600: #C2410C;
+  --ds-color-brand-accent-warm-700: #9A3412;
+  --ds-color-brand-accent-warm-800: #7C2D12;
+  --ds-color-brand-accent-warm-900: #431407;
+
+  /* Accent teal */
+  --ds-color-brand-accent-teal-50: #F0FDFA;
+  --ds-color-brand-accent-teal-100: #CCFBF1;
+  --ds-color-brand-accent-teal-200: #99F6E4;
+  --ds-color-brand-accent-teal-300: #5EEAD4;
+  --ds-color-brand-accent-teal-400: #2DD4BF;
+  --ds-color-brand-accent-teal-500: #14B8A6;
+  --ds-color-brand-accent-teal-600: #0D9488;
+  --ds-color-brand-accent-teal-700: #0F766E;
+  --ds-color-brand-accent-teal-800: #115E59;
+  --ds-color-brand-accent-teal-900: #134E4A;
+
+  /* Accent rose */
+  --ds-color-brand-accent-rose-50: #FFF1F2;
+  --ds-color-brand-accent-rose-100: #FFE4E6;
+  --ds-color-brand-accent-rose-200: #FECDD3;
+  --ds-color-brand-accent-rose-300: #FDA4AF;
+  --ds-color-brand-accent-rose-400: #FB7185;
+  --ds-color-brand-accent-rose-500: #F43F5E;
+  --ds-color-brand-accent-rose-600: #E11D48;
+  --ds-color-brand-accent-rose-700: #BE123C;
+  --ds-color-brand-accent-rose-800: #9F1239;
+  --ds-color-brand-accent-rose-900: #881337;
+
+  /* Accent indigo */
+  --ds-color-brand-accent-indigo-50: #EEF2FF;
+  --ds-color-brand-accent-indigo-100: #E0E7FF;
+  --ds-color-brand-accent-indigo-200: #C7D2FE;
+  --ds-color-brand-accent-indigo-300: #A5B4FC;
+  --ds-color-brand-accent-indigo-400: #818CF8;
+  --ds-color-brand-accent-indigo-500: #6366F1;
+  --ds-color-brand-accent-indigo-600: #4F46E5;
+  --ds-color-brand-accent-indigo-700: #4338CA;
+  --ds-color-brand-accent-indigo-800: #3730A3;
+  --ds-color-brand-accent-indigo-900: #312E81;
+
+  /* Atalhos (UI) */
+  --ds-secondary: var(--ds-color-brand-secondary-700);
+  --ds-secondary-fg: var(--ds-on-inverse);
+  --ds-accent: var(--ds-color-brand-accent-600);
+  --ds-accent-fg: var(--ds-on-inverse);
+  --ds-accent-muted-bg: var(--ds-color-brand-accent-100);
+  --ds-accent-warm: var(--ds-color-brand-accent-warm-500);
+  --ds-accent-teal: var(--ds-color-brand-accent-teal-500);
+  --ds-accent-rose: var(--ds-color-brand-accent-rose-500);
+  --ds-accent-indigo: var(--ds-color-brand-accent-indigo-500);
+
+  /* ── Tipografia (escala demo — importável) ── */
+  --ds-font-size-xs: 0.625rem;
+  --ds-font-size-sm: 0.75rem;
+  --ds-font-size-md: 0.875rem;
+  --ds-font-size-lg: 1rem;
+  --ds-font-size-xl: 1.125rem;
+
+  --ds-font-weight-regular: 400;
+  --ds-font-weight-medium: 500;
+  --ds-font-weight-semibold: 600;
+  --ds-font-weight-bold: 700;
+
+  --ds-line-height-tight: 1.2;
+  --ds-line-height-normal: 1.5;
+  --ds-line-height-relaxed: 1.75;
+
+  /* ── Espaçamento e raio (importáveis) ── */
+  --ds-space-xs: 4px;
+  --ds-space-sm: 8px;
+  --ds-space-md: 12px;
+  --ds-space-lg: 16px;
+  --ds-space-xl: 24px;
+  --ds-space-2xl: 32px;
+
+  --ds-radius-sm: 4px;
+  --ds-radius-md: 8px;
+  --ds-radius-lg: 12px;
+  --ds-radius-full: 9999px;
+
+  /* Altura da topbar (sticky stepper, menu mobile, sidebar — sobrescrever em temas custom) */
+  --ds-topbar-height: 56px;
+
+  /* Skeleton: contraste sobre surface/bg (evita branco em branco no tema claro) */
+  --ds-skeleton-fill: color-mix(in srgb, var(--ds-fg) 11%, var(--ds-bg));
+
+  /* Select dropdown: scroll e scrollbar (sobrescrever por tema / marca) */
+  --ds-select-dropdown-max-height: min(15rem, 50vh);
+  --ds-scrollbar-track: var(--ds-bg-subtle);
+  --ds-scrollbar-thumb: color-mix(in srgb, var(--ds-success) 32%, var(--ds-neutral-200));
+  --ds-scrollbar-thumb-hover: color-mix(in srgb, var(--ds-success) 48%, var(--ds-neutral-300));
+  --ds-select-option-checkbox-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath stroke='%23000' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round' d='M3.5 8.2 6.5 11 12.5 4.5'/%3E%3C/svg%3E");
+}
+
+/* ── Ringgo (light) — primitivos Figma + semântica; texto em botão primário escuro para WCAG AA sobre verde #03D062 ── */
+[data-ds-theme="ringgo"]{
+  --ds-font-family: 'Swiss721 BT', 'Swiss 721 BT', 'Helvetica Neue', Arial, sans-serif;
+  --ds-font-family-heading: 'Poppins', system-ui, sans-serif;
+  --ds-on-brand-primary: #0A0A0B;
+
+  --ds-text-primary: #2F3335;
+  --ds-text-secondary: #6B6F71;
+  --ds-text-tertiary: #8A8D8E;
+  --ds-placeholder: #A8ABAC;
+
+  --ds-success: #03D062;
+  --ds-success-hover: #01B852;
+  --ds-border: #E0E0E0;
+  --ds-separator-light: #F0F0F0;
+  --ds-fg: var(--ds-text-primary);
+  --ds-fg-muted: var(--ds-text-secondary);
+  --ds-fg-subtle: var(--ds-text-tertiary);
+  --ds-content-primary: var(--ds-text-primary);
+  --ds-content-secondary: var(--ds-text-secondary);
+  --ds-content-tertiary: var(--ds-text-tertiary);
+  --ds-on-inverse: #FFFFFF;
+  --ds-icon-muted: #B3B3B3;
+  --ds-icon-accent: var(--ds-success);
+  --ds-n800: var(--ds-text-primary);
+  --ds-n500: var(--ds-text-secondary);
+  --ds-n200: #E0E0E0;
+
+  --ds-bg: #FFFFFF;
+  --ds-bg-subtle: #F9F9F9;
+  --ds-surface: #FFFFFF;
+  --ds-surface-elevated: #FFFFFF;
+
+  --ds-success-bg: #CEF5E1;
+  --ds-success-fg: #005E26;
+  --ds-error: #D92D20;
+  --ds-error-bg: #FECDCA;
+  --ds-error-fg: #B42318;
+  --ds-warning: #F79009;
+  --ds-warning-bg: #FFFAEB;
+  --ds-warning-fg: #93370D;
+  --ds-warning-solid-fg: #292524;
+  --ds-info: #13375A;
+  --ds-info-bg: #D5E6F6;
+  --ds-info-fg: #0A213A;
+  --ds-neutral-bg: #F0F0F0;
+  --ds-neutral-fg: #6B6F71;
+
+  --ds-n100: #F0F0F0;
+  --ds-pre-bg: #F0F0F0;
+  --ds-pre-fg: #181A1B;
+
+  --ds-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --ds-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --ds-shadow-success: 0 12px 32px rgba(3, 208, 98, 0.22);
+  --ds-shadow-sidebar: 2px 0 12px rgba(0, 0, 0, 0.06);
+  --ds-focus-ring: 0 0 0 3px rgba(3, 208, 98, 0.28);
+  --ds-backdrop-scrim: color-mix(in srgb, var(--ds-neutral-900) 42%, transparent);
+
+  --ds-primary-50: #F2FCF7;
+  --ds-primary-100: #CEF5E1;
+  --ds-primary-200: #9EE9C2;
+  --ds-primary-300: #5DD8A0;
+  --ds-primary-400: #21CB81;
+  --ds-primary-500: #03D062;
+  --ds-primary-600: #01B852;
+  --ds-primary-700: #009642;
+  --ds-primary-800: #007A33;
+  --ds-primary-900: #005E26;
+
+  --ds-neutral-0: #FFFFFF;
+  --ds-neutral-50: #F9F9F9;
+  --ds-neutral-100: #F0F0F0;
+  --ds-neutral-200: #E0E0E0;
+  --ds-neutral-300: #D4D4D4;
+  --ds-neutral-400: #B3B3B3;
+  --ds-neutral-500: #A8ABAC;
+  --ds-neutral-600: #8A8D8E;
+  --ds-neutral-700: #6B6F71;
+  --ds-neutral-800: #4D5153;
+  --ds-neutral-900: #181A1B;
+
+  --ds-color-brand-secondary-50: #D5E6F6;
+  --ds-color-brand-secondary-100: #AACCEE;
+  --ds-color-brand-secondary-200: #6CA7E0;
+  --ds-color-brand-secondary-300: #2874BE;
+  --ds-color-brand-secondary-400: #1F5A93;
+  --ds-color-brand-secondary-500: #13375A;
+  --ds-color-brand-secondary-600: #0F2D4A;
+  --ds-color-brand-secondary-700: #0A213A;
+  --ds-color-brand-secondary-800: #06162A;
+  --ds-color-brand-secondary-900: #030B15;
+
+  /* Accents: harmonia com verde marca + azul secundário (mesmo ritmo 50–900 do DS). */
+  --ds-color-brand-accent-50: #F3F1FF;
+  --ds-color-brand-accent-100: #E8E4FF;
+  --ds-color-brand-accent-200: #D4CCFF;
+  --ds-color-brand-accent-300: #B8A8FF;
+  --ds-color-brand-accent-400: #9B82F0;
+  --ds-color-brand-accent-500: #7C5EEB;
+  --ds-color-brand-accent-600: #6545D6;
+  --ds-color-brand-accent-700: #4F35B0;
+  --ds-color-brand-accent-800: #3F2B8F;
+  --ds-color-brand-accent-900: #2E2068;
+
+  --ds-color-brand-accent-warm-50: #FFFAEB;
+  --ds-color-brand-accent-warm-100: #FEF0C7;
+  --ds-color-brand-accent-warm-200: #FEDF89;
+  --ds-color-brand-accent-warm-300: #FEC84B;
+  --ds-color-brand-accent-warm-400: #FDB022;
+  --ds-color-brand-accent-warm-500: #F79009;
+  --ds-color-brand-accent-warm-600: #DC6803;
+  --ds-color-brand-accent-warm-700: #B54708;
+  --ds-color-brand-accent-warm-800: #93370D;
+  --ds-color-brand-accent-warm-900: #55160C;
+
+  --ds-color-brand-accent-teal-50: #ECFDF3;
+  --ds-color-brand-accent-teal-100: #DCFAE6;
+  --ds-color-brand-accent-teal-200: #A9EFC5;
+  --ds-color-brand-accent-teal-300: #75E0A7;
+  --ds-color-brand-accent-teal-400: #47CD89;
+  --ds-color-brand-accent-teal-500: #17B26A;
+  --ds-color-brand-accent-teal-600: #079455;
+  --ds-color-brand-accent-teal-700: #067647;
+  --ds-color-brand-accent-teal-800: #085D3A;
+  --ds-color-brand-accent-teal-900: #074D31;
+
+  --ds-color-brand-accent-rose-50: #FEF3F2;
+  --ds-color-brand-accent-rose-100: #FEE4E2;
+  --ds-color-brand-accent-rose-200: #FECDCA;
+  --ds-color-brand-accent-rose-300: #FDA29B;
+  --ds-color-brand-accent-rose-400: #F97066;
+  --ds-color-brand-accent-rose-500: #F04438;
+  --ds-color-brand-accent-rose-600: #D92D20;
+  --ds-color-brand-accent-rose-700: #B42318;
+  --ds-color-brand-accent-rose-800: #912018;
+  --ds-color-brand-accent-rose-900: #55160C;
+
+  --ds-color-brand-accent-indigo-50: #E8EEF5;
+  --ds-color-brand-accent-indigo-100: #C5D4EA;
+  --ds-color-brand-accent-indigo-200: #9FB8DC;
+  --ds-color-brand-accent-indigo-300: #6CA7E0;
+  --ds-color-brand-accent-indigo-400: #3D78C3;
+  --ds-color-brand-accent-indigo-500: #1F5A93;
+  --ds-color-brand-accent-indigo-600: #13375A;
+  --ds-color-brand-accent-indigo-700: #0F2D4A;
+  --ds-color-brand-accent-indigo-800: #0A213A;
+  --ds-color-brand-accent-indigo-900: #030B15;
+
+  --ds-secondary: var(--ds-color-brand-secondary-600);
+  --ds-secondary-fg: var(--ds-on-inverse);
+  --ds-accent: var(--ds-color-brand-accent-600);
+  --ds-accent-fg: var(--ds-on-inverse);
+  --ds-accent-muted-bg: var(--ds-color-brand-accent-100);
+  --ds-accent-warm: var(--ds-color-brand-accent-warm-500);
+  --ds-accent-teal: var(--ds-color-brand-accent-teal-500);
+  --ds-accent-rose: var(--ds-color-brand-accent-rose-500);
+  --ds-accent-indigo: var(--ds-color-brand-accent-indigo-500);
+
+  --ds-radius-sm: 8px;
+  --ds-radius-md: 12px;
+  --ds-radius-lg: 16px;
+
+  --ds-scrollbar-thumb: color-mix(in srgb, var(--ds-success) 30%, var(--ds-neutral-300));
+  --ds-scrollbar-thumb-hover: color-mix(in srgb, var(--ds-success) 45%, var(--ds-neutral-400));
+}
+
+[data-ds-theme="ringgo"] h1,
+[data-ds-theme="ringgo"] h2,
+[data-ds-theme="ringgo"] h3,
+[data-ds-theme="ringgo"] h4,
+[data-ds-theme="ringgo"] h5,
+[data-ds-theme="ringgo"] h6{
+  font-family: var(--ds-font-family-heading);
+  line-height: 1.2;
+}
+
+[data-ds-theme="dark"]{
+  --ds-text-primary: #F3F4F6;
+  --ds-text-secondary: #9AA1AE;
+  --ds-text-tertiary: #818A98;
+  --ds-placeholder: #818A98;
+
+  --ds-success: #22C55E;
+  --ds-success-hover: #16A34A;
+  --ds-border: #2A2E36;
+  --ds-separator-light: #313640;
+  --ds-fg: var(--ds-text-primary);
+  --ds-fg-muted: var(--ds-text-secondary);
+  --ds-fg-subtle: var(--ds-text-tertiary);
+  --ds-content-primary: var(--ds-text-primary);
+  --ds-content-secondary: var(--ds-text-secondary);
+  --ds-content-tertiary: var(--ds-text-tertiary);
+  --ds-on-inverse: #FFFFFF;
+  --ds-icon-muted: #5F6672;
+  --ds-icon-accent: var(--ds-success);
+  --ds-n200: #5F6672;
+
+  --ds-bg: #101317;
+  --ds-bg-subtle: #1A1F26;
+  --ds-surface: #141922;
+  --ds-surface-elevated: #1A202A;
+
+  --ds-success-bg: rgba(34,197,94,0.14);
+  --ds-success-fg: #86EFAC;
+  --ds-error: #F87171;
+  --ds-error-bg: rgba(248,113,113,0.16);
+  --ds-error-fg: #FCA5A5;
+  --ds-warning: #FBBF24;
+  --ds-warning-bg: rgba(251,191,36,0.16);
+  --ds-warning-fg: #FCD34D;
+  --ds-warning-solid-fg: #292524;
+  --ds-info: #60A5FA;
+  --ds-info-bg: rgba(96,165,250,0.16);
+  --ds-info-fg: #93C5FD;
+  --ds-neutral-bg: #252D39;
+  --ds-neutral-fg: #B1B8C4;
+
+  --ds-n100: #202733;
+  --ds-pre-bg: #1C2430;
+  --ds-pre-fg: #E5E7EB;
+
+  --ds-shadow-sm: 0 2px 8px rgba(0,0,0,0.45);
+  --ds-shadow-md: 0 12px 28px rgba(0,0,0,0.45);
+  --ds-shadow-success: 0 12px 32px rgba(34,197,94,0.2);
+  --ds-shadow-sidebar: 2px 0 14px rgba(0,0,0,0.5);
+  --ds-focus-ring: 0 0 0 3px rgba(34,197,94,0.22);
+  --ds-backdrop-scrim: color-mix(in srgb, var(--ds-neutral-900) 58%, transparent);
+
+  /* Primary (modo escuro — mesma escala 50–900, otimizada para contraste) */
+  --ds-primary-50: #052e1c;
+  --ds-primary-100: #064e2b;
+  --ds-primary-200: #047857;
+  --ds-primary-300: #059669;
+  --ds-primary-400: #10b981;
+  --ds-primary-500: #22c55e;
+  --ds-primary-600: #4ade80;
+  --ds-primary-700: #86efac;
+  --ds-primary-800: #bbf7d0;
+  --ds-primary-900: #ecfdf5;
+
+  /* Neutral (superfícies / texto em dark) */
+  --ds-neutral-0: #FFFFFF;
+  --ds-neutral-50: #F3F4F6;
+  --ds-neutral-100: #E5E7EB;
+  --ds-neutral-200: #9AA1AE;
+  --ds-neutral-300: #818A98;
+  --ds-neutral-400: #6B7280;
+  --ds-neutral-500: #9AA1AE;
+  --ds-neutral-600: #4B5563;
+  --ds-neutral-700: #374151;
+  --ds-neutral-800: #1F2937;
+  --ds-neutral-900: #030712;
+
+  /* Secondary / accents (modo escuro — tons legíveis em fundo escuro) */
+  --ds-color-brand-secondary-50: #0c1628;
+  --ds-color-brand-secondary-100: #132a4a;
+  --ds-color-brand-secondary-200: #1e3a66;
+  --ds-color-brand-secondary-300: #2f4d80;
+  --ds-color-brand-secondary-400: #4a6ba3;
+  --ds-color-brand-secondary-500: #6b8cc9;
+  --ds-color-brand-secondary-600: #8faddc;
+  --ds-color-brand-secondary-700: #b3cbeb;
+  --ds-color-brand-secondary-800: #d6e7f7;
+  --ds-color-brand-secondary-900: #e6f3ff;
+
+  --ds-color-brand-accent-50: #1e1050;
+  --ds-color-brand-accent-100: #2d1a6e;
+  --ds-color-brand-accent-200: #3d2690;
+  --ds-color-brand-accent-300: #5b3bb5;
+  --ds-color-brand-accent-400: #7c5ce0;
+  --ds-color-brand-accent-500: #9d7ff0;
+  --ds-color-brand-accent-600: #b59cff;
+  --ds-color-brand-accent-700: #ceb5ff;
+  --ds-color-brand-accent-800: #e4d4ff;
+  --ds-color-brand-accent-900: #f5f0ff;
+
+  --ds-color-brand-accent-warm-50: #3a1808;
+  --ds-color-brand-accent-warm-100: #5c260d;
+  --ds-color-brand-accent-warm-200: #7f3816;
+  --ds-color-brand-accent-warm-300: #a84f24;
+  --ds-color-brand-accent-warm-400: #d16a35;
+  --ds-color-brand-accent-warm-500: #ea7f4a;
+  --ds-color-brand-accent-warm-600: #f59e73;
+  --ds-color-brand-accent-warm-700: #fdba8b;
+  --ds-color-brand-accent-warm-800: #fdd5b8;
+  --ds-color-brand-accent-warm-900: #ffedd5;
+
+  --ds-color-brand-accent-teal-50: #05201c;
+  --ds-color-brand-accent-teal-100: #0a3630;
+  --ds-color-brand-accent-teal-200: #0f5046;
+  --ds-color-brand-accent-teal-300: #14786a;
+  --ds-color-brand-accent-teal-400: #1aa493;
+  --ds-color-brand-accent-teal-500: #2dd4bf;
+  --ds-color-brand-accent-teal-600: #5eead4;
+  --ds-color-brand-accent-teal-700: #7FF5E1;
+  --ds-color-brand-accent-teal-800: #B6FBEE;
+  --ds-color-brand-accent-teal-900: #E6FFFA;
+
+  --ds-color-brand-accent-rose-50: #390617;
+  --ds-color-brand-accent-rose-100: #550b25;
+  --ds-color-brand-accent-rose-200: #741237;
+  --ds-color-brand-accent-rose-300: #9f1d4f;
+  --ds-color-brand-accent-rose-400: #d63a6f;
+  --ds-color-brand-accent-rose-500: #f43f5e;
+  --ds-color-brand-accent-rose-600: #fb7185;
+  --ds-color-brand-accent-rose-700: #fda4af;
+  --ds-color-brand-accent-rose-800: #fecdd3;
+  --ds-color-brand-accent-rose-900: #ffe4e6;
+
+  --ds-color-brand-accent-indigo-50: #111633;
+  --ds-color-brand-accent-indigo-100: #1a2255;
+  --ds-color-brand-accent-indigo-200: #283077;
+  --ds-color-brand-accent-indigo-300: #3d42a8;
+  --ds-color-brand-accent-indigo-400: #555cd4;
+  --ds-color-brand-accent-indigo-500: #6366f1;
+  --ds-color-brand-accent-indigo-600: #818cf8;
+  --ds-color-brand-accent-indigo-700: #a5b4fc;
+  --ds-color-brand-accent-indigo-800: #c7d2fe;
+  --ds-color-brand-accent-indigo-900: #e0e7ff;
+
+  --ds-secondary: var(--ds-color-brand-secondary-400);
+  --ds-secondary-fg: var(--ds-on-inverse);
+  --ds-accent: var(--ds-color-brand-accent-400);
+  --ds-accent-fg: var(--ds-text-primary);
+  --ds-accent-muted-bg: var(--ds-color-brand-accent-100);
+  --ds-accent-warm: var(--ds-color-brand-accent-warm-400);
+  --ds-accent-teal: var(--ds-color-brand-accent-teal-400);
+  --ds-accent-rose: var(--ds-color-brand-accent-rose-400);
+  --ds-accent-indigo: var(--ds-color-brand-accent-indigo-400);
+
+  --ds-font-size-xs: 0.625rem;
+  --ds-font-size-sm: 0.75rem;
+  --ds-font-size-md: 0.875rem;
+  --ds-font-size-lg: 1rem;
+  --ds-font-size-xl: 1.125rem;
+
+  --ds-font-weight-regular: 400;
+  --ds-font-weight-medium: 500;
+  --ds-font-weight-semibold: 600;
+  --ds-font-weight-bold: 700;
+
+  --ds-line-height-tight: 1.2;
+  --ds-line-height-normal: 1.5;
+  --ds-line-height-relaxed: 1.75;
+
+  --ds-space-xs: 4px;
+  --ds-space-sm: 8px;
+  --ds-space-md: 12px;
+  --ds-space-lg: 16px;
+  --ds-space-xl: 24px;
+  --ds-space-2xl: 32px;
+
+  --ds-radius-sm: 4px;
+  --ds-radius-md: 8px;
+  --ds-radius-lg: 12px;
+  --ds-radius-full: 9999px;
+
+  --ds-select-dropdown-max-height: min(15rem, 45vh);
+  --ds-scrollbar-track: var(--ds-neutral-800);
+  --ds-scrollbar-thumb: color-mix(in srgb, var(--ds-success) 38%, var(--ds-neutral-600));
+  --ds-scrollbar-thumb-hover: color-mix(in srgb, var(--ds-success) 52%, var(--ds-neutral-500));
+}
+
+/* ── Ringgo (dark) — superfícies frias, verde marca legível; botão primário mantém #03D062 + texto escuro (AA) ── */
+[data-ds-theme="ringgo-dark"]{
+  --ds-font-family: 'Swiss721 BT', 'Swiss 721 BT', 'Helvetica Neue', Arial, sans-serif;
+  --ds-font-family-heading: 'Poppins', system-ui, sans-serif;
+  --ds-on-brand-primary: #0A0A0B;
+
+  --ds-text-primary: #EEF1F4;
+  --ds-text-secondary: #9AA6B0;
+  --ds-text-tertiary: #7D8A96;
+  --ds-placeholder: #7D8A96;
+
+  --ds-success: #03D062;
+  --ds-success-hover: #21CB81;
+  --ds-border: #2A323D;
+  --ds-separator-light: #343D4A;
+  --ds-fg: var(--ds-text-primary);
+  --ds-fg-muted: var(--ds-text-secondary);
+  --ds-fg-subtle: var(--ds-text-tertiary);
+  --ds-content-primary: var(--ds-text-primary);
+  --ds-content-secondary: var(--ds-text-secondary);
+  --ds-content-tertiary: var(--ds-text-tertiary);
+  --ds-on-inverse: #FFFFFF;
+  --ds-icon-muted: #6B7784;
+  --ds-icon-accent: var(--ds-success);
+  --ds-n200: #5A6674;
+
+  --ds-bg: #0B0F14;
+  --ds-bg-subtle: #111820;
+  --ds-surface: #141C26;
+  --ds-surface-elevated: #1A2430;
+
+  --ds-success-bg: rgba(3, 208, 98, 0.16);
+  --ds-success-fg: #A7F3D0;
+  --ds-error: #FCA5A5;
+  --ds-error-bg: rgba(252, 165, 165, 0.14);
+  --ds-error-fg: #FECACA;
+  --ds-warning: #FCD34D;
+  --ds-warning-bg: rgba(252, 211, 77, 0.14);
+  --ds-warning-fg: #FEF3C7;
+  --ds-warning-solid-fg: #292524;
+  /* Azul mais escuro para fill sólido (toast/info ativo + texto branco ≥ AA). */
+  --ds-info: #3D6FA3;
+  --ds-info-bg: rgba(170, 204, 238, 0.12);
+  --ds-info-fg: #D5E6F6;
+  --ds-neutral-bg: #1E2835;
+  --ds-neutral-fg: #B8C2CC;
+
+  --ds-n100: #1A222C;
+  --ds-pre-bg: #151D27;
+  --ds-pre-fg: #E5E7EB;
+
+  --ds-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.4);
+  --ds-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.48);
+  --ds-shadow-success: 0 12px 36px rgba(3, 208, 98, 0.25);
+  --ds-shadow-sidebar: 2px 0 16px rgba(0, 0, 0, 0.45);
+  --ds-focus-ring: 0 0 0 3px rgba(3, 208, 98, 0.35);
+  --ds-backdrop-scrim: color-mix(in srgb, var(--ds-neutral-900) 62%, transparent);
+
+  --ds-primary-50: #052016;
+  --ds-primary-100: #063522;
+  --ds-primary-200: #054F30;
+  --ds-primary-300: #047857;
+  --ds-primary-400: #059669;
+  --ds-primary-500: #03D062;
+  --ds-primary-600: #21CB81;
+  --ds-primary-700: #4ADE80;
+  --ds-primary-800: #86EFAC;
+  --ds-primary-900: #DCFCE7;
+
+  --ds-neutral-0: #FFFFFF;
+  --ds-neutral-50: #E8EAED;
+  --ds-neutral-100: #D1D5DB;
+  --ds-neutral-200: #9AA6B0;
+  --ds-neutral-300: #7D8A96;
+  --ds-neutral-400: #6B7784;
+  --ds-neutral-500: #9AA6B0;
+  --ds-neutral-600: #4B5563;
+  --ds-neutral-700: #374151;
+  --ds-neutral-800: #1F2933;
+  --ds-neutral-900: #05080C;
+
+  --ds-color-brand-secondary-50: #0A1219;
+  --ds-color-brand-secondary-100: #0F1E2E;
+  --ds-color-brand-secondary-200: #152A40;
+  --ds-color-brand-secondary-300: #1F3D5C;
+  --ds-color-brand-secondary-400: #3D6FA3;
+  --ds-color-brand-secondary-500: #6CA7E0;
+  --ds-color-brand-secondary-600: #8FB8E8;
+  --ds-color-brand-secondary-700: #AACCEE;
+  --ds-color-brand-secondary-800: #C5D9F2;
+  --ds-color-brand-secondary-900: #E8F0FA;
+
+  --ds-color-brand-accent-50: #1A1530;
+  --ds-color-brand-accent-100: #261F45;
+  --ds-color-brand-accent-200: #352866;
+  --ds-color-brand-accent-300: #4A3A8F;
+  --ds-color-brand-accent-400: #6D5BC7;
+  --ds-color-brand-accent-500: #8B7CE8;
+  --ds-color-brand-accent-600: #A896F5;
+  --ds-color-brand-accent-700: #C4B5FD;
+  --ds-color-brand-accent-800: #DDD6FE;
+  --ds-color-brand-accent-900: #EDE9FE;
+
+  --ds-color-brand-accent-warm-50: #3A1808;
+  --ds-color-brand-accent-warm-100: #5C260D;
+  --ds-color-brand-accent-warm-200: #7F3816;
+  --ds-color-brand-accent-warm-300: #A84F24;
+  --ds-color-brand-accent-warm-400: #D16A35;
+  --ds-color-brand-accent-warm-500: #EA7F4A;
+  --ds-color-brand-accent-warm-600: #F59E73;
+  --ds-color-brand-accent-warm-700: #FDBA8B;
+  --ds-color-brand-accent-warm-800: #FDD5B8;
+  --ds-color-brand-accent-warm-900: #FFEDD5;
+
+  --ds-color-brand-accent-teal-50: #052016;
+  --ds-color-brand-accent-teal-100: #0A3024;
+  --ds-color-brand-accent-teal-200: #0F4A36;
+  --ds-color-brand-accent-teal-300: #147A56;
+  --ds-color-brand-accent-teal-400: #1AA47A;
+  --ds-color-brand-accent-teal-500: #34D399;
+  --ds-color-brand-accent-teal-600: #5EEAD4;
+  --ds-color-brand-accent-teal-700: #7FF5E1;
+  --ds-color-brand-accent-teal-800: #B6FBEE;
+  --ds-color-brand-accent-teal-900: #E6FFFA;
+
+  --ds-color-brand-accent-rose-50: #3B0D12;
+  --ds-color-brand-accent-rose-100: #5C121C;
+  --ds-color-brand-accent-rose-200: #7F1D2A;
+  --ds-color-brand-accent-rose-300: #A82F42;
+  --ds-color-brand-accent-rose-400: #D64A62;
+  --ds-color-brand-accent-rose-500: #F87171;
+  --ds-color-brand-accent-rose-600: #FCA5A5;
+  --ds-color-brand-accent-rose-700: #FECACA;
+  --ds-color-brand-accent-rose-800: #FEE2E2;
+  --ds-color-brand-accent-rose-900: #FFF1F2;
+
+  --ds-color-brand-accent-indigo-50: #0C1524;
+  --ds-color-brand-accent-indigo-100: #132A4A;
+  --ds-color-brand-accent-indigo-200: #1E3D66;
+  --ds-color-brand-accent-indigo-300: #2F5588;
+  --ds-color-brand-accent-indigo-400: #4A78B8;
+  --ds-color-brand-accent-indigo-500: #6CA7E0;
+  --ds-color-brand-accent-indigo-600: #8FB8E8;
+  --ds-color-brand-accent-indigo-700: #AACCEE;
+  --ds-color-brand-accent-indigo-800: #C5D9F2;
+  --ds-color-brand-accent-indigo-900: #E8F0FA;
+
+  --ds-secondary: var(--ds-color-brand-secondary-500);
+  --ds-secondary-fg: #0A0F14;
+  --ds-accent: var(--ds-color-brand-accent-500);
+  --ds-accent-fg: #0A0A0B;
+  --ds-accent-muted-bg: var(--ds-color-brand-accent-100);
+  --ds-accent-warm: var(--ds-color-brand-accent-warm-400);
+  --ds-accent-teal: var(--ds-color-brand-accent-teal-400);
+  --ds-accent-rose: var(--ds-color-brand-accent-rose-400);
+  --ds-accent-indigo: var(--ds-color-brand-accent-indigo-400);
+
+  --ds-font-size-xs: 0.625rem;
+  --ds-font-size-sm: 0.75rem;
+  --ds-font-size-md: 0.875rem;
+  --ds-font-size-lg: 1rem;
+  --ds-font-size-xl: 1.125rem;
+
+  --ds-font-weight-regular: 400;
+  --ds-font-weight-medium: 500;
+  --ds-font-weight-semibold: 600;
+  --ds-font-weight-bold: 700;
+
+  --ds-line-height-tight: 1.2;
+  --ds-line-height-normal: 1.5;
+  --ds-line-height-relaxed: 1.75;
+
+  --ds-space-xs: 4px;
+  --ds-space-sm: 8px;
+  --ds-space-md: 12px;
+  --ds-space-lg: 16px;
+  --ds-space-xl: 24px;
+  --ds-space-2xl: 32px;
+
+  --ds-radius-sm: 8px;
+  --ds-radius-md: 12px;
+  --ds-radius-lg: 16px;
+  --ds-radius-full: 9999px;
+
+  --ds-select-dropdown-max-height: min(15rem, 45vh);
+  --ds-scrollbar-track: var(--ds-neutral-800);
+  --ds-scrollbar-thumb: color-mix(in srgb, var(--ds-success) 40%, var(--ds-neutral-600));
+  --ds-scrollbar-thumb-hover: color-mix(in srgb, var(--ds-success) 55%, var(--ds-neutral-500));
+}
+
+[data-ds-theme="ringgo-dark"] h1,
+[data-ds-theme="ringgo-dark"] h2,
+[data-ds-theme="ringgo-dark"] h3,
+[data-ds-theme="ringgo-dark"] h4,
+[data-ds-theme="ringgo-dark"] h5,
+[data-ds-theme="ringgo-dark"] h6{
+  font-family: var(--ds-font-family-heading);
+  line-height: 1.2;
+}
+
+body{
+  font-family: var(--ds-font-family);
+  background: var(--ds-bg);
+  color: var(--ds-n800);
+}
+
+.ds-topbar{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: var(--ds-surface);
+  border-bottom: 1px solid var(--ds-border);
+  height: var(--ds-topbar-height);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  box-shadow: var(--ds-shadow-sm);
+}
+
+.ds-topbar-title{
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ds-success);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  /* Centraliza o título do header (clicável → index). */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ds-topbar-title:hover{
+  color: var(--ds-success-hover);
+  text-decoration: none;
+}
+
+.ds-topbar-title:focus-visible{
+  outline: 2px solid var(--ds-success);
+  outline-offset: 3px;
+  border-radius: var(--ds-radius-sm);
+}
+
+.ds-topbar-spacer{ flex: 1; }
+
+.ds-back-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--ds-border);
+  background: var(--ds-surface);
+  color: var(--ds-fg);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ds-back-btn:hover{
+  background: var(--ds-bg-subtle);
+  border-color: var(--ds-success);
+  color: var(--ds-success);
+}
+
+/* ── Header com busca (topbar) ── */
+.ds-search-wrapper{
+  position: relative;
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.ds-search-input{
+  width: 100%;
+  padding: 8px 12px 8px 32px;
+  border: 1px solid var(--ds-border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  background: var(--ds-surface);
+  color: var(--ds-fg);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.ds-search-input:focus{
+  border-color: var(--ds-success);
+  box-shadow: var(--ds-focus-ring);
+}
+
+.ds-search-input::placeholder{
+  color: var(--ds-placeholder);
+  opacity: 1;
+}
+
+.ds-search-icon{
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ds-n500);
+  pointer-events: none;
+}
+
+.ds-search-dropdown{
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: auto;
+  width: 100%;
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-border);
+  border-radius: 8px;
+  box-shadow: var(--ds-shadow-md);
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.ds-search-dropdown.open{
+  display: block;
+}
+
+/* Dropdown da busca acima da lista do menu lateral */
+body.ds-demo-has-sidebar .ds-demo-sidebar .ds-search-dropdown{
+  z-index: 1005;
+}
+
+.ds-search-item{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--ds-fg);
+  font-size: 13px;
+  transition: background .1s ease, color .1s ease;
+}
+
+.ds-search-item:hover{
+  background: var(--ds-bg-subtle);
+  color: var(--ds-success);
+}
+
+.ds-search-item-tag{
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--ds-n100);
+  color: var(--ds-fg-muted);
+  margin-left: auto;
+}
+
+.ds-hamburger{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background .15s ease;
+  flex-shrink: 0;
+}
+
+.ds-hamburger:hover{
+  background: var(--ds-bg-subtle);
+}
+
+.ds-hamburger svg{
+  color: var(--ds-fg);
+}
+
+.ds-mobile-menu{
+  display: none;
+  position: fixed;
+  top: var(--ds-topbar-height);
+  left: 0;
+  right: 0;
+  background: var(--ds-surface);
+  border-bottom: 1px solid var(--ds-border);
+  box-shadow: var(--ds-shadow-md);
+  padding: 16px;
+  z-index: 998;
+  flex-direction: column;
+  gap: 12px;
+  animation: dsSlideDown .2s ease;
+}
+
+.ds-mobile-menu.open{
+  display: flex;
+}
+
+@keyframes dsSlideDown{
+  from{ opacity:0; transform: translateY(-8px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.ds-mobile-menu .ds-back-btn{
+  width: 100%;
+  justify-content: center;
+}
+
+.ds-mobile-menu .ds-search-wrapper{
+  width: 100%;
+}
+
+@media(max-width:743px){
+  /* No celular: voltar some no topbar; busca fica no menu lateral; hamburger abre o menu. */
+  .ds-topbar .ds-back-btn{
+    display: none;
+  }
+  .ds-hamburger{
+    display: flex;
+  }
+}
+
+.ds-container{
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+@media(min-width:744px){
+  .ds-container{ padding-left: 24px; padding-right: 24px; }
+}
+
+.section{
+  background: var(--ds-surface);
+  border-radius: 12px;
+  border: 1px solid var(--ds-border);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.section-title{
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.section-subtitle{
+  font-size: 14px;
+  color: var(--ds-n500);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.note{
+  margin-top: 18px;
+  padding: 24px;
+  background-color: var(--ds-success-bg);
+  border-radius: 12px;
+  border-left: 4px solid var(--ds-success);
+}
+
+.note h3{
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--ds-success-fg);
+}
+
+.note ul{
+  font-size: 14px;
+  color: var(--ds-fg);
+  line-height: 1.6;
+  padding-left: 20px;
+}
+
+pre.code{
+  margin-top: 10px;
+  background: var(--ds-pre-bg);
+  border-radius: 12px;
+  padding: 12px;
+  overflow-x: auto;
+  font-size: 12px;
+  color: var(--ds-pre-fg);
+  line-height: 1.5;
+}
+
+pre.code code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* ── Layout com menu lateral (demos internas + ds-demo-sidebar.js) ── */
+body.ds-demo-has-sidebar{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Várias demos usavam padding global no <body> e hacks no .ds-topbar (ex.: margin:-40px)
+     para compensar. No modo com sidebar, isso quebra o alinhamento. */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Garante box model consistente entre páginas que têm/ não têm reset local */
+body.ds-demo-has-sidebar *,
+body.ds-demo-has-sidebar *::before,
+body.ds-demo-has-sidebar *::after{
+  box-sizing: border-box !important;
+}
+
+.ds-demo-layout{
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Modo com sidebar: neutraliza hacks locais que quebram layout e tema. */
+body.ds-demo-has-sidebar .ds-topbar{
+  margin: 0 !important;
+  padding: 0 16px !important;
+  background: var(--ds-surface) !important;
+  border-bottom: 1px solid var(--ds-border) !important;
+  box-shadow: var(--ds-shadow-sm) !important;
+  height: var(--ds-topbar-height) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+body.ds-demo-has-sidebar .ds-topbar-title{
+  color: var(--ds-success) !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+body.ds-demo-has-sidebar .ds-back-btn{
+  background: var(--ds-surface) !important;
+  border: 1px solid var(--ds-border) !important;
+  color: var(--ds-fg) !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+
+body.ds-demo-has-sidebar .ds-back-btn:hover{
+  background: var(--ds-bg-subtle) !important;
+  border-color: var(--ds-success) !important;
+  color: var(--ds-success) !important;
+}
+
+body.ds-demo-has-sidebar .ds-hamburger{
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 8px !important;
+}
+
+/* Busca no menu lateral (não no header) — largura fluida dentro do aside. */
+body.ds-demo-has-sidebar .ds-demo-sidebar .ds-search-wrapper{
+  width: 100% !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-sidebar .ds-search-input{
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.ds-demo-sidebar-backdrop{
+  display: none;
+}
+
+.ds-demo-sidebar{
+  flex: 0 0 240px;
+  width: 240px;
+  max-width: 280px;
+  border-right: 1px solid var(--ds-border);
+  background: var(--ds-bg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: var(--ds-topbar-height);
+  height: calc(100vh - var(--ds-topbar-height));
+  align-self: flex-start;
+  padding: 0;
+  box-shadow: var(--ds-shadow-sidebar);
+}
+
+.ds-demo-sidebar__inner{
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+  height: 100%;
+}
+
+.ds-demo-sidebar__mobile-header{
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--ds-space-sm) var(--ds-space-md);
+  padding-top: max(var(--ds-space-sm), env(safe-area-inset-top, 0px));
+  border-bottom: 1px solid var(--ds-border);
+  background: var(--ds-bg);
+}
+
+.ds-demo-sidebar__close{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--ds-radius-md);
+  cursor: pointer;
+  color: var(--ds-fg);
+  transition: background 0.15s ease;
+}
+
+.ds-demo-sidebar__close:hover{
+  background: var(--ds-bg-subtle);
+}
+
+.ds-demo-sidebar__close:focus-visible{
+  outline: 2px solid var(--ds-success);
+  outline-offset: 2px;
+}
+
+.ds-demo-sidebar__search{
+  flex-shrink: 0;
+  padding: var(--ds-space-md) var(--ds-space-md) var(--ds-space-lg);
+  border-bottom: 1px solid var(--ds-border);
+  background: var(--ds-bg);
+  z-index: 2;
+}
+
+.ds-demo-sidebar__scroll{
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: max(var(--ds-space-lg), env(safe-area-inset-bottom, 0px));
+}
+
+.ds-demo-sidebar__nav{
+  position: static;
+}
+
+.ds-demo-sidebar__list{
+  list-style: none;
+  margin: 0;
+  padding: 0 12px;
+}
+
+.ds-demo-sidebar__list li{
+  margin: 0;
+}
+
+/* Mesmo padrão do menu-demo: hover cinza, ativo verde + barra à esquerda */
+.ds-demo-sidebar__link{
+  display: block;
+  padding: 10px 12px 10px 9px;
+  border-radius: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ds-n800);
+  text-decoration: none;
+  line-height: 1.35;
+  transition: background 0.15s ease, color 0.15s ease;
+  border-left: 3px solid transparent;
+}
+
+.ds-demo-sidebar__link:hover{
+  background: var(--ds-bg-subtle);
+  color: var(--ds-n800);
+}
+
+.ds-demo-sidebar__link.is-active{
+  background: var(--ds-success-bg);
+  color: var(--ds-success);
+  border-left-color: var(--ds-success);
+  font-weight: 700;
+}
+
+.ds-demo-sidebar__link--featured{
+  font-weight: 700;
+  color: var(--ds-n800);
+}
+
+.ds-demo-sidebar__link--featured:not(.is-active):hover{
+  color: var(--ds-n800);
+}
+
+.ds-demo-sidebar__link--featured.is-active{
+  color: var(--ds-success);
+}
+
+.ds-demo-main{
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  background: var(--ds-bg);
+}
+
+/* Garante respiro lateral no conteúdo quando o menu lateral é injetado */
+body.ds-demo-has-sidebar .ds-demo-main{
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Força o mesmo grid/padding horizontal em TODAS as demos internas */
+body.ds-demo-has-sidebar .ds-demo-main > .ds-container,
+body.ds-demo-has-sidebar .ds-demo-main > .container{
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+@media(min-width:744px){
+  body.ds-demo-has-sidebar .ds-demo-main > .ds-container,
+  body.ds-demo-has-sidebar .ds-demo-main > .container{
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+/* Normaliza demos que usam `.container` em vez de `.ds-container`. */
+.ds-demo-main > .container{
+  padding: 40px 16px !important;
+  background: var(--ds-bg) !important;
+}
+
+@media(min-width:744px){
+  .ds-demo-main > .container{
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+/* Normaliza "gaps" de demos que usam o template antigo (`container` + `.header` + `.section`) */
+body.ds-demo-has-sidebar .ds-demo-main > .container .header{
+  margin-bottom: 48px !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .container .note{
+  margin-top: 18px !important;
+  margin-bottom: 24px !important;
+  padding: 24px !important;
+  background-color: var(--ds-success-bg) !important;
+  border-radius: 12px !important;
+  border-left: 4px solid var(--ds-success) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .container .section{
+  background: var(--ds-surface) !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--ds-border) !important;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+/* Padroniza cabeçalho e títulos das demos (evita sobrescritas locais por `<style>` no HTML) */
+body.ds-demo-has-sidebar .ds-demo-main > .container .header{
+  text-align: left !important;
+  margin-bottom: 48px !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .container .header h1{
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  color: var(--ds-success) !important;
+  margin-bottom: 8px !important;
+  text-align: left !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .container .header p{
+  font-size: 16px !important;
+  color: var(--ds-fg-muted) !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .container .section-title{
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  margin-bottom: 12px !important;
+  color: var(--ds-fg) !important;
+  text-align: left !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .container .note h3{
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  margin-bottom: 12px !important;
+  color: var(--ds-success-fg) !important;
+  text-align: left !important;
+}
+
+body.ds-demo-has-sidebar .ds-topbar-title{
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: var(--ds-success) !important;
+  white-space: nowrap !important;
+}
+
+/* Mesma padronização para demos que usam `ds-container` */
+body.ds-demo-has-sidebar .ds-demo-main > .ds-container > h1{
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  color: var(--ds-success) !important;
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+  text-align: left !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .ds-container > h2{
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  color: var(--ds-success) !important;
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+  text-align: left !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .ds-container > p.lead{
+  font-size: 16px !important;
+  color: var(--ds-fg-muted) !important;
+  margin-top: 0 !important;
+  margin-bottom: 28px !important;
+  line-height: 1.6 !important;
+  max-width: 760px !important;
+  text-align: left !important;
+}
+
+/* Mesma regra para páginas que não usam `.header` e usam `.container > h1/h2` */
+body.ds-demo-has-sidebar .ds-demo-main > .container > h1,
+body.ds-demo-has-sidebar .ds-demo-main > .container > h2{
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  color: var(--ds-success) !important;
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+  text-align: left !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .container > p.lead{
+  font-size: 16px !important;
+  color: var(--ds-fg-muted) !important;
+  margin-top: 0 !important;
+  margin-bottom: 28px !important;
+  line-height: 1.6 !important;
+  max-width: 760px !important;
+  text-align: left !important;
+}
+
+/* Neutraliza hardcodes inline de fundo branco em demos legadas */
+body.ds-demo-has-sidebar .ds-demo-main [style*="background:#fff"],
+body.ds-demo-has-sidebar .ds-demo-main [style*="background: #fff"],
+body.ds-demo-has-sidebar .ds-demo-main [style*="background:#FFFFFF"],
+body.ds-demo-has-sidebar .ds-demo-main [style*="background: #FFFFFF"],
+body.ds-demo-has-sidebar .ds-demo-main [style*="background-color:#fff"],
+body.ds-demo-has-sidebar .ds-demo-main [style*="background-color: #fff"],
+body.ds-demo-has-sidebar .ds-demo-main [style*="background-color:#FFFFFF"],
+body.ds-demo-has-sidebar .ds-demo-main [style*="background-color: #FFFFFF"]{
+  background: var(--ds-surface) !important;
+}
+
+/* Evita textos escuros em blocos de nota (inclui Toast) */
+body.ds-demo-has-sidebar .ds-demo-main .note ul,
+body.ds-demo-has-sidebar .ds-demo-main .note li{
+  color: var(--ds-fg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .ds-container .section{
+  background: var(--ds-surface) !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--ds-border) !important;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .ds-container .section-title{
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  margin-bottom: 12px !important;
+  color: var(--ds-fg) !important;
+  text-align: left !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .ds-container .section-subtitle{
+  font-size: 14px !important;
+  color: var(--ds-n500) !important;
+  margin-bottom: 16px !important;
+  line-height: 1.6 !important;
+  text-align: left !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .ds-container .note{
+  margin-top: 18px !important;
+  margin-bottom: 24px !important;
+  padding: 24px !important;
+  background-color: var(--ds-success-bg) !important;
+  border-radius: 12px !important;
+  border-left: 4px solid var(--ds-success) !important;
+}
+
+/* Garante respiro após bloco de melhorias/nota */
+body.ds-demo-has-sidebar .ds-demo-main > .container .note + .section,
+body.ds-demo-has-sidebar .ds-demo-main > .ds-container .note + .section{
+  margin-top: 24px !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main > .ds-container .note h3{
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  margin-bottom: 12px !important;
+  color: var(--ds-success-fg) !important;
+  text-align: left !important;
+}
+
+/*
+ * DS Select (dropdown custom) — fonte única para select-demo, drawer, etc.
+ * Escopo: apenas .select-container > .field-input-container (o Input usa .field-input-container fora deste pai).
+ */
+.select-container{
+  position: relative;
+}
+.select-container > .field-input-container{
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-md);
+  padding: var(--ds-space-md) var(--ds-space-lg);
+  min-height: 44px;
+  box-sizing: border-box;
+  background-color: var(--ds-surface);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+/* Hover / foco alinhados ao Input (input-demo) */
+.select-container > .field-input-container:hover:not(.disabled):not(.error){
+  border-color: var(--ds-success);
+}
+.select-container > .field-input-container.error:hover:not(.disabled){
+  border-color: color-mix(in srgb, var(--ds-error) 68%, var(--ds-surface));
+}
+.select-container > .field-input-container.error{
+  border-color: var(--ds-error);
+}
+.select-container > .field-input-container.disabled{
+  background-color: var(--ds-bg-subtle);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.select-container > .field-input-container:focus-within:not(.disabled):not(.error){
+  border-color: var(--ds-success);
+  box-shadow: var(--ds-focus-ring);
+}
+.select-container > .field-input-container.error:focus-within{
+  border-color: var(--ds-error);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ds-error) 14%, transparent);
+}
+.select-text{
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ds-placeholder);
+  font-size: var(--ds-font-size-md);
+  line-height: 1.4;
+  text-align: left;
+}
+.select-text.has-value{
+  color: var(--ds-fg);
+}
+.select-dropdown{
+  position: absolute;
+  top: calc(100% + var(--ds-space-xs));
+  left: 0;
+  right: 0;
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-sm);
+  box-shadow: var(--ds-shadow-md);
+  max-height: var(--ds-select-dropdown-max-height);
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ds-scrollbar-thumb) var(--ds-scrollbar-track);
+}
+.select-dropdown::-webkit-scrollbar{
+  width: var(--ds-space-sm);
+}
+.select-dropdown::-webkit-scrollbar-track{
+  background: var(--ds-scrollbar-track);
+  border-radius: var(--ds-radius-sm);
+}
+.select-dropdown::-webkit-scrollbar-thumb{
+  background: var(--ds-scrollbar-thumb);
+  border-radius: var(--ds-radius-full);
+}
+.select-dropdown::-webkit-scrollbar-thumb:hover{
+  background: var(--ds-scrollbar-thumb-hover);
+}
+.select-dropdown.open{
+  display: block;
+}
+.select-option{
+  padding: var(--ds-space-md) var(--ds-space-lg);
+  cursor: pointer;
+  font-size: var(--ds-font-size-md);
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.select-option:hover:not(.disabled){
+  background-color: var(--ds-success-bg);
+}
+.select-option.selected{
+  background-color: var(--ds-success-bg);
+}
+.select-option.disabled{
+  color: var(--ds-fg-subtle);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Linha com ícone à esquerda + rótulo (+ opcional check à direita) */
+.select-option.select-option--row{
+  justify-content: flex-start;
+  gap: var(--ds-space-md);
+}
+.select-option__icon{
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--ds-icon-muted);
+}
+.select-option__icon path,
+.select-option__icon circle,
+.select-option__icon line,
+.select-option__icon polyline,
+.select-option__icon rect{
+  stroke: currentColor;
+}
+.select-option__icon[fill="currentColor"],
+.select-option__icon path[fill="currentColor"]{
+  fill: currentColor;
+  stroke: none;
+}
+.select-option:hover:not(.disabled) .select-option__icon,
+.select-option.selected .select-option__icon{
+  color: var(--ds-icon-accent);
+}
+.select-option.disabled .select-option__icon{
+  opacity: 0.65;
+}
+.select-option__label{
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+.select-option__check{
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--ds-success);
+}
+.select-option__check path{
+  stroke: currentColor;
+}
+
+/* Linha com checkbox (filtros, multi-select) — use <label class="select-option select-option--checkbox"> */
+label.select-option.select-option--checkbox{
+  cursor: pointer;
+  margin: 0;
+  font-weight: inherit;
+}
+.select-option.select-option--checkbox{
+  justify-content: flex-start;
+  gap: var(--ds-space-md);
+}
+.select-option.select-option--checkbox .select-option__label{
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+.select-dropdown .select-option__checkbox{
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--ds-border);
+  border-radius: var(--ds-radius-sm);
+  background-color: var(--ds-surface);
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  margin: 0;
+  align-self: center;
+}
+.select-dropdown .select-option__checkbox:hover:not(:disabled){
+  border-color: var(--ds-success);
+}
+.select-dropdown .select-option__checkbox:focus{
+  outline: none;
+}
+.select-dropdown .select-option__checkbox:focus-visible{
+  box-shadow: var(--ds-focus-ring);
+  border-color: var(--ds-success);
+}
+.select-dropdown .select-option__checkbox:checked{
+  background-color: var(--ds-success);
+  border-color: var(--ds-success);
+}
+.select-dropdown .select-option__checkbox:checked::after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  transform: translate(-50%, -50%);
+  background-color: var(--ds-on-brand-primary, var(--ds-on-inverse));
+  -webkit-mask-image: var(--ds-select-option-checkbox-mask);
+  mask-image: var(--ds-select-option-checkbox-mask);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+.select-dropdown .select-option__checkbox:disabled{
+  cursor: not-allowed;
+  background-color: var(--ds-bg-subtle);
+  border-color: var(--ds-border);
+  opacity: 0.85;
+}
+.select-option.select-option--checkbox:has(.select-option__checkbox:disabled){
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+@media (max-width: 743px){
+  .select-option.select-option--checkbox{
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+}
+
+.select-container .chevron{
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+  color: var(--ds-icon-accent);
+}
+.select-container > .field-input-container:hover:not(.disabled):not(.error) .chevron,
+.select-container > .field-input-container:focus-within:not(.disabled):not(.error) .chevron,
+.select-container > .field-input-container:not(.disabled):not(.error) .chevron.open{
+  color: var(--ds-success-hover);
+}
+.select-container > .field-input-container.error .chevron{
+  color: var(--ds-error);
+}
+.select-container > .field-input-container.error:hover:not(.disabled) .chevron{
+  color: color-mix(in srgb, var(--ds-error) 52%, var(--ds-surface));
+}
+.select-container > .field-input-container.disabled .chevron{
+  color: var(--ds-icon-muted);
+}
+.select-container .chevron.open{
+  transform: rotate(180deg);
+}
+.select-container .chevron path{
+  stroke: currentColor;
+}
+.select-search{
+  padding: var(--ds-space-sm);
+  border-bottom: 1px solid var(--ds-border);
+}
+.select-search input{
+  width: 100%;
+  padding: var(--ds-space-sm);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-sm);
+  font-size: var(--ds-font-size-sm);
+  font-family: var(--ds-font-family);
+  outline: none;
+  box-sizing: border-box;
+  background: var(--ds-surface);
+  color: var(--ds-fg);
+}
+
+/* Rodapé do painel (ex.: confirmar filtros) */
+.select-dropdown__footer{
+  padding: var(--ds-space-md) var(--ds-space-lg);
+  border-top: 1px solid var(--ds-border);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--ds-space-sm);
+  flex-shrink: 0;
+  background: var(--ds-surface);
+}
+.select-dropdown__btn-primary{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 var(--ds-space-lg);
+  font-family: var(--ds-font-family);
+  font-size: var(--ds-font-size-md);
+  font-weight: var(--ds-font-weight-semibold);
+  line-height: 1.2;
+  color: var(--ds-on-brand-primary, var(--ds-on-inverse));
+  background: var(--ds-success);
+  border: none;
+  border-radius: var(--ds-radius-md);
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.select-dropdown__btn-primary:hover{
+  background: var(--ds-success-hover);
+}
+.select-dropdown__btn-primary:focus-visible{
+  outline: none;
+  box-shadow: var(--ds-focus-ring);
+}
+.select-dropdown__btn-primary:disabled{
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.drawer .select-dropdown,
+.modal .select-dropdown{
+  z-index: 10050;
+}
+
+/* ===== Dark-mode hardcode guards (demos legadas) ===== */
+body.ds-demo-has-sidebar .ds-demo-main .code-block{
+  background: var(--ds-pre-bg) !important;
+  color: var(--ds-pre-fg) !important;
+  border: 1px solid var(--ds-border) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .props-list,
+body.ds-demo-has-sidebar .ds-demo-main .props-list dd,
+body.ds-demo-has-sidebar .ds-demo-main .section-description,
+body.ds-demo-has-sidebar .ds-demo-main .subtitle{
+  color: var(--ds-fg-muted) !important;
+}
+
+/* Input / Select / Textarea / Switch */
+body.ds-demo-has-sidebar .ds-demo-main .field-label-text,
+body.ds-demo-has-sidebar .ds-demo-main .field-sublabel,
+body.ds-demo-has-sidebar .ds-demo-main .field-helper,
+body.ds-demo-has-sidebar .ds-demo-main .switch-label,
+body.ds-demo-has-sidebar .ds-demo-main .textarea-label{
+  color: var(--ds-fg) !important;
+}
+
+/* Checkbox / Radio textos com contraste consistente */
+body.ds-demo-has-sidebar .ds-demo-main .checkbox-label,
+body.ds-demo-has-sidebar .ds-demo-main .radio-label,
+body.ds-demo-has-sidebar .ds-demo-main .helper-text{
+  color: var(--ds-fg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .field-sublabel,
+body.ds-demo-has-sidebar .ds-demo-main .field-helper,
+body.ds-demo-has-sidebar .ds-demo-main .section-description,
+body.ds-demo-has-sidebar .ds-demo-main .description{
+  color: var(--ds-fg-muted) !important;
+}
+
+/* Fundo/texto com !important; borda do wrapper Input/Select sem !important para não anular hover/foco (verde). */
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container{
+  background: var(--ds-surface) !important;
+  color: var(--ds-fg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .select-dropdown,
+body.ds-demo-has-sidebar .ds-demo-main .select-search input{
+  background: var(--ds-surface) !important;
+  border-color: var(--ds-border) !important;
+  color: var(--ds-fg) !important;
+}
+body.ds-demo-has-sidebar .ds-demo-main .select-dropdown__footer{
+  background: var(--ds-surface) !important;
+  border-top-color: var(--ds-border) !important;
+}
+
+/* Contorno padrão e estados (igual input-demo + Select base); !important só onde precisa bater com outros guards. */
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container:not(.error){
+  border-color: var(--ds-border);
+}
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container.error{
+  border-color: var(--ds-error) !important;
+}
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container:hover:not(.disabled):not(.error),
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container:focus-within:not(.disabled):not(.error){
+  border-color: var(--ds-success) !important;
+}
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container.error:hover:not(.disabled){
+  border-color: color-mix(in srgb, var(--ds-error) 68%, var(--ds-surface)) !important;
+}
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container.error:focus-within{
+  border-color: var(--ds-error) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .field-input,
+body.ds-demo-has-sidebar .ds-demo-main .select-text,
+body.ds-demo-has-sidebar .ds-demo-main .select-option{
+  color: var(--ds-fg) !important;
+}
+
+/* Chevron do Select: repouso = accent (verde marca); hover/foco/aberto = success-hover */
+body.ds-demo-has-sidebar .ds-demo-main .select-container .chevron{
+  color: var(--ds-icon-accent) !important;
+  transition: transform 0.2s ease, color 0.2s ease !important;
+}
+body.ds-demo-has-sidebar .ds-demo-main .select-container > .field-input-container:hover:not(.disabled):not(.error) .chevron,
+body.ds-demo-has-sidebar .ds-demo-main .select-container > .field-input-container:focus-within:not(.disabled):not(.error) .chevron,
+body.ds-demo-has-sidebar .ds-demo-main .select-container > .field-input-container:not(.disabled):not(.error) .chevron.open{
+  color: var(--ds-success-hover) !important;
+}
+body.ds-demo-has-sidebar .ds-demo-main .select-container > .field-input-container.error .chevron{
+  color: var(--ds-error) !important;
+}
+body.ds-demo-has-sidebar .ds-demo-main .select-container > .field-input-container.error:hover:not(.disabled) .chevron{
+  color: color-mix(in srgb, var(--ds-error) 52%, var(--ds-surface)) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .select-container .chevron path{
+  stroke: currentColor !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container.disabled .chevron{
+  color: var(--ds-icon-muted) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .field-label .icon-sm{
+  color: var(--ds-text-secondary) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .field-label .icon-sm [stroke]{
+  stroke: currentColor !important;
+}
+
+/* Label → campo: 4px (--ds-space-xs); sem somar flex gap em .field (input/select-demo) */
+body.ds-demo-has-sidebar .ds-demo-main .field-label{
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--ds-space-sm) !important;
+  flex-wrap: wrap !important;
+  margin-bottom: var(--ds-space-xs) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .field-label-text,
+body.ds-demo-has-sidebar .ds-demo-main .field-sublabel{
+  line-height: 1.4 !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container{
+  gap: var(--ds-space-md) !important;
+  margin-top: 0 !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .field-input,
+body.ds-demo-has-sidebar .ds-demo-main .select-text{
+  line-height: 1.4 !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .field-helper{
+  margin-top: var(--ds-space-sm) !important;
+  font-size: var(--ds-font-size-sm) !important;
+  line-height: 1.4 !important;
+}
+
+/* Respiro entre descrição da seção e grid de campos (Input/Select) */
+body.ds-demo-has-sidebar .ds-demo-main .section-description + .grid{
+  margin-top: var(--ds-space-md) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main input::placeholder,
+body.ds-demo-has-sidebar .ds-demo-main textarea::placeholder{
+  color: var(--ds-placeholder) !important;
+  opacity: 1 !important;
+}
+
+/* Drawer / Modal: ícones e select unificados pelo tema */
+body.ds-demo-has-sidebar .ds-demo-main .drawer .close-btn,
+body.ds-demo-has-sidebar .ds-demo-main .modal .close-btn{
+  color: var(--ds-icon-muted) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .drawer .close-btn svg,
+body.ds-demo-has-sidebar .ds-demo-main .modal .close-btn svg{
+  stroke: currentColor !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .drawer .close-btn:hover,
+body.ds-demo-has-sidebar .ds-demo-main .modal .close-btn:hover{
+  color: var(--ds-icon-muted) !important;
+  background: var(--ds-bg-subtle) !important;
+}
+
+/* Select em drawer/modal: usar .select-container (custom); não estilizar <select> nativo aqui. */
+
+body.ds-demo-has-sidebar .ds-demo-main .field-input::placeholder,
+body.ds-demo-has-sidebar .ds-demo-main .select-text:not(.has-value){
+  color: var(--ds-placeholder) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .select-search input::placeholder,
+body.ds-demo-has-sidebar .ds-demo-main textarea::placeholder{
+  color: var(--ds-placeholder) !important;
+  opacity: 1 !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container:focus-within:not(.error),
+body.ds-demo-has-sidebar .ds-demo-main .select-search input:focus{
+  box-shadow: var(--ds-focus-ring) !important;
+}
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container.error:focus-within{
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ds-error) 14%, transparent) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .field-input-container.disabled{
+  background: var(--ds-bg-subtle) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .select-option:hover:not(.disabled),
+body.ds-demo-has-sidebar .ds-demo-main .select-option.selected{
+  background: var(--ds-success-bg) !important;
+  color: var(--ds-success-fg) !important;
+}
+
+/* Datepicker */
+body.ds-demo-has-sidebar .ds-demo-main .dp-weekday{
+  color: var(--ds-fg-muted) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .dp-label{
+  color: var(--ds-text-primary) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .dp-helper{
+  color: var(--ds-fg-muted) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .dp-field:has(.dp-input.dp-input--error) .dp-label,
+body.ds-demo-has-sidebar .ds-demo-main .dp-field:has(.dp-input.dp-input--error) .dp-helper{
+  color: var(--ds-error) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .dp-field:has(.dp-input:disabled) .dp-label,
+body.ds-demo-has-sidebar .ds-demo-main .dp-field:has(.dp-input:disabled) .dp-helper{
+  color: var(--ds-icon-muted) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .dp-input,
+body.ds-demo-has-sidebar .ds-demo-main .dp-popover,
+body.ds-demo-has-sidebar .ds-demo-main .dp-day,
+body.ds-demo-has-sidebar .ds-demo-main .dp-month-label,
+body.ds-demo-has-sidebar .ds-demo-main .dp-nav-btn,
+body.ds-demo-has-sidebar .ds-demo-main .dp-footer-today,
+body.ds-demo-has-sidebar .ds-demo-main .dp-footer-clear{
+  background: var(--ds-surface) !important;
+  border-color: var(--ds-border) !important;
+  color: var(--ds-fg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .dp-input.dp-input--error{
+  border-color: var(--ds-error) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .dp-input.dp-input--error:hover:not(:disabled){
+  border-color: color-mix(in srgb, var(--ds-error) 68%, var(--ds-surface)) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .dp-input::placeholder,
+body.ds-demo-has-sidebar .ds-demo-main .dp-day--outside,
+body.ds-demo-has-sidebar .ds-demo-main .dp-day--disabled{
+  color: var(--ds-placeholder) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .dp-day:hover:not(.dp-day--disabled):not(.dp-day--selected):not(.dp-day--outside){
+  background: var(--ds-success-bg) !important;
+  color: var(--ds-success-fg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .dp-day--selected,
+body.ds-demo-has-sidebar .ds-demo-main .dp-day--range-start,
+body.ds-demo-has-sidebar .ds-demo-main .dp-day--range-end{
+  background: var(--ds-success) !important;
+  color: var(--ds-on-brand-primary, var(--ds-bg)) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .dp-day--range-between{
+  background: var(--ds-success-bg) !important;
+  color: var(--ds-success-fg) !important;
+}
+
+/* Tabs */
+body.ds-demo-has-sidebar .ds-demo-main .tab-group--line{
+  border-bottom-color: var(--ds-border) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .tab-group--pill{
+  background: var(--ds-neutral-bg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .tab--line,
+body.ds-demo-has-sidebar .ds-demo-main .tab--pill{
+  color: var(--ds-fg-muted) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .tab--line:hover:not(:disabled):not(.tab--active),
+body.ds-demo-has-sidebar .ds-demo-main .tab--pill:hover:not(:disabled):not(.tab--active){
+  color: var(--ds-success) !important;
+  background: var(--ds-success-bg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .tab--line.tab--active{
+  color: var(--ds-success) !important;
+  border-bottom-color: var(--ds-success) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .tab--pill.tab--active{
+  background: var(--ds-surface-elevated) !important;
+  color: var(--ds-success) !important;
+  box-shadow: var(--ds-shadow-sm) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .tab-panel-card{
+  background: var(--ds-surface) !important;
+  border-color: var(--ds-border) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .tab-panel-card h3{
+  color: var(--ds-fg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .tab-panel-card p{
+  color: var(--ds-fg-muted) !important;
+}
+
+/* Tabela virtual */
+body.ds-demo-has-sidebar .ds-demo-main .table-container,
+body.ds-demo-has-sidebar .ds-demo-main .table-scroll-area,
+body.ds-demo-has-sidebar .ds-demo-main .table-virtual-body{
+  background: var(--ds-surface) !important;
+  border-color: var(--ds-border) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .table-rows tbody tr{
+  background: var(--ds-surface) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .table-rows tbody tr:nth-child(even){
+  background: var(--ds-bg-subtle) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .table-rows tbody tr:hover{
+  background: var(--ds-success-bg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .table-container th,
+body.ds-demo-has-sidebar .ds-demo-main .table-container td,
+body.ds-demo-has-sidebar .ds-demo-main .performance-table th,
+body.ds-demo-has-sidebar .ds-demo-main .performance-table td{
+  color: var(--ds-fg) !important;
+  border-color: var(--ds-border) !important;
+}
+
+/* Iconografia */
+body.ds-demo-has-sidebar .ds-demo-main .header-ref,
+body.ds-demo-has-sidebar .ds-demo-main .icon-search,
+body.ds-demo-has-sidebar .ds-demo-main .cat-btn,
+body.ds-demo-has-sidebar .ds-demo-main .icon-card{
+  background: var(--ds-surface) !important;
+  border-color: var(--ds-border) !important;
+  color: var(--ds-fg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .icon-search-wrap svg,
+body.ds-demo-has-sidebar .ds-demo-main .icon-count,
+body.ds-demo-has-sidebar .ds-demo-main .section-label,
+body.ds-demo-has-sidebar .ds-demo-main .icon-card-name{
+  color: var(--ds-fg-muted) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .icon-card svg{
+  stroke: var(--ds-fg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .icon-card:hover{
+  background: var(--ds-success-bg) !important;
+  border-color: var(--ds-success) !important;
+  box-shadow: var(--ds-shadow-success) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .icon-card:hover svg,
+body.ds-demo-has-sidebar .ds-demo-main .icon-card:hover .icon-card-name{
+  color: var(--ds-success-fg) !important;
+  stroke: var(--ds-success-fg) !important;
+}
+
+/* Toast */
+body.ds-demo-has-sidebar .ds-demo-main .description{
+  color: var(--ds-fg-muted) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .toast{
+  background: var(--ds-surface-elevated) !important;
+  border-color: var(--ds-border) !important;
+  box-shadow: var(--ds-shadow-md) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .toast-title,
+body.ds-demo-has-sidebar .ds-demo-main .toast-message{
+  color: var(--ds-fg) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .toast-close{
+  color: var(--ds-fg-muted) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .toast-close:hover{
+  background: var(--ds-bg-subtle) !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .toast-success-active{ background: var(--ds-success) !important; }
+body.ds-demo-has-sidebar .ds-demo-main .toast-error-active{ background: var(--ds-error) !important; }
+body.ds-demo-has-sidebar .ds-demo-main .toast-warning-active{ background: var(--ds-warning) !important; }
+body.ds-demo-has-sidebar .ds-demo-main .toast-info-active{ background: var(--ds-info) !important; }
+
+body.ds-demo-has-sidebar .ds-demo-main .toast-success-active .toast-title,
+body.ds-demo-has-sidebar .ds-demo-main .toast-success-active .toast-message{
+  color: var(--ds-on-brand-primary, #FFFFFF) !important;
+}
+body.ds-demo-has-sidebar .ds-demo-main .toast-error-active .toast-title,
+body.ds-demo-has-sidebar .ds-demo-main .toast-error-active .toast-message,
+body.ds-demo-has-sidebar .ds-demo-main .toast-warning-active .toast-title,
+body.ds-demo-has-sidebar .ds-demo-main .toast-warning-active .toast-message,
+body.ds-demo-has-sidebar .ds-demo-main .toast-info-active .toast-title,
+body.ds-demo-has-sidebar .ds-demo-main .toast-info-active .toast-message{
+  color: #FFFFFF !important;
+}
+
+body.ds-demo-has-sidebar .ds-demo-main .toast-success-light{ background: var(--ds-success-bg) !important; }
+body.ds-demo-has-sidebar .ds-demo-main .toast-error-light{ background: var(--ds-error-bg) !important; }
+body.ds-demo-has-sidebar .ds-demo-main .toast-warning-light{ background: var(--ds-warning-bg) !important; }
+body.ds-demo-has-sidebar .ds-demo-main .toast-info-light{ background: var(--ds-info-bg) !important; }
+
+body.ds-demo-has-sidebar .ds-demo-main .toast-success-light .toast-title,
+body.ds-demo-has-sidebar .ds-demo-main .toast-success-light .toast-message{ color: var(--ds-success-fg) !important; }
+body.ds-demo-has-sidebar .ds-demo-main .toast-error-light .toast-title,
+body.ds-demo-has-sidebar .ds-demo-main .toast-error-light .toast-message{ color: var(--ds-error-fg) !important; }
+body.ds-demo-has-sidebar .ds-demo-main .toast-warning-light .toast-title,
+body.ds-demo-has-sidebar .ds-demo-main .toast-warning-light .toast-message{ color: var(--ds-warning-fg) !important; }
+body.ds-demo-has-sidebar .ds-demo-main .toast-info-light .toast-title,
+body.ds-demo-has-sidebar .ds-demo-main .toast-info-light .toast-message{ color: var(--ds-info-fg) !important; }
+
+/* Mobile: menu lateral em tela cheia; busca fixa no topo do painel (não rola com a lista). */
+@media (max-width: 743px){
+  .ds-demo-sidebar-backdrop{
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1001;
+    background: var(--ds-backdrop-scrim);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.22s ease, visibility 0.22s ease;
+  }
+
+  body.ds-demo-sidebar--open .ds-demo-sidebar-backdrop{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .ds-demo-sidebar__mobile-header{
+    display: flex;
+  }
+
+  .ds-demo-sidebar{
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: min(100%, 100vw) !important;
+    max-width: none !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: none !important;
+    z-index: 1002 !important;
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    border-right: none !important;
+    box-shadow: none !important;
+    align-self: stretch !important;
+    padding-top: env(safe-area-inset-top, 0px) !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  }
+
+  body.ds-demo-sidebar--open .ds-demo-sidebar{
+    transform: translateX(0);
+  }
+
+  body.ds-demo-sidebar--open{
+    overflow: hidden;
+  }
+
+  .ds-demo-layout{
+    flex-direction: row;
+  }
+}
+
+/* Fallback dark guards (sem depender da injeção do sidebar) — inclui Ringgo dark */
+[data-ds-theme="dark"] .field-label-text,
+[data-ds-theme="dark"] .field-sublabel,
+[data-ds-theme="dark"] .field-helper,
+[data-ds-theme="dark"] .switch-label,
+[data-ds-theme="dark"] .textarea-label,
+[data-ds-theme="dark"] .section-description,
+[data-ds-theme="dark"] .description,
+[data-ds-theme="ringgo-dark"] .field-label-text,
+[data-ds-theme="ringgo-dark"] .field-sublabel,
+[data-ds-theme="ringgo-dark"] .field-helper,
+[data-ds-theme="ringgo-dark"] .switch-label,
+[data-ds-theme="ringgo-dark"] .textarea-label,
+[data-ds-theme="ringgo-dark"] .section-description,
+[data-ds-theme="ringgo-dark"] .description{
+  color: var(--ds-fg-muted) !important;
+}
+
+[data-ds-theme="dark"] .field-input,
+[data-ds-theme="dark"] .select-text,
+[data-ds-theme="dark"] .select-option,
+[data-ds-theme="ringgo-dark"] .field-input,
+[data-ds-theme="ringgo-dark"] .select-text,
+[data-ds-theme="ringgo-dark"] .select-option{
+  color: var(--ds-fg) !important;
+}
+
+[data-ds-theme="dark"] .field-input-container,
+[data-ds-theme="ringgo-dark"] .field-input-container{
+  background: var(--ds-surface) !important;
+}
+
+[data-ds-theme="dark"] .select-dropdown,
+[data-ds-theme="dark"] .dp-input,
+[data-ds-theme="dark"] .dp-popover,
+[data-ds-theme="dark"] .tab-panel-card,
+[data-ds-theme="dark"] .table-container,
+[data-ds-theme="dark"] .toast,
+[data-ds-theme="ringgo-dark"] .select-dropdown,
+[data-ds-theme="ringgo-dark"] .dp-input,
+[data-ds-theme="ringgo-dark"] .dp-popover,
+[data-ds-theme="ringgo-dark"] .tab-panel-card,
+[data-ds-theme="ringgo-dark"] .table-container,
+[data-ds-theme="ringgo-dark"] .toast{
+  background: var(--ds-surface) !important;
+  border-color: var(--ds-border) !important;
+}
+
+/* Input + Select (trigger): borda sem !important no default; hover/foco verde e erro alinhados ao tema claro. */
+[data-ds-theme="dark"] .field-input-container:not(.error),
+[data-ds-theme="ringgo-dark"] .field-input-container:not(.error){
+  border-color: var(--ds-border);
+}
+[data-ds-theme="dark"] .field-input-container:hover:not(.disabled):not(.error),
+[data-ds-theme="dark"] .field-input-container:focus-within:not(.disabled):not(.error),
+[data-ds-theme="ringgo-dark"] .field-input-container:hover:not(.disabled):not(.error),
+[data-ds-theme="ringgo-dark"] .field-input-container:focus-within:not(.disabled):not(.error){
+  border-color: var(--ds-success) !important;
+}
+[data-ds-theme="dark"] .field-input-container.error,
+[data-ds-theme="ringgo-dark"] .field-input-container.error{
+  border-color: var(--ds-error) !important;
+}
+[data-ds-theme="dark"] .field-input-container.error:hover:not(.disabled),
+[data-ds-theme="ringgo-dark"] .field-input-container.error:hover:not(.disabled){
+  border-color: color-mix(in srgb, var(--ds-error) 68%, var(--ds-surface)) !important;
+}
+[data-ds-theme="dark"] .field-input-container.error:focus-within,
+[data-ds-theme="ringgo-dark"] .field-input-container.error:focus-within{
+  border-color: var(--ds-error) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ds-error) 14%, transparent) !important;
+}
+
+[data-ds-theme="dark"] .dp-input.dp-input--error,
+[data-ds-theme="ringgo-dark"] .dp-input.dp-input--error{
+  border-color: var(--ds-error) !important;
+}
+
+[data-ds-theme="dark"] .dp-field:has(.dp-input.dp-input--error) .dp-label,
+[data-ds-theme="dark"] .dp-field:has(.dp-input.dp-input--error) .dp-helper,
+[data-ds-theme="ringgo-dark"] .dp-field:has(.dp-input.dp-input--error) .dp-label,
+[data-ds-theme="ringgo-dark"] .dp-field:has(.dp-input.dp-input--error) .dp-helper{
+  color: var(--ds-error) !important;
+}
+
+[data-ds-theme="dark"] .ds-demo-main,
+[data-ds-theme="dark"] .ds-demo-main > .container,
+[data-ds-theme="dark"] .ds-demo-main > .ds-container,
+[data-ds-theme="ringgo-dark"] .ds-demo-main,
+[data-ds-theme="ringgo-dark"] .ds-demo-main > .container,
+[data-ds-theme="ringgo-dark"] .ds-demo-main > .ds-container{
+  background: var(--ds-bg) !important;
+}
+
+[data-ds-theme="dark"] [style*="background:#fff"],
+[data-ds-theme="dark"] [style*="background: #fff"],
+[data-ds-theme="dark"] [style*="background:#FFFFFF"],
+[data-ds-theme="dark"] [style*="background: #FFFFFF"],
+[data-ds-theme="dark"] [style*="background-color:#fff"],
+[data-ds-theme="dark"] [style*="background-color: #fff"],
+[data-ds-theme="dark"] [style*="background-color:#FFFFFF"],
+[data-ds-theme="dark"] [style*="background-color: #FFFFFF"],
+[data-ds-theme="ringgo-dark"] [style*="background:#fff"],
+[data-ds-theme="ringgo-dark"] [style*="background: #fff"],
+[data-ds-theme="ringgo-dark"] [style*="background:#FFFFFF"],
+[data-ds-theme="ringgo-dark"] [style*="background: #FFFFFF"],
+[data-ds-theme="ringgo-dark"] [style*="background-color:#fff"],
+[data-ds-theme="ringgo-dark"] [style*="background-color: #fff"],
+[data-ds-theme="ringgo-dark"] [style*="background-color:#FFFFFF"],
+[data-ds-theme="ringgo-dark"] [style*="background-color: #FFFFFF"]{
+  background: var(--ds-surface) !important;
+}
+
