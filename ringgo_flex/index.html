@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-ds-theme="ringgo">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ringgo Flex — guia rápido do produto de benefícios corporativos. Referência para consulta em campo (Conarh)." />
+  <title>Ringgo Flex — Guia rápido do produto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root, [data-ds-theme="ringgo"] {
+      --ds-font-body: 'Inter', system-ui, sans-serif;
+      --ds-font-heading: 'Poppins', system-ui, sans-serif;
+
+      --ds-primary: #009642;
+      --ds-primary-hover: #005E26;
+      --ds-primary-light: #CEF5E1;
+      --ds-primary-text: #005E26;
+      --ds-on-primary: #FFFFFF;
+      --ds-secondary: #0F2D4A;
+      --ds-secondary-soft: #13375A;
+      --ds-on-secondary: #FFFFFF;
+
+      --ds-text-primary: #2F3335;
+      --ds-text-secondary: #6B6F71;
+      --ds-text-tertiary: #8A8D8E;
+      --ds-placeholder: #A8ABAC;
+
+      --ds-bg: #FFFFFF;
+      --ds-bg-subtle: #F9F9F9;
+      --ds-surface: #FFFFFF;
+      --ds-border: #E0E0E0;
+
+      --ds-radius-sm: 8px;
+      --ds-radius-md: 12px;
+      --ds-radius-lg: 16px;
+      --ds-radius-full: 9999px;
+      --ds-shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --ds-shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --ds-shadow-primary: 0 12px 32px rgba(0,150,66,0.22);
+
+      --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+      --motion: 220ms;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: var(--ds-font-body);
+      color: var(--ds-text-primary);
+      background: var(--ds-secondary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .deck {
+      max-width: 1120px;
+      margin: 0 auto;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      padding: 12px 12px 0;
+    }
+
+    .slide-viewport {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--ds-radius-lg);
+      box-shadow: var(--ds-shadow-md);
+      background: var(--ds-bg);
+    }
+
+    .slide {
+      display: none;
+      position: absolute;
+      inset: 0;
+      padding: clamp(20px, 3.5vw, 40px) clamp(20px, 4vw, 48px) clamp(28px, 4vw, 40px);
+      overflow-y: auto;
+      animation: enter var(--motion) var(--ease);
+    }
+    .slide.active { display: block; }
+    .slide[data-bg="dark"] {
+      background:
+        radial-gradient(90% 70% at 100% 0%, rgba(0,150,66,0.18) 0%, transparent 55%),
+        radial-gradient(70% 60% at 0% 100%, rgba(19,55,90,0.9) 0%, transparent 50%),
+        linear-gradient(165deg, var(--ds-secondary-soft) 0%, var(--ds-secondary) 55%, #0A213A 100%);
+      color: var(--ds-on-secondary);
+    }
+    .slide[data-bg="light"] { background: var(--ds-bg); color: var(--ds-text-primary); }
+    .slide[data-bg="subtle"] { background: var(--ds-bg-subtle); color: var(--ds-text-primary); }
+
+    @keyframes enter {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .slide { animation: none; }
+      * { transition: none !important; }
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: clamp(12px, 2vw, 20px);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--ds-font-heading);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+    }
+    .brand-mark {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ds-primary);
+      box-shadow: 0 0 0 3px rgba(0,150,66,0.2);
+    }
+    .slide[data-bg="dark"] .brand { color: #fff; }
+    .slide[data-bg="light"] .brand,
+    .slide[data-bg="subtle"] .brand { color: var(--ds-secondary); }
+
+    .counter {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--ds-text-tertiary);
+    }
+    .slide[data-bg="dark"] .counter { color: rgba(255,255,255,0.4); }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--ds-primary);
+      margin: 0 0 8px;
+    }
+    .slide[data-bg="dark"] .eyebrow { color: #03D062; }
+
+    h1 {
+      font-family: var(--ds-font-heading);
+      font-weight: 700;
+      font-size: clamp(28px, 4.2vw, 44px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+    }
+    h2 {
+      font-family: var(--ds-font-heading);
+      font-weight: 600;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin: 0 0 10px;
+    }
+    .lead {
+      font-size: clamp(14px, 1.6vw, 16px);
+      line-height: 1.55;
+      color: var(--ds-text-secondary);
+      max-width: 46rem;
+      margin: 0 0 20px;
+    }
+    .slide[data-bg="dark"] .lead { color: rgba(255,255,255,0.68); }
+
+    p, li {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ds-text-secondary);
+    }
+    .slide[data-bg="dark"] p,
+    .slide[data-bg="dark"] li { color: rgba(255,255,255,0.72); }
+    strong { color: var(--ds-text-primary); font-weight: 600; }
+    .slide[data-bg="dark"] strong { color: #fff; }
+
+    .hl { color: var(--ds-primary); }
+    .slide[data-bg="dark"] .hl { color: #03D062; }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+    @media (max-width: 820px) {
+      .grid.cols-2,
+      .grid.cols-3,
+      .grid.cols-4 { grid-template-columns: 1fr; }
+      .grid.cols-2.keep-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .card {
+      background: var(--ds-surface);
+      border: 1px solid var(--ds-border);
+      border-radius: var(--ds-radius-lg);
+      padding: 16px;
+      transition: border-color var(--motion) var(--ease);
+    }
+    .card:hover { border-color: var(--ds-primary); }
+    .card h3 {
+      font-family: var(--ds-font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0 0 6px;
+      color: var(--ds-text-primary);
+    }
+    .card p { margin: 0; font-size: 13.5px; }
+    .card .meta {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ds-primary-text);
+    }
+
+    .slide[data-bg="dark"] .card {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .slide[data-bg="dark"] .card:hover { border-color: rgba(3,208,98,0.55); }
+    .slide[data-bg="dark"] .card h3 { color: #fff; }
+    .slide[data-bg="dark"] .card p { color: rgba(255,255,255,0.7); }
+    .slide[data-bg="dark"] .card .meta { color: #03D062; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: var(--ds-radius-full);
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--ds-primary-light);
+      color: var(--ds-primary-text);
+    }
+    .badge.warn {
+      background: #FFFAEB;
+      color: #93370D;
+    }
+    .badge.info {
+      background: #D5E6F6;
+      color: #0A213A;
+    }
+    .slide[data-bg="dark"] .badge {
+      background: rgba(3,208,98,0.16);
+      color: #03D062;
+    }
+
+    .steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .steps li {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: start;
+      background: var(--ds-bg-subtle);
+      border: 1px solid var(--ds-border);
+      border-radius: var(--ds-radius-md);
+      padding: 12px 14px;
+      color: var(--ds-text-secondary);
+    }
+    .steps .n {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--ds-radius-full);
+      background: var(--ds-primary);
+      color: var(--ds-on-primary);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+    .steps strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 14px;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 12px;
+      align-items: stretch;
+      margin-top: 8px;
+    }
+    .compare .vs {
+      align-self: center;
+      font-family: var(--ds-font-heading);
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--ds-placeholder);
+      letter-spacing: 0.08em;
+    }
+    @media (max-width: 720px) {
+      .compare { grid-template-columns: 1fr; }
+      .compare .vs { text-align: center; }
+    }
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .flow .chip {
+      background: var(--ds-bg-subtle);
+      border: 1px solid var(--ds-border);
+      border-radius: var(--ds-radius-md);
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ds-text-primary);
+    }
+    .flow .arrow {
+      color: var(--ds-primary);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .slide[data-bg="dark"] .flow .chip {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+
+    .callout {
+      border-radius: var(--ds-radius-md);
+      padding: 14px 16px;
+      border: 1px solid var(--ds-primary);
+      background: var(--ds-primary-light);
+      color: var(--ds-primary-text);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: 16px;
+    }
+    .callout.warn {
+      border-color: #F79009;
+      background: #FFFAEB;
+      color: #93370D;
+    }
+    .callout.info {
+      border-color: var(--ds-secondary);
+      background: #D5E6F6;
+      color: #0A213A;
+    }
+    .slide[data-bg="dark"] .callout {
+      background: rgba(3,208,98,0.12);
+      border-color: rgba(3,208,98,0.45);
+      color: #CEF5E1;
+    }
+
+    .faq details {
+      border: 1px solid var(--ds-border);
+      border-radius: var(--ds-radius-md);
+      background: var(--ds-surface);
+      padding: 0 14px;
+      margin-bottom: 8px;
+    }
+    .faq summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--ds-text-primary);
+      padding: 12px 0;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+";
+      margin-left: auto;
+      color: var(--ds-primary);
+      font-weight: 700;
+    }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p {
+      margin: 0 0 12px;
+      font-size: 13.5px;
+    }
+    .faq summary:focus-visible {
+      outline: 2px solid var(--ds-primary);
+      outline-offset: 2px;
+    }
+
+    .money {
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--ds-primary);
+    }
+
+    .cover-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+    @media (max-width: 640px) {
+      .cover-kpis { grid-template-columns: 1fr; }
+    }
+    .kpi {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--ds-radius-lg);
+      padding: 16px;
+    }
+    .kpi .n {
+      font-family: var(--ds-font-heading);
+      font-weight: 700;
+      font-size: 22px;
+      color: #fff;
+    }
+    .kpi .l {
+      margin-top: 4px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 4px 16px;
+    }
+    .nav-btns { display: flex; gap: 8px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 18px;
+      border-radius: var(--ds-radius-md);
+      border: none;
+      font-family: var(--ds-font-body);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 150ms var(--ease), border-color 150ms var(--ease), color 150ms var(--ease);
+    }
+    .btn:focus-visible {
+      outline: 2px solid #03D062;
+      outline-offset: 2px;
+    }
+    .btn-primary {
+      background: var(--ds-primary);
+      color: var(--ds-on-primary);
+      box-shadow: var(--ds-shadow-primary);
+    }
+    .btn-primary:hover { background: var(--ds-primary-hover); }
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.06); }
+    .btn:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+
+    .progress {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.12);
+      border-radius: var(--ds-radius-full);
+      overflow: hidden;
+      max-width: 280px;
+    }
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--ds-primary);
+      transition: width var(--motion) var(--ease);
+    }
+
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .toc button {
+      border: 1px solid var(--ds-border);
+      background: var(--ds-bg);
+      color: var(--ds-text-primary);
+      border-radius: var(--ds-radius-full);
+      padding: 8px 12px;
+      min-height: 40px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 150ms var(--ease), color 150ms var(--ease);
+    }
+    .toc button:hover {
+      border-color: var(--ds-primary);
+      color: var(--ds-primary-text);
+    }
+    .toc button:focus-visible {
+      outline: 2px solid var(--ds-primary);
+      outline-offset: 2px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: start;
+    }
+    @media (max-width: 820px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    .src {
+      margin-top: 18px;
+      font-size: 11px;
+      color: var(--ds-text-tertiary);
+    }
+    .slide[data-bg="dark"] .src { color: rgba(255,255,255,0.35); }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck">
+    <div class="slide-viewport" id="viewport" aria-live="polite">
+
+      <!-- 1. Capa -->
+      <section class="slide active" data-bg="dark" data-title="Capa">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">01 / 14</div>
+        </div>
+        <p class="eyebrow">Benefícios corporativos</p>
+        <h1>Como o Ringgo Flex<br>funciona, de ponta a ponta</h1>
+        <p class="lead">Guia sucinto para consultar no Conarh: o que é o produto, como o saldo é debitado, o que o RH faz, o que o colaborador vê e quando a Conta Digital entra na história.</p>
+        <div class="cover-kpis">
+          <div class="kpi"><div class="n">Cartão + App</div><div class="l">Uso do colaborador</div></div>
+          <div class="kpi"><div class="n">Portal + BO</div><div class="l">Gestão e implantação</div></div>
+          <div class="kpi"><div class="n">PAT ou Flex</div><div class="l">Modelo por contrato</div></div>
+        </div>
+        <p class="src">Fonte: Manual do Produto Ringgo Flex v1.0 · 07/07/2026</p>
+      </section>
+
+      <!-- 2. Índice rápido -->
+      <section class="slide" data-bg="light" data-title="Mapa">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">02 / 14</div>
+        </div>
+        <p class="eyebrow">Navegação rápida</p>
+        <h2>Onde ir se surgir dúvida no stand</h2>
+        <p class="lead">Toque no tema. Cada bloco responde a uma pergunta típica de RH, comercial ou atendimento.</p>
+        <div class="toc" id="toc"></div>
+      </section>
+
+      <!-- 3. O que é -->
+      <section class="slide" data-bg="light" data-title="O que é">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">03 / 14</div>
+        </div>
+        <p class="eyebrow">Visão executiva</p>
+        <h2>O que é o Ringgo Flex</h2>
+        <p class="lead">Produto de <strong>benefícios corporativos</strong> da Ringgo: a empresa distribui e gerencia benefícios; o colaborador consulta e usa no cartão e no app.</p>
+        <div class="grid cols-2 keep-2">
+          <div class="card">
+            <h3>Mensagem-chave</h3>
+            <p>Centraliza a operação de benefícios, reduz complexidade para a empresa e melhora a experiência do colaborador.</p>
+          </div>
+          <div class="card">
+            <h3>Não confundir</h3>
+            <p>Ringgo Flex <strong>não é</strong> Conta Digital. Conta Digital é produto financeiro independente — entra só quando há TED em benefícios especiais.</p>
+            <span class="meta">Regra de ouro comercial</span>
+          </div>
+        </div>
+        <div class="callout">
+          Flex funciona <strong>sem</strong> Conta Digital para uso básico de benefícios. Conta Digital só é obrigatória para TED (Saldo Livre / Premiação), quando habilitada.
+        </div>
+      </section>
+
+      <!-- 4. Para quem -->
+      <section class="slide" data-bg="subtle" data-title="Para quem">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">04 / 14</div>
+        </div>
+        <p class="eyebrow">Público</p>
+        <h2>Para quem foi criado</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <span class="badge">Empresa</span>
+            <h3>RH, DP e gestores</h3>
+            <p>Cadastram colaboradores, pedem cartões, acompanham lotes e fazem carregamentos no Portal Empresas.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Colaborador</span>
+            <h3>Quem usa o benefício</h3>
+            <p>Consulta saldos e extratos, ativa o cartão, move caixinhas (se liberado) e usa o cartão no dia a dia.</p>
+          </div>
+          <div class="card">
+            <span class="badge info">Ringgo</span>
+            <h3>Times internos</h3>
+            <p>Implantação, parametrização no Backoffice, suporte, conciliação e evolução do produto.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Entregas</span>
+            <h3>O que o produto entrega</h3>
+            <p>Cartão multibenefícios, app, Portal Empresas, Backoffice e carteiras especiais (Saldo Livre, Premiação).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Ecossistema -->
+      <section class="slide" data-bg="light" data-title="Ecossistema">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">05 / 14</div>
+        </div>
+        <p class="eyebrow">Arquitetura</p>
+        <h2>Quatro peças, um produto</h2>
+        <p class="lead">Cada canal tem um dono claro. Isso evita vender “conta” quando o cliente quer “benefício”.</p>
+        <div class="grid cols-4">
+          <div class="card"><h3>Backoffice</h3><p>Habilita produto, parâmetros, PAT/Flex, TED e suporte operacional.</p><span class="meta">Times Ringgo</span></div>
+          <div class="card"><h3>Portal Empresas</h3><p>Cadastro, pedidos de cartão, cargas e consulta de operações.</p><span class="meta">RH / DP</span></div>
+          <div class="card"><h3>Aplicativo</h3><p>Saldos, ativação, extratos, caixinhas, cartão virtual e TED.</p><span class="meta">Colaborador</span></div>
+          <div class="card"><h3>Conta Digital</h3><p>Independente. Necessária para TED em benefícios especiais.</p><span class="meta">Complementar</span></div>
+        </div>
+      </section>
+
+      <!-- 6. Modelos -->
+      <section class="slide" data-bg="light" data-title="Modelos">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">06 / 14</div>
+        </div>
+        <p class="eyebrow">Contratação</p>
+        <h2>Modelos de benefícios</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <span class="badge">PAT</span>
+            <h3>Alimentação e Refeição</h3>
+            <p>Preservam finalidade alimentar. <strong>Não enviam nem recebem</strong> saldo de outras carteiras.</p>
+            <span class="meta">PAT = SIM no Backoffice</span>
+          </div>
+          <div class="card">
+            <span class="badge info">Flexível</span>
+            <h3>Política da empresa</h3>
+            <p>Mobilidade, combustível, saúde, farmácia, educação, home office, bem-estar, entretenimento…</p>
+            <span class="meta">PAT = NÃO</span>
+          </div>
+          <div class="card">
+            <span class="badge">Especiais</span>
+            <h3>Saldo Livre e Premiação</h3>
+            <p>Maior flexibilidade. Podem ser elegíveis a <strong>TED</strong> quando o EC habilitar.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Alimento Flex</span>
+            <h3>Uma carteira só</h3>
+            <p>Une operacionalmente Alimentação + Refeição. Ex.: <span class="money">R$ 600</span> + <span class="money">R$ 400</span> = <span class="money">R$ 1.000</span>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Story MCC -->
+      <section class="slide" data-bg="dark" data-title="MCC">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">07 / 14</div>
+        </div>
+        <p class="eyebrow">Storytelling funcional · compra</p>
+        <h2>O colaborador não escolhe a caixinha na maquininha</h2>
+        <p class="lead">O débito é automático pelo <strong>MCC</strong> (código do ramo do estabelecimento). Essa é a frase que mais evita expectativa errada no comercial.</p>
+        <div class="flow">
+          <span class="chip">Passa o cartão</span><span class="arrow">→</span>
+          <span class="chip">Adquirente envia MCC</span><span class="arrow">→</span>
+          <span class="chip">Flex acha a carteira</span><span class="arrow">→</span>
+          <span class="chip">Debita o saldo certo</span>
+        </div>
+        <div class="grid cols-2" style="margin-top:18px">
+          <div class="card">
+            <h3>Exemplos</h3>
+            <p>Restaurante → Refeição · Supermercado → Alimentação · Farmácia → Farmácia · Posto → Combustível.</p>
+          </div>
+          <div class="card">
+            <h3>Quando o MCC vem errado</h3>
+            <p>Pode debitar outra carteira, recusar a compra ou gerar chamado. O Flex depende do MCC que a rede envia.</p>
+          </div>
+        </div>
+        <div class="callout">Não vender como “o colaborador escolhe o benefício na compra”. O sistema identifica pelo MCC.</div>
+      </section>
+
+      <!-- 8. Caixinhas -->
+      <section class="slide" data-bg="light" data-title="Caixinhas">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">08 / 14</div>
+        </div>
+        <p class="eyebrow">Transferências</p>
+        <h2>Movimentar saldo entre caixinhas</h2>
+        <p class="lead">Quem define as regras é a <strong>empresa contratante</strong>, na implantação — não o colaborador “do nada”.</p>
+        <div class="grid cols-2">
+          <div class="card"><h3>Total</h3><p>Todos os benefícios permitidos enviam e recebem.</p></div>
+          <div class="card"><h3>Parcial</h3><p>Só algumas origens/destinos (ex.: Educação → Saúde).</p></div>
+          <div class="card"><h3>Sem transferência</h3><p>Menu de transferência <strong>não aparece</strong> no app.</p></div>
+          <div class="card"><h3>Modelo PAT</h3><p>Alimentação e Refeição ficam protegidos: não enviam nem recebem.</p></div>
+        </div>
+      </section>
+
+      <!-- 9. No Name -->
+      <section class="slide" data-bg="subtle" data-title="No Name">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">09 / 14</div>
+        </div>
+        <p class="eyebrow">Cartão físico</p>
+        <h2>Cartão No Name: estoque primeiro, vínculo depois</h2>
+        <p class="lead">O RH cadastra o colaborador com CPF normalmente. O plástico No Name ainda não é de ninguém. Só quando o cartão chega e o colaborador lê o QR no app é que o <strong>cartão X vincula ao colaborador Y</strong>.</p>
+        <ol class="steps">
+          <li><span class="n">1</span><div><strong>RH cadastra o colaborador</strong> — CPF e dados no Portal (pessoa no sistema)</div></li>
+          <li><span class="n">2</span><div><strong>RH pede lote No Name</strong> — estoque sem dono, sem vínculo a CPF</div></li>
+          <li><span class="n">3</span><div><strong>Cartões chegam</strong> — empresa estoca e entrega o plástico</div></li>
+          <li><span class="n">4</span><div><strong>Ativação pelo QR</strong> — cartão X ↔ colaborador Y (CPF) → uso liberado</div></li>
+        </ol>
+        <div class="callout info" style="margin-top:14px"><strong>Cadastro ≠ vínculo.</strong> CPF no Portal não associa o plástico; o QR na ativação sim. QR Code <strong>não reutiliza</strong>. Sem ativação, não transaciona. No Name só existe com Ringgo Flex habilitado.</div>
+      </section>
+
+      <!-- 10. Jornada RH -->
+      <section class="slide" data-bg="light" data-title="Jornada RH">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">10 / 14</div>
+        </div>
+        <p class="eyebrow">Portal Empresas</p>
+        <h2>A história do RH em 5 atos</h2>
+        <div class="two-col">
+          <ol class="steps">
+            <li><span class="n">1</span><div><strong>Cadastra colaboradores</strong> — nome, CPF, nascimento, e-mail, telefone</div></li>
+            <li><span class="n">2</span><div><strong>Pede cartões No Name</strong> — quantidade, endereço, recebedor</div></li>
+            <li><span class="n">3</span><div><strong>Acompanha status</strong> — Solicitado → Em andamento → Concluído (ou Erro)</div></li>
+            <li><span class="n">4</span><div><strong>Carrega benefícios</strong> — upload do arquivo de carga e confirmação</div></li>
+            <li><span class="n">5</span><div><strong>Consulta histórico</strong> — recibos e detalhe por colaborador</div></li>
+          </ol>
+          <div class="card">
+            <h3>Dica de stand</h3>
+            <p>Se perguntarem “como o saldo chega?”, a resposta curta é: <strong>carga pelo Portal</strong>, após validação do arquivo — não é crédito manual no cartão na maquininha.</p>
+            <span class="meta">Cargas processadas não estornam sozinhas</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. Jornada colaborador + TED -->
+      <section class="slide" data-bg="light" data-title="Colaborador & TED">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">11 / 14</div>
+        </div>
+        <p class="eyebrow">App · Conta Digital</p>
+        <h2>Três cenários de primeiro acesso</h2>
+        <div class="grid cols-3">
+          <div class="card">
+            <span class="badge">1</span>
+            <h3>Só Flex</h3>
+            <p>Onboarding simples (senha, dados, endereço, dispositivo, termos). Usa benefícios sem Conta Digital.</p>
+          </div>
+          <div class="card">
+            <span class="badge warn">2</span>
+            <h3>Flex + TED</h3>
+            <p>Usa benefícios normalmente. Banner orienta abrir Conta Digital se quiser TED em Saldo Livre/Premiação.</p>
+          </div>
+          <div class="card">
+            <span class="badge info">3</span>
+            <h3>Flex + Conta</h3>
+            <p>Sistema libera módulos conforme produtos ativos e elegibilidade.</p>
+          </div>
+        </div>
+        <div class="callout warn">
+          TED só de <strong>Saldo Livre</strong> ou <strong>Premiação</strong>, com TED habilitado no EC, Conta Digital ativa e <strong>mesma titularidade</strong> (mesmo CPF). Sem Conta Digital ativa, TED bloqueia — demais benefícios continuam.
+        </div>
+      </section>
+
+      <!-- 12. Implantação -->
+      <section class="slide" data-bg="subtle" data-title="Implantação">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">12 / 14</div>
+        </div>
+        <p class="eyebrow">Backoffice</p>
+        <h2>Ordem que não pode errar</h2>
+        <p class="lead"><strong>Primeiro passo sempre:</strong> habilitar Ringgo Flex na aba MULTI-APP do estabelecimento. Sem isso, portal, app, No Name e cargas não aparecem.</p>
+        <div class="flow">
+          <span class="chip">1 Flex</span><span class="arrow">→</span>
+          <span class="chip">2 No Name</span><span class="arrow">→</span>
+          <span class="chip">3 PAT/Flex</span><span class="arrow">→</span>
+          <span class="chip">4 Benefícios</span><span class="arrow">→</span>
+          <span class="chip">5 Transferências</span><span class="arrow">→</span>
+          <span class="chip">6 Especiais</span><span class="arrow">→</span>
+          <span class="chip">7 TED</span><span class="arrow">→</span>
+          <span class="chip">8 Homologar</span>
+        </div>
+        <div class="grid cols-2" style="margin-top:16px">
+          <div class="card">
+            <h3>Parâmetros No Name</h3>
+            <p><code>UTILIZA_CARTAO_NO_NAME</code> exibe a função.<br /><code>QTD_MAX_CARTAO_NO_NAME_POR_PEDIDO</code> limita o lote.</p>
+          </div>
+          <div class="card">
+            <h3>Caminho</h3>
+            <p>Backoffice → Estabelecimentos → EC → aba <strong>MULTI-APP</strong> → habilitar Ringgo Flex.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13. FAQ Conarh -->
+      <section class="slide" data-bg="light" data-title="FAQ Conarh">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">13 / 14</div>
+        </div>
+        <p class="eyebrow">Consulta rápida</p>
+        <h2>FAQ de bolso para o Conarh</h2>
+        <div class="faq">
+          <details>
+            <summary>Flex é Conta Digital?</summary>
+            <p>Não. Flex = benefícios corporativos. Conta Digital = produto financeiro à parte.</p>
+          </details>
+          <details>
+            <summary>Precisa de Conta Digital para usar?</summary>
+            <p>Não para o uso básico. Sim para TED em Saldo Livre/Premiação (quando habilitado).</p>
+          </details>
+          <details>
+            <summary>O colaborador escolhe qual benefício gastar?</summary>
+            <p>Não na compra. O MCC do estabelecimento define a carteira debitada.</p>
+          </details>
+          <details>
+            <summary>PAT permite mover Alimentação/Refeição?</summary>
+            <p>Não. Devem preservar finalidade alimentar: não enviam nem recebem transferência.</p>
+          </details>
+          <details>
+            <summary>TED pode ir para conta de terceiro?</summary>
+            <p>Não. Somente mesma titularidade (mesmo CPF do colaborador).</p>
+          </details>
+          <details>
+            <summary>O que é Cartão No Name?</summary>
+            <p>Plástico sem dono no estoque. O RH já cadastrou o CPF do colaborador; o vínculo cartão ↔ pessoa só acontece quando o colaborador ativa pelo QR (ou código) no app.</p>
+          </details>
+          <details>
+            <summary>Primeiro passo da implantação?</summary>
+            <p>Habilitar Ringgo Flex no MULTI-APP do estabelecimento.</p>
+          </details>
+          <details>
+            <summary>O que é Alimento Flex?</summary>
+            <p>Unificação operacional das carteiras Alimentação + Refeição.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- 14. Fechamento -->
+      <section class="slide" data-bg="dark" data-title="Fechamento">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ringgo Flex</div>
+          <div class="counter">14 / 14</div>
+        </div>
+        <p class="eyebrow">Para lembrar</p>
+        <h1>Benefício parametrizado.<br>Débito por MCC.<br>Conta Digital só se TED.</h1>
+        <p class="lead">Se a dúvida for operacional fina (parâmetro, status de lote, conciliação), volte ao Manual do Produto ou ao time de implantação — este deck é o mapa, não o runbook completo.</p>
+        <div class="grid cols-3" style="margin-top:20px">
+          <div class="card"><h3>Empresa</h3><p>Portal: gente, cartões e cargas.</p></div>
+          <div class="card"><h3>Colaborador</h3><p>App + cartão: saldo e uso.</p></div>
+          <div class="card"><h3>Ringgo</h3><p>Backoffice: habilita e governa.</p></div>
+        </div>
+        <p class="src">Uso interno · Baseado no Manual do Produto Ringgo Flex · Beatriz Amaral · v1.0</p>
+      </section>
+
+    </div>
+
+    <nav class="nav" aria-label="Controles da apresentação">
+      <div class="nav-btns">
+        <button type="button" class="btn btn-secondary" id="prev" aria-label="Slide anterior">Anterior</button>
+        <button type="button" class="btn btn-primary" id="next" aria-label="Próximo slide">Próximo</button>
+      </div>
+      <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+    </nav>
+  </div>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      const bar = document.getElementById('bar');
+      const toc = document.getElementById('toc');
+      let i = 0;
+
+      const titles = slides.map((s, idx) => s.dataset.title || ('Slide ' + (idx + 1)));
+
+      function renderToc() {
+        if (!toc) return;
+        toc.innerHTML = titles.map((t, idx) =>
+          '<button type="button" data-go="' + idx + '">' + String(idx + 1).padStart(2, '0') + ' · ' + t + '</button>'
+        ).join('');
+        toc.querySelectorAll('button').forEach((btn) => {
+          btn.addEventListener('click', () => go(Number(btn.dataset.go)));
+        });
+      }
+
+      function go(n) {
+        i = Math.max(0, Math.min(slides.length - 1, n));
+        slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+        prevBtn.disabled = i === 0;
+        nextBtn.disabled = i === slides.length - 1;
+        nextBtn.textContent = i === slides.length - 1 ? 'Fim' : 'Próximo';
+        bar.style.width = ((i + 1) / slides.length * 100) + '%';
+        history.replaceState(null, '', '#' + (i + 1));
+      }
+
+      prevBtn.addEventListener('click', () => go(i - 1));
+      nextBtn.addEventListener('click', () => go(i + 1));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+          e.preventDefault();
+          go(i + 1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          go(i - 1);
+        } else if (e.key === 'Home') {
+          go(0);
+        } else if (e.key === 'End') {
+          go(slides.length - 1);
+        }
+      });
+
+      let touchX = null;
+      document.getElementById('viewport').addEventListener('touchstart', (e) => {
+        touchX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      document.getElementById('viewport').addEventListener('touchend', (e) => {
+        if (touchX == null) return;
+        const dx = e.changedTouches[0].screenX - touchX;
+        if (Math.abs(dx) > 50) go(dx < 0 ? i + 1 : i - 1);
+        touchX = null;
+      }, { passive: true });
+
+      renderToc();
+      const hash = parseInt((location.hash || '').replace('#', ''), 10);
+      go(Number.isFinite(hash) && hash >= 1 ? hash - 1 : 0);
+    })();
+  </script>
+</body>
+</html>
