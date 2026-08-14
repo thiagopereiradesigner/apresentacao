@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-ds-theme="ringgo">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ponto Digital Onnibank — guia rápido do produto de controle de jornada. Referência para consulta em campo (Conarh)." />
+  <title>Ponto Digital — Guia rápido do produto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root, [data-ds-theme="ringgo"] {
+      --ds-font-body: 'Inter', system-ui, sans-serif;
+      --ds-font-heading: 'Poppins', system-ui, sans-serif;
+
+      --ds-primary: #009642;
+      --ds-primary-hover: #005E26;
+      --ds-primary-light: #CEF5E1;
+      --ds-primary-text: #005E26;
+      --ds-on-primary: #FFFFFF;
+      --ds-secondary: #0F2D4A;
+      --ds-secondary-soft: #13375A;
+      --ds-on-secondary: #FFFFFF;
+
+      --ds-text-primary: #2F3335;
+      --ds-text-secondary: #6B6F71;
+      --ds-text-tertiary: #8A8D8E;
+      --ds-placeholder: #A8ABAC;
+
+      --ds-bg: #FFFFFF;
+      --ds-bg-subtle: #F9F9F9;
+      --ds-surface: #FFFFFF;
+      --ds-border: #E0E0E0;
+
+      --ds-radius-sm: 8px;
+      --ds-radius-md: 12px;
+      --ds-radius-lg: 16px;
+      --ds-radius-full: 9999px;
+      --ds-shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --ds-shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --ds-shadow-primary: 0 12px 32px rgba(0,150,66,0.22);
+
+      --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+      --motion: 220ms;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: var(--ds-font-body);
+      color: var(--ds-text-primary);
+      background: var(--ds-secondary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .deck {
+      max-width: 1120px;
+      margin: 0 auto;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      padding: 12px 12px 0;
+    }
+
+    .slide-viewport {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--ds-radius-lg);
+      box-shadow: var(--ds-shadow-md);
+      background: var(--ds-bg);
+    }
+
+    .slide {
+      display: none;
+      position: absolute;
+      inset: 0;
+      padding: clamp(20px, 3.5vw, 40px) clamp(20px, 4vw, 48px) clamp(28px, 4vw, 40px);
+      overflow-y: auto;
+      animation: enter var(--motion) var(--ease);
+    }
+    .slide.active { display: block; }
+    .slide[data-bg="dark"] {
+      background:
+        radial-gradient(90% 70% at 100% 0%, rgba(0,150,66,0.18) 0%, transparent 55%),
+        radial-gradient(70% 60% at 0% 100%, rgba(19,55,90,0.9) 0%, transparent 50%),
+        linear-gradient(165deg, var(--ds-secondary-soft) 0%, var(--ds-secondary) 55%, #0A213A 100%);
+      color: var(--ds-on-secondary);
+    }
+    .slide[data-bg="light"] { background: var(--ds-bg); color: var(--ds-text-primary); }
+    .slide[data-bg="subtle"] { background: var(--ds-bg-subtle); color: var(--ds-text-primary); }
+
+    @keyframes enter {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .slide { animation: none; }
+      * { transition: none !important; }
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: clamp(12px, 2vw, 20px);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--ds-font-heading);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+    }
+    .brand-mark {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ds-primary);
+      box-shadow: 0 0 0 3px rgba(0,150,66,0.2);
+    }
+    .slide[data-bg="dark"] .brand { color: #fff; }
+    .slide[data-bg="light"] .brand,
+    .slide[data-bg="subtle"] .brand { color: var(--ds-secondary); }
+
+    .counter {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--ds-text-tertiary);
+    }
+    .slide[data-bg="dark"] .counter { color: rgba(255,255,255,0.4); }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--ds-primary);
+      margin: 0 0 8px;
+    }
+    .slide[data-bg="dark"] .eyebrow { color: #03D062; }
+
+    h1 {
+      font-family: var(--ds-font-heading);
+      font-weight: 700;
+      font-size: clamp(28px, 4.2vw, 44px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+    }
+    h2 {
+      font-family: var(--ds-font-heading);
+      font-weight: 600;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin: 0 0 10px;
+    }
+    .lead {
+      font-size: clamp(14px, 1.6vw, 16px);
+      line-height: 1.55;
+      color: var(--ds-text-secondary);
+      max-width: 46rem;
+      margin: 0 0 20px;
+    }
+    .slide[data-bg="dark"] .lead { color: rgba(255,255,255,0.68); }
+
+    p, li {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ds-text-secondary);
+    }
+    .slide[data-bg="dark"] p,
+    .slide[data-bg="dark"] li { color: rgba(255,255,255,0.72); }
+    strong { color: var(--ds-text-primary); font-weight: 600; }
+    .slide[data-bg="dark"] strong { color: #fff; }
+
+    .hl { color: var(--ds-primary); }
+    .slide[data-bg="dark"] .hl { color: #03D062; }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+    @media (max-width: 820px) {
+      .grid.cols-2,
+      .grid.cols-3,
+      .grid.cols-4 { grid-template-columns: 1fr; }
+      .grid.cols-2.keep-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .card {
+      background: var(--ds-surface);
+      border: 1px solid var(--ds-border);
+      border-radius: var(--ds-radius-lg);
+      padding: 16px;
+      transition: border-color var(--motion) var(--ease);
+    }
+    .card:hover { border-color: var(--ds-primary); }
+    .card h3 {
+      font-family: var(--ds-font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0 0 6px;
+      color: var(--ds-text-primary);
+    }
+    .card p { margin: 0; font-size: 13.5px; }
+    .card .meta {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ds-primary-text);
+    }
+
+    .slide[data-bg="dark"] .card {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .slide[data-bg="dark"] .card:hover { border-color: rgba(3,208,98,0.55); }
+    .slide[data-bg="dark"] .card h3 { color: #fff; }
+    .slide[data-bg="dark"] .card p { color: rgba(255,255,255,0.7); }
+    .slide[data-bg="dark"] .card .meta { color: #03D062; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: var(--ds-radius-full);
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--ds-primary-light);
+      color: var(--ds-primary-text);
+      margin-bottom: 8px;
+    }
+    .badge.warn {
+      background: #FFFAEB;
+      color: #93370D;
+    }
+    .badge.info {
+      background: #D5E6F6;
+      color: #0A213A;
+    }
+    .slide[data-bg="dark"] .badge {
+      background: rgba(3,208,98,0.16);
+      color: #03D062;
+    }
+
+    .steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .steps li {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: start;
+      background: var(--ds-bg-subtle);
+      border: 1px solid var(--ds-border);
+      border-radius: var(--ds-radius-md);
+      padding: 12px 14px;
+      color: var(--ds-text-secondary);
+    }
+    .steps .n {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--ds-radius-full);
+      background: var(--ds-primary);
+      color: var(--ds-on-primary);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+    .steps strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 14px;
+    }
+
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .flow .chip {
+      background: var(--ds-bg-subtle);
+      border: 1px solid var(--ds-border);
+      border-radius: var(--ds-radius-md);
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ds-text-primary);
+    }
+    .flow .arrow {
+      color: var(--ds-primary);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .slide[data-bg="dark"] .flow .chip {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+
+    .callout {
+      border-radius: var(--ds-radius-md);
+      padding: 14px 16px;
+      border: 1px solid var(--ds-primary);
+      background: var(--ds-primary-light);
+      color: var(--ds-primary-text);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: 16px;
+    }
+    .callout.warn {
+      border-color: #F79009;
+      background: #FFFAEB;
+      color: #93370D;
+    }
+    .callout.info {
+      border-color: var(--ds-secondary);
+      background: #D5E6F6;
+      color: #0A213A;
+    }
+    .slide[data-bg="dark"] .callout {
+      background: rgba(3,208,98,0.12);
+      border-color: rgba(3,208,98,0.45);
+      color: #CEF5E1;
+    }
+
+    .faq details {
+      border: 1px solid var(--ds-border);
+      border-radius: var(--ds-radius-md);
+      background: var(--ds-surface);
+      padding: 0 14px;
+      margin-bottom: 8px;
+    }
+    .faq summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--ds-text-primary);
+      padding: 12px 0;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+";
+      margin-left: auto;
+      color: var(--ds-primary);
+      font-weight: 700;
+    }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p {
+      margin: 0 0 12px;
+      font-size: 13.5px;
+    }
+    .faq summary:focus-visible {
+      outline: 2px solid var(--ds-primary);
+      outline-offset: 2px;
+    }
+
+    .cover-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+    @media (max-width: 640px) {
+      .cover-kpis { grid-template-columns: 1fr; }
+    }
+    .kpi {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--ds-radius-lg);
+      padding: 16px;
+    }
+    .kpi .n {
+      font-family: var(--ds-font-heading);
+      font-weight: 700;
+      font-size: 22px;
+      color: #fff;
+    }
+    .kpi .l {
+      margin-top: 4px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 4px 16px;
+    }
+    .nav-btns { display: flex; gap: 8px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 18px;
+      border-radius: var(--ds-radius-md);
+      border: none;
+      font-family: var(--ds-font-body);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 150ms var(--ease), border-color 150ms var(--ease), color 150ms var(--ease);
+    }
+    .btn:focus-visible {
+      outline: 2px solid #03D062;
+      outline-offset: 2px;
+    }
+    .btn-primary {
+      background: var(--ds-primary);
+      color: var(--ds-on-primary);
+      box-shadow: var(--ds-shadow-primary);
+    }
+    .btn-primary:hover { background: var(--ds-primary-hover); }
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.06); }
+    .btn:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+
+    .progress {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.12);
+      border-radius: var(--ds-radius-full);
+      overflow: hidden;
+      max-width: 280px;
+    }
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--ds-primary);
+      transition: width var(--motion) var(--ease);
+    }
+
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .toc button {
+      border: 1px solid var(--ds-border);
+      background: var(--ds-bg);
+      color: var(--ds-text-primary);
+      border-radius: var(--ds-radius-full);
+      padding: 8px 12px;
+      min-height: 40px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 150ms var(--ease), color 150ms var(--ease);
+    }
+    .toc button:hover {
+      border-color: var(--ds-primary);
+      color: var(--ds-primary-text);
+    }
+    .toc button:focus-visible {
+      outline: 2px solid var(--ds-primary);
+      outline-offset: 2px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: start;
+    }
+    @media (max-width: 820px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    .link-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .link-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--ds-border);
+      border-radius: var(--ds-radius-md);
+      background: var(--ds-surface);
+      color: var(--ds-text-primary);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      min-height: 44px;
+      transition: border-color 150ms var(--ease);
+    }
+    .link-list a:hover { border-color: var(--ds-primary); }
+    .link-list a span {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ds-primary-text);
+      white-space: nowrap;
+    }
+    .link-list a:focus-visible {
+      outline: 2px solid var(--ds-primary);
+      outline-offset: 2px;
+    }
+
+    .src {
+      margin-top: 18px;
+      font-size: 11px;
+      color: var(--ds-text-tertiary);
+    }
+    .slide[data-bg="dark"] .src { color: rgba(255,255,255,0.35); }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      background: var(--ds-bg-subtle);
+      border: 1px solid var(--ds-border);
+      border-radius: 6px;
+      padding: 1px 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck">
+    <div class="slide-viewport" id="viewport" aria-live="polite">
+
+      <!-- 1. Capa -->
+      <section class="slide active" data-bg="dark" data-title="Capa">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">01 / 13</div>
+        </div>
+        <p class="eyebrow">Produto de RH · Onnibank</p>
+        <h1>Como o Ponto Digital<br>funciona, de ponta a ponta</h1>
+        <p class="lead">Guia sucinto para consultar no Conarh: o que é, por que exige Conta Digital, como o RH cadastra, como o colaborador marca (online e offline) e o que a legislação exige.</p>
+        <div class="cover-kpis">
+          <div class="kpi"><div class="n">App + Web</div><div class="l">Marcação do colaborador</div></div>
+          <div class="kpi"><div class="n">Portal + Ponto</div><div class="l">Cadastro e gestão RH</div></div>
+          <div class="kpi"><div class="n">REP-P</div><div class="l">Conformidade Portaria 671</div></div>
+        </div>
+        <p class="src">Fonte: Manual do Produto — Ponto Digital Onnibank · v3.0 · 28/01/2025</p>
+      </section>
+
+      <!-- 2. Índice -->
+      <section class="slide" data-bg="light" data-title="Mapa">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">02 / 13</div>
+        </div>
+        <p class="eyebrow">Navegação rápida</p>
+        <h2>Onde ir se surgir dúvida no stand</h2>
+        <p class="lead">Toque no tema. Cada bloco responde a uma pergunta típica de RH, comercial ou atendimento.</p>
+        <div class="toc" id="toc"></div>
+      </section>
+
+      <!-- 3. O que é -->
+      <section class="slide" data-bg="light" data-title="O que é">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">03 / 13</div>
+        </div>
+        <p class="eyebrow">Visão executiva</p>
+        <h2>O que é o Ponto Digital</h2>
+        <p class="lead">Solução de <strong>controle de jornada</strong> que substitui relógio de ponto físico e registro manual: marcação digital + plataforma de gestão para o RH, alinhada à CLT e às Portarias 671/1486.</p>
+        <div class="grid cols-2 keep-2">
+          <div class="card">
+            <h3>Mensagem-chave</h3>
+            <p>Automatiza a marcação (entrada, saída, intervalos), gera comprovantes e dá ao RH visão centralizada da jornada — com implantação simples e integração ao ecossistema Onnibank.</p>
+          </div>
+          <div class="card">
+            <h3>Por que vende</h3>
+            <p>É <strong>porta de entrada</strong> no funil: atrai empresas pela rotina de RH e abre caminho para upsell (conta, benefícios, outros produtos).</p>
+            <span class="meta">Approach comercial + retenção</span>
+          </div>
+        </div>
+        <div class="callout">
+          Diferente dos produtos de crédito: aqui o gancho é <strong>facilidade operacional do RH</strong>, não empréstimo ao colaborador.
+        </div>
+      </section>
+
+      <!-- 4. Para quem -->
+      <section class="slide" data-bg="subtle" data-title="Para quem">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">04 / 13</div>
+        </div>
+        <p class="eyebrow">Público</p>
+        <h2>Para quem foi criado</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <span class="badge">Primário</span>
+            <h3>RH / DP</h3>
+            <p>Cadastram colaboradores, configuram posto/cargo/jornada, ajustam pontos, geram relatórios e acompanham atestados e documentos.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Secundário</span>
+            <h3>Colaboradores</h3>
+            <p>Marcam ponto no App ou na Web, veem histórico e comprovantes, enviam atestados e assinam documentos (se o módulo estiver contratado).</p>
+          </div>
+          <div class="card">
+            <span class="badge info">Onnibank</span>
+            <h3>Times internos</h3>
+            <p>Comercial, CS, Operações, Produto, Tech e Backoffice habilitam EC, onboarding e suporte.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Parceiro</span>
+            <h3>WiseWay · Facilita Ponto</h3>
+            <p>White label da plataforma de gestão. Onnibank cuida do fluxo de marcação no App; WiseWay retém e gerencia os dados do ponto.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Ecossistema -->
+      <section class="slide" data-bg="light" data-title="Ecossistema">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">05 / 13</div>
+        </div>
+        <p class="eyebrow">Arquitetura</p>
+        <h2>Cinco peças, um produto</h2>
+        <p class="lead">Cada canal tem dono claro. Isso evita vender “só o app” quando o RH precisa do Portal Ponto — ou esquecer a Conta Digital no onboarding.</p>
+        <div class="grid cols-3">
+          <div class="card"><h3>Portal Empresas</h3><p>Cadastro de colaboradores e habilitação do Ponto Digital. Integra via API com o Portal Ponto.</p><span class="meta">RH</span></div>
+          <div class="card"><h3>Portal Ponto</h3><p>Gestão de jornada, ajustes, relatórios, centros de custo, atestados e documentos (WiseWay white label).</p><span class="meta">RH</span></div>
+          <div class="card"><h3>App Onnibank</h3><p>Marcação online/offline, histórico, comprovantes PDF e Central de Ações.</p><span class="meta">Colaborador</span></div>
+          <div class="card"><h3>Web Colaborador</h3><p>Registro de ponto e portal (código da empresa + CPF).</p><span class="meta">Colaborador</span></div>
+          <div class="card"><h3>Backoffice</h3><p>Painel administrativo: ECs, suporte à visão do RH, habilitação.</p><span class="meta">Operações</span></div>
+          <div class="card"><h3>Conta Digital PF</h3><p>Pré-requisito: todo colaborador precisa de Conta Digital PF para usar o Ponto.</p><span class="meta">Obrigatório</span></div>
+        </div>
+      </section>
+
+      <!-- 6. Premissas -->
+      <section class="slide" data-bg="dark" data-title="Premissas">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">06 / 13</div>
+        </div>
+        <p class="eyebrow">Regras que não negociam</p>
+        <h2>Três premissas antes de qualquer demo</h2>
+        <div class="grid cols-3" style="margin-top:8px">
+          <div class="card">
+            <h3>1. Conta Digital PF</h3>
+            <p>Sem conta PF, não há Ponto. Não existe marcação só para PJ — a Portaria exige dados da pessoa física nos relatórios.</p>
+          </div>
+          <div class="card">
+            <h3>2. Online e Offline</h3>
+            <p>Dá para marcar sem internet (atalho no App). A sincronização acontece depois, automaticamente.</p>
+          </div>
+          <div class="card">
+            <h3>3. Dois sistemas, um fluxo</h3>
+            <p>Cadastro no Portal Empresas → API → Portal Ponto. Gestão do ponto = expertise WiseWay; marcação no App = Onnibank.</p>
+          </div>
+        </div>
+        <div class="callout">
+          O produto só fica habilitado quando o colaborador está completo nos <strong>dois</strong> portais: Empresas e Ponto.
+        </div>
+      </section>
+
+      <!-- 7. Storytelling jornada -->
+      <section class="slide" data-bg="light" data-title="Jornada">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">07 / 13</div>
+        </div>
+        <p class="eyebrow">Storytelling funcional · ponta a ponta</p>
+        <h2>A história em 6 atos</h2>
+        <p class="lead">Do contrato ao “bateu o ponto”. Use essa sequência no stand — responde 80% das dúvidas.</p>
+        <div class="flow">
+          <span class="chip">Contrato + EC</span><span class="arrow">→</span>
+          <span class="chip">RH no Portal Empresas</span><span class="arrow">→</span>
+          <span class="chip">Conta Digital PF</span><span class="arrow">→</span>
+          <span class="chip">Cadastro Ponto</span><span class="arrow">→</span>
+          <span class="chip">API → Portal Ponto</span><span class="arrow">→</span>
+          <span class="chip">Marca no App/Web</span>
+        </div>
+        <ol class="steps" style="margin-top:16px">
+          <li><span class="n">1</span><div><strong>Obrigatórios no cadastro</strong> — Nome, CPF, matrícula, gênero e empresa</div></li>
+          <li><span class="n">2</span><div><strong>Para gestão completa</strong> — Posto de trabalho, cargo, centro de custo e jornada</div></li>
+          <li><span class="n">3</span><div><strong>Status é do RH</strong> — Ativo, férias, licença ou demitido: evita falta/desconto errado</div></li>
+        </ol>
+        <div class="callout info">Demitido: após pagamento da rescisão, migra para Onnibank POP e o Ponto Digital some do app.</div>
+      </section>
+
+      <!-- 8. Colaborador marca -->
+      <section class="slide" data-bg="subtle" data-title="Marcação">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">08 / 13</div>
+        </div>
+        <p class="eyebrow">Colaborador</p>
+        <h2>Como o ponto é marcado</h2>
+        <div class="two-col">
+          <ol class="steps">
+            <li><span class="n">1</span><div><strong>Login no App</strong> — CPF + senha (1º acesso). Depois: ícone Ponto Digital. Precisa de internet.</div></li>
+            <li><span class="n">2</span><div><strong>Atalho na tela de login</strong> — Vai direto à marcação. Funciona <strong>online ou offline</strong>. Exige ter logado na Conta Digital ao menos uma vez.</div></li>
+            <li><span class="n">3</span><div><strong>Web</strong> — Código da empresa + CPF em <code>ponto.onnibank.com.br/registrar</code></div></li>
+            <li><span class="n">4</span><div><strong>Central de Ações</strong> — Histórico, atestados, justificativas e assinatura (módulo Documentos).</div></li>
+          </ol>
+          <div class="card">
+            <h3>Dica de stand</h3>
+            <p>Não existem restrições para o colaborador marcar ponto — a atividade está sempre disponível. Quem controla o status (férias/licença) é o RH.</p>
+            <span class="meta">Offline = atalho, não o login completo</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. RH e permissões -->
+      <section class="slide" data-bg="light" data-title="RH">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">09 / 13</div>
+        </div>
+        <p class="eyebrow">Gestão</p>
+        <h2>O que o RH controla</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <span class="badge">Portal Empresas</span>
+            <h3>Cadastro e produtos</h3>
+            <p>Funcionário já precisa estar na Conta Digital. No menu Ponto Digital (ícone de biometria), o RH habilita e completa o cadastro.</p>
+          </div>
+          <div class="card">
+            <span class="badge info">Portal Ponto</span>
+            <h3>Jornada e relatórios</h3>
+            <p>Ajustes, centros de custo, unidades, horário noturno, atestados, assinatura eletrônica e documentos.</p>
+          </div>
+          <div class="card">
+            <h3>Admin total</h3>
+            <p>Vê todos os colaboradores e funcionalidades, sem limite por posto.</p>
+            <span class="meta">Mantenha ao menos 1 admin</span>
+          </div>
+          <div class="card">
+            <h3>Supervisor</h3>
+            <p>Vê só os postos sob sua responsabilidade. Notificações vão só para ele.</p>
+            <span class="meta">+ Permissão total ou só visualização</span>
+          </div>
+        </div>
+        <div class="callout warn">Perfis combinam: Admin/Supervisor × edição/visualização × banco de horas. Explique a flexibilidade — e a necessidade de um administrador.</div>
+      </section>
+
+      <!-- 10. Legislação -->
+      <section class="slide" data-bg="light" data-title="Legislação">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">10 / 13</div>
+        </div>
+        <p class="eyebrow">Conformidade</p>
+        <h2>O que sustenta a conversa jurídica</h2>
+        <p class="lead">Três âncoras. No stand, cite o nome; o detalhe está no manual.</p>
+        <div class="grid cols-3">
+          <div class="card">
+            <span class="badge info">CLT</span>
+            <h3>Art. 74</h3>
+            <p>Estabelecimentos com mais de 10 trabalhadores: anotação de entrada/saída (manual, mecânico ou eletrônico) e pré-assinalação do repouso.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Portaria 671/21</span>
+            <h3>REP-P</h3>
+            <p>Registrador Eletrônico de Ponto via Programa: marcação em nuvem/servidor — base legal do ponto digital moderno.</p>
+          </div>
+          <div class="card">
+            <span class="badge">Portaria 1486/22</span>
+            <h3>Complemento</h3>
+            <p>Assinaturas eletrônicas, arquivo-fonte, PIS no registrador e regras de sigilo/cooperação técnica.</p>
+          </div>
+        </div>
+        <div class="callout">
+          Concorrentes típicos no radar: Folha Certa, TOTVS Clock IN, Tangerino, Ponto Mais, Ponto Tel, OiTchau. Nosso diferencial: <strong>integração Conta Digital + Portal Empresas</strong>.
+        </div>
+      </section>
+
+      <!-- 11. Roadmap -->
+      <section class="slide" data-bg="subtle" data-title="Fases">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">11 / 13</div>
+        </div>
+        <p class="eyebrow">Evolução</p>
+        <h2>O que já existe e o que vem</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <span class="badge">1ª · Fev/2024</span>
+            <h3>Base</h3>
+            <p>Marcação online/offline, histórico, comprovante PDF, gestão no Portal Ponto.</p>
+          </div>
+          <div class="card">
+            <span class="badge">2ª · Dez/2024</span>
+            <h3>RH completo</h3>
+            <p>Cadastro via API, centro de custo, horário noturno, atestados, assinatura e documentos.</p>
+          </div>
+          <div class="card">
+            <span class="badge">3ª · 2025</span>
+            <h3>Cadastro + XLS</h3>
+            <p>Template melhorado, centro de custo no posto, exportação XLS.</p>
+          </div>
+          <div class="card">
+            <span class="badge warn">4ª · Planejada</span>
+            <h3>Próximo ciclo</h3>
+            <p>Sync de status Empresas↔Ponto, múltiplos registros/dia, escalas e férias, param. BackOffice, SSO.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. FAQ -->
+      <section class="slide" data-bg="light" data-title="FAQ Conarh">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">12 / 13</div>
+        </div>
+        <p class="eyebrow">Consulta rápida</p>
+        <h2>FAQ de bolso para o Conarh</h2>
+        <div class="faq">
+          <details>
+            <summary>Precisa de Conta Digital?</summary>
+            <p>Sim. Todo colaborador precisa de Conta Digital PF. Não há ponto só para PJ.</p>
+          </details>
+          <details>
+            <summary>Funciona sem internet?</summary>
+            <p>Sim, pelo atalho na tela de login do App. Depois sincroniza. O login completo do App exige internet.</p>
+          </details>
+          <details>
+            <summary>Onde o RH cadastra?</summary>
+            <p>No Portal Empresas (menu Ponto Digital). A API envia para o Portal Ponto (WiseWay).</p>
+          </details>
+          <details>
+            <summary>Quem é a WiseWay?</summary>
+            <p>Parceiro Facilita Ponto: white label da plataforma de gestão. Onnibank cuida da marcação no App.</p>
+          </details>
+          <details>
+            <summary>É legal (REP-P)?</summary>
+            <p>Sim: enquadra-se como Registrador Eletrônico de Ponto via Programa (Portaria 671), com complementos da 1486 e CLT art. 74.</p>
+          </details>
+          <details>
+            <summary>Colaborador pode marcar sempre?</summary>
+            <p>Sim. Sem restrição de marcação. O RH precisa manter o status (ativo/férias/licença/demitido) correto.</p>
+          </details>
+          <details>
+            <summary>O que é a Central de Ações?</summary>
+            <p>Módulo com atestados, justificativas, documentos e assinatura — disponível se a empresa contratou Documentos e Assinaturas.</p>
+          </details>
+          <details>
+            <summary>URL rápida do Portal Ponto?</summary>
+            <p>https://ponto.onnibank.com.br — registro web em /registrar; portal colaborador em /portal.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- 13. Fechamento + links -->
+      <section class="slide" data-bg="dark" data-title="Fechamento">
+        <div class="top">
+          <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Ponto Digital</div>
+          <div class="counter">13 / 13</div>
+        </div>
+        <p class="eyebrow">Para lembrar</p>
+        <h1>Conta Digital PF.<br>Cadastro no Empresas.<br>Marca no App — até offline.</h1>
+        <p class="lead">Se a dúvida for operacional fina (parâmetro de EC, integração API, SLA), volte ao Manual do Produto ou ao CS — este deck é o mapa, não o runbook.</p>
+        <div class="grid cols-3" style="margin-top:16px">
+          <div class="card"><h3>Empresa</h3><p>Portal Empresas + Portal Ponto.</p></div>
+          <div class="card"><h3>Colaborador</h3><p>App (online/offline) + Web.</p></div>
+          <div class="card"><h3>Onnibank</h3><p>Backoffice + parceria WiseWay.</p></div>
+        </div>
+        <ul class="link-list" style="margin-top:16px">
+          <li><a href="https://ponto.onnibank.com.br" target="_blank" rel="noopener">Plataforma Ponto <span>Abrir</span></a></li>
+          <li><a href="https://ponto.onnibank.com.br/registrar" target="_blank" rel="noopener">Registro Web <span>Abrir</span></a></li>
+          <li><a href="https://www.wiseway.com.br/" target="_blank" rel="noopener">Parceiro WiseWay <span>Site</span></a></li>
+        </ul>
+        <p class="src">Uso interno · Manual do Produto Ponto Digital Onnibank · Beatriz Amaral / Carolina Calixto · v3.0</p>
+      </section>
+
+    </div>
+
+    <nav class="nav" aria-label="Controles da apresentação">
+      <div class="nav-btns">
+        <button type="button" class="btn btn-secondary" id="prev" aria-label="Slide anterior">Anterior</button>
+        <button type="button" class="btn btn-primary" id="next" aria-label="Próximo slide">Próximo</button>
+      </div>
+      <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+    </nav>
+  </div>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+      const bar = document.getElementById('bar');
+      const toc = document.getElementById('toc');
+      let i = 0;
+
+      const titles = slides.map((s, idx) => s.dataset.title || ('Slide ' + (idx + 1)));
+
+      function renderToc() {
+        if (!toc) return;
+        toc.innerHTML = titles.map((t, idx) =>
+          '<button type="button" data-go="' + idx + '">' + String(idx + 1).padStart(2, '0') + ' · ' + t + '</button>'
+        ).join('');
+        toc.querySelectorAll('button').forEach((btn) => {
+          btn.addEventListener('click', () => go(Number(btn.dataset.go)));
+        });
+      }
+
+      function go(n) {
+        i = Math.max(0, Math.min(slides.length - 1, n));
+        slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+        prevBtn.disabled = i === 0;
+        nextBtn.disabled = i === slides.length - 1;
+        nextBtn.textContent = i === slides.length - 1 ? 'Fim' : 'Próximo';
+        bar.style.width = ((i + 1) / slides.length * 100) + '%';
+        history.replaceState(null, '', '#' + (i + 1));
+      }
+
+      prevBtn.addEventListener('click', () => go(i - 1));
+      nextBtn.addEventListener('click', () => go(i + 1));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+          e.preventDefault();
+          go(i + 1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          go(i - 1);
+        } else if (e.key === 'Home') {
+          go(0);
+        } else if (e.key === 'End') {
+          go(slides.length - 1);
+        }
+      });
+
+      let touchX = null;
+      document.getElementById('viewport').addEventListener('touchstart', (e) => {
+        touchX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      document.getElementById('viewport').addEventListener('touchend', (e) => {
+        if (touchX == null) return;
+        const dx = e.changedTouches[0].screenX - touchX;
+        if (Math.abs(dx) > 50) go(dx < 0 ? i + 1 : i - 1);
+        touchX = null;
+      }, { passive: true });
+
+      renderToc();
+      const hash = parseInt((location.hash || '').replace('#', ''), 10);
+      go(Number.isFinite(hash) && hash >= 1 ? hash - 1 : 0);
+    })();
+  </script>
+</body>
+</html>
