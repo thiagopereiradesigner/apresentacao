@@ -8,8 +8,9 @@ Apresentação sucinta do produto **Ponto Digital Onnibank** para consulta em ca
 
 ## Como abrir
 
+- **Conarh / browser:** https://thiagopereiradesigner.github.io/apresentacao/ponto_digital/
 - **Local:** abra `index.html` no navegador.
-- **GitHub Pages:** publique a pasta `apresentacao` (ou o repo) em Pages; a URL tipicamente fica em `/ponto_digital/`.
+- **Repo:** https://github.com/thiagopereiradesigner/apresentacao/tree/main/ponto_digital
 
 ## Controles
 
