@@ -1,6 +1,6 @@
 # Ecossistema de cartões & crédito
 
-**Versão do artefato:** v8.6 (ver badge no `index.html`).  
+**Versão do artefato:** v8.7 (ver badge no `index.html`).  
 **Fio narrativo:** IP fictícia **Ringgo** (folha, benefícios, cartão e crédito via parceiros).
 
 ## O que abrir
@@ -33,15 +33,13 @@ HTML usados como **referência histórica** após integração em `index.html`. 
 
 ## Documentação
 
-- [`PRD-ecossistema-cartoes.md`](PRD-ecossistema-cartoes.md) — visão de produto, escopo por seção, glossário (~133 termos), stack, UX e acessibilidade.
+- [`PRD-ecossistema-cartoes.md`](PRD-ecossistema-cartoes.md) — visão de produto, escopo por seção, glossário (~135 termos), stack, UX e acessibilidade.
 
-## Destaques de conteúdo (v8.6)
+## Destaques de conteúdo (v8.7)
 
 - Vocabulário canônico: **SCD** (alias SFD), **CCB** (alias CCD); fio **Ringgo**.
-- Aba **Folha & Pagamento**: ERP → e-Social (dado ≠ liquidação) → convênio → bolsão → split; trilhas privado / público / INSS no lado pagamento; callouts Ringgo.
+- Aba **Folha & Pagamento** enriquecida: quem calcula/declara/paga; arquivo vs ERP; FGTS/guias ≠ líquido; sem ERP (contador); Dataprev só no INSS; fiscalização vs certeza em tempo real.
 - Aba **Consignado** com três trilhas (privado, público servidor, INSS).
-- **Ecossistema:** bandeira × emissor, modalidades (débito/crédito/crébito/pré/pós-pago) e introdução a benefícios.
-- **Tiers:** MCC × CNAE.
-- **Infra:** contas especiais — **bolsão**, transitória, **caução**, **escrow** (≠ custódia / FGC).
-- EVA (PDD/Opex/Capex), atores do FIDC (**gestora de margem ≠ margem consignável**), risco sacado, Infratech.
-- Glossário ~133 termos.
+- **Ecossistema:** bandeira × emissor, modalidades e benefícios; **Tiers** MCC × CNAE.
+- **Infra:** bolsão, transitória, caução, escrow.
+- Glossário ~135 termos.

@@ -3,7 +3,7 @@
 **Artefato principal:** `index.html` (mapa + glossário + trilha guiada Ringgo)  
 **Atalhos legados:** `mapa-sistema-financeiro.html`, `ecossistema-cartoes.html` → redirecionam para `index.html`  
 **Design System (versionado):** `assets/ds/ds-demo-base.css`, `assets/ds/ds-ringgo-bridge.css`  
-**Versão da página:** v8.6 — bíblia integrada (Ringgo, Folha & Pagamento, cartões/benefícios, contas especiais, consignado 3 trilhas)
+**Versão da página:** v8.7 — bíblia integrada (Ringgo, Folha & Pagamento enriquecida, cartões/benefícios, contas especiais, consignado 3 trilhas)
 
 ---
 
@@ -46,7 +46,7 @@
 ### 3.2 Pagamentos
 
 - `Ecossistema`: modelo de 4 partes; **bandeira × emissor** (scheme fee vs IC); modalidades (débito, crédito, crébito, pré-pago, pós-pago); introdução a **cartões de benefícios** (PAT, rede semi-fechada).
-- `Folha & Pagamento`: ciclo RH/ERP → e-Social (obrigação ≠ liquidação) → convênio empresa×banco/IP → bolsão/split; trilhas privado / público / INSS no lado pagamento; encaixe Ringgo e links para Infra, Consignado, ESD.
+- `Folha & Pagamento`: ciclo RH/ERP (ou contador) → e-Social (obrigação ≠ liquidação) → convênio → bolsão/split; tabela **quem calcula / declara / paga**; arquivo CNAB vs memória do ERP; **FGTS/guias ≠ líquido**; sem ERP; Dataprev só no INSS; fiscalização declaratória; encaixe Ringgo.
 - `Infra Bancária`: BaaS vs TaaS, Infratech, CIP/SPB/SPI/STR, CCB, banco liquidante, BIN/BIN sponsor/program manager, boleto registrado; **contas especiais** (bolsão, transitória, caução, escrow vs custódia/FGC); resumo comercial de consignado.
 - `Taxas & MDR`, `Tiers` (incl. **MCC × CNAE**), `Split & Crébito`: estrutura de preço, lógica por modalidade e cenários de divisão.
 
@@ -69,14 +69,14 @@
 
 ### 3.6 Glossário
 
-- **~133 fichas** na grade do painel `Glossário` (cada `<div class="tc">` = um termo com tag, definição e linha de rodapé).
-- Cobertura ampliada: instituições e licenças (`SFN`, `CMN`, `BCB`, `S1/S2`, `IP`, `SCD/SEP`, `ESD`), infraestrutura (`BaaS`, `TaaS`, `Infratech`, `CIP`, `SPB`, `SPI`, `STR`, `DICT`), contas (`bolsão`, transitória, caução, escrow, vinculada), folha (`e-Social`, ERP, CNAB, convênio, banco/IP de folha), cartões (`MCC`, `CNAE`, pré/pós-pago, benefício, PAT), consignado (trilhas, Dataprev, SIAPE), operação (`CCB`, boleto, BIN, BIN sponsor, program manager), FIDC (atores; gestora de margem ≠ margem consignável), métricas (PDD, Opex, Capex), além de macro, VC e risco.
+- **~135 fichas** na grade do painel `Glossário` (cada `<div class="tc">` = um termo com tag, definição e linha de rodapé).
+- Cobertura ampliada: instituições e licenças (`SFN`, `CMN`, `BCB`, `S1/S2`, `IP`, `SCD/SEP`, `ESD`), infraestrutura (`BaaS`, `TaaS`, `Infratech`, `CIP`, `SPB`, `SPI`, `STR`, `DICT`), contas (`bolsão`, transitória, caução, escrow, vinculada), folha (`e-Social`, ERP, contador, CNAB, convênio, banco/IP de folha, FGTS/guias), cartões (`MCC`, `CNAE`, pré/pós-pago, benefício, PAT), consignado (trilhas, Dataprev, SIAPE), operação (`CCB`, boleto, BIN, BIN sponsor, program manager), FIDC (atores; gestora de margem ≠ margem consignável), métricas (PDD, Opex, Capex), além de macro, VC e risco.
 - Cada aba técnica mantém bloco colapsável **Termos nesta seção** + atalho para o glossário completo.
 - Vocabulário canônico: **SCD** e **CCB**; aliases **SFD** / **CCD** apenas em fichas de sinônimo ou busca.
 
 ---
 
-## 4. Coerência conceitual (v8.6)
+## 4. Coerência conceitual (v8.7)
 
 - Fio narrativo da IP exemplo: **Ringgo** (rebrand; não usar Onnibank).
 - A escada de licenças deixa de misturar poder regulatório com trilha de produto:
@@ -147,4 +147,4 @@
 
 ---
 
-*Documento alinhado ao artefato único `index.html` (v8.6); atalhos legados redirecionam para o mesmo arquivo.*
+*Documento alinhado ao artefato único `index.html` (v8.7); atalhos legados redirecionam para o mesmo arquivo.*
