@@ -631,7 +631,7 @@ tailwind.config = {
   <div class="header-label">Material único de referência</div>
   <h1>Ecossistema de cartões <span class="h1-muted text-primary opacity-95">&amp; crédito</span></h1>
   <p>SFN · Sistema Monetário · Inflação · Câmbio · Crédito · Pagamentos · Risco · Mercado de Capitais — com trilha guiada e glossário unificado.</p>
-  <span class="version rounded-full border-primary/40 px-4 py-1.5 shadow-none">v8.4</span>
+  <span class="version rounded-full border-primary/40 px-4 py-1.5 shadow-none">v8.5</span>
 </div>
 
 <div class="menu-story" role="group" aria-label="Filtrar seções do menu">
@@ -714,7 +714,7 @@ tailwind.config = {
     </div>
     <div class="sc card-bento">
       <div class="sl">04 — Parceiros: BMP, boleto, custódia</div>
-      <p class="cred-prose" style="margin:0 0 10px 0"><strong>Consignado</strong> exige <strong>CCB</strong> emitida por banco ou <strong>SCD</strong> (ex.: originação via parceiro). <strong>Boleto registrado</strong> pede participação na <strong>CIP</strong> — IP costuma usar banco ou <strong>BaaS</strong>. Recursos dos clientes ficam <strong>segregados</strong> com custodiante.</p>
+      <p class="cred-prose" style="margin:0 0 10px 0"><strong>Consignado</strong> exige <strong>CCB</strong> emitida por banco ou <strong>SCD</strong> (ex.: originação via parceiro). <strong>Boleto registrado</strong> pede participação na <strong>CIP</strong> — IP costuma usar banco ou <strong>BaaS</strong>. Recursos dos clientes ficam <strong>segregados</strong> com custodiante. Na <strong>folha</strong>, o funding costuma passar por <strong>bolsão / conta transitória</strong> do bancarizador — não confundir com caução ou escrow.</p>
       <div class="card-bento-actions">
         <button type="button" class="btn" onclick="var e=document.querySelector('.tab[data-panel=infra-bancaria]');if(e)showPanel('infra-bancaria',e);">Abrir Infra Bancária</button>
         <button type="button" class="btn btn-secondary" onclick="var e=document.querySelector('.tab[data-panel=consignado]');if(e)showPanel('consignado',e);">Consignado — fluxo completo</button>
@@ -866,6 +866,11 @@ tailwind.config = {
       <dt>CCB</dt><dd>Cédula de Crédito Bancário que formaliza o crédito consignado e exige originador com licença adequada.</dd>
       <dt>CIP / SPB / SPI / STR</dt><dd>Camadas da infraestrutura de pagamentos e liquidação do sistema financeiro brasileiro.</dd>
       <dt>Custódia segregada</dt><dd>Recursos de clientes da IP mantidos fora do patrimônio da instituição e aplicados em ativos de baixo risco; em geral com banco custodiante — regime distinto do FGC sobre depósitos bancários.</dd>
+      <dt>Conta bolsão</dt><dd>Conta de concentração (“bolso grande”) onde o funding da folha/benefício agrega antes de pulverizar para N contas.</dd>
+      <dt>Conta transitória</dt><dd>Conta de passagem entre pernas do fluxo (banco da empresa → bancarizador → contas finais); parqueia valor só pelo tempo da operação.</dd>
+      <dt>Conta caução</dt><dd>Conta ou depósito vinculado a garantia de uma obrigação — dinheiro preso como colateral, não para distribuir folha.</dd>
+      <dt>Conta escrow</dt><dd>Depósito sob condição: liberação só quando as partes cumprem o contrato (ênfase em liberação condicionada).</dd>
+      <dt>Conta vinculada / concentradora</dt><dd>Sinônimos de mercado próximos a caução (garantia) ou a bolsão (concentração), conforme o contrato.</dd>
       <dt>Banco Liquidante</dt><dd>Instituição que participa diretamente das câmaras e liquida operações para parceiros.</dd>
       <dt>BIN / BIN Sponsor</dt><dd>Prefixo emissor do cartão e banco parceiro que cede BIN para um program manager operar.</dd>
       <dt>Program Manager</dt><dd>Empresa que controla produto e experiência, enquanto o sponsor carrega a relação de emissão.</dd>
@@ -912,6 +917,45 @@ tailwind.config = {
     <div class="tc"><div class="tag t-infra">Parceiro</div><div class="tn">Celcoin (exemplo)</div><div class="td">BaaS + TaaS conforme o cliente; acesso a trilhos para quem não participa direto da CIP/SPB.</div><div class="tv">Infratech · não substitui sua licença</div></div>
   </div>
   <div class="note">Ver escada completa em <strong>SFN &amp; Licenças</strong> e cards interativos no <strong>Mapa SFN (BR)</strong>. Na Trilha guiada, passo 06 condensa BaaS, TaaS e operadores de trilho.</div>
+
+  <div class="st" id="anchor-contas-especiais">Contas especiais — bolsão, transitória, caução e escrow</div>
+  <p class="cred-prose">No caminho do dinheiro da <strong>folha</strong> e dos <strong>benefícios</strong>, o valor quase nunca vai “direto” do banco da empresa para cada colaborador. Antes (ou no meio) aparece uma conta de <strong>concentração</strong> ou <strong>passagem</strong>. Isso <strong>não é</strong> a mesma coisa que segurar dinheiro como garantia (caução) nem liberar sob cláusula contratual (escrow). Misturar esses nomes é erro clássico de desenho de produto.</p>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">O que NÃO é</div>
+    <strong>Bolsão ≠ caução ≠ escrow ≠ custódia segregada ≠ FGC.</strong> Bolsão opera a distribuição; caução/escrow seguram sob regra; custódia protege saldo de cliente da IP; FGC cobre depósito bancário elegível.
+  </div>
+  <div class="resp-matrix" style="margin-bottom:14px">
+    <table class="resp-table">
+      <thead><tr><th>Conta / regime</th><th>Função</th><th>Quando aparece</th><th>Para o Ringgo</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Bolsão</strong></td><td>Concentrar funding e depois pulverizar (N pagamentos)</td><td>Folha, benefícios, carga de cartão</td><td>Funding típico do bancarizador</td></tr>
+        <tr><td><strong>Transitória</strong></td><td>Passagem temporária entre duas pernas do fluxo</td><td>Banco empresa → BaaS → contas finais</td><td>Conciliação operacional</td></tr>
+        <tr><td><strong>Concentradora / vinculada</strong></td><td>Sinônimos de mercado (contexto define o sentido)</td><td>Contratos e APIs de parceiro</td><td>Confirmar no contrato se é bolsão ou garantia</td></tr>
+        <tr><td><strong>Caução</strong></td><td>Garantia de obrigação — dinheiro preso como colateral</td><td>Aluguel, crédito, contratos</td><td>Não é o “parking” da folha</td></tr>
+        <tr><td><strong>Escrow</strong></td><td>Liberação condicionada a evento contratual</td><td>M&amp;A, imóvel, marketplace com retenção</td><td>Marketplace/SLA — raro na folha mensal</td></tr>
+        <tr><td><strong>Custódia segregada</strong></td><td>Saldo de clientes da IP fora do patrimônio da IP</td><td>Conta de pagamento</td><td>Já na trilha; ≠ bolsão de folha</td></tr>
+        <tr><td><strong>FGC</strong></td><td>Garantia de depósitos em IF elegível</td><td>Conta corrente / CDB bancário</td><td>Não cobre saldo de IP da mesma forma</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sl" style="margin-bottom:8px">Folha — do banco da empresa ao colaborador</div>
+  <div class="sc" style="margin-bottom:14px">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Empresa debita no banco principal</div><div class="chain-desc">Tesouraria libera o valor da folha ou do benefício.</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Funding no bolsão / transitória</div><div class="chain-desc">Bancarizador (BaaS) concentra o valor antes do split.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Motor pulveriza (Pix / TED / crédito)</div><div class="chain-desc">N créditos nas contas dos colaboradores.</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Conciliação e sobras</div><div class="chain-desc">Estornos e saldos voltam ao bolsão ou à empresa.</div></div></div>
+    </div>
+  </div>
+  <div class="g2" style="margin-bottom:14px">
+    <div class="tc"><div class="tag t-ciclo">Operação</div><div class="tn">Bolsão vs transitória</div><div class="td"><strong>Bolsão</strong> enfatiza concentração + distribuição. <strong>Transitória</strong> enfatiza passagem entre sistemas. No dia a dia o mercado mistura os nomes — no desenho técnico, separe funding de etapa de liquidação.</div><div class="tv">Mesma família operacional</div></div>
+    <div class="tc"><div class="tag t-legal">Garantia</div><div class="tn">Caução vs escrow</div><div class="td"><strong>Caução</strong> = colateral de obrigação. <strong>Escrow</strong> = liberação sob condição. Nenhum dos dois substitui o bolsão da folha.</div><div class="tv">Outra família jurídica</div></div>
+  </div>
+  <div class="cred-callout cc-g">
+    <div class="cc-t">Para o Ringgo</div>
+    Na folha e nos benefícios, pergunte ao bancarizador: <strong>onde estaciona o funding antes do split?</strong> (bolsão/transitória). Na conta de pagamento do trabalhador, a proteção típica é <strong>custódia segregada</strong> — não confunda com FGC nem com caução de contrato.
+  </div>
+  <div class="note">Conexões: <strong>Trilha guiada</strong> (custódia), <strong>Ecossistema</strong> (benefícios), <strong>Split &amp; Crébito</strong> (retenção/marketplace pode usar lógica tipo escrow), <strong>Mapa SFN</strong> (FGC vs IP).</div>
 
   <div class="st">Quem resolve cada limite da IP no dia a dia</div>
   <div class="sc">
@@ -2616,7 +2660,7 @@ tailwind.config = {
     <p class="pt-intro">Todos os termos do mapa em um só lugar. Em cada aba há um resumo <strong>Termos nesta seção</strong> com o vocabulário daquele tema; use esta lista para buscar qualquer definição. A aba <strong>Trilha guiada</strong> apresenta o fio narrativo antes destas fichas.</p>
     </div>
   </details>
-  <div class="st" id="anchor-glossario">123 termos</div>
+  <div class="st" id="anchor-glossario">128 termos</div>
   <div class="glossario-grid">
     <div class="tc"><div class="tag t-risco">Crédito</div><div class="tn">PDD</div><div class="td">Provisão para Devedores Duvidosos. Reserva contábil antecipando inadimplência; reduz lucro bruto conforme risco da carteira.</div><div class="tv">Mais PDD em rotativo e cheque especial</div></div>
     <div class="tc"><div class="tag t-taxa">Crédito</div><div class="tn">IOF</div><div class="td">Imposto sobre Operações Financeiras. Entra no CET de crédito (alíquotas fixa e diária sobre o principal).</div><div class="tv">Sempre considerar no CET, não só nos juros</div></div>
@@ -2641,6 +2685,11 @@ tailwind.config = {
     <div class="tc"><div class="tag t-infra">Parceiro</div><div class="tn">BMP (Money Plus)</div><div class="td">Instituição com licença para crédito e atuação como BaaS; exemplo frequente de originador de CCB em consignado para IPs.</div><div class="tv">Originador · APIs · CCB</div></div>
     <div class="tc"><div class="tag t-infra">Parceiro</div><div class="tn">Celcoin</div><div class="td">Infratech com foco em BaaS e core; exemplo de operador com acesso a trilhos (CIP, SPB, SPI) para parceiros.</div><div class="tv">BaaS + TaaS conforme caso</div></div>
     <div class="tc"><div class="tag t-infra">Infra</div><div class="tn">Infratech</div><div class="td">Rótulo de mercado para trilho + software financeiro (BaaS, TaaS, CIP, SPB). Não é tipo de licença no BCB.</div><div class="tv">Quem responde ao BCB é a IF contratante</div></div>
+    <div class="tc"><div class="tag t-ciclo">Conta</div><div class="tn">Conta bolsão</div><div class="td">Conta de concentração (“bolso grande”) onde o funding da folha ou benefício agrega antes de pulverizar para N contas.</div><div class="tv">≠ caução · funding do bancarizador</div></div>
+    <div class="tc"><div class="tag t-ciclo">Conta</div><div class="tn">Conta transitória</div><div class="td">Conta de passagem entre pernas do fluxo (banco da empresa → bancarizador → contas finais); parqueia valor só pelo tempo da operação.</div><div class="tv">Família operacional com bolsão</div></div>
+    <div class="tc"><div class="tag t-legal">Conta</div><div class="tn">Conta caução</div><div class="td">Conta ou depósito vinculado a garantia de uma obrigação — dinheiro preso como colateral. Não é o parking da folha.</div><div class="tv">≠ bolsão · ≠ escrow (ênfase)</div></div>
+    <div class="tc"><div class="tag t-legal">Conta</div><div class="tn">Conta escrow</div><div class="td">Depósito sob condição: liberação só quando as partes cumprem o contrato. Ênfase em liberação condicionada.</div><div class="tv">M&amp;A · imóvel · retenção marketplace</div></div>
+    <div class="tc"><div class="tag t-infra">Conta</div><div class="tn">Conta vinculada / concentradora</div><div class="td">Sinônimos de mercado: podem significar bolsão (concentração) ou caução (garantia) — o contrato define.</div><div class="tv">Confirmar o sentido no desenho</div></div>
     <div class="tc"><div class="tag t-inv">Funding</div><div class="tn">Debênture</div><div class="td">Título de dívida para captação no mercado; veículo comum para SCD financiar carteira sem depósito.</div><div class="tv">Alternativa ao depósito bancário</div></div>
     <div class="tc"><div class="tag t-ciclo">Produto</div><div class="tn">Antecipação salarial</div><div class="td">Adiantamento de valores já trabalhados, com acordo do empregador; não é o mesmo que consignado novo.</div><div class="tv">IP pode operar em muitos desenhos</div></div>
     <div class="tc"><div class="tag t-taxa">Taxa</div><div class="tn">MDR</div><div class="td">Taxa total cobrada do lojista. Inclui IC, scheme fee e margem do adquirente.</div><div class="tv">Débito ~0,7–1,2% · Crédito ~1,8–3,5%</div></div>
@@ -2870,6 +2919,7 @@ tailwind.config = {
       {kw:'beneficio voucher pat alimentacao refeicao frota ringgo',title:'Cartões de benefícios',panel:'eco',anchor:'anchor-beneficios',cat:'Pagamentos'},
       {kw:'compra fluxo captura autorizacao liquidacao',title:'Fluxo da compra com cartão',panel:'eco',anchor:'',cat:'Pagamentos'},
       {kw:'infra bancaria baas taas ccd cip pix boleto bmp celcoin infratech',title:'Infra bancária e parceiros',panel:'infra-bancaria',anchor:'anchor-infratech',cat:'Pagamentos'},
+      {kw:'conta bolsao transitoria caucao escrow vinculada concentradora folha',title:'Contas especiais — bolsão, caução, escrow',panel:'infra-bancaria',anchor:'anchor-contas-especiais',cat:'Pagamentos'},
       {kw:'consignado ccd margem folha rh sfd originador',title:'Consignado — resumo canal (Infra)',panel:'infra-bancaria',anchor:'anchor-consignado-fluxo',cat:'Pagamentos'},
       {kw:'mdr interchange merchant discount scheme fee',title:'MDR e decomposição',panel:'taxas',anchor:'anchor-mdr',cat:'Pagamentos'},
       {kw:'tiers cartao classic gold platinum titanium ic',title:'Tiers de cartão e IC',panel:'tiers',anchor:'anchor-tiers-ic',cat:'Pagamentos'},

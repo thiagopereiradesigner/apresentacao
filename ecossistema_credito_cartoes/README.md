@@ -1,6 +1,6 @@
 # Ecossistema de cartões & crédito
 
-**Versão do artefato:** v8.4 (ver badge no `index.html`).  
+**Versão do artefato:** v8.5 (ver badge no `index.html`).  
 **Fio narrativo:** IP fictícia **Ringgo** (folha, benefícios, cartão e crédito via parceiros).
 
 ## O que abrir
@@ -33,12 +33,14 @@ HTML usados como **referência histórica** após integração em `index.html`. 
 
 ## Documentação
 
-- [`PRD-ecossistema-cartoes.md`](PRD-ecossistema-cartoes.md) — visão de produto, escopo por seção, glossário (~123 termos), stack, UX e acessibilidade.
+- [`PRD-ecossistema-cartoes.md`](PRD-ecossistema-cartoes.md) — visão de produto, escopo por seção, glossário (~128 termos), stack, UX e acessibilidade.
 
-## Destaques de conteúdo (v8.4)
+## Destaques de conteúdo (v8.5)
 
 - Vocabulário canônico: **SCD** (alias SFD), **CCB** (alias CCD); fio **Ringgo**.
 - Aba **Consignado** com três trilhas (privado, público servidor, INSS).
 - **Ecossistema:** bandeira × emissor, modalidades (débito/crédito/crébito/pré/pós-pago) e introdução a benefícios.
 - **Tiers:** MCC × CNAE.
+- **Infra:** contas especiais — **bolsão**, transitória, **caução**, **escrow** (≠ custódia / FGC).
 - EVA (PDD/Opex/Capex), atores do FIDC, risco sacado, Infratech.
+- Glossário ~128 termos.

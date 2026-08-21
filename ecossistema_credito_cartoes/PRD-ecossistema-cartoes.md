@@ -3,7 +3,7 @@
 **Artefato principal:** `index.html` (mapa + glossário + trilha guiada Ringgo)  
 **Atalhos legados:** `mapa-sistema-financeiro.html`, `ecossistema-cartoes.html` → redirecionam para `index.html`  
 **Design System (versionado):** `assets/ds/ds-demo-base.css`, `assets/ds/ds-ringgo-bridge.css`  
-**Versão da página:** v8.4 — bíblia integrada (Ringgo, cartões/benefícios, consignado 3 trilhas, assertividade editorial)
+**Versão da página:** v8.5 — bíblia integrada (Ringgo, cartões/benefícios, contas especiais, consignado 3 trilhas)
 
 ---
 
@@ -46,7 +46,7 @@
 ### 3.2 Pagamentos
 
 - `Ecossistema`: modelo de 4 partes; **bandeira × emissor** (scheme fee vs IC); modalidades (débito, crédito, crébito, pré-pago, pós-pago); introdução a **cartões de benefícios** (PAT, rede semi-fechada).
-- `Infra Bancária`: BaaS vs TaaS, Infratech, CIP/SPB/SPI/STR, CCB, banco liquidante, BIN/BIN sponsor/program manager, boleto registrado; resumo comercial de consignado.
+- `Infra Bancária`: BaaS vs TaaS, Infratech, CIP/SPB/SPI/STR, CCB, banco liquidante, BIN/BIN sponsor/program manager, boleto registrado; **contas especiais** (bolsão, transitória, caução, escrow vs custódia/FGC); resumo comercial de consignado.
 - `Taxas & MDR`, `Tiers` (incl. **MCC × CNAE**), `Split & Crébito`: estrutura de preço, lógica por modalidade e cenários de divisão.
 
 ### 3.3 Crédito e mercado
@@ -68,14 +68,14 @@
 
 ### 3.6 Glossário
 
-- **~123 fichas** na grade do painel `Glossário` (cada `<div class="tc">` = um termo com tag, definição e linha de rodapé).
-- Cobertura ampliada: instituições e licenças (`SFN`, `CMN`, `BCB`, `S1/S2`, `IP`, `SCD/SEP`, `ESD`), infraestrutura (`BaaS`, `TaaS`, `Infratech`, `CIP`, `SPB`, `SPI`, `STR`, `DICT`), cartões (`MCC`, `CNAE`, pré/pós-pago, benefício, PAT), consignado (trilhas, Dataprev, SIAPE), operação (`CCB`, boleto, BIN, BIN sponsor, program manager), FIDC (atores), métricas (PDD, Opex, Capex), além de macro, VC e risco.
+- **~128 fichas** na grade do painel `Glossário` (cada `<div class="tc">` = um termo com tag, definição e linha de rodapé).
+- Cobertura ampliada: instituições e licenças (`SFN`, `CMN`, `BCB`, `S1/S2`, `IP`, `SCD/SEP`, `ESD`), infraestrutura (`BaaS`, `TaaS`, `Infratech`, `CIP`, `SPB`, `SPI`, `STR`, `DICT`), contas (`bolsão`, transitória, caução, escrow, vinculada), cartões (`MCC`, `CNAE`, pré/pós-pago, benefício, PAT), consignado (trilhas, Dataprev, SIAPE), operação (`CCB`, boleto, BIN, BIN sponsor, program manager), FIDC (atores), métricas (PDD, Opex, Capex), além de macro, VC e risco.
 - Cada aba técnica mantém bloco colapsável **Termos nesta seção** + atalho para o glossário completo.
 - Vocabulário canônico: **SCD** e **CCB**; aliases **SFD** / **CCD** apenas em fichas de sinônimo ou busca.
 
 ---
 
-## 4. Coerência conceitual (v8.4)
+## 4. Coerência conceitual (v8.5)
 
 - Fio narrativo da IP exemplo: **Ringgo** (rebrand; não usar Onnibank).
 - A escada de licenças deixa de misturar poder regulatório com trilha de produto:
@@ -146,4 +146,4 @@
 
 ---
 
-*Documento alinhado ao artefato único `index.html` (v8.4); atalhos legados redirecionam para o mesmo arquivo.*
+*Documento alinhado ao artefato único `index.html` (v8.5); atalhos legados redirecionam para o mesmo arquivo.*
