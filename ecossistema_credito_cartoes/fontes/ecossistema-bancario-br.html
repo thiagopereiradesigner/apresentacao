@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -280,7 +280,7 @@
   }
   .panel-example strong { color: var(--text); }
 
-  .onnibank-highlight {
+  .Ringgo-highlight {
     background: rgba(6,182,212,0.08);
     border: 1px solid rgba(6,182,212,0.3);
     border-radius: 6px;
@@ -403,7 +403,7 @@
         <div class="card-badge badge-cyan">IP</div>
         <div class="card-icon">⚡</div>
         <div class="card-title">Instituição de Pagamento</div>
-        <div class="card-subtitle">Onnibank — você está aqui <span class="you-here"><span class="dot-pulse"></span>VOCÊ</span></div>
+        <div class="card-subtitle">Ringgo — você está aqui <span class="you-here"><span class="dot-pulse"></span>VOCÊ</span></div>
       </div>
       <div class="card c-cyan" onclick="showDetail('sfd')">
         <div class="card-badge badge-cyan">SFD</div>
@@ -415,7 +415,7 @@
         <div class="card-badge badge-cyan">ESD</div>
         <div class="card-icon">🚀</div>
         <div class="card-title">Emissor de Salário Digital</div>
-        <div class="card-subtitle">Meta do Onnibank?</div>
+        <div class="card-subtitle">Meta do Ringgo?</div>
       </div>
     </div>
 
@@ -467,19 +467,19 @@
         <div class="card-badge badge-yellow">CRÉDITO</div>
         <div class="card-icon">💰</div>
         <div class="card-title">Crédito Consignado</div>
-        <div class="card-subtitle">CCD — via BMP/Onnibank</div>
+        <div class="card-subtitle">CCD — via BMP/Ringgo</div>
       </div>
       <div class="card c-yellow" onclick="showDetail('antecipacao')">
         <div class="card-badge badge-yellow">ANTEC</div>
         <div class="card-icon">⏩</div>
         <div class="card-title">Antecipação Salarial</div>
-        <div class="card-subtitle">Produto Onnibank</div>
+        <div class="card-subtitle">Produto Ringgo</div>
       </div>
       <div class="card c-yellow" onclick="showDetail('cartao_corp')">
         <div class="card-badge badge-yellow">CARTÃO</div>
         <div class="card-icon">🪙</div>
         <div class="card-title">Cartão Corporativo</div>
-        <div class="card-subtitle">Produto Onnibank</div>
+        <div class="card-subtitle">Produto Ringgo</div>
       </div>
       <div class="card c-yellow" onclick="showDetail('pix')">
         <div class="card-badge badge-yellow">PIX</div>
@@ -516,7 +516,7 @@
   <div class="detail-panel" id="detailPanel">
     <div class="panel-hint" id="panelHint">
       <span class="icon">🗺️</span>
-      Clique em qualquer card do diagrama para ver a descrição detalhada, responsabilidades e como se relaciona com o Onnibank.
+      Clique em qualquer card do diagrama para ver a descrição detalhada, responsabilidades e como se relaciona com o Ringgo.
     </div>
     <div id="panelContent" style="display:none"></div>
   </div>
@@ -537,7 +537,7 @@ const details = {
       'Aplicar punições, multas e intervenções',
     ],
     tags: [{ label: 'Res. BCB 80/2021', c: 'red' }, { label: 'SFN', c: 'red' }, { label: 'SPB', c: 'red' }],
-    example: 'O BCB que autorizou o Onnibank a operar como IP. Toda mudança de licença (ex: virar ESD) passa por um pedido formal ao BCB com requisitos de capital, governança e compliance.',
+    example: 'O BCB que autorizou o Ringgo a operar como IP. Toda mudança de licença (ex: virar ESD) passa por um pedido formal ao BCB com requisitos de capital, governança e compliance.',
     onni: null,
   },
   cmn: {
@@ -552,7 +552,7 @@ const details = {
       'Orientar políticas de poupança e investimento',
     ],
     tags: [{ label: 'Política Monetária', c: 'red' }, { label: 'Crédito', c: 'red' }],
-    example: 'O CMN que define o teto da taxa do crédito consignado privado (como o que a BMP origina para o Onnibank). É uma resolução CMN que o BCB depois fiscaliza.',
+    example: 'O CMN que define o teto da taxa do crédito consignado privado (como o que a BMP origina para o Ringgo). É uma resolução CMN que o BCB depois fiscaliza.',
     onni: null,
   },
   banco_s1_s2: {
@@ -568,8 +568,8 @@ const details = {
       'Seguir Basileia III (índices de capital)',
     ],
     tags: [{ label: 'Basileia III', c: 'blue' }, { label: 'Depósito à Vista', c: 'blue' }, { label: 'SPB', c: 'blue' }],
-    example: 'Itaú, Bradesco, Nubank (que virou banco em 2019). Um banco S1 pode fazer tudo. Um IP como o Onnibank não pode captar depósito à vista — sua "conta" é tecnicamente uma conta de pagamento.',
-    onni: 'O Onnibank se apoia em bancos S1/S2 para liquidação de TED/Pix e como parceiros de crédito (ex: BMP origina o crédito consignado, e o banco por trás da BMP tem a licença plena).',
+    example: 'Itaú, Bradesco, Nubank (que virou banco em 2019). Um banco S1 pode fazer tudo. Um IP como o Ringgo não pode captar depósito à vista — sua "conta" é tecnicamente uma conta de pagamento.',
+    onni: 'O Ringgo se apoia em bancos S1/S2 para liquidação de TED/Pix e como parceiros de crédito (ex: BMP origina o crédito consignado, e o banco por trás da BMP tem a licença plena).',
   },
   banco_emissao: {
     title: 'Banco Emissor de Cartão',
@@ -584,28 +584,28 @@ const details = {
       'Responder pelo risco de crédito do portador',
     ],
     tags: [{ label: 'BIN Sponsor', c: 'blue' }, { label: 'Chargeback', c: 'blue' }, { label: 'Tokenização', c: 'blue' }],
-    example: 'O Onnibank emite cartões corporativos. Para isso, precisa de um BIN (Bank Identification Number) licenciado por uma bandeira. Se não tiver o BIN próprio, usa o BIN de um banco parceiro (BIN Sponsor) — como a Dock ou Zoop fazem.',
-    onni: 'O Onnibank provavelmente usa um banco parceiro como BIN Sponsor para seus cartões corporativos. Isso significa que na prática o número do cartão pertence ao banco parceiro, e o Onnibank opera por cima como program manager.',
+    example: 'O Ringgo emite cartões corporativos. Para isso, precisa de um BIN (Bank Identification Number) licenciado por uma bandeira. Se não tiver o BIN próprio, usa o BIN de um banco parceiro (BIN Sponsor) — como a Dock ou Zoop fazem.',
+    onni: 'O Ringgo provavelmente usa um banco parceiro como BIN Sponsor para seus cartões corporativos. Isso significa que na prática o número do cartão pertence ao banco parceiro, e o Ringgo opera por cima como program manager.',
   },
   idic: {
     title: 'FGC — Fundo Garantidor de Crédito',
     type: 'SEGURO / GARANTIA — FGC / IDIC',
     color: 'blue',
-    desc: 'O FGC garante depósitos e créditos em caso de falência de uma IF. Cobre até R$ 250 mil por CPF por instituição (até R$ 1 milhão em 4 anos). IPs (como Onnibank) têm uma regra diferente: o saldo da conta de pagamento deve ficar em aplicação de baixo risco, mas NÃO é coberto pelo FGC.',
+    desc: 'O FGC garante depósitos e créditos em caso de falência de uma IF. Cobre até R$ 250 mil por CPF por instituição (até R$ 1 milhão em 4 anos). IPs (como Ringgo) têm uma regra diferente: o saldo da conta de pagamento deve ficar em aplicação de baixo risco, mas NÃO é coberto pelo FGC.',
     responsibilities: [
       'Garantir depósitos em IFs autorizadas até R$250k',
       'Administrar o fundo com contribuições das IFs',
       'Pagar credores em caso de intervenção/liquidação',
     ],
     tags: [{ label: 'R$250k limite', c: 'blue' }, { label: 'CPF/CNPJ', c: 'blue' }],
-    example: 'Quando você vê "IDIC" na documentação do Onnibank, está referindo ao regime de cobertura do Fundo Garantidor de Crédito. Mas atenção: saldo em conta de pagamento (IP) não entra no FGC — vai para fundo de investimento separado conforme Res. BCB.',
-    onni: 'O Onnibank como IP tem obrigação de segregar os recursos dos clientes em conta própria + aplicar em títulos do Tesouro ou fundos de baixo risco. O banco parceiro que executa isso é quem aparece como "responsável pelo IDIC" que você mencionou.',
+    example: 'Quando você vê "IDIC" na documentação do Ringgo, está referindo ao regime de cobertura do Fundo Garantidor de Crédito. Mas atenção: saldo em conta de pagamento (IP) não entra no FGC — vai para fundo de investimento separado conforme Res. BCB.',
+    onni: 'O Ringgo como IP tem obrigação de segregar os recursos dos clientes em conta própria + aplicar em títulos do Tesouro ou fundos de baixo risco. O banco parceiro que executa isso é quem aparece como "responsável pelo IDIC" que você mencionou.',
   },
   ip: {
     title: 'Instituição de Pagamento',
     type: 'IP — RESOLUÇÃO BCB Nº 80/2021',
     color: 'cyan',
-    desc: 'Uma IP pode oferecer contas de pagamento, emitir moeda eletrônica, processar pagamentos e emitir cartões pré-pagos. Mas NÃO pode conceder crédito com recursos próprios nem captar depósito à vista. É o modelo do Onnibank hoje.',
+    desc: 'Uma IP pode oferecer contas de pagamento, emitir moeda eletrônica, processar pagamentos e emitir cartões pré-pagos. Mas NÃO pode conceder crédito com recursos próprios nem captar depósito à vista. É o modelo do Ringgo hoje.',
     responsibilities: [
       'Manter conta de pagamento dos clientes',
       'Processar Pix, TED, boletos',
@@ -615,7 +615,7 @@ const details = {
     ],
     tags: [{ label: 'Conta de Pagamento', c: 'cyan' }, { label: 'Moeda Eletrônica', c: 'cyan' }, { label: 'Sem captação', c: 'cyan' }],
     example: 'PicPay, Mercado Pago, iFood Pay são IPs. Não são bancos — não podem pagar juros sobre saldo nem dar empréstimo. Para oferecer crédito, parceirizam com bancos ou SFDs.',
-    onni: '🎯 O Onnibank é um IP. Por isso a BMP (que é banco/SFD) é quem origina o crédito consignado — o Onnibank não pode fazer isso sozinho com a licença de IP.',
+    onni: '🎯 O Ringgo é um IP. Por isso a BMP (que é banco/SFD) é quem origina o crédito consignado — o Ringgo não pode fazer isso sozinho com a licença de IP.',
   },
   sfd: {
     title: 'Sociedade de Crédito Direto',
@@ -629,8 +629,8 @@ const details = {
       'Ceder carteiras de crédito para outros',
     ],
     tags: [{ label: 'Crédito Próprio', c: 'cyan' }, { label: 'FIDC', c: 'cyan' }, { label: 'Sem depósito', c: 'cyan' }],
-    example: 'A BMP (Money Plus) tem licença de SFD além de IP. Por isso consegue originar a CCD (Cédula de Crédito Bancário na modalidade consignado) para o Onnibank. Ela tem o poder de crédito que o Onnibank não tem.',
-    onni: 'Uma possível evolução do Onnibank seria buscar licença de SFD para poder originar crédito próprio — eliminando a dependência da BMP para o consignado.',
+    example: 'A BMP (Money Plus) tem licença de SFD além de IP. Por isso consegue originar a CCD (Cédula de Crédito Bancário na modalidade consignado) para o Ringgo. Ela tem o poder de crédito que o Ringgo não tem.',
+    onni: 'Uma possível evolução do Ringgo seria buscar licença de SFD para poder originar crédito próprio — eliminando a dependência da BMP para o consignado.',
   },
   esd: {
     title: 'Emissor de Salário Digital',
@@ -644,14 +644,14 @@ const details = {
       'Cumprir requisitos de segurança e resiliência',
     ],
     tags: [{ label: 'Folha Direta', c: 'cyan' }, { label: 'Sem banco intermediário', c: 'cyan' }, { label: 'Alta barreira', c: 'red' }],
-    example: 'Hoje o empregador paga para um banco (ex: Bradesco), que repassa para o trabalhador. Com ESD, o Onnibank receberia direto do empregador, eliminando o banco no meio.',
-    onni: '🚀 Objetivo estratégico do Onnibank. Virar ESD significa controlar o crédito na folha (consignado), ter menor custo de aquisição e criar um ecossistema completo de benefícios + salário. Alta barreira regulatória mas enorme vantagem competitiva.',
+    example: 'Hoje o empregador paga para um banco (ex: Bradesco), que repassa para o trabalhador. Com ESD, o Ringgo receberia direto do empregador, eliminando o banco no meio.',
+    onni: '🚀 Objetivo estratégico do Ringgo. Virar ESD significa controlar o crédito na folha (consignado), ter menor custo de aquisição e criar um ecossistema completo de benefícios + salário. Alta barreira regulatória mas enorme vantagem competitiva.',
   },
   baas: {
     title: 'Banking as a Service (BaaS)',
     type: 'INFRAESTRUTURA — BaaS PROVIDER',
     color: 'green',
-    desc: 'Um BaaS provider é uma IF ou IP que abre sua infraestrutura via API para que outras empresas (fintechs, varejistas, apps) ofereçam serviços financeiros sem precisar de licença própria. A BMP é um exemplo: ela tem licença e APIs que o Onnibank usa.',
+    desc: 'Um BaaS provider é uma IF ou IP que abre sua infraestrutura via API para que outras empresas (fintechs, varejistas, apps) ofereçam serviços financeiros sem precisar de licença própria. A BMP é um exemplo: ela tem licença e APIs que o Ringgo usa.',
     responsibilities: [
       'Disponibilizar APIs de conta, cartão, crédito, Pix',
       'Gerir compliance e regulatório em nome do parceiro',
@@ -659,8 +659,8 @@ const details = {
       'Processar operações e liquidar junto ao BCB',
     ],
     tags: [{ label: 'API-first', c: 'green' }, { label: 'White-label', c: 'green' }, { label: 'BMP', c: 'green' }, { label: 'Dock', c: 'green' }, { label: 'QI Tech', c: 'green' }],
-    example: 'A BMP (Money Plus) é um BaaS: tem licença de banco + APIs abertas. O Onnibank usa a BMP para originar crédito consignado (CCD). A Dock faz BaaS para cartões. A QI Tech para FIDC e crédito.',
-    onni: 'O Onnibank é cliente de BaaS (usa BMP para crédito). No futuro, com mais licenças e maturidade, poderia virar ele próprio um BaaS para empresas parceiras — monetizando sua infraestrutura HR.',
+    example: 'A BMP (Money Plus) é um BaaS: tem licença de banco + APIs abertas. O Ringgo usa a BMP para originar crédito consignado (CCD). A Dock faz BaaS para cartões. A QI Tech para FIDC e crédito.',
+    onni: 'O Ringgo é cliente de BaaS (usa BMP para crédito). No futuro, com mais licenças e maturidade, poderia virar ele próprio um BaaS para empresas parceiras — monetizando sua infraestrutura HR.',
   },
   correspondente: {
     title: 'Correspondente Bancário',
@@ -674,8 +674,8 @@ const details = {
       'Distribuir produtos da IF contratante',
     ],
     tags: [{ label: 'Sem licença própria', c: 'green' }, { label: 'Lotéricas', c: 'green' }, { label: 'Bradesco Expresso', c: 'green' }],
-    example: 'Uma farmácia parceira do Onnibank que permite saques ou pagamentos está operando como correspondente. Não precisa ser IF — mas é responsabilidade do Onnibank o que o correspondente faz.',
-    onni: 'O Onnibank pode ter parceiros HR (RHs de empresas clientes) atuando como correspondentes para distribuição de produtos como Antecipação Salarial ou cartão.',
+    example: 'Uma farmácia parceira do Ringgo que permite saques ou pagamentos está operando como correspondente. Não precisa ser IF — mas é responsabilidade do Ringgo o que o correspondente faz.',
+    onni: 'O Ringgo pode ter parceiros HR (RHs de empresas clientes) atuando como correspondentes para distribuição de produtos como Antecipação Salarial ou cartão.',
   },
   boleto: {
     title: 'Banco Emissor de Boleto',
@@ -689,8 +689,8 @@ const details = {
       'Responder por inconsistências de registro',
     ],
     tags: [{ label: 'CIP', c: 'green' }, { label: 'FEBRABAN', c: 'green' }, { label: 'Título Registrado', c: 'green' }],
-    example: 'Se o Onnibank emite um boleto de cobrança para um parceiro, provavelmente usa Bradesco, Itaú ou Santander como banco emissor — ou um BaaS que faz isso (como a própria BMP).',
-    onni: 'O "outro banco responsável pela emissão de boletos" que você mencionou é esse participante CIP. O Onnibank delega a emissão para uma IF com acesso à câmara de compensação.',
+    example: 'Se o Ringgo emite um boleto de cobrança para um parceiro, provavelmente usa Bradesco, Itaú ou Santander como banco emissor — ou um BaaS que faz isso (como a própria BMP).',
+    onni: 'O "outro banco responsável pela emissão de boletos" que você mencionou é esse participante CIP. O Ringgo delega a emissão para uma IF com acesso à câmara de compensação.',
   },
   taas: {
     title: 'Tech as a Service (TaaS / Core Bancário)',
@@ -705,7 +705,7 @@ const details = {
     ],
     tags: [{ label: 'Topaz', c: 'green' }, { label: 'Temenos', c: 'green' }, { label: 'Sensedia', c: 'green' }, { label: 'Sem licença IF', c: 'red' }],
     example: 'Topaz (Totvs) e Temenos são TaaS. Eles vendem o sistema, mas quem opera e responde regulatoriamente é a IF. É o modelo "traga sua licença, use nossa plataforma".',
-    onni: 'Se o Onnibank usa um core bancário de terceiro (ex: Topaz, ou solução própria), esse fornecedor é um TaaS. Diferente da BMP que é BaaS (tem licença + sistema + APIs).',
+    onni: 'Se o Ringgo usa um core bancário de terceiro (ex: Topaz, ou solução própria), esse fornecedor é um TaaS. Diferente da BMP que é BaaS (tem licença + sistema + APIs).',
   },
   consignado: {
     title: 'Crédito Consignado / CCD',
@@ -714,43 +714,43 @@ const details = {
     desc: 'O crédito consignado tem desconto na folha de pagamento. A CCD (Cédula de Crédito Bancário) é o instrumento jurídico que formaliza a operação. Para emiti-la, a instituição precisa de licença de banco ou SFD.',
     responsibilities: [
       'BMP origina e formaliza a CCD',
-      'Onnibank distribui (como correspondente ou parceiro)',
+      'Ringgo distribui (como correspondente ou parceiro)',
       'Desconto em folha é feito pelo RH da empresa',
       'Margem consignável: até 35% do salário líquido',
     ],
     tags: [{ label: 'CCD', c: 'yellow' }, { label: 'Desconto em Folha', c: 'yellow' }, { label: 'BMP emite', c: 'yellow' }],
-    example: 'Funcionário da empresa X pede empréstimo no app Onnibank. O Onnibank repassa a solicitação para a BMP. A BMP emite a CCD, libera o dinheiro, e o RH desconta mensalmente na folha.',
-    onni: '⚡ Fluxo atual: Onnibank (distribuição) → BMP (originação/CCD) → RH da empresa (desconto em folha) → BMP liquida → Onnibank recebe comissão ou spread.',
+    example: 'Funcionário da empresa X pede empréstimo no app Ringgo. O Ringgo repassa a solicitação para a BMP. A BMP emite a CCD, libera o dinheiro, e o RH desconta mensalmente na folha.',
+    onni: '⚡ Fluxo atual: Ringgo (distribuição) → BMP (originação/CCD) → RH da empresa (desconto em folha) → BMP liquida → Ringgo recebe comissão ou spread.',
   },
   antecipacao: {
     title: 'Antecipação Salarial',
-    type: 'PRODUTO — IP ONNIBANK',
+    type: 'PRODUTO — IP Ringgo',
     color: 'yellow',
     desc: 'A antecipação salarial (ou "earned wage access") permite que o trabalhador acesse o salário já ganho antes do dia de pagamento. Diferente do consignado, não é crédito — é adiantamento do que já é devido. Juridicamente mais simples, mas exige acordo com o empregador.',
     responsibilities: [
-      'Onnibank valida elegibilidade com o empregador',
+      'Ringgo valida elegibilidade com o empregador',
       'Trabalhador solicita até X% do salário já trabalhado',
-      'Onnibank libera; desconto vem na folha do mês',
+      'Ringgo libera; desconto vem na folha do mês',
       'Risco é menor (não é crédito, é adiantamento)',
     ],
     tags: [{ label: 'Earned Wage Access', c: 'yellow' }, { label: 'Sem CCD', c: 'yellow' }, { label: 'B2B2C', c: 'yellow' }],
-    example: 'Salário R$3.000 no dia 5. No dia 20, trabalhador tem 2/3 do mês trabalhado = R$2.000. Pode antecipar até R$1.000. O Onnibank não precisa de licença de banco para isso — é adiantamento, não empréstimo.',
-    onni: '🎯 Produto estratégico do Onnibank. Como IP, pode oferecer sem precisar da BMP. A barra regulatória é menor que consignado. Você trabalha com personas JTBD para esse produto!',
+    example: 'Salário R$3.000 no dia 5. No dia 20, trabalhador tem 2/3 do mês trabalhado = R$2.000. Pode antecipar até R$1.000. O Ringgo não precisa de licença de banco para isso — é adiantamento, não empréstimo.',
+    onni: '🎯 Produto estratégico do Ringgo. Como IP, pode oferecer sem precisar da BMP. A barra regulatória é menor que consignado. Você trabalha com personas JTBD para esse produto!',
   },
   cartao_corp: {
     title: 'Cartão Corporativo',
     type: 'PRODUTO — EMISSÃO VIA BIN SPONSOR',
     color: 'yellow',
-    desc: 'O cartão corporativo do Onnibank é emitido em parceria com uma bandeira (Visa/Mastercard) e provavelmente um BIN Sponsor. Pode ser pré-pago (mais simples para IP) ou crédito (mais complexo, exige parceiro bancário).',
+    desc: 'O cartão corporativo do Ringgo é emitido em parceria com uma bandeira (Visa/Mastercard) e provavelmente um BIN Sponsor. Pode ser pré-pago (mais simples para IP) ou crédito (mais complexo, exige parceiro bancário).',
     responsibilities: [
-      'Onnibank é o program manager (interface com cliente)',
+      'Ringgo é o program manager (interface com cliente)',
       'Banco parceiro fornece o BIN',
       'Bandeira processa as transações',
       'Credenciadora liquida para os lojistas',
     ],
     tags: [{ label: 'Pré-pago ou Crédito', c: 'yellow' }, { label: 'Program Manager', c: 'yellow' }, { label: 'BIN Sponsor', c: 'yellow' }],
-    example: 'Nubank começou como program manager do Mastercard com banco Crefisa como emissor. Só depois virou banco emissor direto. Onnibank provavelmente segue modelo similar.',
-    onni: 'O Onnibank controla a experiência (app, limites, categoria de gastos) mas o banco por trás é quem "segura" a responsabilidade financeira do cartão junto à bandeira.',
+    example: 'Nubank começou como program manager do Mastercard com banco Crefisa como emissor. Só depois virou banco emissor direto. Ringgo provavelmente segue modelo similar.',
+    onni: 'O Ringgo controla a experiência (app, limites, categoria de gastos) mas o banco por trás é quem "segura" a responsabilidade financeira do cartão junto à bandeira.',
   },
   pix: {
     title: 'Pix / TED / DOC',
@@ -760,11 +760,11 @@ const details = {
     responsibilities: [
       'Pix: participação obrigatória para IPs grandes',
       'TED: liquidação via Compe/STR em D+0',
-      'Onnibank acessa TED via banco liquidante parceiro',
+      'Ringgo acessa TED via banco liquidante parceiro',
     ],
     tags: [{ label: 'BCB Pix', c: 'yellow' }, { label: 'STR', c: 'yellow' }, { label: 'DICT', c: 'yellow' }],
-    example: 'O Onnibank oferece Pix. Para processar TED, usa um banco participante do STR como "banco liquidante". O cliente vê a transação pelo app do Onnibank, mas a liquidação passa pelo banco parceiro.',
-    onni: 'IPs participam do Pix diretamente. Para TED, dependem de banco liquidante. Quanto mais o Onnibank crescer, mais relevante é virar participante direto do STR — o que exige licença bancária.',
+    example: 'O Ringgo oferece Pix. Para processar TED, usa um banco participante do STR como "banco liquidante". O cliente vê a transação pelo app do Ringgo, mas a liquidação passa pelo banco parceiro.',
+    onni: 'IPs participam do Pix diretamente. Para TED, dependem de banco liquidante. Quanto mais o Ringgo crescer, mais relevante é virar participante direto do STR — o que exige licença bancária.',
   },
   bandeiras: {
     title: 'Bandeiras de Cartão',
@@ -779,7 +779,7 @@ const details = {
     ],
     tags: [{ label: 'Interchange', c: 'purple' }, { label: 'Visa / Mastercard', c: 'purple' }, { label: 'Elo', c: 'purple' }],
     example: 'Quando você passa o cartão, o lojista (via credenciadora) consulta a bandeira, que consulta o emissor. Tudo em menos de 1 segundo. A bandeira fica com uma fatia do interchange fee.',
-    onni: 'O Onnibank precisa de acordo com uma bandeira para emitir cartões. Pode ser via BIN Sponsor ou, no futuro, como membro emissor direto (requer volume e aprovação da bandeira).',
+    onni: 'O Ringgo precisa de acordo com uma bandeira para emitir cartões. Pode ser via BIN Sponsor ou, no futuro, como membro emissor direto (requer volume e aprovação da bandeira).',
   },
   credenciadora: {
     title: 'Credenciadora (Acquirer)',
@@ -793,8 +793,8 @@ const details = {
       'Gerenciar antifraude e chargeback do lojista',
     ],
     tags: [{ label: 'MDR', c: 'purple' }, { label: 'POS / mPOS', c: 'purple' }, { label: 'Stone / Cielo', c: 'purple' }],
-    example: 'Quando o cartão corporativo do Onnibank é usado em um fornecedor, a Stone (credenciadora do fornecedor) processa. A Mastercard autoriza. O banco emissor (parceiro do Onnibank) debita.',
-    onni: 'O Onnibank não é credenciadora — ele está no lado emissor. Mas entender o fluxo completo é importante para calcular o custo real de cada transação de cartão (interchange + bandeira + credenciadora).',
+    example: 'Quando o cartão corporativo do Ringgo é usado em um fornecedor, a Stone (credenciadora do fornecedor) processa. A Mastercard autoriza. O banco emissor (parceiro do Ringgo) debita.',
+    onni: 'O Ringgo não é credenciadora — ele está no lado emissor. Mas entender o fluxo completo é importante para calcular o custo real de cada transação de cartão (interchange + bandeira + credenciadora).',
   },
 };
 
@@ -813,8 +813,8 @@ function showDetail(key) {
   const tagsHtml = d.tags.map(t => `<span class="tag tag-${t.c}">${t.label}</span>`).join('');
   const respHtml = d.responsibilities.map(r => `<li>${r}</li>`).join('');
   const onniHtml = d.onni ? `
-    <div class="panel-section-title">Relação com Onnibank</div>
-    <div class="onnibank-highlight">${d.onni}</div>
+    <div class="panel-section-title">Relação com Ringgo</div>
+    <div class="Ringgo-highlight">${d.onni}</div>
   ` : '';
   const exHtml = d.example ? `
     <div class="panel-section-title">Exemplo prático</div>
