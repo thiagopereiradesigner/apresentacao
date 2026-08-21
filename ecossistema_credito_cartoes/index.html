@@ -631,7 +631,7 @@ tailwind.config = {
   <div class="header-label">Material único de referência</div>
   <h1>Ecossistema de cartões <span class="h1-muted text-primary opacity-95">&amp; crédito</span></h1>
   <p>SFN · Sistema Monetário · Inflação · Câmbio · Crédito · Pagamentos · Risco · Mercado de Capitais — com trilha guiada e glossário unificado.</p>
-  <span class="version rounded-full border-primary/40 px-4 py-1.5 shadow-none">v8.5</span>
+  <span class="version rounded-full border-primary/40 px-4 py-1.5 shadow-none">v8.6</span>
 </div>
 
 <div class="menu-story" role="group" aria-label="Filtrar seções do menu">
@@ -658,6 +658,7 @@ tailwind.config = {
   <button type="button" class="tab tab--cred" data-cat="cred" data-panel="consignado" onclick="showPanel('consignado',this)"><span class="tab-badge">Cred</span>Consignado</button>
   <span class="tab-sep" aria-hidden="true"></span>
   <button type="button" class="tab tab--pay" data-cat="pay" data-panel="eco" onclick="showPanel('eco',this)"><span class="tab-badge">Pay</span>Ecossistema</button>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="folha" onclick="showPanel('folha',this)"><span class="tab-badge">Pay</span>Folha & Pagamento</button>
   <button type="button" class="tab tab--pay" data-cat="pay" data-panel="infra-bancaria" onclick="showPanel('infra-bancaria',this)"><span class="tab-badge">Pay</span>Infra Bancária</button>
   <button type="button" class="tab tab--pay" data-cat="pay" data-panel="taxas" onclick="showPanel('taxas',this)"><span class="tab-badge">Pay</span>Taxas & MDR</button>
   <button type="button" class="tab tab--pay" data-cat="pay" data-panel="tiers" onclick="showPanel('tiers',this)"><span class="tab-badge">Pay</span>Tiers</button>
@@ -717,6 +718,7 @@ tailwind.config = {
       <p class="cred-prose" style="margin:0 0 10px 0"><strong>Consignado</strong> exige <strong>CCB</strong> emitida por banco ou <strong>SCD</strong> (ex.: originação via parceiro). <strong>Boleto registrado</strong> pede participação na <strong>CIP</strong> — IP costuma usar banco ou <strong>BaaS</strong>. Recursos dos clientes ficam <strong>segregados</strong> com custodiante. Na <strong>folha</strong>, o funding costuma passar por <strong>bolsão / conta transitória</strong> do bancarizador — não confundir com caução ou escrow.</p>
       <div class="card-bento-actions">
         <button type="button" class="btn" onclick="var e=document.querySelector('.tab[data-panel=infra-bancaria]');if(e)showPanel('infra-bancaria',e);">Abrir Infra Bancária</button>
+        <button type="button" class="btn btn-secondary" onclick="var e=document.querySelector('.tab[data-panel=folha]');if(e)showPanel('folha',e);">Folha &amp; Pagamento</button>
         <button type="button" class="btn btn-secondary" onclick="var e=document.querySelector('.tab[data-panel=consignado]');if(e)showPanel('consignado',e);">Consignado — fluxo completo</button>
       </div>
     </div>
@@ -741,6 +743,7 @@ tailwind.config = {
     <p class="cred-prose" style="margin:0 0 10px 0"><strong>ESD</strong> recebe folha direto do empregador — muda aquisição, dados e viabilidade de desconto na fonte. <strong>Antecipação salarial</strong> (adiantamento do já devido) costuma caber na IP sem ser “novo consignado”. Analogia: parceiros são “estações” hoje; ESD são “trilhos próprios” no longo prazo.</p>
     <div class="card-bento-actions">
       <button type="button" class="btn" onclick="var e=document.querySelector('.tab[data-panel=sfn-brasil]');if(e)showPanel('sfn-brasil',e);">Mapa SFN — card ESD</button>
+      <button type="button" class="btn btn-secondary" onclick="var e=document.querySelector('.tab[data-panel=folha]');if(e)showPanel('folha',e);">Folha &amp; Pagamento</button>
       <button type="button" class="btn btn-secondary" onclick="var e=document.querySelector('.tab[data-panel=economia-credito]');if(e)showPanel('economia-credito',e);">Economia do crédito</button>
     </div>
   </div>
@@ -852,7 +855,103 @@ tailwind.config = {
     <div class="cc-t">Para o Ringgo</div>
     Folha + benefícios + cartão formam o mesmo ecossistema de relacionamento: frequência de uso, dados de consumo e LTV. O próximo passo técnico é ligar <strong>MCC</strong> (rede) ao <strong>CNAE</strong> (cadastro do lojista) — ver aba <strong>Tiers</strong>.
   </div>
-  <div class="note">Ver também: <strong>SFN &amp; Licenças</strong> (quem pode emitir), <strong>Infra Bancária</strong> (BIN sponsor / program manager), <strong>Taxas &amp; MDR</strong> (preço no open loop).</div>
+  <div class="note">Ver também: <strong>SFN &amp; Licenças</strong> (quem pode emitir), <strong>Folha &amp; Pagamento</strong> (ciclo mensal), <strong>Infra Bancária</strong> (BIN sponsor / program manager), <strong>Taxas &amp; MDR</strong> (preço no open loop).</div>
+</div>
+
+<!-- ══════ FOLHA & PAGAMENTO -->
+<div id="panel-folha" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>ERP / Folha</dt><dd>Sistema da empresa (Totvs, Senior, SAP etc.) que calcula bruto, descontos, líquido e gera o arquivo de pagamento.</dd>
+      <dt>e-Social</dt><dd>Sistema do governo para obrigações trabalhistas e previdenciárias — transmite dados oficiais; <strong>não liquida</strong> o salário.</dd>
+      <dt>Arquivo / CNAB</dt><dd>Layout (ou API) pelo qual a empresa manda ao banco/IP a lista de créditos a efetuar.</dd>
+      <dt>Banco / IP de folha</dt><dd>Instituição que recebe o funding e executa o split para as contas dos colaboradores.</dd>
+      <dt>Convênio de folha</dt><dd>Contrato empresa ↔ banco/IP: tarifas, SLA, layouts, conciliação e regras de rejeição.</dd>
+      <dt>Bolsão / transitória</dt><dd>Conta de concentração ou passagem antes do split — detalhe em <strong>Infra Bancária</strong>.</dd>
+      <dt>Margem na folha</dt><dd>Espaço no líquido para descontos (ex.: consignado). Não confundir com <strong>gestora de margem</strong> do FIDC.</dd>
+      <dt>Dataprev / SIAPE</dt><dd>Trilhos de benefício INSS e folha federal — ver também aba <strong>Consignado</strong>.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="btn btn-ghost !min-h-0 !px-0 !py-1 text-xs" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+
+  <div class="st" id="anchor-folha-inicio">Folha — onde o Ringgo realmente começa</div>
+  <p class="cred-prose">O Ringgo não começa no cartão: começa no <strong>arquivo de folha</strong> que a empresa gera no <strong>ERP</strong>, passa pelo <strong>e-Social</strong> (dado oficial), pelo <strong>bolsão</strong> (dinheiro) e só então vira conta, benefício ou crédito. Esta aba é o <strong>sistema operacional</strong> da relação empresa–trabalhador–pagador.</p>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">O que NÃO é</div>
+    <strong>Gestora de margem (FIDC)</strong> ≠ controle de <strong>margem consignável na folha</strong>. Aqui falamos de RH, líquido e descontos — não de cota júnior de fundo.
+  </div>
+
+  <div class="st" id="anchor-folha-erp">Camada empresa — RH, ERP e e-Social</div>
+  <p class="cred-prose">Antes de qualquer Pix, o <strong>RH</strong> fecha a competência no <strong>ERP / motor de folha</strong>: bruto, INSS, IRRF, benefícios, pensão, consignados, líquido. O <strong>e-Social</strong> recebe eventos trabalhistas e previdenciários (obrigação com o Estado). São camadas diferentes: um calcula e manda pagar; o outro reporta.</p>
+  <div class="g3" style="margin-bottom:14px">
+    <div class="tc"><div class="tag t-prod">Empresa</div><div class="tn">RH + ERP</div><div class="td">Calcula líquido, descontos e gera lista de pagamento (arquivo ou API).</div><div class="tv">Totvs · Senior · SAP · etc.</div></div>
+    <div class="tc"><div class="tag t-legal">Estado</div><div class="tn">e-Social</div><div class="td">Transmissão de obrigações oficiais. Não move o dinheiro do salário.</div><div class="tv">Dado ≠ liquidação</div></div>
+    <div class="tc"><div class="tag t-ciclo">Tesouraria</div><div class="tn">Funding</div><div class="td">Empresa debita a conta corrente / convênio e envia o valor ao pagador.</div><div class="tv">Banco principal da empresa</div></div>
+  </div>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">O que NÃO é</div>
+    <strong>e-Social ≠ pagamento de folha.</strong> Cumprir e-Social não garante que o colaborador recebeu — isso é trilho bancário / IP.
+  </div>
+
+  <div class="st" id="anchor-folha-empresa-banco">Relação empresa × banco / IP de folha</div>
+  <p class="cred-prose">A empresa firma um <strong>convênio de folha</strong> (ou de pagamentos em lote) com um banco tradicional ou com uma <strong>IP / BaaS</strong> (ex.: Ringgo + bancarizador). No contrato entram layout (CNAB/API), tarifas, horário de corte, rejeições, conciliação e, às vezes, conta salário / benefícios no mesmo ecossistema.</p>
+  <div class="resp-matrix" style="margin-bottom:14px">
+    <table class="resp-table">
+      <thead><tr><th>Papel</th><th>Faz</th><th>Não faz (em geral)</th></tr></thead>
+      <tbody>
+        <tr><td>Empresa (RH/ERP)</td><td>Calcula líquido, gera arquivo, autoriza débito</td><td>Liquidar no SPB sozinha</td></tr>
+        <tr><td>Banco / IP de folha</td><td>Recebe funding, valida arquivo, executa split</td><td>Substituir o ERP da empresa</td></tr>
+        <tr><td>Bancarizador / BaaS</td><td>Trilho + APIs quando a IP não liquida sozinha</td><td>Ser o RH do cliente</td></tr>
+        <tr><td>Colaborador</td><td>Recebe em conta (banco ou IP)</td><td>Ver o bolsão da operação</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="st" id="anchor-folha-fluxo-privado">Fluxo privado (CLT) — do ERP ao colaborador</div>
+  <div class="sc" style="margin-bottom:14px">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">ERP fecha a folha</div><div class="chain-desc">Líquido por CPF + descontos (benefícios, consignado…).</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">e-Social (paralelo)</div><div class="chain-desc">Eventos oficiais; não é o crédito na conta.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Arquivo / API ao pagador</div><div class="chain-desc">CNAB ou integração com banco/IP.</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Funding no bolsão</div><div class="chain-desc">Empresa debita; valor concentra antes do split.</div></div></div>
+      <div class="chain-item"><div class="chain-num">05</div><div><div class="chain-title">Pulverização</div><div class="chain-desc">Pix / TED / crédito em conta de cada colaborador.</div></div></div>
+      <div class="chain-item"><div class="chain-num">06</div><div><div class="chain-title">Conciliação</div><div class="chain-desc">Rejeições, sobras e retorno ao ERP/tesouraria.</div></div></div>
+    </div>
+  </div>
+  <div class="note">Detalhe de bolsão, transitória, caução e escrow: aba <strong>Infra Bancária</strong>.</div>
+
+  <div class="st" id="anchor-folha-trilhas">Três trilhas de quem paga — privado, público e INSS</div>
+  <p class="cred-prose">O espelho das trilhas do consignado, mas do lado do <strong>crédito salarial / benefício</strong> — não do empréstimo. Misturar CLT, servidor e INSS no mesmo desenho de integração é o mesmo erro de produto.</p>
+  <div class="resp-matrix" style="margin-bottom:14px">
+    <table class="resp-table">
+      <thead><tr><th>Dimensão</th><th>Privado (CLT)</th><th>Público (servidor)</th><th>INSS (benefício)</th></tr></thead>
+      <tbody>
+        <tr><td>Quem calcula</td><td>Empresa + ERP</td><td>Órgão + sistema de pessoal</td><td>INSS</td></tr>
+        <tr><td>Quem paga</td><td>Banco / IP da empresa</td><td>Órgão pagador</td><td>INSS (via Dataprev)</td></tr>
+        <tr><td>Sistemas típicos</td><td>ERP + e-Social + bancarizador</td><td>SIAPE / sistemas estaduais</td><td>Dataprev</td></tr>
+        <tr><td>Papel Ringgo</td><td>Conta, benefícios, canal de crédito</td><td>Depende de convênio do ente</td><td>Canal se houver habilitação</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">O que NÃO é</div>
+    <strong>Dataprev ≠ RH privado ≠ SIAPE.</strong> São trilhos diferentes de averbação e de pagamento. Ver aba <strong>Consignado</strong> para o lado crédito.
+  </div>
+
+  <div class="st" id="anchor-folha-ringgo">Onde o Ringgo encaixa no ciclo</div>
+  <div class="g3" style="margin-bottom:14px">
+    <div class="tc"><div class="tag t-prod">Hoje</div><div class="tn">Distribuição + conta</div><div class="td">UX, conta de pagamento, benefícios, antecipação salarial; crédito consignado via originador.</div><div class="tv">IP + parceiros</div></div>
+    <div class="tc"><div class="tag t-ciclo">Funding</div><div class="tn">Bolsão do bancarizador</div><div class="td">Empresa manda a folha; o split passa pela infra (BaaS/trilho).</div><div class="tv">Ver Infra</div></div>
+    <div class="tc"><div class="tag t-vc">Horizonte</div><div class="tn">ESD</div><div class="td">Receber folha direto do empregador muda aquisição e dados — mapa SFN.</div><div class="tv">Trilha estratégica</div></div>
+  </div>
+  <div class="cred-callout cc-g">
+    <div class="cc-t">Para o Ringgo</div>
+    Produto de folha = <strong>integração ERP + convênio + bolsão + conta do trabalhador</strong>. Benefícios e consignado são módulos em cima desse trilho — não o trilho em si.
+  </div>
+  <div class="note">Conexões: <strong>Infra Bancária</strong> (contas especiais), <strong>Ecossistema</strong> (benefícios), <strong>Consignado</strong> (desconto na fonte), <strong>Economia do crédito</strong> (antecipação salarial), <strong>Mapa SFN</strong> (ESD).</div>
 </div>
 
 <!-- ══════ INFRA BANCÁRIA -->
@@ -955,7 +1054,7 @@ tailwind.config = {
     <div class="cc-t">Para o Ringgo</div>
     Na folha e nos benefícios, pergunte ao bancarizador: <strong>onde estaciona o funding antes do split?</strong> (bolsão/transitória). Na conta de pagamento do trabalhador, a proteção típica é <strong>custódia segregada</strong> — não confunda com FGC nem com caução de contrato.
   </div>
-  <div class="note">Conexões: <strong>Trilha guiada</strong> (custódia), <strong>Ecossistema</strong> (benefícios), <strong>Split &amp; Crébito</strong> (retenção/marketplace pode usar lógica tipo escrow), <strong>Mapa SFN</strong> (FGC vs IP).</div>
+  <div class="note">Conexões: <strong>Trilha guiada</strong> (custódia), <strong>Folha &amp; Pagamento</strong> (ERP → bolsão → split), <strong>Ecossistema</strong> (benefícios), <strong>Split &amp; Crébito</strong> (retenção/marketplace pode usar lógica tipo escrow), <strong>Mapa SFN</strong> (FGC vs IP).</div>
 
   <div class="st">Quem resolve cada limite da IP no dia a dia</div>
   <div class="sc">
@@ -1231,17 +1330,29 @@ tailwind.config = {
       </tbody>
     </table>
   </div>
-  <div class="st" id="anchor-antecipacao-recebiveis">Antecipação de recebíveis — não é antecipação salarial</div>
-  <p class="cred-prose">Para <strong>empresas e lojistas</strong>, antecipar recebíveis é vender o direito de receber vendas futuras (cartão em D+n, duplicatas, boletos) em troca de caixa hoje. No <strong>risco sacado</strong>, quem antecipa fica com o risco do devedor final. É capital de giro atrelado a vendas — arquitetura diferente do adiantamento de salário ao trabalhador. Em escala, esses fluxos podem alimentar um <strong>FIDC</strong>.</p>
+  <div class="st" id="anchor-antecipacao-recebiveis">Antecipação de recebíveis e risco sacado</div>
+  <div id="anchor-risco-sacado" class="cred-prose" style="margin:0 0 14px 0">Para <strong>empresas e lojistas</strong>, antecipar recebíveis é vender o direito de receber vendas futuras (cartão em <strong>D+n</strong>, duplicatas, boletos) em troca de caixa hoje, com desconto. No <strong>risco sacado</strong>, quem compra o recebível assume o risco do <strong>sacado</strong> (devedor final) — o cedente, em regra, não responde pela inadimplência. É capital de giro atrelado a vendas — arquitetura diferente do adiantamento de salário ao trabalhador.</div>
   <div class="cred-callout cc-y">
-    <div class="cc-t">Distinção importante</div>
-    <strong>Antecipação salarial</strong> (tabela acima) = PF, salário já ganho, IP em muitos desenhos. <strong>Antecipação de recebíveis</strong> = PJ, vendas futuras, banco/SCD/credenciadora/FIDC. Ver aba <strong>FIDC &amp; Ações</strong> para risco sacado e papéis do fundo.
+    <div class="cc-t">O que NÃO é</div>
+    <strong>Risco sacado / antecipação de recebíveis ≠ antecipação salarial.</strong> Aqui é PJ e vendas futuras; antecipação salarial é PF e salário já ganho.
   </div>
+  <div class="resp-matrix" style="margin-bottom:14px">
+    <table class="resp-table">
+      <thead><tr><th>Dimensão</th><th>Antecipação salarial</th><th>Antecipação de recebíveis</th><th>Risco sacado</th></tr></thead>
+      <tbody>
+        <tr><td>Quem usa</td><td>Trabalhador PF</td><td>Lojista / empresa</td><td>Empresa que cede recebível</td></tr>
+        <tr><td>Base do fluxo</td><td>Salário já ganho</td><td>Vendas cartão / duplicata / boleto</td><td>Mesmo, com cessão sem regresso típico</td></tr>
+        <tr><td>Risco principal</td><td>Baixo (desconto em folha)</td><td>Inadimplência do sacado</td><td>Fica com quem comprou o recebível</td></tr>
+        <tr><td>Licença típica</td><td>IP</td><td>Banco, SCD, credenciadora, FIDC</td><td>Idem</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">O recebível nasce na <strong>credenciadora</strong> (liquidação D+n) — ver <strong>Ecossistema</strong> e <strong>Taxas &amp; MDR</strong>. Em escala, essas carteiras podem ser lastro de <strong>FIDC</strong> (aba <strong>FIDC &amp; Ações</strong>: cotas e atores do fundo).</div>
   <div class="cred-callout cc-g">
     <div class="cc-t">Estratégia de plataforma</div>
     Conta + folha + benefícios + cartão + crédito parceiro formam ecossistema: cada produto reforça dados, frequência e LTV — desde que a <strong>licença</strong> e o <strong>risco</strong> estejam no lugar certo (ver <strong>SFN &amp; Licenças</strong> e <strong>Mapa SFN (BR)</strong>).
   </div>
-  <div class="note">Conexões: <strong>CDI &amp; CDB</strong> (custo de funding), <strong>Encargos</strong> (CET e rotativo), <strong>Taxas &amp; MDR</strong> (interchange), <strong>Ecossistema</strong> (quem ganha o quê na compra), <strong>WACC &amp; EVA</strong> (PDD e Opex na conta de valor), <strong>FIDC &amp; Ações</strong> (recebíveis em escala), <strong>Consignado</strong> (produto e operação de ponta a ponta).</div>
+  <div class="note">Conexões: <strong>CDI &amp; CDB</strong> (custo de funding), <strong>Encargos</strong> (CET e rotativo), <strong>Taxas &amp; MDR</strong> (interchange), <strong>Ecossistema</strong> (quem ganha o quê na compra), <strong>WACC &amp; EVA</strong> (PDD e Opex na conta de valor), <strong>FIDC &amp; Ações</strong> (securitização em escala), <strong>Consignado</strong> (produto e operação de ponta a ponta).</div>
 </div>
 
 <!-- ══════ CONSIGNADO -->
@@ -1411,7 +1522,7 @@ tailwind.config = {
     <div class="cc-t">Para o Ringgo / IP</div>
     O caso <strong>Ringgo</strong> espelha sobretudo o <strong>consignado privado</strong>: IP distribui, originador emite CCB, <strong>RH do empregador cliente</strong> averba. <strong>INSS</strong> e <strong>servidor público</strong> são mercados adjacentes, mas exigem <strong>convênios e integrações distintas</strong> (Dataprev, SIAPE/ente) — não são extensão automática da mesma API de folha privada. Com <strong>ESD</strong> no horizonte, a trilha privada fica mais natural; não substitui Dataprev nem folha de servidor.
   </div>
-  <div class="note">Conexões: <strong>Economia do crédito</strong> (spread e taxa), <strong>Infra Bancária</strong> (parceiro e APIs), <strong>FIDC &amp; Ações</strong> (cessão e cotas), <strong>WACC &amp; EVA</strong> (PDD na carteira).</div>
+  <div class="note">Conexões: <strong>Folha &amp; Pagamento</strong> (ERP → líquido → desconto), <strong>Economia do crédito</strong> (spread e taxa), <strong>Infra Bancária</strong> (parceiro e APIs), <strong>FIDC &amp; Ações</strong> (cessão e cotas), <strong>WACC &amp; EVA</strong> (PDD na carteira).</div>
 </div>
 
 <!-- ══════ CDI & CDB -->
@@ -1562,9 +1673,8 @@ tailwind.config = {
       <dt>Administradora de FIDC</dt><dd>Gestão do fundo perante a CVM: cadastro, cotistas, relatórios e governança — não origina crédito.</dd>
       <dt>Gestora de margem</dt><dd>Administra a camada subordinada (cotas júnior / excesso de garantia) que protege cotas sênior.</dd>
       <dt>Cotas (sênior / mezanino / júnior)</dt><dd>Ordem de prioridade na fila de pagamento — sênior mais segura, júnior mais arriscada.</dd>
-      <dt>Antecipação de recebíveis</dt><dd>Cessão de fluxos futuros (cartão, duplicata, boleto) em troca de caixa hoje, com desconto.</dd>
-      <dt>Risco sacado</dt><dd>Modalidade em que o comprador do recebível assume o risco do sacado (devedor final), sem regresso típico ao cedente.</dd>
       <dt>Securitização</dt><dd>Transformar fluxos futuros de caixa em títulos negociáveis.</dd>
+      <dt>Lastro típico</dt><dd>Recebíveis (cartão, duplicata) ou carteiras de crédito (ex.: consignado) cedidos ao fundo — produto detalhado em <strong>Economia do crédito</strong>.</dd>
       <dt>EVA e ação</dt><dd>Mercado reage quando a empresa cria valor econômico de forma consistente.</dd>
       <dt>Consignado (exemplo)</dt><dd>Carteira originada com desconto em folha costuma ser cedida ao FIDC — ver aba <strong>Consignado</strong> passos 09–12.</dd>
     </dl>
@@ -1583,7 +1693,8 @@ tailwind.config = {
   <p class="cred-prose">Um FIDC não é só “um fundo que compra parcelas”. Na prática, três atores costumam dividir o trabalho: a <strong>securitizadora</strong> estrutura a operação e compra/cede os direitos creditórios; a <strong>administradora</strong> cuida do fundo perante a CVM (cadastro, cotistas, relatórios); a <strong>gestora de margem</strong> administra a camada subordinada que protege cotas sênior — em geral retém ou gerencia cotas júnior.</p>
   <div class="cred-callout cc-y">
     <div class="cc-t">O que NÃO é</div>
-    <strong>Administradora de FIDC ≠ administradora de consórcios.</strong> Produto, regulação e responsabilidade são distintos — mesmo quando o nome “administradora” se repete.
+    <strong>Administradora de FIDC ≠ administradora de consórcios.</strong> Produto, regulação e responsabilidade são distintos — mesmo quando o nome “administradora” se repete.<br><br>
+    <strong>Gestora de margem (FIDC)</strong> ≠ <strong>margem consignável / controle de folha</strong>. A primeira é cota subordinada do fundo; a segunda é limite de desconto no salário — ver aba <strong>Folha &amp; Pagamento</strong>.
   </div>
   <div class="g3" style="margin-bottom:14px">
     <div class="tc"><div class="tag t-inv">Estrutura</div><div class="tn">Securitizadora</div><div class="td">Monta o FIDC, compra recebíveis e viabiliza a cessão em escala.</div><div class="tv">Origem da estrutura · não é o fundo em si</div></div>
@@ -1600,24 +1711,11 @@ tailwind.config = {
       <div class="chain-item"><div class="chain-num">06</div><div><div class="chain-title" style="color:var(--yellow)">Caixa volta ao originador</div><div class="chain-desc">Funding liberado; ciclo de crédito se renova.</div></div></div>
     </div>
   </div>
-  <div class="st" id="anchor-risco-sacado">Risco sacado e antecipação de recebíveis</div>
-  <p class="cred-prose">Quando um lojista vende no crédito, o dinheiro cai em <strong>D+30</strong> (ou mais). Ele pode <strong>antecipar</strong> esses recebíveis: cede o direito de receber a credenciadora, banco, SCD ou FIDC e recebe à vista, pagando um desconto (taxa). No <strong>risco sacado</strong>, quem antecipa assume o risco de o <strong>sacado</strong> (devedor final) não honrar — o cedente, em regra, não responde pela inadimplência. É funding de curto prazo atrelado a vendas; em escala, os recebíveis podem ser empacotados num FIDC.</p>
-  <div class="cred-callout cc-y">
-    <div class="cc-t">O que NÃO é</div>
-    <strong>Risco sacado / antecipação de recebíveis ≠ antecipação salarial.</strong> Aqui é PJ e vendas futuras; antecipação salarial é PF e salário já ganho.
+  <div class="cred-callout cc-g">
+    <div class="cc-t">Lastro do fundo</div>
+    O FIDC <strong>empacota</strong> direitos creditórios — inclusive recebíveis antecipados ou carteiras em <strong>risco sacado</strong>. O produto de giro PJ (o que é risco sacado, vs antecipação salarial) está em <strong>Economia do crédito</strong>; aqui o foco é securitização, cotas e papéis do fundo.
   </div>
-  <div class="resp-matrix">
-    <table class="resp-table">
-      <thead><tr><th>Dimensão</th><th>Antecipação salarial</th><th>Antecipação de recebíveis</th><th>Risco sacado</th></tr></thead>
-      <tbody>
-        <tr><td>Quem usa</td><td>Trabalhador PF</td><td>Lojista / empresa</td><td>Empresa que cede recebível</td></tr>
-        <tr><td>Base do fluxo</td><td>Salário já ganho</td><td>Vendas cartão / duplicata / boleto</td><td>Mesmo, com cessão sem regresso típico</td></tr>
-        <tr><td>Risco principal</td><td>Baixo (desconto em folha)</td><td>Inadimplência do sacado</td><td>Fica com quem comprou o recebível</td></tr>
-        <tr><td>Licença típica</td><td>IP</td><td>Banco, SCD, credenciadora, FIDC</td><td>Idem</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="note">Gancho de pagamentos: o recebível nasce na <strong>credenciadora</strong> (liquidação D+n). Ver <strong>Ecossistema</strong> e <strong>Taxas &amp; MDR</strong>. Para o trabalhador, ver <strong>Economia do crédito</strong> — antecipação salarial. Carteira de <strong>consignado</strong> originada segue o mesmo elo de cessão — ver aba <strong>Consignado</strong> (passos 09–12).</div>
+  <div class="note">Consignado cedido ao FIDC: aba <strong>Consignado</strong> (passos 09–12). Recebível de cartão nasce na credenciadora: <strong>Ecossistema</strong> / <strong>Taxas &amp; MDR</strong>.</div>
   <div class="st">CDI como custo de oportunidade</div>
   <div class="sc">
     <div class="g2">
@@ -2660,7 +2758,7 @@ tailwind.config = {
     <p class="pt-intro">Todos os termos do mapa em um só lugar. Em cada aba há um resumo <strong>Termos nesta seção</strong> com o vocabulário daquele tema; use esta lista para buscar qualquer definição. A aba <strong>Trilha guiada</strong> apresenta o fio narrativo antes destas fichas.</p>
     </div>
   </details>
-  <div class="st" id="anchor-glossario">128 termos</div>
+  <div class="st" id="anchor-glossario">133 termos</div>
   <div class="glossario-grid">
     <div class="tc"><div class="tag t-risco">Crédito</div><div class="tn">PDD</div><div class="td">Provisão para Devedores Duvidosos. Reserva contábil antecipando inadimplência; reduz lucro bruto conforme risco da carteira.</div><div class="tv">Mais PDD em rotativo e cheque especial</div></div>
     <div class="tc"><div class="tag t-taxa">Crédito</div><div class="tn">IOF</div><div class="td">Imposto sobre Operações Financeiras. Entra no CET de crédito (alíquotas fixa e diária sobre o principal).</div><div class="tv">Sempre considerar no CET, não só nos juros</div></div>
@@ -2707,9 +2805,14 @@ tailwind.config = {
     <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">FIDC</div><div class="td">Fundo de Investimento em Direitos Creditórios. Securitização de carteiras de crédito.</div><div class="tv">Cotas sênior, mezanino e júnior</div></div>
     <div class="tc"><div class="tag t-inv">FIDC</div><div class="tn">Securitizadora</div><div class="td">Estrutura a operação, compra/cede direitos creditórios e viabiliza o FIDC.</div><div class="tv">Não confundir com administradora do fundo</div></div>
     <div class="tc"><div class="tag t-legal">FIDC</div><div class="tn">Administradora de FIDC</div><div class="td">Opera o fundo perante a CVM: cotistas, relatórios, governança — não origina crédito na ponta.</div><div class="tv">Distinta de administradora de consórcios</div></div>
-    <div class="tc"><div class="tag t-risco">FIDC</div><div class="tn">Gestora de margem</div><div class="td">Administra cota júnior / excesso de garantia; absorve perdas antes da sênior.</div><div class="tv">Skin in the game do originador</div></div>
+    <div class="tc"><div class="tag t-risco">FIDC</div><div class="tn">Gestora de margem</div><div class="td">Administra cota júnior / excesso de garantia no FIDC; absorve perdas antes da sênior. <strong>Não</strong> é margem consignável na folha.</div><div class="tv">Skin in the game · ≠ RH / consignado</div></div>
+    <div class="tc"><div class="tag t-ciclo">Folha</div><div class="tn">e-Social</div><div class="td">Sistema do governo para obrigações trabalhistas e previdenciárias. Transmite dados oficiais; <strong>não liquida</strong> o salário.</div><div class="tv">Dado ≠ pagamento · aba Folha</div></div>
+    <div class="tc"><div class="tag t-ciclo">Folha</div><div class="tn">ERP / Folha</div><div class="td">Sistema da empresa que calcula bruto, descontos, líquido e gera o arquivo de pagamento.</div><div class="tv">Totvs · Senior · SAP</div></div>
+    <div class="tc"><div class="tag t-infra">Folha</div><div class="tn">Arquivo / CNAB</div><div class="td">Layout (ou API) pelo qual a empresa envia ao banco/IP a lista de créditos a efetuar.</div><div class="tv">Integração RH → pagador</div></div>
+    <div class="tc"><div class="tag t-infra">Folha</div><div class="tn">Banco / IP de folha</div><div class="td">Instituição que recebe o funding e executa o split para as contas dos colaboradores.</div><div class="tv">Convênio + bolsão</div></div>
+    <div class="tc"><div class="tag t-legal">Folha</div><div class="tn">Convênio de folha</div><div class="td">Contrato empresa ↔ banco/IP: tarifas, SLA, layouts, conciliação e regras de rejeição.</div><div class="tv">Base do produto Ringgo B2B</div></div>
     <div class="tc"><div class="tag t-ciclo">Produto</div><div class="tn">Antecipação de recebíveis</div><div class="td">Cessão de fluxos futuros (cartão D+n, duplicata, boleto) por caixa hoje, com desconto — produto PJ.</div><div class="tv">≠ antecipação salarial</div></div>
-    <div class="tc"><div class="tag t-risco">Produto</div><div class="tn">Risco sacado</div><div class="td">Comprador do recebível assume risco do sacado; cedente em geral sem regresso pela inadimplência.</div><div class="tv">Funding atrelado a vendas</div></div>
+    <div class="tc"><div class="tag t-risco">Produto</div><div class="tn">Risco sacado</div><div class="td">Comprador do recebível assume risco do sacado; cedente em geral sem regresso pela inadimplência.</div><div class="tv">Economia do crédito · ≠ antecipação salarial</div></div>
     <div class="tc"><div class="tag t-inv">Investimento</div><div class="tn">Taxa Livre de Risco</div><div class="td">Piso mínimo que qualquer investimento precisa superar. Brasil = CDI. EUA = T-Bill.</div><div class="tv">Brasil ~14,65% a.a.</div></div>
     <div class="tc"><div class="tag t-vc">VC</div><div class="tn">Venture Capital</div><div class="td">Investimento em startups com alto risco e potencial de retorno exponencial. Lógica da power law.</div><div class="tv">1 acerto de 10 paga todas as perdas</div></div>
     <div class="tc"><div class="tag t-vc">VC</div><div class="tn">Power Law</div><div class="td">Distribuição de retornos em VC: a maioria perde, uma startup retorna 50x+. Uma só acerta o portfólio inteiro.</div><div class="tv">Motivo pelo qual VC não precisa de 100% de acerto</div></div>
@@ -2914,6 +3017,12 @@ tailwind.config = {
       {kw:'lci lca precatorio titulos',title:'LCI, LCA e precatórios',panel:'titulos-credito',anchor:'',cat:'Crédito'},
       {kw:'encargos rotativo tac cet iof anatocismo',title:'Encargos e CET',panel:'encargos',anchor:'anchor-cet-tac',cat:'Crédito'},
       {kw:'ecossistema 4 partes portador emissor bandeira adquirente',title:'Ecossistema — 4 participantes',panel:'eco',anchor:'anchor-eco-4partes',cat:'Pagamentos'},
+      {kw:'folha pagamento erp esocial e-social cnab convenio bolsao salario clt',title:'Folha & Pagamento — início',panel:'folha',anchor:'anchor-folha-inicio',cat:'Pagamentos'},
+      {kw:'esocial e-social obrigacao trabalhista previdencia dado nao liquida',title:'e-Social ≠ liquidação',panel:'folha',anchor:'anchor-folha-erp',cat:'Pagamentos'},
+      {kw:'convenio folha banco ip baas empresa rh arquivo',title:'Empresa × banco/IP de folha',panel:'folha',anchor:'anchor-folha-empresa-banco',cat:'Pagamentos'},
+      {kw:'fluxo folha privado clt erp bolsao pulverizacao conciliacao',title:'Fluxo privado ERP → colaborador',panel:'folha',anchor:'anchor-folha-fluxo-privado',cat:'Pagamentos'},
+      {kw:'folha privado publico inss siape dataprev pagamento salario beneficio',title:'Três trilhas de quem paga',panel:'folha',anchor:'anchor-folha-trilhas',cat:'Pagamentos'},
+      {kw:'ringgo folha beneficios esd antecipacao salarial conta',title:'Ringgo no ciclo de folha',panel:'folha',anchor:'anchor-folha-ringgo',cat:'Pagamentos'},
       {kw:'bandeira emissor scheme fee interchange lucro visa mastercard elo bin',title:'Bandeira × emissor — cobranças e lucro',panel:'eco',anchor:'anchor-bandeira-emissor',cat:'Pagamentos'},
       {kw:'debito credito crebito pre pago pos pago modalidades cartao',title:'Modalidades de cartão',panel:'eco',anchor:'anchor-modalidades-cartao',cat:'Pagamentos'},
       {kw:'beneficio voucher pat alimentacao refeicao frota ringgo',title:'Cartões de benefícios',panel:'eco',anchor:'anchor-beneficios',cat:'Pagamentos'},
@@ -2927,7 +3036,7 @@ tailwind.config = {
       {kw:'split crebito marketplace',title:'Split e Crébito',panel:'split',anchor:'anchor-split',cat:'Pagamentos'},
       {kw:'wacc eva valor economico custo capital pdd opex capex',title:'WACC e EVA',panel:'eva',anchor:'anchor-eva-produto',cat:'Mercado'},
       {kw:'fidc securitizadora administradora gestora margem cotas',title:'FIDC — atores e cotas',panel:'mercado',anchor:'anchor-fidc-atores',cat:'Mercado'},
-      {kw:'risco sacado antecipacao recebiveis sacado cedente',title:'Risco sacado e recebíveis',panel:'mercado',anchor:'anchor-risco-sacado',cat:'Mercado'},
+      {kw:'risco sacado antecipacao recebiveis sacado cedente',title:'Risco sacado e recebíveis',panel:'economia-credito',anchor:'anchor-risco-sacado',cat:'Crédito'},
       {kw:'fidc acoes mercado capitais securitizacao',title:'FIDC e ações',panel:'mercado',anchor:'',cat:'Mercado'},
       {kw:'infratech baas taas celcoin ip scd licenca',title:'Infratech, IP e SCD',panel:'infra-bancaria',anchor:'anchor-infratech',cat:'Pagamentos'},
       {kw:'antecipacao recebiveis lojista duplicata cartao d+n',title:'Antecipação de recebíveis',panel:'economia-credito',anchor:'anchor-antecipacao-recebiveis',cat:'Crédito'},

@@ -3,7 +3,7 @@
 **Artefato principal:** `index.html` (mapa + glossário + trilha guiada Ringgo)  
 **Atalhos legados:** `mapa-sistema-financeiro.html`, `ecossistema-cartoes.html` → redirecionam para `index.html`  
 **Design System (versionado):** `assets/ds/ds-demo-base.css`, `assets/ds/ds-ringgo-bridge.css`  
-**Versão da página:** v8.5 — bíblia integrada (Ringgo, cartões/benefícios, contas especiais, consignado 3 trilhas)
+**Versão da página:** v8.6 — bíblia integrada (Ringgo, Folha & Pagamento, cartões/benefícios, contas especiais, consignado 3 trilhas)
 
 ---
 
@@ -26,7 +26,7 @@
 5. Mostrar a escada linear de licenças (`IP -> SCD/SEP -> Banco S1/S2`) e posicionar `ESD` como **trilha estratégica não linear**.
 6. Detalhar **consignado** em três trilhas (privado, público servidor, INSS).
 7. Consolidar segurança e risco operacional (PCI-DSS, tokenização, 3DS, chargeback).
-8. Cobrir funding e mercado de capitais (CDB, FIDC e atores, WACC/EVA com PDD/Opex/Capex, risco sacado, VC, RJ).
+8. Cobrir funding e mercado de capitais (CDB, FIDC e atores, WACC/EVA com PDD/Opex/Capex, VC, RJ) e produtos de giro PJ (risco sacado / recebíveis na Economia do crédito).
 9. Disponibilizar glossário ampliado com terminologia consistente (**SCD**, **CCB**; aliases SFD/CCD só onde ensinam sinônimo).
 10. Incluir referências cruzadas e fio narrativo **Ringgo**.
 
@@ -46,14 +46,15 @@
 ### 3.2 Pagamentos
 
 - `Ecossistema`: modelo de 4 partes; **bandeira × emissor** (scheme fee vs IC); modalidades (débito, crédito, crébito, pré-pago, pós-pago); introdução a **cartões de benefícios** (PAT, rede semi-fechada).
+- `Folha & Pagamento`: ciclo RH/ERP → e-Social (obrigação ≠ liquidação) → convênio empresa×banco/IP → bolsão/split; trilhas privado / público / INSS no lado pagamento; encaixe Ringgo e links para Infra, Consignado, ESD.
 - `Infra Bancária`: BaaS vs TaaS, Infratech, CIP/SPB/SPI/STR, CCB, banco liquidante, BIN/BIN sponsor/program manager, boleto registrado; **contas especiais** (bolsão, transitória, caução, escrow vs custódia/FGC); resumo comercial de consignado.
 - `Taxas & MDR`, `Tiers` (incl. **MCC × CNAE**), `Split & Crébito`: estrutura de preço, lógica por modalidade e cenários de divisão.
 
 ### 3.3 Crédito e mercado
 
-- `CDI & CDB`, `Títulos & Crédito`, `Encargos`, `Economia do crédito`: funding, spreads, CET, antecipação salarial vs recebíveis.
+- `CDI & CDB`, `Títulos & Crédito`, `Encargos`, `Economia do crédito`: funding, spreads, CET, antecipação salarial vs recebíveis / **risco sacado**.
 - `Consignado`: produto, três trilhas (privado / servidor / INSS), fluxos, players, cessão a FIDC.
-- `WACC & EVA` (PDD, Opex, Capex), `FIDC & Ações` (securitizadora, administradora, gestora de margem, risco sacado).
+- `WACC & EVA` (PDD, Opex, Capex), `FIDC & Ações` (securitizadora, administradora, gestora de margem; lastro aponta para Economia do crédito).
 - `VC & Rodadas`, `Rec. Judicial`: ciclos de capital e sobrevivência operacional.
 
 ### 3.4 Risco e segurança
@@ -62,27 +63,27 @@
 
 ### 3.5 Trilha guiada e conteúdo transversal
 
-- Aba **Trilha guiada**: narrativa em passos (Estado → IP Ringgo → parceiros → cartão → infra → ESD), com atalhos para as abas técnicas.
+- Aba **Trilha guiada**: narrativa em passos (Estado → IP Ringgo → parceiros/folha → cartão → infra → ESD), com atalhos para as abas técnicas.
 - Blocos de **consórcio** e callouts **“O que NÃO é”** / **“Para o Ringgo”** onde o contraste didático importa.
 - Pasta `fontes/`: legado histórico; a fonte da verdade é o `index.html`.
 
 ### 3.6 Glossário
 
-- **~128 fichas** na grade do painel `Glossário` (cada `<div class="tc">` = um termo com tag, definição e linha de rodapé).
-- Cobertura ampliada: instituições e licenças (`SFN`, `CMN`, `BCB`, `S1/S2`, `IP`, `SCD/SEP`, `ESD`), infraestrutura (`BaaS`, `TaaS`, `Infratech`, `CIP`, `SPB`, `SPI`, `STR`, `DICT`), contas (`bolsão`, transitória, caução, escrow, vinculada), cartões (`MCC`, `CNAE`, pré/pós-pago, benefício, PAT), consignado (trilhas, Dataprev, SIAPE), operação (`CCB`, boleto, BIN, BIN sponsor, program manager), FIDC (atores), métricas (PDD, Opex, Capex), além de macro, VC e risco.
+- **~133 fichas** na grade do painel `Glossário` (cada `<div class="tc">` = um termo com tag, definição e linha de rodapé).
+- Cobertura ampliada: instituições e licenças (`SFN`, `CMN`, `BCB`, `S1/S2`, `IP`, `SCD/SEP`, `ESD`), infraestrutura (`BaaS`, `TaaS`, `Infratech`, `CIP`, `SPB`, `SPI`, `STR`, `DICT`), contas (`bolsão`, transitória, caução, escrow, vinculada), folha (`e-Social`, ERP, CNAB, convênio, banco/IP de folha), cartões (`MCC`, `CNAE`, pré/pós-pago, benefício, PAT), consignado (trilhas, Dataprev, SIAPE), operação (`CCB`, boleto, BIN, BIN sponsor, program manager), FIDC (atores; gestora de margem ≠ margem consignável), métricas (PDD, Opex, Capex), além de macro, VC e risco.
 - Cada aba técnica mantém bloco colapsável **Termos nesta seção** + atalho para o glossário completo.
 - Vocabulário canônico: **SCD** e **CCB**; aliases **SFD** / **CCD** apenas em fichas de sinônimo ou busca.
 
 ---
 
-## 4. Coerência conceitual (v8.5)
+## 4. Coerência conceitual (v8.6)
 
 - Fio narrativo da IP exemplo: **Ringgo** (rebrand; não usar Onnibank).
 - A escada de licenças deixa de misturar poder regulatório com trilha de produto:
   - **linear:** `IP -> SCD/SEP -> Banco S1/S2`;
   - **estratégica não linear:** `ESD`.
 - Terminologia alinhada ao regulatório (`SCD/SEP`; `CCB` como forma canônica da cédula).
-- Referências cruzadas entre seções correlatas (`Ecossistema`, `SFN & Licenças`, `Infra Bancária`, `Consignado`, `Tiers`, etc.).
+- Referências cruzadas entre seções correlatas (`Ecossistema`, `Folha & Pagamento`, `SFN & Licenças`, `Infra Bancária`, `Consignado`, `Tiers`, etc.).
 - **UI:** hierarquia clara entre **título de seção** (`.st`) e **rótulo de card** (`.sl` / trilha em cards estilo “bento”); modo claro inspirado em [Material Design 3](https://m3.material.io/) (superfícies tonais, pouca sombra); modo escuro mantém tokens **Ringgo** via ponte `data-ds-theme`.
 
 ---
@@ -146,4 +147,4 @@
 
 ---
 
-*Documento alinhado ao artefato único `index.html` (v8.5); atalhos legados redirecionam para o mesmo arquivo.*
+*Documento alinhado ao artefato único `index.html` (v8.6); atalhos legados redirecionam para o mesmo arquivo.*
