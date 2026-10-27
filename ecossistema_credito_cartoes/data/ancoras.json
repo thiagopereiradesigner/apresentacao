@@ -1,0 +1,450 @@
+{
+  "v": 1,
+  "secoes": [
+    {
+      "painel": "trilha-guiada",
+      "titulo": "Comece por aqui — do Estado ao app (~15 min)",
+      "id": "anchor-trilha-inicio"
+    },
+    {
+      "painel": "eco",
+      "titulo": "Os 4 participantes do modelo de 4 partes",
+      "id": "anchor-eco-4partes"
+    },
+    {
+      "painel": "eco",
+      "titulo": "Fluxo de uma compra em tempo real",
+      "id": "fluxo-de-uma-compra-em-tempo-real"
+    },
+    {
+      "painel": "eco",
+      "titulo": "Bandeira × emissor — quem cobra quem e onde está o lucro",
+      "id": "anchor-bandeira-emissor"
+    },
+    {
+      "painel": "eco",
+      "titulo": "Modalidades — débito, crédito, crébito, pré-pago e pós-pago",
+      "id": "anchor-modalidades-cartao"
+    },
+    {
+      "painel": "eco",
+      "titulo": "Cartões de benefícios — introdução (rede semi-fechada)",
+      "id": "anchor-beneficios"
+    },
+    {
+      "painel": "folha",
+      "titulo": "Folha — onde o Ringgo realmente começa",
+      "id": "anchor-folha-inicio"
+    },
+    {
+      "painel": "folha",
+      "titulo": "Quem faz o quê — calcula, declara, paga",
+      "id": "anchor-folha-quem-faz"
+    },
+    {
+      "painel": "folha",
+      "titulo": "Camada empresa — RH, ERP (ou contador) e e-Social",
+      "id": "anchor-folha-erp"
+    },
+    {
+      "painel": "folha",
+      "titulo": "Como o governo “confere”",
+      "id": "anchor-folha-governo"
+    },
+    {
+      "painel": "folha",
+      "titulo": "O que vai no arquivo ao banco vs o que fica no ERP",
+      "id": "anchor-folha-arquivo"
+    },
+    {
+      "painel": "folha",
+      "titulo": "Dois dinheiros — líquido do colaborador vs guias ao Estado",
+      "id": "anchor-folha-fgts"
+    },
+    {
+      "painel": "folha",
+      "titulo": "Relação empresa × banco / IP de folha",
+      "id": "anchor-folha-empresa-banco"
+    },
+    {
+      "painel": "folha",
+      "titulo": "Fluxo privado (CLT) — do cálculo ao colaborador",
+      "id": "anchor-folha-fluxo-privado"
+    },
+    {
+      "painel": "folha",
+      "titulo": "Quando não tem ERP",
+      "id": "anchor-folha-sem-erp"
+    },
+    {
+      "painel": "folha",
+      "titulo": "Três trilhas de quem paga — privado, público e INSS",
+      "id": "anchor-folha-trilhas"
+    },
+    {
+      "painel": "folha",
+      "titulo": "Onde o Dataprev entra (e onde não entra)",
+      "id": "anchor-folha-dataprev"
+    },
+    {
+      "painel": "folha",
+      "titulo": "Onde o Ringgo encaixa no ciclo",
+      "id": "anchor-folha-ringgo"
+    },
+    {
+      "painel": "infra-bancaria",
+      "titulo": "Licença, tecnologia e trilho de liquidação são camadas diferentes",
+      "id": "licenca-tecnologia-e-trilho-de-liquidacao-sao-ca"
+    },
+    {
+      "painel": "infra-bancaria",
+      "titulo": "Infratech — tecnologia que habilita licença, não licença em si",
+      "id": "anchor-infratech"
+    },
+    {
+      "painel": "infra-bancaria",
+      "titulo": "Contas especiais — bolsão, transitória, caução e escrow",
+      "id": "anchor-contas-especiais"
+    },
+    {
+      "painel": "infra-bancaria",
+      "titulo": "Quem resolve cada limite da IP no dia a dia",
+      "id": "quem-resolve-cada-limite-da-ip-no-dia-a-dia"
+    },
+    {
+      "painel": "infra-bancaria",
+      "titulo": "Fluxo típico de crédito consignado com parceiro originador",
+      "id": "anchor-consignado-fluxo"
+    },
+    {
+      "painel": "taxas",
+      "titulo": "Decomposição do MDR — crédito Platinum",
+      "id": "anchor-mdr"
+    },
+    {
+      "painel": "tiers",
+      "titulo": "Tiers de cartão e IC aproximado",
+      "id": "anchor-tiers-ic"
+    },
+    {
+      "painel": "tiers",
+      "titulo": "MCC e CNAE — rede de cartões × cadastro fiscal",
+      "id": "anchor-mcc-cnae"
+    },
+    {
+      "painel": "encargos",
+      "titulo": "TAC e CET",
+      "id": "anchor-cet-tac"
+    },
+    {
+      "painel": "encargos",
+      "titulo": "Encargos por Atraso",
+      "id": "encargos-por-atraso"
+    },
+    {
+      "painel": "encargos",
+      "titulo": "Produtos de crédito — mesmo princípio",
+      "id": "produtos-de-credito-mesmo-principio"
+    },
+    {
+      "painel": "economia-credito",
+      "titulo": "A lógica universal do crédito bancário",
+      "id": "anchor-logica-credito"
+    },
+    {
+      "painel": "economia-credito",
+      "titulo": "Decomposição didática (ordem de grandeza)",
+      "id": "decomposicao-didatica-ordem-de-grandeza"
+    },
+    {
+      "painel": "economia-credito",
+      "titulo": "Cartão de crédito — várias fontes de receita",
+      "id": "cartao-de-credito-varias-fontes-de-receita"
+    },
+    {
+      "painel": "economia-credito",
+      "titulo": "Cheque especial — baixa fricção, alto spread",
+      "id": "cheque-especial-baixa-friccao-alto-spread"
+    },
+    {
+      "painel": "economia-credito",
+      "titulo": "Crédito pessoal — decisão ativa e score",
+      "id": "credito-pessoal-decisao-ativa-e-score"
+    },
+    {
+      "painel": "economia-credito",
+      "titulo": "Comparativo rápido",
+      "id": "comparativo-rapido"
+    },
+    {
+      "painel": "economia-credito",
+      "titulo": "Consórcio — não é “crédito rotativo”",
+      "id": "anchor-consorcio"
+    },
+    {
+      "painel": "economia-credito",
+      "titulo": "IP (Instituição de Pagamento) e estes produtos",
+      "id": "ip-instituicao-de-pagamento-e-estes-produtos"
+    },
+    {
+      "painel": "economia-credito",
+      "titulo": "Antecipação de recebíveis e risco sacado",
+      "id": "anchor-antecipacao-recebiveis"
+    },
+    {
+      "painel": "consignado",
+      "titulo": "O que é consignado e por que a taxa é baixa",
+      "id": "anchor-consignado-produto"
+    },
+    {
+      "painel": "consignado",
+      "titulo": "Três trilhas — privado, público servidor e INSS",
+      "id": "anchor-consignado-trilhas"
+    },
+    {
+      "painel": "consignado",
+      "titulo": "Margem consignável e parcelas por trilha",
+      "id": "anchor-consignado-regras"
+    },
+    {
+      "painel": "consignado",
+      "titulo": "Fluxo visível — três trilhas em 5 passos",
+      "id": "anchor-consignado-visivel"
+    },
+    {
+      "painel": "consignado",
+      "titulo": "Debaixo dos panos — modelo privado (emissão à liquidação)",
+      "id": "anchor-consignado-backoffice"
+    },
+    {
+      "painel": "consignado",
+      "titulo": "Players do ecossistema",
+      "id": "anchor-consignado-players"
+    },
+    {
+      "painel": "cdi",
+      "titulo": "CDI — o preço do dinheiro entre bancos",
+      "id": "anchor-cdi"
+    },
+    {
+      "painel": "cdi",
+      "titulo": "CDB — contrato de dívida simples",
+      "id": "cdb-contrato-de-divida-simples"
+    },
+    {
+      "painel": "cdi",
+      "titulo": "CDI como referência de investimento",
+      "id": "cdi-como-referencia-de-investimento"
+    },
+    {
+      "painel": "split",
+      "titulo": "Split — divisão de uma transação",
+      "id": "anchor-split"
+    },
+    {
+      "painel": "eva",
+      "titulo": "WACC — Custo Médio Ponderado de Capital",
+      "id": "wacc-custo-medio-ponderado-de-capital"
+    },
+    {
+      "painel": "eva",
+      "titulo": "PDD, Opex e Capex — da margem de produto ao lucro operacional",
+      "id": "pdd-opex-e-capex-da-margem-de-produto-ao-lucro-o"
+    },
+    {
+      "painel": "eva",
+      "titulo": "EVA aplicado ao produto",
+      "id": "anchor-eva-produto"
+    },
+    {
+      "painel": "mercado",
+      "titulo": "FIDC — securitização de recebíveis",
+      "id": "fidc-securitizacao-de-recebiveis"
+    },
+    {
+      "painel": "mercado",
+      "titulo": "Quem opera o FIDC — três papéis, três responsabilidades",
+      "id": "anchor-fidc-atores"
+    },
+    {
+      "painel": "mercado",
+      "titulo": "CDI como custo de oportunidade",
+      "id": "cdi-como-custo-de-oportunidade"
+    },
+    {
+      "painel": "vc",
+      "titulo": "A lógica do Venture Capital — diferente do investidor comum",
+      "id": "a-logica-do-venture-capital-diferente-do-investi"
+    },
+    {
+      "painel": "vc",
+      "titulo": "Fases de rodada — quem investe e o que olham",
+      "id": "fases-de-rodada-quem-investe-e-o-que-olham"
+    },
+    {
+      "painel": "vc",
+      "titulo": "Por que investidor existente entra na nova rodada?",
+      "id": "por-que-investidor-existente-entra-na-nova-rodad"
+    },
+    {
+      "painel": "vc",
+      "titulo": "O que VC olha antes do break-even",
+      "id": "o-que-vc-olha-antes-do-break-even"
+    },
+    {
+      "painel": "vc",
+      "titulo": "Vieses que levam à decisão \"irracional\" de reinvestir",
+      "id": "vieses-que-levam-a-decisao-irracional-de-reinves"
+    },
+    {
+      "painel": "rj",
+      "titulo": "Dois cenários — o que separa quem vinga de quem vai para RJ",
+      "id": "dois-cenarios-o-que-separa-quem-vinga-de-quem-va"
+    },
+    {
+      "painel": "rj",
+      "titulo": "O que causou o boom de recuperações judiciais 2022–2024",
+      "id": "o-que-causou-o-boom-de-recuperacoes-judiciais-20"
+    },
+    {
+      "painel": "rj",
+      "titulo": "Unit Economics — o que separa as que sobrevivem",
+      "id": "unit-economics-o-que-separa-as-que-sobrevivem"
+    },
+    {
+      "painel": "rj",
+      "titulo": "Por que mesmo assim pessoas investem em empresas sem lucro",
+      "id": "por-que-mesmo-assim-pessoas-investem-em-empresas"
+    },
+    {
+      "painel": "pci",
+      "titulo": "PCI-DSS — padrão de segurança criado pelas bandeiras",
+      "id": "anchor-pci"
+    },
+    {
+      "painel": "pci",
+      "titulo": "Jornada do dado — quem é responsável em cada ponto",
+      "id": "jornada-do-dado-quem-e-responsavel-em-cada-ponto"
+    },
+    {
+      "painel": "pci",
+      "titulo": "Tokenização e 3DS",
+      "id": "tokenizacao-e-3ds"
+    },
+    {
+      "painel": "chargeback",
+      "titulo": "Chargeback — fluxo completo",
+      "id": "anchor-chargeback"
+    },
+    {
+      "painel": "sistema-monetario",
+      "titulo": "Reserva Fracionária — como R$ 100 viram R$ 500",
+      "id": "anchor-reserva-fracionaria"
+    },
+    {
+      "painel": "sistema-monetario",
+      "titulo": "M0 vs M2 — os dois tipos de dinheiro",
+      "id": "m0-vs-m2-os-dois-tipos-de-dinheiro"
+    },
+    {
+      "painel": "sistema-monetario",
+      "titulo": "Compulsório — o freio de mão do sistema",
+      "id": "compulsorio-o-freio-de-mao-do-sistema"
+    },
+    {
+      "painel": "sistema-monetario",
+      "titulo": "Por que o sistema não colapsa todo dia",
+      "id": "por-que-o-sistema-nao-colapsa-todo-dia"
+    },
+    {
+      "painel": "inflacao-juros",
+      "titulo": "Inflação — o que é de verdade",
+      "id": "anchor-inflacao"
+    },
+    {
+      "painel": "inflacao-juros",
+      "titulo": "Como o BACEN combate a inflação — os 3 instrumentos",
+      "id": "como-o-bacen-combate-a-inflacao-os-3-instrumento"
+    },
+    {
+      "painel": "inflacao-juros",
+      "titulo": "Sistema de Metas de Inflação",
+      "id": "sistema-de-metas-de-inflacao"
+    },
+    {
+      "painel": "inflacao-juros",
+      "titulo": "Oferta e Demanda — o mecanismo central de tudo",
+      "id": "oferta-e-demanda-o-mecanismo-central-de-tudo"
+    },
+    {
+      "painel": "inflacao-juros",
+      "titulo": "Deflação — o lado oposto e igualmente perigoso",
+      "id": "deflacao-o-lado-oposto-e-igualmente-perigoso"
+    },
+    {
+      "painel": "titulos-credito",
+      "titulo": "CDB, LCI e LCA — a diferença de uma vez",
+      "id": "cdb-lci-e-lca-a-diferenca-de-uma-vez"
+    },
+    {
+      "painel": "titulos-credito",
+      "titulo": "Precatórios — o que são e como viram investimento",
+      "id": "precatorios-o-que-sao-e-como-viram-investimento"
+    },
+    {
+      "painel": "titulos-credito",
+      "titulo": "Moral Hazard — quando a garantia cria o risco",
+      "id": "moral-hazard-quando-a-garantia-cria-o-risco"
+    },
+    {
+      "painel": "sistema-global",
+      "titulo": "Como seu dinheiro fantasma compra um iPhone",
+      "id": "como-seu-dinheiro-fantasma-compra-um-iphone"
+    },
+    {
+      "painel": "sistema-global",
+      "titulo": "De onde vêm as reservas em dólar do Brasil",
+      "id": "de-onde-vem-as-reservas-em-dolar-do-brasil"
+    },
+    {
+      "painel": "sistema-global",
+      "titulo": "O Privilégio Exorbitante do Dólar",
+      "id": "o-privilegio-exorbitante-do-dolar"
+    },
+    {
+      "painel": "sistema-global",
+      "titulo": "As 3 Camadas de Controle Monetário",
+      "id": "as-3-camadas-de-controle-monetario"
+    },
+    {
+      "painel": "sistema-global",
+      "titulo": "A Cadeia de Confiança — o que sustenta tudo",
+      "id": "a-cadeia-de-confianca-o-que-sustenta-tudo"
+    },
+    {
+      "painel": "sfn-licencas",
+      "titulo": "Quem decide regra e quem executa no topo do sistema",
+      "id": "anchor-cmn-bcb"
+    },
+    {
+      "painel": "sfn-licencas",
+      "titulo": "Escada de licenças (evolução linear) — mais poder, mais exigência",
+      "id": "escada-de-licencas-evolucao-linear-mais-poder-ma"
+    },
+    {
+      "painel": "sfn-licencas",
+      "titulo": "Por que a licença muda a arquitetura de produto",
+      "id": "por-que-a-licenca-muda-a-arquitetura-de-produto"
+    },
+    {
+      "painel": "sfn-brasil",
+      "titulo": "Camadas do sistema — leitura de cima para baixo",
+      "id": "anchor-mapa-sfn"
+    },
+    {
+      "painel": "glossario",
+      "titulo": "135 termos",
+      "id": "anchor-glossario"
+    }
+  ]
+}

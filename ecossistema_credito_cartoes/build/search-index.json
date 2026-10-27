@@ -1,0 +1,3352 @@
+[
+  {
+    "id": "aba-trilha-guiada",
+    "t": "aba",
+    "ti": "Trilha guiada",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-trilha-guiada",
+    "ab": "trilha-guiada",
+    "v": []
+  },
+  {
+    "id": "aba-trilha-guiada/anchor-trilha-inicio",
+    "t": "secao",
+    "ti": "Comece por aqui — do Estado ao app (~15 min)",
+    "tx": "Comece por aqui — do Estado ao app (~15 min)",
+    "a": "#aba-trilha-guiada/anchor-trilha-inicio",
+    "ab": "trilha-guiada",
+    "v": []
+  },
+  {
+    "id": "aba-eco",
+    "t": "aba",
+    "ti": "Ecossistema",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-eco",
+    "ab": "eco",
+    "v": [
+      19,
+      20
+    ]
+  },
+  {
+    "id": "aba-eco/anchor-eco-4partes",
+    "t": "secao",
+    "ti": "Os 4 participantes do modelo de 4 partes",
+    "tx": "Os 4 participantes do modelo de 4 partes",
+    "a": "#aba-eco/anchor-eco-4partes",
+    "ab": "eco",
+    "v": [
+      19,
+      20
+    ]
+  },
+  {
+    "id": "aba-eco/fluxo-de-uma-compra-em-tempo-real",
+    "t": "secao",
+    "ti": "Fluxo de uma compra em tempo real",
+    "tx": "Fluxo de uma compra em tempo real",
+    "a": "#aba-eco/fluxo-de-uma-compra-em-tempo-real",
+    "ab": "eco",
+    "v": [
+      19,
+      20
+    ]
+  },
+  {
+    "id": "aba-eco/anchor-bandeira-emissor",
+    "t": "secao",
+    "ti": "Bandeira × emissor — quem cobra quem e onde está o lucro",
+    "tx": "Bandeira × emissor — quem cobra quem e onde está o lucro",
+    "a": "#aba-eco/anchor-bandeira-emissor",
+    "ab": "eco",
+    "v": [
+      19,
+      20
+    ]
+  },
+  {
+    "id": "aba-eco/anchor-modalidades-cartao",
+    "t": "secao",
+    "ti": "Modalidades — débito, crédito, crébito, pré-pago e pós-pago",
+    "tx": "Modalidades — débito, crédito, crébito, pré-pago e pós-pago",
+    "a": "#aba-eco/anchor-modalidades-cartao",
+    "ab": "eco",
+    "v": [
+      19,
+      20
+    ]
+  },
+  {
+    "id": "aba-eco/anchor-beneficios",
+    "t": "secao",
+    "ti": "Cartões de benefícios — introdução (rede semi-fechada)",
+    "tx": "Cartões de benefícios — introdução (rede semi-fechada)",
+    "a": "#aba-eco/anchor-beneficios",
+    "ab": "eco",
+    "v": [
+      19,
+      20
+    ]
+  },
+  {
+    "id": "aba-folha",
+    "t": "aba",
+    "ti": "Folha & Pagamento",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-folha",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-inicio",
+    "t": "secao",
+    "ti": "Folha — onde o Ringgo realmente começa",
+    "tx": "Folha — onde o Ringgo realmente começa",
+    "a": "#aba-folha/anchor-folha-inicio",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-quem-faz",
+    "t": "secao",
+    "ti": "Quem faz o quê — calcula, declara, paga",
+    "tx": "Quem faz o quê — calcula, declara, paga",
+    "a": "#aba-folha/anchor-folha-quem-faz",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-erp",
+    "t": "secao",
+    "ti": "Camada empresa — RH, ERP (ou contador) e e-Social",
+    "tx": "Camada empresa — RH, ERP (ou contador) e e-Social",
+    "a": "#aba-folha/anchor-folha-erp",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-governo",
+    "t": "secao",
+    "ti": "Como o governo “confere”",
+    "tx": "Como o governo “confere”",
+    "a": "#aba-folha/anchor-folha-governo",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-arquivo",
+    "t": "secao",
+    "ti": "O que vai no arquivo ao banco vs o que fica no ERP",
+    "tx": "O que vai no arquivo ao banco vs o que fica no ERP",
+    "a": "#aba-folha/anchor-folha-arquivo",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-fgts",
+    "t": "secao",
+    "ti": "Dois dinheiros — líquido do colaborador vs guias ao Estado",
+    "tx": "Dois dinheiros — líquido do colaborador vs guias ao Estado",
+    "a": "#aba-folha/anchor-folha-fgts",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-empresa-banco",
+    "t": "secao",
+    "ti": "Relação empresa × banco / IP de folha",
+    "tx": "Relação empresa × banco / IP de folha",
+    "a": "#aba-folha/anchor-folha-empresa-banco",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-fluxo-privado",
+    "t": "secao",
+    "ti": "Fluxo privado (CLT) — do cálculo ao colaborador",
+    "tx": "Fluxo privado (CLT) — do cálculo ao colaborador",
+    "a": "#aba-folha/anchor-folha-fluxo-privado",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-sem-erp",
+    "t": "secao",
+    "ti": "Quando não tem ERP",
+    "tx": "Quando não tem ERP",
+    "a": "#aba-folha/anchor-folha-sem-erp",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-trilhas",
+    "t": "secao",
+    "ti": "Três trilhas de quem paga — privado, público e INSS",
+    "tx": "Três trilhas de quem paga — privado, público e INSS",
+    "a": "#aba-folha/anchor-folha-trilhas",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-dataprev",
+    "t": "secao",
+    "ti": "Onde o Dataprev entra (e onde não entra)",
+    "tx": "Onde o Dataprev entra (e onde não entra)",
+    "a": "#aba-folha/anchor-folha-dataprev",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-folha/anchor-folha-ringgo",
+    "t": "secao",
+    "ti": "Onde o Ringgo encaixa no ciclo",
+    "tx": "Onde o Ringgo encaixa no ciclo",
+    "a": "#aba-folha/anchor-folha-ringgo",
+    "ab": "folha",
+    "v": [
+      13
+    ]
+  },
+  {
+    "id": "aba-infra-bancaria",
+    "t": "aba",
+    "ti": "Infra Bancária",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-infra-bancaria",
+    "ab": "infra-bancaria",
+    "v": [
+      3,
+      19,
+      21
+    ]
+  },
+  {
+    "id": "aba-infra-bancaria/licenca-tecnologia-e-trilho-de-liquidacao-sao-ca",
+    "t": "secao",
+    "ti": "Licença, tecnologia e trilho de liquidação são camadas diferentes",
+    "tx": "Licença, tecnologia e trilho de liquidação são camadas diferentes",
+    "a": "#aba-infra-bancaria/licenca-tecnologia-e-trilho-de-liquidacao-sao-ca",
+    "ab": "infra-bancaria",
+    "v": [
+      3,
+      19,
+      21
+    ]
+  },
+  {
+    "id": "aba-infra-bancaria/anchor-infratech",
+    "t": "secao",
+    "ti": "Infratech — tecnologia que habilita licença, não licença em si",
+    "tx": "Infratech — tecnologia que habilita licença, não licença em si",
+    "a": "#aba-infra-bancaria/anchor-infratech",
+    "ab": "infra-bancaria",
+    "v": [
+      3,
+      19,
+      21
+    ]
+  },
+  {
+    "id": "aba-infra-bancaria/anchor-contas-especiais",
+    "t": "secao",
+    "ti": "Contas especiais — bolsão, transitória, caução e escrow",
+    "tx": "Contas especiais — bolsão, transitória, caução e escrow",
+    "a": "#aba-infra-bancaria/anchor-contas-especiais",
+    "ab": "infra-bancaria",
+    "v": [
+      3,
+      19,
+      21
+    ]
+  },
+  {
+    "id": "aba-infra-bancaria/quem-resolve-cada-limite-da-ip-no-dia-a-dia",
+    "t": "secao",
+    "ti": "Quem resolve cada limite da IP no dia a dia",
+    "tx": "Quem resolve cada limite da IP no dia a dia",
+    "a": "#aba-infra-bancaria/quem-resolve-cada-limite-da-ip-no-dia-a-dia",
+    "ab": "infra-bancaria",
+    "v": [
+      3,
+      19,
+      21
+    ]
+  },
+  {
+    "id": "aba-infra-bancaria/anchor-consignado-fluxo",
+    "t": "secao",
+    "ti": "Fluxo típico de crédito consignado com parceiro originador",
+    "tx": "Fluxo típico de crédito consignado com parceiro originador",
+    "a": "#aba-infra-bancaria/anchor-consignado-fluxo",
+    "ab": "infra-bancaria",
+    "v": [
+      3,
+      19,
+      21
+    ]
+  },
+  {
+    "id": "aba-taxas",
+    "t": "aba",
+    "ti": "Taxas & MDR",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-taxas",
+    "ab": "taxas",
+    "v": [
+      20
+    ]
+  },
+  {
+    "id": "aba-taxas/anchor-mdr",
+    "t": "secao",
+    "ti": "Decomposição do MDR — crédito Platinum",
+    "tx": "Decomposição do MDR — crédito Platinum",
+    "a": "#aba-taxas/anchor-mdr",
+    "ab": "taxas",
+    "v": [
+      20
+    ]
+  },
+  {
+    "id": "aba-tiers",
+    "t": "aba",
+    "ti": "Tiers",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-tiers",
+    "ab": "tiers",
+    "v": [
+      20
+    ]
+  },
+  {
+    "id": "aba-tiers/anchor-tiers-ic",
+    "t": "secao",
+    "ti": "Tiers de cartão e IC aproximado",
+    "tx": "Tiers de cartão e IC aproximado",
+    "a": "#aba-tiers/anchor-tiers-ic",
+    "ab": "tiers",
+    "v": [
+      20
+    ]
+  },
+  {
+    "id": "aba-tiers/anchor-mcc-cnae",
+    "t": "secao",
+    "ti": "MCC e CNAE — rede de cartões × cadastro fiscal",
+    "tx": "MCC e CNAE — rede de cartões × cadastro fiscal",
+    "a": "#aba-tiers/anchor-mcc-cnae",
+    "ab": "tiers",
+    "v": [
+      20
+    ]
+  },
+  {
+    "id": "aba-encargos",
+    "t": "aba",
+    "ti": "Encargos",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-encargos",
+    "ab": "encargos",
+    "v": [
+      8,
+      9,
+      10,
+      22
+    ]
+  },
+  {
+    "id": "aba-encargos/anchor-cet-tac",
+    "t": "secao",
+    "ti": "TAC e CET",
+    "tx": "TAC e CET",
+    "a": "#aba-encargos/anchor-cet-tac",
+    "ab": "encargos",
+    "v": [
+      8,
+      9,
+      10,
+      22
+    ]
+  },
+  {
+    "id": "aba-encargos/encargos-por-atraso",
+    "t": "secao",
+    "ti": "Encargos por Atraso",
+    "tx": "Encargos por Atraso",
+    "a": "#aba-encargos/encargos-por-atraso",
+    "ab": "encargos",
+    "v": [
+      8,
+      9,
+      10,
+      22
+    ]
+  },
+  {
+    "id": "aba-encargos/produtos-de-credito-mesmo-principio",
+    "t": "secao",
+    "ti": "Produtos de crédito — mesmo princípio",
+    "tx": "Produtos de crédito — mesmo princípio",
+    "a": "#aba-encargos/produtos-de-credito-mesmo-principio",
+    "ab": "encargos",
+    "v": [
+      8,
+      9,
+      10,
+      22
+    ]
+  },
+  {
+    "id": "aba-economia-credito",
+    "t": "aba",
+    "ti": "Economia do crédito",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-economia-credito",
+    "ab": "economia-credito",
+    "v": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      22
+    ]
+  },
+  {
+    "id": "aba-economia-credito/anchor-logica-credito",
+    "t": "secao",
+    "ti": "A lógica universal do crédito bancário",
+    "tx": "A lógica universal do crédito bancário",
+    "a": "#aba-economia-credito/anchor-logica-credito",
+    "ab": "economia-credito",
+    "v": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      22
+    ]
+  },
+  {
+    "id": "aba-economia-credito/decomposicao-didatica-ordem-de-grandeza",
+    "t": "secao",
+    "ti": "Decomposição didática (ordem de grandeza)",
+    "tx": "Decomposição didática (ordem de grandeza)",
+    "a": "#aba-economia-credito/decomposicao-didatica-ordem-de-grandeza",
+    "ab": "economia-credito",
+    "v": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      22
+    ]
+  },
+  {
+    "id": "aba-economia-credito/cartao-de-credito-varias-fontes-de-receita",
+    "t": "secao",
+    "ti": "Cartão de crédito — várias fontes de receita",
+    "tx": "Cartão de crédito — várias fontes de receita",
+    "a": "#aba-economia-credito/cartao-de-credito-varias-fontes-de-receita",
+    "ab": "economia-credito",
+    "v": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      22
+    ]
+  },
+  {
+    "id": "aba-economia-credito/cheque-especial-baixa-friccao-alto-spread",
+    "t": "secao",
+    "ti": "Cheque especial — baixa fricção, alto spread",
+    "tx": "Cheque especial — baixa fricção, alto spread",
+    "a": "#aba-economia-credito/cheque-especial-baixa-friccao-alto-spread",
+    "ab": "economia-credito",
+    "v": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      22
+    ]
+  },
+  {
+    "id": "aba-economia-credito/credito-pessoal-decisao-ativa-e-score",
+    "t": "secao",
+    "ti": "Crédito pessoal — decisão ativa e score",
+    "tx": "Crédito pessoal — decisão ativa e score",
+    "a": "#aba-economia-credito/credito-pessoal-decisao-ativa-e-score",
+    "ab": "economia-credito",
+    "v": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      22
+    ]
+  },
+  {
+    "id": "aba-economia-credito/comparativo-rapido",
+    "t": "secao",
+    "ti": "Comparativo rápido",
+    "tx": "Comparativo rápido",
+    "a": "#aba-economia-credito/comparativo-rapido",
+    "ab": "economia-credito",
+    "v": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      22
+    ]
+  },
+  {
+    "id": "aba-economia-credito/anchor-consorcio",
+    "t": "secao",
+    "ti": "Consórcio — não é “crédito rotativo”",
+    "tx": "Consórcio — não é “crédito rotativo”",
+    "a": "#aba-economia-credito/anchor-consorcio",
+    "ab": "economia-credito",
+    "v": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      22
+    ]
+  },
+  {
+    "id": "aba-economia-credito/ip-instituicao-de-pagamento-e-estes-produtos",
+    "t": "secao",
+    "ti": "IP (Instituição de Pagamento) e estes produtos",
+    "tx": "IP (Instituição de Pagamento) e estes produtos",
+    "a": "#aba-economia-credito/ip-instituicao-de-pagamento-e-estes-produtos",
+    "ab": "economia-credito",
+    "v": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      22
+    ]
+  },
+  {
+    "id": "aba-economia-credito/anchor-antecipacao-recebiveis",
+    "t": "secao",
+    "ti": "Antecipação de recebíveis e risco sacado",
+    "tx": "Antecipação de recebíveis e risco sacado",
+    "a": "#aba-economia-credito/anchor-antecipacao-recebiveis",
+    "ab": "economia-credito",
+    "v": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      22
+    ]
+  },
+  {
+    "id": "aba-consignado",
+    "t": "aba",
+    "ti": "Consignado",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-consignado",
+    "ab": "consignado",
+    "v": [
+      9,
+      10,
+      13
+    ]
+  },
+  {
+    "id": "aba-consignado/anchor-consignado-produto",
+    "t": "secao",
+    "ti": "O que é consignado e por que a taxa é baixa",
+    "tx": "O que é consignado e por que a taxa é baixa",
+    "a": "#aba-consignado/anchor-consignado-produto",
+    "ab": "consignado",
+    "v": [
+      9,
+      10,
+      13
+    ]
+  },
+  {
+    "id": "aba-consignado/anchor-consignado-trilhas",
+    "t": "secao",
+    "ti": "Três trilhas — privado, público servidor e INSS",
+    "tx": "Três trilhas — privado, público servidor e INSS",
+    "a": "#aba-consignado/anchor-consignado-trilhas",
+    "ab": "consignado",
+    "v": [
+      9,
+      10,
+      13
+    ]
+  },
+  {
+    "id": "aba-consignado/anchor-consignado-regras",
+    "t": "secao",
+    "ti": "Margem consignável e parcelas por trilha",
+    "tx": "Margem consignável e parcelas por trilha",
+    "a": "#aba-consignado/anchor-consignado-regras",
+    "ab": "consignado",
+    "v": [
+      9,
+      10,
+      13
+    ]
+  },
+  {
+    "id": "aba-consignado/anchor-consignado-visivel",
+    "t": "secao",
+    "ti": "Fluxo visível — três trilhas em 5 passos",
+    "tx": "Fluxo visível — três trilhas em 5 passos",
+    "a": "#aba-consignado/anchor-consignado-visivel",
+    "ab": "consignado",
+    "v": [
+      9,
+      10,
+      13
+    ]
+  },
+  {
+    "id": "aba-consignado/anchor-consignado-backoffice",
+    "t": "secao",
+    "ti": "Debaixo dos panos — modelo privado (emissão à liquidação)",
+    "tx": "Debaixo dos panos — modelo privado (emissão à liquidação)",
+    "a": "#aba-consignado/anchor-consignado-backoffice",
+    "ab": "consignado",
+    "v": [
+      9,
+      10,
+      13
+    ]
+  },
+  {
+    "id": "aba-consignado/anchor-consignado-players",
+    "t": "secao",
+    "ti": "Players do ecossistema",
+    "tx": "Players do ecossistema",
+    "a": "#aba-consignado/anchor-consignado-players",
+    "ab": "consignado",
+    "v": [
+      9,
+      10,
+      13
+    ]
+  },
+  {
+    "id": "aba-cdi",
+    "t": "aba",
+    "ti": "CDI & CDB",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-cdi",
+    "ab": "cdi",
+    "v": [
+      5,
+      6,
+      17
+    ]
+  },
+  {
+    "id": "aba-cdi/anchor-cdi",
+    "t": "secao",
+    "ti": "CDI — o preço do dinheiro entre bancos",
+    "tx": "CDI — o preço do dinheiro entre bancos",
+    "a": "#aba-cdi/anchor-cdi",
+    "ab": "cdi",
+    "v": [
+      5,
+      6,
+      17
+    ]
+  },
+  {
+    "id": "aba-cdi/cdb-contrato-de-divida-simples",
+    "t": "secao",
+    "ti": "CDB — contrato de dívida simples",
+    "tx": "CDB — contrato de dívida simples",
+    "a": "#aba-cdi/cdb-contrato-de-divida-simples",
+    "ab": "cdi",
+    "v": [
+      5,
+      6,
+      17
+    ]
+  },
+  {
+    "id": "aba-cdi/cdi-como-referencia-de-investimento",
+    "t": "secao",
+    "ti": "CDI como referência de investimento",
+    "tx": "CDI como referência de investimento",
+    "a": "#aba-cdi/cdi-como-referencia-de-investimento",
+    "ab": "cdi",
+    "v": [
+      5,
+      6,
+      17
+    ]
+  },
+  {
+    "id": "aba-split",
+    "t": "aba",
+    "ti": "Split & Crébito",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-split",
+    "ab": "split",
+    "v": [
+      21
+    ]
+  },
+  {
+    "id": "aba-split/anchor-split",
+    "t": "secao",
+    "ti": "Split — divisão de uma transação",
+    "tx": "Split — divisão de uma transação",
+    "a": "#aba-split/anchor-split",
+    "ab": "split",
+    "v": [
+      21
+    ]
+  },
+  {
+    "id": "aba-eva",
+    "t": "aba",
+    "ti": "WACC & EVA",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-eva",
+    "ab": "eva",
+    "v": [
+      11,
+      18
+    ]
+  },
+  {
+    "id": "aba-eva/wacc-custo-medio-ponderado-de-capital",
+    "t": "secao",
+    "ti": "WACC — Custo Médio Ponderado de Capital",
+    "tx": "WACC — Custo Médio Ponderado de Capital",
+    "a": "#aba-eva/wacc-custo-medio-ponderado-de-capital",
+    "ab": "eva",
+    "v": [
+      11,
+      18
+    ]
+  },
+  {
+    "id": "aba-eva/pdd-opex-e-capex-da-margem-de-produto-ao-lucro-o",
+    "t": "secao",
+    "ti": "PDD, Opex e Capex — da margem de produto ao lucro operacional",
+    "tx": "PDD, Opex e Capex — da margem de produto ao lucro operacional",
+    "a": "#aba-eva/pdd-opex-e-capex-da-margem-de-produto-ao-lucro-o",
+    "ab": "eva",
+    "v": [
+      11,
+      18
+    ]
+  },
+  {
+    "id": "aba-eva/anchor-eva-produto",
+    "t": "secao",
+    "ti": "EVA aplicado ao produto",
+    "tx": "EVA aplicado ao produto",
+    "a": "#aba-eva/anchor-eva-produto",
+    "ab": "eva",
+    "v": [
+      11,
+      18
+    ]
+  },
+  {
+    "id": "aba-mercado",
+    "t": "aba",
+    "ti": "FIDC & Ações",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-mercado",
+    "ab": "mercado",
+    "v": [
+      2,
+      3,
+      17
+    ]
+  },
+  {
+    "id": "aba-mercado/fidc-securitizacao-de-recebiveis",
+    "t": "secao",
+    "ti": "FIDC — securitização de recebíveis",
+    "tx": "FIDC — securitização de recebíveis",
+    "a": "#aba-mercado/fidc-securitizacao-de-recebiveis",
+    "ab": "mercado",
+    "v": [
+      2,
+      3,
+      17
+    ]
+  },
+  {
+    "id": "aba-mercado/anchor-fidc-atores",
+    "t": "secao",
+    "ti": "Quem opera o FIDC — três papéis, três responsabilidades",
+    "tx": "Quem opera o FIDC — três papéis, três responsabilidades",
+    "a": "#aba-mercado/anchor-fidc-atores",
+    "ab": "mercado",
+    "v": [
+      2,
+      3,
+      17
+    ]
+  },
+  {
+    "id": "aba-mercado/cdi-como-custo-de-oportunidade",
+    "t": "secao",
+    "ti": "CDI como custo de oportunidade",
+    "tx": "CDI como custo de oportunidade",
+    "a": "#aba-mercado/cdi-como-custo-de-oportunidade",
+    "ab": "mercado",
+    "v": [
+      2,
+      3,
+      17
+    ]
+  },
+  {
+    "id": "aba-vc",
+    "t": "aba",
+    "ti": "VC & Rodadas",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-vc",
+    "ab": "vc",
+    "v": []
+  },
+  {
+    "id": "aba-vc/a-logica-do-venture-capital-diferente-do-investi",
+    "t": "secao",
+    "ti": "A lógica do Venture Capital — diferente do investidor comum",
+    "tx": "A lógica do Venture Capital — diferente do investidor comum",
+    "a": "#aba-vc/a-logica-do-venture-capital-diferente-do-investi",
+    "ab": "vc",
+    "v": []
+  },
+  {
+    "id": "aba-vc/fases-de-rodada-quem-investe-e-o-que-olham",
+    "t": "secao",
+    "ti": "Fases de rodada — quem investe e o que olham",
+    "tx": "Fases de rodada — quem investe e o que olham",
+    "a": "#aba-vc/fases-de-rodada-quem-investe-e-o-que-olham",
+    "ab": "vc",
+    "v": []
+  },
+  {
+    "id": "aba-vc/por-que-investidor-existente-entra-na-nova-rodad",
+    "t": "secao",
+    "ti": "Por que investidor existente entra na nova rodada?",
+    "tx": "Por que investidor existente entra na nova rodada?",
+    "a": "#aba-vc/por-que-investidor-existente-entra-na-nova-rodad",
+    "ab": "vc",
+    "v": []
+  },
+  {
+    "id": "aba-vc/o-que-vc-olha-antes-do-break-even",
+    "t": "secao",
+    "ti": "O que VC olha antes do break-even",
+    "tx": "O que VC olha antes do break-even",
+    "a": "#aba-vc/o-que-vc-olha-antes-do-break-even",
+    "ab": "vc",
+    "v": []
+  },
+  {
+    "id": "aba-vc/vieses-que-levam-a-decisao-irracional-de-reinves",
+    "t": "secao",
+    "ti": "Vieses que levam à decisão \"irracional\" de reinvestir",
+    "tx": "Vieses que levam à decisão \"irracional\" de reinvestir",
+    "a": "#aba-vc/vieses-que-levam-a-decisao-irracional-de-reinves",
+    "ab": "vc",
+    "v": []
+  },
+  {
+    "id": "aba-rj",
+    "t": "aba",
+    "ti": "Rec. Judicial",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-rj",
+    "ab": "rj",
+    "v": [
+      12
+    ]
+  },
+  {
+    "id": "aba-rj/dois-cenarios-o-que-separa-quem-vinga-de-quem-va",
+    "t": "secao",
+    "ti": "Dois cenários — o que separa quem vinga de quem vai para RJ",
+    "tx": "Dois cenários — o que separa quem vinga de quem vai para RJ",
+    "a": "#aba-rj/dois-cenarios-o-que-separa-quem-vinga-de-quem-va",
+    "ab": "rj",
+    "v": [
+      12
+    ]
+  },
+  {
+    "id": "aba-rj/o-que-causou-o-boom-de-recuperacoes-judiciais-20",
+    "t": "secao",
+    "ti": "O que causou o boom de recuperações judiciais 2022–2024",
+    "tx": "O que causou o boom de recuperações judiciais 2022–2024",
+    "a": "#aba-rj/o-que-causou-o-boom-de-recuperacoes-judiciais-20",
+    "ab": "rj",
+    "v": [
+      12
+    ]
+  },
+  {
+    "id": "aba-rj/unit-economics-o-que-separa-as-que-sobrevivem",
+    "t": "secao",
+    "ti": "Unit Economics — o que separa as que sobrevivem",
+    "tx": "Unit Economics — o que separa as que sobrevivem",
+    "a": "#aba-rj/unit-economics-o-que-separa-as-que-sobrevivem",
+    "ab": "rj",
+    "v": [
+      12
+    ]
+  },
+  {
+    "id": "aba-rj/por-que-mesmo-assim-pessoas-investem-em-empresas",
+    "t": "secao",
+    "ti": "Por que mesmo assim pessoas investem em empresas sem lucro",
+    "tx": "Por que mesmo assim pessoas investem em empresas sem lucro",
+    "a": "#aba-rj/por-que-mesmo-assim-pessoas-investem-em-empresas",
+    "ab": "rj",
+    "v": [
+      12
+    ]
+  },
+  {
+    "id": "aba-pci",
+    "t": "aba",
+    "ti": "PCI-DSS",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-pci",
+    "ab": "pci",
+    "v": []
+  },
+  {
+    "id": "aba-pci/anchor-pci",
+    "t": "secao",
+    "ti": "PCI-DSS — padrão de segurança criado pelas bandeiras",
+    "tx": "PCI-DSS — padrão de segurança criado pelas bandeiras",
+    "a": "#aba-pci/anchor-pci",
+    "ab": "pci",
+    "v": []
+  },
+  {
+    "id": "aba-pci/jornada-do-dado-quem-e-responsavel-em-cada-ponto",
+    "t": "secao",
+    "ti": "Jornada do dado — quem é responsável em cada ponto",
+    "tx": "Jornada do dado — quem é responsável em cada ponto",
+    "a": "#aba-pci/jornada-do-dado-quem-e-responsavel-em-cada-ponto",
+    "ab": "pci",
+    "v": []
+  },
+  {
+    "id": "aba-pci/tokenizacao-e-3ds",
+    "t": "secao",
+    "ti": "Tokenização e 3DS",
+    "tx": "Tokenização e 3DS",
+    "a": "#aba-pci/tokenizacao-e-3ds",
+    "ab": "pci",
+    "v": []
+  },
+  {
+    "id": "aba-chargeback",
+    "t": "aba",
+    "ti": "Chargeback",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-chargeback",
+    "ab": "chargeback",
+    "v": [
+      12
+    ]
+  },
+  {
+    "id": "aba-chargeback/anchor-chargeback",
+    "t": "secao",
+    "ti": "Chargeback — fluxo completo",
+    "tx": "Chargeback — fluxo completo",
+    "a": "#aba-chargeback/anchor-chargeback",
+    "ab": "chargeback",
+    "v": [
+      12
+    ]
+  },
+  {
+    "id": "aba-sistema-monetario",
+    "t": "aba",
+    "ti": "Sistema Monetário",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-sistema-monetario",
+    "ab": "sistema-monetario",
+    "v": [
+      5,
+      7
+    ]
+  },
+  {
+    "id": "aba-sistema-monetario/anchor-reserva-fracionaria",
+    "t": "secao",
+    "ti": "Reserva Fracionária — como R$ 100 viram R$ 500",
+    "tx": "Reserva Fracionária — como R$ 100 viram R$ 500",
+    "a": "#aba-sistema-monetario/anchor-reserva-fracionaria",
+    "ab": "sistema-monetario",
+    "v": [
+      5,
+      7
+    ]
+  },
+  {
+    "id": "aba-sistema-monetario/m0-vs-m2-os-dois-tipos-de-dinheiro",
+    "t": "secao",
+    "ti": "M0 vs M2 — os dois tipos de dinheiro",
+    "tx": "M0 vs M2 — os dois tipos de dinheiro",
+    "a": "#aba-sistema-monetario/m0-vs-m2-os-dois-tipos-de-dinheiro",
+    "ab": "sistema-monetario",
+    "v": [
+      5,
+      7
+    ]
+  },
+  {
+    "id": "aba-sistema-monetario/compulsorio-o-freio-de-mao-do-sistema",
+    "t": "secao",
+    "ti": "Compulsório — o freio de mão do sistema",
+    "tx": "Compulsório — o freio de mão do sistema",
+    "a": "#aba-sistema-monetario/compulsorio-o-freio-de-mao-do-sistema",
+    "ab": "sistema-monetario",
+    "v": [
+      5,
+      7
+    ]
+  },
+  {
+    "id": "aba-sistema-monetario/por-que-o-sistema-nao-colapsa-todo-dia",
+    "t": "secao",
+    "ti": "Por que o sistema não colapsa todo dia",
+    "tx": "Por que o sistema não colapsa todo dia",
+    "a": "#aba-sistema-monetario/por-que-o-sistema-nao-colapsa-todo-dia",
+    "ab": "sistema-monetario",
+    "v": [
+      5,
+      7
+    ]
+  },
+  {
+    "id": "aba-inflacao-juros",
+    "t": "aba",
+    "ti": "Inflação & Juros",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-inflacao-juros",
+    "ab": "inflacao-juros",
+    "v": [
+      4,
+      5,
+      6,
+      8
+    ]
+  },
+  {
+    "id": "aba-inflacao-juros/anchor-inflacao",
+    "t": "secao",
+    "ti": "Inflação — o que é de verdade",
+    "tx": "Inflação — o que é de verdade",
+    "a": "#aba-inflacao-juros/anchor-inflacao",
+    "ab": "inflacao-juros",
+    "v": [
+      4,
+      5,
+      6,
+      8
+    ]
+  },
+  {
+    "id": "aba-inflacao-juros/como-o-bacen-combate-a-inflacao-os-3-instrumento",
+    "t": "secao",
+    "ti": "Como o BACEN combate a inflação — os 3 instrumentos",
+    "tx": "Como o BACEN combate a inflação — os 3 instrumentos",
+    "a": "#aba-inflacao-juros/como-o-bacen-combate-a-inflacao-os-3-instrumento",
+    "ab": "inflacao-juros",
+    "v": [
+      4,
+      5,
+      6,
+      8
+    ]
+  },
+  {
+    "id": "aba-inflacao-juros/sistema-de-metas-de-inflacao",
+    "t": "secao",
+    "ti": "Sistema de Metas de Inflação",
+    "tx": "Sistema de Metas de Inflação",
+    "a": "#aba-inflacao-juros/sistema-de-metas-de-inflacao",
+    "ab": "inflacao-juros",
+    "v": [
+      4,
+      5,
+      6,
+      8
+    ]
+  },
+  {
+    "id": "aba-inflacao-juros/oferta-e-demanda-o-mecanismo-central-de-tudo",
+    "t": "secao",
+    "ti": "Oferta e Demanda — o mecanismo central de tudo",
+    "tx": "Oferta e Demanda — o mecanismo central de tudo",
+    "a": "#aba-inflacao-juros/oferta-e-demanda-o-mecanismo-central-de-tudo",
+    "ab": "inflacao-juros",
+    "v": [
+      4,
+      5,
+      6,
+      8
+    ]
+  },
+  {
+    "id": "aba-inflacao-juros/deflacao-o-lado-oposto-e-igualmente-perigoso",
+    "t": "secao",
+    "ti": "Deflação — o lado oposto e igualmente perigoso",
+    "tx": "Deflação — o lado oposto e igualmente perigoso",
+    "a": "#aba-inflacao-juros/deflacao-o-lado-oposto-e-igualmente-perigoso",
+    "ab": "inflacao-juros",
+    "v": [
+      4,
+      5,
+      6,
+      8
+    ]
+  },
+  {
+    "id": "aba-titulos-credito",
+    "t": "aba",
+    "ti": "Títulos & Crédito",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-titulos-credito",
+    "ab": "titulos-credito",
+    "v": [
+      17,
+      21
+    ]
+  },
+  {
+    "id": "aba-titulos-credito/cdb-lci-e-lca-a-diferenca-de-uma-vez",
+    "t": "secao",
+    "ti": "CDB, LCI e LCA — a diferença de uma vez",
+    "tx": "CDB, LCI e LCA — a diferença de uma vez",
+    "a": "#aba-titulos-credito/cdb-lci-e-lca-a-diferenca-de-uma-vez",
+    "ab": "titulos-credito",
+    "v": [
+      17,
+      21
+    ]
+  },
+  {
+    "id": "aba-titulos-credito/precatorios-o-que-sao-e-como-viram-investimento",
+    "t": "secao",
+    "ti": "Precatórios — o que são e como viram investimento",
+    "tx": "Precatórios — o que são e como viram investimento",
+    "a": "#aba-titulos-credito/precatorios-o-que-sao-e-como-viram-investimento",
+    "ab": "titulos-credito",
+    "v": [
+      17,
+      21
+    ]
+  },
+  {
+    "id": "aba-titulos-credito/moral-hazard-quando-a-garantia-cria-o-risco",
+    "t": "secao",
+    "ti": "Moral Hazard — quando a garantia cria o risco",
+    "tx": "Moral Hazard — quando a garantia cria o risco",
+    "a": "#aba-titulos-credito/moral-hazard-quando-a-garantia-cria-o-risco",
+    "ab": "titulos-credito",
+    "v": [
+      17,
+      21
+    ]
+  },
+  {
+    "id": "aba-sistema-global",
+    "t": "aba",
+    "ti": "Sistema Global",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-sistema-global",
+    "ab": "sistema-global",
+    "v": [
+      7
+    ]
+  },
+  {
+    "id": "aba-sistema-global/como-seu-dinheiro-fantasma-compra-um-iphone",
+    "t": "secao",
+    "ti": "Como seu dinheiro fantasma compra um iPhone",
+    "tx": "Como seu dinheiro fantasma compra um iPhone",
+    "a": "#aba-sistema-global/como-seu-dinheiro-fantasma-compra-um-iphone",
+    "ab": "sistema-global",
+    "v": [
+      7
+    ]
+  },
+  {
+    "id": "aba-sistema-global/de-onde-vem-as-reservas-em-dolar-do-brasil",
+    "t": "secao",
+    "ti": "De onde vêm as reservas em dólar do Brasil",
+    "tx": "De onde vêm as reservas em dólar do Brasil",
+    "a": "#aba-sistema-global/de-onde-vem-as-reservas-em-dolar-do-brasil",
+    "ab": "sistema-global",
+    "v": [
+      7
+    ]
+  },
+  {
+    "id": "aba-sistema-global/o-privilegio-exorbitante-do-dolar",
+    "t": "secao",
+    "ti": "O Privilégio Exorbitante do Dólar",
+    "tx": "O Privilégio Exorbitante do Dólar",
+    "a": "#aba-sistema-global/o-privilegio-exorbitante-do-dolar",
+    "ab": "sistema-global",
+    "v": [
+      7
+    ]
+  },
+  {
+    "id": "aba-sistema-global/as-3-camadas-de-controle-monetario",
+    "t": "secao",
+    "ti": "As 3 Camadas de Controle Monetário",
+    "tx": "As 3 Camadas de Controle Monetário",
+    "a": "#aba-sistema-global/as-3-camadas-de-controle-monetario",
+    "ab": "sistema-global",
+    "v": [
+      7
+    ]
+  },
+  {
+    "id": "aba-sistema-global/a-cadeia-de-confianca-o-que-sustenta-tudo",
+    "t": "secao",
+    "ti": "A Cadeia de Confiança — o que sustenta tudo",
+    "tx": "A Cadeia de Confiança — o que sustenta tudo",
+    "a": "#aba-sistema-global/a-cadeia-de-confianca-o-que-sustenta-tudo",
+    "ab": "sistema-global",
+    "v": [
+      7
+    ]
+  },
+  {
+    "id": "aba-sfn-licencas",
+    "t": "aba",
+    "ti": "SFN & Licenças",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-sfn-licencas",
+    "ab": "sfn-licencas",
+    "v": [
+      1,
+      2,
+      17,
+      18,
+      19
+    ]
+  },
+  {
+    "id": "aba-sfn-licencas/anchor-cmn-bcb",
+    "t": "secao",
+    "ti": "Quem decide regra e quem executa no topo do sistema",
+    "tx": "Quem decide regra e quem executa no topo do sistema",
+    "a": "#aba-sfn-licencas/anchor-cmn-bcb",
+    "ab": "sfn-licencas",
+    "v": [
+      1,
+      2,
+      17,
+      18,
+      19
+    ]
+  },
+  {
+    "id": "aba-sfn-licencas/escada-de-licencas-evolucao-linear-mais-poder-ma",
+    "t": "secao",
+    "ti": "Escada de licenças (evolução linear) — mais poder, mais exigência",
+    "tx": "Escada de licenças (evolução linear) — mais poder, mais exigência",
+    "a": "#aba-sfn-licencas/escada-de-licencas-evolucao-linear-mais-poder-ma",
+    "ab": "sfn-licencas",
+    "v": [
+      1,
+      2,
+      17,
+      18,
+      19
+    ]
+  },
+  {
+    "id": "aba-sfn-licencas/por-que-a-licenca-muda-a-arquitetura-de-produto",
+    "t": "secao",
+    "ti": "Por que a licença muda a arquitetura de produto",
+    "tx": "Por que a licença muda a arquitetura de produto",
+    "a": "#aba-sfn-licencas/por-que-a-licenca-muda-a-arquitetura-de-produto",
+    "ab": "sfn-licencas",
+    "v": [
+      1,
+      2,
+      17,
+      18,
+      19
+    ]
+  },
+  {
+    "id": "aba-sfn-brasil",
+    "t": "aba",
+    "ti": "Mapa SFN (BR)",
+    "tx": "Abrir glossário completo",
+    "a": "#aba-sfn-brasil",
+    "ab": "sfn-brasil",
+    "v": [
+      1,
+      3
+    ]
+  },
+  {
+    "id": "aba-sfn-brasil/anchor-mapa-sfn",
+    "t": "secao",
+    "ti": "Camadas do sistema — leitura de cima para baixo",
+    "tx": "Camadas do sistema — leitura de cima para baixo",
+    "a": "#aba-sfn-brasil/anchor-mapa-sfn",
+    "ab": "sfn-brasil",
+    "v": [
+      1,
+      3
+    ]
+  },
+  {
+    "id": "aba-glossario",
+    "t": "aba",
+    "ti": "Glossário",
+    "tx": "Todos os termos do mapa em um só lugar.",
+    "a": "#aba-glossario",
+    "ab": "glossario",
+    "v": []
+  },
+  {
+    "id": "aba-glossario/anchor-glossario",
+    "t": "secao",
+    "ti": "135 termos",
+    "tx": "135 termos",
+    "a": "#aba-glossario/anchor-glossario",
+    "ab": "glossario",
+    "v": []
+  },
+  {
+    "id": "aba-glossario/pdd",
+    "t": "termo",
+    "ti": "PDD",
+    "tx": "Provisão para Devedores Duvidosos.",
+    "a": "#aba-glossario/pdd",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "pdd"
+    ]
+  },
+  {
+    "id": "aba-glossario/iof",
+    "t": "termo",
+    "ti": "IOF",
+    "tx": "Imposto sobre Operações Financeiras.",
+    "a": "#aba-glossario/iof",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "iof"
+    ]
+  },
+  {
+    "id": "aba-glossario/anatocismo",
+    "t": "termo",
+    "ti": "Anatocismo",
+    "tx": "Juros sobre juros.",
+    "a": "#aba-glossario/anatocismo",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "anatocismo"
+    ]
+  },
+  {
+    "id": "aba-glossario/portabilidade-cheque-esp",
+    "t": "termo",
+    "ti": "Portabilidade — cheque esp.",
+    "tx": "Após 30 dias consecutivos no limite do cheque especial, o banco deve oferecer migração para modalidade mais barata (regra BCB).",
+    "a": "#aba-glossario/portabilidade-cheque-esp",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "portabilidade-cheque-esp"
+    ]
+  },
+  {
+    "id": "aba-glossario/limite-pre-aprovado",
+    "t": "termo",
+    "ti": "Limite pré-aprovado",
+    "tx": "Crédito já disponível na conta sem contratação explícita — base do cheque especial.",
+    "a": "#aba-glossario/limite-pre-aprovado",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "limite-pre-aprovado"
+    ]
+  },
+  {
+    "id": "aba-glossario/vies-do-presente",
+    "t": "termo",
+    "ti": "Viés do presente",
+    "tx": "Valorizar benefício imediato e subestimar custo futuro; explorado em produtos de uso instantâneo.",
+    "a": "#aba-glossario/vies-do-presente",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "vies-do-presente"
+    ]
+  },
+  {
+    "id": "aba-glossario/cheque-especial",
+    "t": "termo",
+    "ti": "Cheque especial",
+    "tx": "Limite atrelado à conta corrente; juros desde o primeiro dia de uso do limite; teto regulatório mensal.",
+    "a": "#aba-glossario/cheque-especial",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "cheque-especial"
+    ]
+  },
+  {
+    "id": "aba-glossario/consorcio",
+    "t": "termo",
+    "ti": "Consórcio",
+    "tx": "Grupo de consorciados forma fundo via parcelas para adquirir bem ou serviço; administradora autorizada; contemplação por sorteio ou lance.",
+    "a": "#aba-glossario/consorcio",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "consorcio"
+    ]
+  },
+  {
+    "id": "aba-glossario/administradora-de-consorcios",
+    "t": "termo",
+    "ti": "Administradora de consórcios",
+    "tx": "Instituição autorizada a constituir e administrar grupos; taxa de administração e regras próprias.",
+    "a": "#aba-glossario/administradora-de-consorcios",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "administradora-de-conso…"
+    ]
+  },
+  {
+    "id": "aba-glossario/credito-pessoal",
+    "t": "termo",
+    "ti": "Crédito pessoal",
+    "tx": "Empréstimo com contratação explícita, prazo e parcelas; precificação por score e bureaus.",
+    "a": "#aba-glossario/credito-pessoal",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "credito-pessoal"
+    ]
+  },
+  {
+    "id": "aba-glossario/consignado",
+    "t": "termo",
+    "ti": "Consignado",
+    "tx": "Empréstimo com parcela descontada na folha ou benefício; taxa tipicamente baixa.",
+    "a": "#aba-glossario/consignado",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "consignado"
+    ]
+  },
+  {
+    "id": "aba-glossario/consignado-privado",
+    "t": "termo",
+    "ti": "Consignado privado",
+    "tx": "Desconto na folha de empresa privada (CLT); averbação via RH/financeiro do empregador.",
+    "a": "#aba-glossario/consignado-privado",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "consignado-privado"
+    ]
+  },
+  {
+    "id": "aba-glossario/consignado-publico-servidor",
+    "t": "termo",
+    "ti": "Consignado público (servidor)",
+    "tx": "Desconto na folha de órgão público; convênio por ente — ex.: SIAPE no federal.",
+    "a": "#aba-glossario/consignado-publico-servidor",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "consignado-publico-serv…"
+    ]
+  },
+  {
+    "id": "aba-glossario/consignado-inss",
+    "t": "termo",
+    "ti": "Consignado INSS",
+    "tx": "Desconto no benefício previdenciário; margem e averbação via Dataprev.",
+    "a": "#aba-glossario/consignado-inss",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "consignado-inss"
+    ]
+  },
+  {
+    "id": "aba-glossario/dataprev",
+    "t": "termo",
+    "ti": "Dataprev",
+    "tx": "Opera sistemas do INSS; concentra consulta de margem e averbação do consignado de benefício.",
+    "a": "#aba-glossario/dataprev",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "dataprev"
+    ]
+  },
+  {
+    "id": "aba-glossario/siape",
+    "t": "termo",
+    "ti": "SIAPE",
+    "tx": "Sistema de folha do serviço público federal; trilho típico do consignado de servidores da União.",
+    "a": "#aba-glossario/siape",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "siape"
+    ]
+  },
+  {
+    "id": "aba-glossario/margem-consignavel",
+    "t": "termo",
+    "ti": "Margem consignável",
+    "tx": "Percentual máximo do salário ou benefício comprometível com empréstimos consignados (ex.: até 35% no privado).",
+    "a": "#aba-glossario/margem-consignavel",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "margem-consignavel"
+    ]
+  },
+  {
+    "id": "aba-glossario/averbacao",
+    "t": "termo",
+    "ti": "Averbação",
+    "tx": "Registro do contrato na folha/benefício para autorizar desconto mensal pelo empregador ou órgão pagador.",
+    "a": "#aba-glossario/averbacao",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "averbacao"
+    ]
+  },
+  {
+    "id": "aba-glossario/ccb",
+    "t": "termo",
+    "ti": "CCB",
+    "tx": "Cédula de Crédito Bancário — forma canônica neste material.",
+    "a": "#aba-glossario/ccb",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "ccb"
+    ]
+  },
+  {
+    "id": "aba-glossario/score-de-credito",
+    "t": "termo",
+    "ti": "Score de crédito",
+    "tx": "Modelo que estima probabilidade de inadimplência; define faixa de taxa no pessoal.",
+    "a": "#aba-glossario/score-de-credito",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "score-de-credito"
+    ]
+  },
+  {
+    "id": "aba-glossario/bmp-money-plus",
+    "t": "termo",
+    "ti": "BMP (Money Plus)",
+    "tx": "Instituição com licença para crédito e atuação como BaaS; exemplo frequente de originador de CCB em consignado para IPs.",
+    "a": "#aba-glossario/bmp-money-plus",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "bmp-money-plus"
+    ]
+  },
+  {
+    "id": "aba-glossario/celcoin",
+    "t": "termo",
+    "ti": "Celcoin",
+    "tx": "Infratech com foco em BaaS e core; exemplo de operador com acesso a trilhos (CIP, SPB, SPI) para parceiros.",
+    "a": "#aba-glossario/celcoin",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "celcoin"
+    ]
+  },
+  {
+    "id": "aba-glossario/infratech",
+    "t": "termo",
+    "ti": "Infratech",
+    "tx": "Rótulo de mercado para trilho + software financeiro (BaaS, TaaS, CIP, SPB).",
+    "a": "#aba-glossario/infratech",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "infratech"
+    ]
+  },
+  {
+    "id": "aba-glossario/conta-bolsao",
+    "t": "termo",
+    "ti": "Conta bolsão",
+    "tx": "Conta de concentração (“bolso grande”) onde o funding da folha ou benefício agrega antes de pulverizar para N contas.",
+    "a": "#aba-glossario/conta-bolsao",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "conta-bolsao"
+    ]
+  },
+  {
+    "id": "aba-glossario/conta-transitoria",
+    "t": "termo",
+    "ti": "Conta transitória",
+    "tx": "Conta de passagem entre pernas do fluxo (banco da empresa → bancarizador → contas finais); parqueia valor só pelo tempo da operação.",
+    "a": "#aba-glossario/conta-transitoria",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "conta-transitoria"
+    ]
+  },
+  {
+    "id": "aba-glossario/conta-caucao",
+    "t": "termo",
+    "ti": "Conta caução",
+    "tx": "Conta ou depósito vinculado a garantia de uma obrigação — dinheiro preso como colateral.",
+    "a": "#aba-glossario/conta-caucao",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "conta-caucao"
+    ]
+  },
+  {
+    "id": "aba-glossario/conta-escrow",
+    "t": "termo",
+    "ti": "Conta escrow",
+    "tx": "Depósito sob condição: liberação só quando as partes cumprem o contrato.",
+    "a": "#aba-glossario/conta-escrow",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "conta-escrow"
+    ]
+  },
+  {
+    "id": "aba-glossario/conta-vinculada-concentradora",
+    "t": "termo",
+    "ti": "Conta vinculada / concentradora",
+    "tx": "Sinônimos de mercado: podem significar bolsão (concentração) ou caução (garantia) — o contrato define.",
+    "a": "#aba-glossario/conta-vinculada-concentradora",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "conta-vinculada-concent…"
+    ]
+  },
+  {
+    "id": "aba-glossario/debenture",
+    "t": "termo",
+    "ti": "Debênture",
+    "tx": "Título de dívida para captação no mercado; veículo comum para SCD financiar carteira sem depósito.",
+    "a": "#aba-glossario/debenture",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "debenture"
+    ]
+  },
+  {
+    "id": "aba-glossario/antecipacao-salarial",
+    "t": "termo",
+    "ti": "Antecipação salarial",
+    "tx": "Adiantamento de valores já trabalhados, com acordo do empregador; não é o mesmo que consignado novo.",
+    "a": "#aba-glossario/antecipacao-salarial",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "antecipacao-salarial"
+    ]
+  },
+  {
+    "id": "aba-glossario/mdr",
+    "t": "termo",
+    "ti": "MDR",
+    "tx": "Taxa total cobrada do lojista.",
+    "a": "#aba-glossario/mdr",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "mdr"
+    ]
+  },
+  {
+    "id": "aba-glossario/ic-interchange",
+    "t": "termo",
+    "ti": "IC — Interchange",
+    "tx": "Parte do MDR repassada ao emissor.",
+    "a": "#aba-glossario/ic-interchange",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "ic-interchange"
+    ]
+  },
+  {
+    "id": "aba-glossario/scheme-fee",
+    "t": "termo",
+    "ti": "Scheme Fee",
+    "tx": "Taxa da bandeira cobrada dos dois lados.",
+    "a": "#aba-glossario/scheme-fee",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "scheme-fee"
+    ]
+  },
+  {
+    "id": "aba-glossario/tac",
+    "t": "termo",
+    "ti": "TAC",
+    "tx": "Taxa de Abertura de Crédito.",
+    "a": "#aba-glossario/tac",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "tac"
+    ]
+  },
+  {
+    "id": "aba-glossario/cet",
+    "t": "termo",
+    "ti": "CET",
+    "tx": "Custo Efetivo Total.",
+    "a": "#aba-glossario/cet",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "cet"
+    ]
+  },
+  {
+    "id": "aba-glossario/float",
+    "t": "termo",
+    "ti": "Float",
+    "tx": "Prazo entre a compra e o pagamento.",
+    "a": "#aba-glossario/float",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "float"
+    ]
+  },
+  {
+    "id": "aba-glossario/cdi",
+    "t": "termo",
+    "ti": "CDI",
+    "tx": "Taxa que os bancos cobram entre si.",
+    "a": "#aba-glossario/cdi",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "cdi"
+    ]
+  },
+  {
+    "id": "aba-glossario/cdb",
+    "t": "termo",
+    "ti": "CDB",
+    "tx": "Certificado de Depósito Bancário.",
+    "a": "#aba-glossario/cdb",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "cdb"
+    ]
+  },
+  {
+    "id": "aba-glossario/wacc",
+    "t": "termo",
+    "ti": "WACC",
+    "tx": "Custo Médio Ponderado de Capital.",
+    "a": "#aba-glossario/wacc",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "wacc"
+    ]
+  },
+  {
+    "id": "aba-glossario/eva",
+    "t": "termo",
+    "ti": "EVA",
+    "tx": "Economic Value Added.",
+    "a": "#aba-glossario/eva",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "eva"
+    ]
+  },
+  {
+    "id": "aba-glossario/capex",
+    "t": "termo",
+    "ti": "Capex",
+    "tx": "Capital expenditure — investimento em ativos (core, infra, certificações); entra no P&L como depreciação.",
+    "a": "#aba-glossario/capex",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "capex"
+    ]
+  },
+  {
+    "id": "aba-glossario/opex",
+    "t": "termo",
+    "ti": "Opex",
+    "tx": "Despesas operacionais recorrentes: pessoal, cloud, atendimento, fraude, compliance operacional.",
+    "a": "#aba-glossario/opex",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "opex"
+    ]
+  },
+  {
+    "id": "aba-glossario/fidc",
+    "t": "termo",
+    "ti": "FIDC",
+    "tx": "Fundo de Investimento em Direitos Creditórios.",
+    "a": "#aba-glossario/fidc",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "fidc"
+    ]
+  },
+  {
+    "id": "aba-glossario/securitizadora",
+    "t": "termo",
+    "ti": "Securitizadora",
+    "tx": "Estrutura a operação, compra/cede direitos creditórios e viabiliza o FIDC.",
+    "a": "#aba-glossario/securitizadora",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "securitizadora"
+    ]
+  },
+  {
+    "id": "aba-glossario/administradora-de-fidc",
+    "t": "termo",
+    "ti": "Administradora de FIDC",
+    "tx": "Opera o fundo perante a CVM: cotistas, relatórios, governança — não origina crédito na ponta.",
+    "a": "#aba-glossario/administradora-de-fidc",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "administradora-de-fidc"
+    ]
+  },
+  {
+    "id": "aba-glossario/gestora-de-margem",
+    "t": "termo",
+    "ti": "Gestora de margem",
+    "tx": "Administra cota júnior / excesso de garantia no FIDC; absorve perdas antes da sênior.",
+    "a": "#aba-glossario/gestora-de-margem",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "gestora-de-margem"
+    ]
+  },
+  {
+    "id": "aba-glossario/e-social",
+    "t": "termo",
+    "ti": "e-Social",
+    "tx": "Sistema do governo para obrigações trabalhistas e previdenciárias.",
+    "a": "#aba-glossario/e-social",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "e-social"
+    ]
+  },
+  {
+    "id": "aba-glossario/erp-folha",
+    "t": "termo",
+    "ti": "ERP / Folha",
+    "tx": "Sistema da empresa que calcula bruto, descontos, líquido e gera o arquivo de pagamento.",
+    "a": "#aba-glossario/erp-folha",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "erp-folha"
+    ]
+  },
+  {
+    "id": "aba-glossario/contador-escritorio",
+    "t": "termo",
+    "ti": "Contador / escritório",
+    "tx": "Comum sem ERP robusto: calcula a folha, gera obrigações e o arquivo bancário pela empresa.",
+    "a": "#aba-glossario/contador-escritorio",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "contador-escritorio"
+    ]
+  },
+  {
+    "id": "aba-glossario/arquivo-cnab",
+    "t": "termo",
+    "ti": "Arquivo / CNAB",
+    "tx": "Layout (ou API) com lista de créditos (favorecido, valor, conta) — não o cálculo completo da folha.",
+    "a": "#aba-glossario/arquivo-cnab",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "arquivo-cnab"
+    ]
+  },
+  {
+    "id": "aba-glossario/banco-ip-de-folha",
+    "t": "termo",
+    "ti": "Banco / IP de folha",
+    "tx": "Recebe funding e executa o split; não recalcula INSS/IRRF.",
+    "a": "#aba-glossario/banco-ip-de-folha",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "banco-ip-de-folha"
+    ]
+  },
+  {
+    "id": "aba-glossario/convenio-de-folha",
+    "t": "termo",
+    "ti": "Convênio de folha",
+    "tx": "Contrato empresa ↔ banco/IP: tarifas, SLA, layouts, conciliação e regras de rejeição.",
+    "a": "#aba-glossario/convenio-de-folha",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "convenio-de-folha"
+    ]
+  },
+  {
+    "id": "aba-glossario/fgts-guias",
+    "t": "termo",
+    "ti": "FGTS / guias",
+    "tx": "Recolhimento ao Estado/fundos na competência — trilho distinto do crédito do líquido ao colaborador.",
+    "a": "#aba-glossario/fgts-guias",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "fgts-guias"
+    ]
+  },
+  {
+    "id": "aba-glossario/antecipacao-de-recebiveis",
+    "t": "termo",
+    "ti": "Antecipação de recebíveis",
+    "tx": "Cessão de fluxos futuros (cartão D+n, duplicata, boleto) por caixa hoje, com desconto — produto PJ.",
+    "a": "#aba-glossario/antecipacao-de-recebiveis",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "antecipacao-de-recebive…"
+    ]
+  },
+  {
+    "id": "aba-glossario/risco-sacado",
+    "t": "termo",
+    "ti": "Risco sacado",
+    "tx": "Comprador do recebível assume risco do sacado; cedente em geral sem regresso pela inadimplência.",
+    "a": "#aba-glossario/risco-sacado",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "risco-sacado"
+    ]
+  },
+  {
+    "id": "aba-glossario/taxa-livre-de-risco",
+    "t": "termo",
+    "ti": "Taxa Livre de Risco",
+    "tx": "Piso mínimo que qualquer investimento precisa superar.",
+    "a": "#aba-glossario/taxa-livre-de-risco",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "taxa-livre-de-risco"
+    ]
+  },
+  {
+    "id": "aba-glossario/venture-capital",
+    "t": "termo",
+    "ti": "Venture Capital",
+    "tx": "Investimento em startups com alto risco e potencial de retorno exponencial.",
+    "a": "#aba-glossario/venture-capital",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "venture-capital"
+    ]
+  },
+  {
+    "id": "aba-glossario/power-law",
+    "t": "termo",
+    "ti": "Power Law",
+    "tx": "Distribuição de retornos em VC: a maioria perde, uma startup retorna 50x+.",
+    "a": "#aba-glossario/power-law",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "power-law"
+    ]
+  },
+  {
+    "id": "aba-glossario/pro-rata",
+    "t": "termo",
+    "ti": "Pro-rata",
+    "tx": "Direito do investidor de participar de rodadas futuras para manter sua porcentagem sem diluição.",
+    "a": "#aba-glossario/pro-rata",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "pro-rata"
+    ]
+  },
+  {
+    "id": "aba-glossario/diluicao",
+    "t": "termo",
+    "ti": "Diluição",
+    "tx": "Redução da participação percentual de um investidor quando novos investidores entram.",
+    "a": "#aba-glossario/diluicao",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "diluicao"
+    ]
+  },
+  {
+    "id": "aba-glossario/pmf",
+    "t": "termo",
+    "ti": "PMF",
+    "tx": "Product-Market Fit.",
+    "a": "#aba-glossario/pmf",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "pmf"
+    ]
+  },
+  {
+    "id": "aba-glossario/cac",
+    "t": "termo",
+    "ti": "CAC",
+    "tx": "Custo de Aquisição de Cliente.",
+    "a": "#aba-glossario/cac",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "cac"
+    ]
+  },
+  {
+    "id": "aba-glossario/ltv",
+    "t": "termo",
+    "ti": "LTV",
+    "tx": "Lifetime Value.",
+    "a": "#aba-glossario/ltv",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "ltv"
+    ]
+  },
+  {
+    "id": "aba-glossario/churn",
+    "t": "termo",
+    "ti": "Churn",
+    "tx": "Taxa de cancelamento ou abandono mensal.",
+    "a": "#aba-glossario/churn",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "churn"
+    ]
+  },
+  {
+    "id": "aba-glossario/arr",
+    "t": "termo",
+    "ti": "ARR",
+    "tx": "Annual Recurring Revenue.",
+    "a": "#aba-glossario/arr",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "arr"
+    ]
+  },
+  {
+    "id": "aba-glossario/break-even",
+    "t": "termo",
+    "ti": "Break-even",
+    "tx": "Ponto onde receita = custos totais.",
+    "a": "#aba-glossario/break-even",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "break-even"
+    ]
+  },
+  {
+    "id": "aba-glossario/ipo",
+    "t": "termo",
+    "ti": "IPO",
+    "tx": "Initial Public Offering.",
+    "a": "#aba-glossario/ipo",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "ipo"
+    ]
+  },
+  {
+    "id": "aba-glossario/recuperacao-judicial",
+    "t": "termo",
+    "ti": "Recuperação Judicial",
+    "tx": "Mecanismo legal (Lei 11.101/2005) para negociar dívidas com credores sob supervisão judicial.",
+    "a": "#aba-glossario/recuperacao-judicial",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "recuperacao-judicial"
+    ]
+  },
+  {
+    "id": "aba-glossario/sunk-cost-fallacy",
+    "t": "termo",
+    "ti": "Sunk Cost Fallacy",
+    "tx": "Dificuldade de abandonar algo onde já investiu muito, mesmo que o racional seja parar.",
+    "a": "#aba-glossario/sunk-cost-fallacy",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "sunk-cost-fallacy"
+    ]
+  },
+  {
+    "id": "aba-glossario/fomo",
+    "t": "termo",
+    "ti": "FOMO",
+    "tx": "Fear of Missing Out.",
+    "a": "#aba-glossario/fomo",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "fomo"
+    ]
+  },
+  {
+    "id": "aba-glossario/rotativo",
+    "t": "termo",
+    "ti": "Rotativo",
+    "tx": "Juros sobre saldo não pago.",
+    "a": "#aba-glossario/rotativo",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "rotativo"
+    ]
+  },
+  {
+    "id": "aba-glossario/crebito",
+    "t": "termo",
+    "ti": "Crébito",
+    "tx": "Modalidade híbrida: parte a débito, parte a crédito.",
+    "a": "#aba-glossario/crebito",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "crebito"
+    ]
+  },
+  {
+    "id": "aba-glossario/split",
+    "t": "termo",
+    "ti": "Split",
+    "tx": "Divisão de transação em múltiplos recebedores (marketplace) ou modalidades (Crébito).",
+    "a": "#aba-glossario/split",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "split"
+    ]
+  },
+  {
+    "id": "aba-glossario/pci-dss",
+    "t": "termo",
+    "ti": "PCI-DSS",
+    "tx": "Padrão de segurança criado pelas bandeiras.",
+    "a": "#aba-glossario/pci-dss",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "pci-dss"
+    ]
+  },
+  {
+    "id": "aba-glossario/tokenizacao",
+    "t": "termo",
+    "ti": "Tokenização",
+    "tx": "Substitui o PAN por token inútil fora do contexto.",
+    "a": "#aba-glossario/tokenizacao",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "tokenizacao"
+    ]
+  },
+  {
+    "id": "aba-glossario/3ds",
+    "t": "termo",
+    "ti": "3DS",
+    "tx": "Autenticação extra no e-commerce.",
+    "a": "#aba-glossario/3ds",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "3ds"
+    ]
+  },
+  {
+    "id": "aba-glossario/chargeback",
+    "t": "termo",
+    "ti": "Chargeback",
+    "tx": "Contestação de cobrança.",
+    "a": "#aba-glossario/chargeback",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "chargeback"
+    ]
+  },
+  {
+    "id": "aba-glossario/friendly-fraud",
+    "t": "termo",
+    "ti": "Friendly Fraud",
+    "tx": "Portador faz a compra e contesta depois.",
+    "a": "#aba-glossario/friendly-fraud",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "friendly-fraud"
+    ]
+  },
+  {
+    "id": "aba-glossario/mcc",
+    "t": "termo",
+    "ti": "MCC",
+    "tx": "Merchant Category Code.",
+    "a": "#aba-glossario/mcc",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "mcc"
+    ]
+  },
+  {
+    "id": "aba-glossario/cnae",
+    "t": "termo",
+    "ti": "CNAE",
+    "tx": "Classificação nacional de atividade econômica (Receita Federal).",
+    "a": "#aba-glossario/cnae",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "cnae"
+    ]
+  },
+  {
+    "id": "aba-glossario/cartao-de-beneficio",
+    "t": "termo",
+    "ti": "Cartão de benefício",
+    "tx": "Instrumento de uso restrito (alimentação, refeição, frota…).",
+    "a": "#aba-glossario/cartao-de-beneficio",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "cartao-de-beneficio"
+    ]
+  },
+  {
+    "id": "aba-glossario/pat",
+    "t": "termo",
+    "ti": "PAT",
+    "tx": "Programa de Alimentação do Trabalhador — base clássica de vouchers de alimentação e refeição no Brasil.",
+    "a": "#aba-glossario/pat",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "pat"
+    ]
+  },
+  {
+    "id": "aba-glossario/pre-pago",
+    "t": "termo",
+    "ti": "Pré-pago",
+    "tx": "Cartão ou conta que gasta saldo já carregado; risco baixo para o emissor.",
+    "a": "#aba-glossario/pre-pago",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "pre-pago"
+    ]
+  },
+  {
+    "id": "aba-glossario/pos-pago",
+    "t": "termo",
+    "ti": "Pós-pago",
+    "tx": "Usa agora e paga depois; no varejo costuma equivaler ao cartão de crédito (fatura).",
+    "a": "#aba-glossario/pos-pago",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "pos-pago"
+    ]
+  },
+  {
+    "id": "aba-glossario/reserva-fracionaria",
+    "t": "termo",
+    "ti": "Reserva Fracionária",
+    "tx": "Sistema em que o banco guarda só uma fração dos depósitos e empresta o resto.",
+    "a": "#aba-glossario/reserva-fracionaria",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "reserva-fracionaria"
+    ]
+  },
+  {
+    "id": "aba-glossario/m0",
+    "t": "termo",
+    "ti": "M0",
+    "tx": "Base monetária: dinheiro físico e reservas bancárias no BACEN.",
+    "a": "#aba-glossario/m0",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "m0"
+    ]
+  },
+  {
+    "id": "aba-glossario/m2",
+    "t": "termo",
+    "ti": "M2",
+    "tx": "Dinheiro amplo: M0 + depósitos e investimentos líquidos.",
+    "a": "#aba-glossario/m2",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "m2"
+    ]
+  },
+  {
+    "id": "aba-glossario/compulsorio",
+    "t": "termo",
+    "ti": "Compulsório",
+    "tx": "Percentual do depósito que o banco é obrigado a manter travado no BACEN.",
+    "a": "#aba-glossario/compulsorio",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "compulsorio"
+    ]
+  },
+  {
+    "id": "aba-glossario/moeda-escritural",
+    "t": "termo",
+    "ti": "Moeda Escritural",
+    "tx": "Dinheiro que existe só como registro contábil, criado pelo sistema bancário via empréstimos sucessivos.",
+    "a": "#aba-glossario/moeda-escritural",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "moeda-escritural"
+    ]
+  },
+  {
+    "id": "aba-glossario/bank-run-corrida-bancaria",
+    "t": "termo",
+    "ti": "Bank Run (Corrida Bancária)",
+    "tx": "Quando muitos depositantes sacam ao mesmo tempo.",
+    "a": "#aba-glossario/bank-run-corrida-bancaria",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "bank-run-corrida-bancar…"
+    ]
+  },
+  {
+    "id": "aba-glossario/multiplicador-monetario",
+    "t": "termo",
+    "ti": "Multiplicador Monetário",
+    "tx": "Efeito pelo qual um depósito inicial se multiplica no sistema via reservas fracionárias.",
+    "a": "#aba-glossario/multiplicador-monetario",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "multiplicador-monetario"
+    ]
+  },
+  {
+    "id": "aba-glossario/inflacao",
+    "t": "termo",
+    "ti": "Inflação",
+    "tx": "Aumento generalizado de preços.",
+    "a": "#aba-glossario/inflacao",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "inflacao"
+    ]
+  },
+  {
+    "id": "aba-glossario/deflacao",
+    "t": "termo",
+    "ti": "Deflação",
+    "tx": "Queda generalizada de preços.",
+    "a": "#aba-glossario/deflacao",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "deflacao"
+    ]
+  },
+  {
+    "id": "aba-glossario/selic",
+    "t": "termo",
+    "ti": "Selic",
+    "tx": "Taxa básica de juros definida pelo COPOM.",
+    "a": "#aba-glossario/selic",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "selic"
+    ]
+  },
+  {
+    "id": "aba-glossario/ipca",
+    "t": "termo",
+    "ti": "IPCA",
+    "tx": "Índice de Preços ao Consumidor Amplo.",
+    "a": "#aba-glossario/ipca",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "ipca"
+    ]
+  },
+  {
+    "id": "aba-glossario/open-market",
+    "t": "termo",
+    "ti": "Open Market",
+    "tx": "Operações de compra e venda de títulos públicos pelo BACEN para controlar a liquidez do sistema.",
+    "a": "#aba-glossario/open-market",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "open-market"
+    ]
+  },
+  {
+    "id": "aba-glossario/oferta-e-demanda",
+    "t": "termo",
+    "ti": "Oferta e Demanda",
+    "tx": "Lei fundamental da economia: se demanda supera oferta, preço sobe; se oferta supera demanda, preço cai.",
+    "a": "#aba-glossario/oferta-e-demanda",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "oferta-e-demanda"
+    ]
+  },
+  {
+    "id": "aba-glossario/copom",
+    "t": "termo",
+    "ti": "COPOM",
+    "tx": "Comitê de Política Monetária do BACEN.",
+    "a": "#aba-glossario/copom",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "copom"
+    ]
+  },
+  {
+    "id": "aba-glossario/lci",
+    "t": "termo",
+    "ti": "LCI",
+    "tx": "Letra de Crédito Imobiliário.",
+    "a": "#aba-glossario/lci",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "lci"
+    ]
+  },
+  {
+    "id": "aba-glossario/lca",
+    "t": "termo",
+    "ti": "LCA",
+    "tx": "Letra de Crédito do Agronegócio.",
+    "a": "#aba-glossario/lca",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "lca"
+    ]
+  },
+  {
+    "id": "aba-glossario/precatorio",
+    "t": "termo",
+    "ti": "Precatório",
+    "tx": "Dívida da União reconhecida judicialmente.",
+    "a": "#aba-glossario/precatorio",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "precatorio"
+    ]
+  },
+  {
+    "id": "aba-glossario/moral-hazard",
+    "t": "termo",
+    "ti": "Moral Hazard",
+    "tx": "Quando um agente assume risco excessivo porque sabe que as perdas serão absorvidas por terceiros.",
+    "a": "#aba-glossario/moral-hazard",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "moral-hazard"
+    ]
+  },
+  {
+    "id": "aba-glossario/selecao-adversa",
+    "t": "termo",
+    "ti": "Seleção Adversa",
+    "tx": "Assimetria de informação que faz os piores candidatos aceitarem um contrato enquanto os bons saem da operação.",
+    "a": "#aba-glossario/selecao-adversa",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "selecao-adversa"
+    ]
+  },
+  {
+    "id": "aba-glossario/spread-bancario",
+    "t": "termo",
+    "ti": "Spread Bancário",
+    "tx": "Diferença entre o custo de captação do banco e a taxa cobrada no crédito ao cliente final.",
+    "a": "#aba-glossario/spread-bancario",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "spread-bancario"
+    ]
+  },
+  {
+    "id": "aba-glossario/reservas-internacionais",
+    "t": "termo",
+    "ti": "Reservas Internacionais",
+    "tx": "Dólares e outros ativos que o BACEN acumula via exportações e fluxos externos.",
+    "a": "#aba-glossario/reservas-internacionais",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "reservas-internacionais"
+    ]
+  },
+  {
+    "id": "aba-glossario/cambio",
+    "t": "termo",
+    "ti": "Câmbio",
+    "tx": "Preço de uma moeda em relação a outra.",
+    "a": "#aba-glossario/cambio",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "cambio"
+    ]
+  },
+  {
+    "id": "aba-glossario/padrao-ouro",
+    "t": "termo",
+    "ti": "Padrão Ouro",
+    "tx": "Sistema em que moedas eram conversíveis em quantidade fixa de ouro.",
+    "a": "#aba-glossario/padrao-ouro",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "padrao-ouro"
+    ]
+  },
+  {
+    "id": "aba-glossario/privilegio-exorbitante",
+    "t": "termo",
+    "ti": "Privilégio Exorbitante",
+    "tx": "Vantagem dos EUA de se endividarem na própria moeda, aceita globalmente.",
+    "a": "#aba-glossario/privilegio-exorbitante",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "privilegio-exorbitante"
+    ]
+  },
+  {
+    "id": "aba-glossario/petrodolar",
+    "t": "termo",
+    "ti": "Petrodólar",
+    "tx": "Convenção (desde 1974) de cotação e pagamento do petróleo em dólar, sustentando demanda global pela moeda.",
+    "a": "#aba-glossario/petrodolar",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "petrodolar"
+    ]
+  },
+  {
+    "id": "aba-glossario/bretton-woods",
+    "t": "termo",
+    "ti": "Bretton Woods",
+    "tx": "Acordo de 1944 que organizou o sistema monetário internacional do pós-guerra com dólar como reserva global lastreada em ouro.",
+    "a": "#aba-glossario/bretton-woods",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "bretton-woods"
+    ]
+  },
+  {
+    "id": "aba-glossario/fed-federal-reserve",
+    "t": "termo",
+    "ti": "Fed (Federal Reserve)",
+    "tx": "Banco central dos EUA.",
+    "a": "#aba-glossario/fed-federal-reserve",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "fed-federal-reserve"
+    ]
+  },
+  {
+    "id": "aba-glossario/fuga-de-capital",
+    "t": "termo",
+    "ti": "Fuga de Capital",
+    "tx": "Saída de recursos de um país quando investidores percebem risco maior ou retorno melhor no exterior.",
+    "a": "#aba-glossario/fuga-de-capital",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "fuga-de-capital"
+    ]
+  },
+  {
+    "id": "aba-glossario/sfn",
+    "t": "termo",
+    "ti": "SFN",
+    "tx": "Sistema Financeiro Nacional.",
+    "a": "#aba-glossario/sfn",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "sfn"
+    ]
+  },
+  {
+    "id": "aba-glossario/cmn",
+    "t": "termo",
+    "ti": "CMN",
+    "tx": "Conselho Monetário Nacional.",
+    "a": "#aba-glossario/cmn",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "cmn"
+    ]
+  },
+  {
+    "id": "aba-glossario/bcb-bacen",
+    "t": "termo",
+    "ti": "BCB / BACEN",
+    "tx": "Banco Central do Brasil.",
+    "a": "#aba-glossario/bcb-bacen",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "bcb-bacen"
+    ]
+  },
+  {
+    "id": "aba-glossario/s1-s2",
+    "t": "termo",
+    "ti": "S1 / S2",
+    "tx": "Segmentos de bancos de maior porte/complexidade, com exigências mais fortes de capital, governança e controle de risco.",
+    "a": "#aba-glossario/s1-s2",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "s1-s2"
+    ]
+  },
+  {
+    "id": "aba-glossario/basileia-iii",
+    "t": "termo",
+    "ti": "Basileia III",
+    "tx": "Conjunto internacional de regras para capital, liquidez e gestão de risco em bancos.",
+    "a": "#aba-glossario/basileia-iii",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "basileia-iii"
+    ]
+  },
+  {
+    "id": "aba-glossario/ip-instituicao-de-pagamento",
+    "t": "termo",
+    "ti": "IP — Instituição de Pagamento",
+    "tx": "Permite conta de pagamento, Pix e cartão, mas sem captação à vista típica de banco tradicional.",
+    "a": "#aba-glossario/ip-instituicao-de-pagamento",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "ip-instituicao-de-pagam…"
+    ]
+  },
+  {
+    "id": "aba-glossario/scd-sep",
+    "t": "termo",
+    "ti": "SCD / SEP",
+    "tx": "Licenças orientadas a crédito reguladas pelo BACEN, sem captação à vista típica de banco comercial.",
+    "a": "#aba-glossario/scd-sep",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "scd-sep"
+    ]
+  },
+  {
+    "id": "aba-glossario/esd",
+    "t": "termo",
+    "ti": "ESD",
+    "tx": "Estrutura para operar salário de forma mais direta com empregadores, elevando controle de relacionamento e dados.",
+    "a": "#aba-glossario/esd",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "esd"
+    ]
+  },
+  {
+    "id": "aba-glossario/baas",
+    "t": "termo",
+    "ti": "BaaS",
+    "tx": "Banking as a Service.",
+    "a": "#aba-glossario/baas",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "baas"
+    ]
+  },
+  {
+    "id": "aba-glossario/taas-core-bancario",
+    "t": "termo",
+    "ti": "TaaS / Core Bancário",
+    "tx": "Technology as a Service.",
+    "a": "#aba-glossario/taas-core-bancario",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "taas-core-bancario"
+    ]
+  },
+  {
+    "id": "aba-glossario/cip",
+    "t": "termo",
+    "ti": "CIP",
+    "tx": "Infraestrutura usada para registro e liquidação de cobranças como boletos, entre outros fluxos.",
+    "a": "#aba-glossario/cip",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "cip"
+    ]
+  },
+  {
+    "id": "aba-glossario/spb",
+    "t": "termo",
+    "ti": "SPB",
+    "tx": "Sistema de Pagamentos Brasileiro.",
+    "a": "#aba-glossario/spb",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "spb"
+    ]
+  },
+  {
+    "id": "aba-glossario/spi",
+    "t": "termo",
+    "ti": "SPI",
+    "tx": "Sistema de Pagamentos Instantâneos, trilho operacional do Pix para liquidação em tempo real.",
+    "a": "#aba-glossario/spi",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "spi"
+    ]
+  },
+  {
+    "id": "aba-glossario/str",
+    "t": "termo",
+    "ti": "STR",
+    "tx": "Sistema de Transferência de Reservas.",
+    "a": "#aba-glossario/str",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "str"
+    ]
+  },
+  {
+    "id": "aba-glossario/dict",
+    "t": "termo",
+    "ti": "DICT",
+    "tx": "Diretório de identificadores de contas no ecossistema Pix (chaves), usado para roteamento e validação.",
+    "a": "#aba-glossario/dict",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "dict"
+    ]
+  },
+  {
+    "id": "aba-glossario/ccd",
+    "t": "termo",
+    "ti": "CCD",
+    "tx": "Alias de mercado para a CCB (Cédula de Crédito Bancário).",
+    "a": "#aba-glossario/ccd",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "ccd"
+    ]
+  },
+  {
+    "id": "aba-glossario/boleto-registrado",
+    "t": "termo",
+    "ti": "Boleto Registrado",
+    "tx": "Boleto com dados registrados em infraestrutura autorizada, permitindo rastreabilidade e liquidação formal.",
+    "a": "#aba-glossario/boleto-registrado",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "boleto-registrado"
+    ]
+  },
+  {
+    "id": "aba-glossario/correspondente-bancario",
+    "t": "termo",
+    "ti": "Correspondente Bancário",
+    "tx": "Canal terceiro que distribui serviços financeiros em nome de uma instituição contratante, sob responsabilidade desta.",
+    "a": "#aba-glossario/correspondente-bancario",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "correspondente-bancario"
+    ]
+  },
+  {
+    "id": "aba-glossario/bin",
+    "t": "termo",
+    "ti": "BIN",
+    "tx": "Bank Identification Number.",
+    "a": "#aba-glossario/bin",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "bin"
+    ]
+  },
+  {
+    "id": "aba-glossario/bin-sponsor",
+    "t": "termo",
+    "ti": "BIN Sponsor",
+    "tx": "Banco parceiro que cede BIN para uma operação de cartões conduzida por outra empresa.",
+    "a": "#aba-glossario/bin-sponsor",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "bin-sponsor"
+    ]
+  },
+  {
+    "id": "aba-glossario/program-manager",
+    "t": "termo",
+    "ti": "Program Manager",
+    "tx": "Empresa que opera produto, experiência e distribuição do cartão, enquanto sponsor sustenta a emissão regulatória.",
+    "a": "#aba-glossario/program-manager",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "program-manager"
+    ]
+  },
+  {
+    "id": "aba-glossario/itp",
+    "t": "termo",
+    "ti": "ITP",
+    "tx": "Iniciador de Transação de Pagamento.",
+    "a": "#aba-glossario/itp",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "itp"
+    ]
+  },
+  {
+    "id": "aba-glossario/banco-liquidante",
+    "t": "termo",
+    "ti": "Banco Liquidante",
+    "tx": "Instituição que liquida operações financeiras em câmaras e sistemas para si e, em alguns casos, para parceiros.",
+    "a": "#aba-glossario/banco-liquidante",
+    "ab": "glossario",
+    "v": [],
+    "k": [
+      "banco-liquidante"
+    ]
+  },
+  {
+    "id": "aula-01",
+    "t": "aula",
+    "ti": "Aula 01 · Quem manda e quem opera no sistema financeiro?",
+    "tx": "Quem manda e quem opera no sistema financeiro?",
+    "a": "#aula-01",
+    "n": 1,
+    "st": "dada",
+    "k": [
+      "quem",
+      "manda",
+      "quem",
+      "opera",
+      "sistema",
+      "financeiro?"
+    ]
+  },
+  {
+    "id": "aula-02",
+    "t": "aula",
+    "ti": "Aula 02 · Que tipos de instituição existem no SFN?",
+    "tx": "Que tipos de instituição existem no SFN?",
+    "a": "#aula-02",
+    "n": 2,
+    "st": "dada",
+    "k": [
+      "tipos",
+      "instituição",
+      "existem",
+      "sfn?"
+    ]
+  },
+  {
+    "id": "aula-03",
+    "t": "aula",
+    "ti": "Aula 03 · Como os mercados financeiros se dividem?",
+    "tx": "Como os mercados financeiros se dividem?",
+    "a": "#aula-03",
+    "n": 3,
+    "st": "dada",
+    "k": [
+      "como",
+      "mercados",
+      "financeiros",
+      "dividem?"
+    ]
+  },
+  {
+    "id": "aula-04",
+    "t": "aula",
+    "ti": "Aula 04 · Como a inflação é medida e controlada?",
+    "tx": "Como a inflação é medida e controlada?",
+    "a": "#aula-04",
+    "n": 4,
+    "st": "dada",
+    "k": [
+      "como",
+      "inflação",
+      "medida",
+      "controlada?"
+    ]
+  },
+  {
+    "id": "aula-05",
+    "t": "aula",
+    "ti": "Aula 05 · Como a Selic chega à taxa do crédito?",
+    "tx": "Como a Selic chega à taxa do crédito?",
+    "a": "#aula-05",
+    "n": 5,
+    "st": "dada",
+    "k": [
+      "como",
+      "selic",
+      "chega",
+      "taxa",
+      "crédito?"
+    ]
+  },
+  {
+    "id": "aula-06",
+    "t": "aula",
+    "ti": "Aula 06 · Como ler a curva de juros?",
+    "tx": "Como ler a curva de juros?",
+    "a": "#aula-06",
+    "n": 6,
+    "st": "dada",
+    "k": [
+      "como",
+      "curva",
+      "juros?"
+    ]
+  },
+  {
+    "id": "aula-07",
+    "t": "aula",
+    "ti": "Aula 07 · Como política fiscal e câmbio afetam o crédito?",
+    "tx": "Como política fiscal e câmbio afetam o crédito?",
+    "a": "#aula-07",
+    "n": 7,
+    "st": "dada",
+    "k": [
+      "como",
+      "política",
+      "fiscal",
+      "câmbio",
+      "afetam",
+      "crédito?"
+    ]
+  },
+  {
+    "id": "aula-08",
+    "t": "aula",
+    "ti": "Aula 08 · Como converter taxa mensal, anual e base 252?",
+    "tx": "Como converter taxa mensal, anual e base 252?",
+    "a": "#aula-08",
+    "n": 8,
+    "st": "dada",
+    "k": [
+      "como",
+      "converter",
+      "taxa",
+      "mensal,",
+      "anual",
+      "base",
+      "252?"
+    ]
+  },
+  {
+    "id": "aula-09",
+    "t": "aula",
+    "ti": "Aula 09 · Como a parcela muda em Price, SAC e Bullet?",
+    "tx": "Como a parcela muda em Price, SAC e Bullet?",
+    "a": "#aula-09",
+    "n": 9,
+    "st": "dada",
+    "k": [
+      "como",
+      "parcela",
+      "muda",
+      "price,",
+      "bullet?"
+    ]
+  },
+  {
+    "id": "aula-10",
+    "t": "aula",
+    "ti": "Aula 10 · Quanto o crédito custa de verdade para o cliente?",
+    "tx": "O CET liga o que você recebe ao que você paga, com juros, tarifas e IOF juntos.",
+    "a": "#aula-10",
+    "n": 10,
+    "st": "dada",
+    "k": [
+      "quanto",
+      "crédito",
+      "custa",
+      "verdade",
+      "para",
+      "cliente?"
+    ]
+  },
+  {
+    "id": "aula-11",
+    "t": "aula",
+    "ti": "Aula 11 · Como saber se um fluxo de caixa compensa?",
+    "tx": "Como saber se um fluxo de caixa compensa?",
+    "a": "#aula-11",
+    "n": 11,
+    "st": "dada",
+    "k": [
+      "como",
+      "saber",
+      "fluxo",
+      "caixa",
+      "compensa?"
+    ]
+  },
+  {
+    "id": "aula-12",
+    "t": "aula",
+    "ti": "Aula 12 · Quais riscos existem e quem os gerencia?",
+    "tx": "Quais riscos existem e quem os gerencia?",
+    "a": "#aula-12",
+    "n": 12,
+    "st": "dada",
+    "k": [
+      "quais",
+      "riscos",
+      "existem",
+      "quem",
+      "gerencia?"
+    ]
+  },
+  {
+    "id": "aula-13",
+    "t": "aula",
+    "ti": "Aula 13 · Como analisar crédito de PF e de PJ?",
+    "tx": "Como analisar crédito de PF e de PJ?",
+    "a": "#aula-13",
+    "n": 13,
+    "st": "dada",
+    "k": [
+      "como",
+      "analisar",
+      "crédito"
+    ]
+  },
+  {
+    "id": "aula-14",
+    "t": "aula",
+    "ti": "Aula 14 · Quanto se espera perder em um crédito?",
+    "tx": "Quanto se espera perder em um crédito?",
+    "a": "#aula-14",
+    "n": 14,
+    "st": "dada",
+    "k": [
+      "quanto",
+      "espera",
+      "perder",
+      "crédito?"
+    ]
+  },
+  {
+    "id": "aula-15",
+    "t": "aula",
+    "ti": "Aula 15 · Como a perda esperada define a provisão?",
+    "tx": "Entender a provisão por perda esperada (Res. CMN 4.966), os estágios e o que mudou em relação à regra antiga AA–H (Res. 2.682).",
+    "a": "#aula-15",
+    "n": 15,
+    "st": "a seguir",
+    "k": [
+      "como",
+      "perda",
+      "esperada",
+      "define",
+      "provisão?"
+    ]
+  },
+  {
+    "id": "aula-16",
+    "t": "aula",
+    "ti": "Aula 16 · Como acompanhar a qualidade da carteira?",
+    "tx": "Acompanhar a carteira com indicadores de atraso, safras (vintage) e roll rate.",
+    "a": "#aula-16",
+    "n": 16,
+    "st": "a seguir",
+    "k": [
+      "como",
+      "acompanhar",
+      "qualidade",
+      "carteira?"
+    ]
+  },
+  {
+    "id": "aula-17",
+    "t": "aula",
+    "ti": "Aula 17 · De onde vem o dinheiro que a Ringgo empresta?",
+    "tx": "Comparar custo, prazo e exigências de cada fonte de funding: depósitos/CDB, LF, cessão de carteira, FIDC, BaaS e debêntures.",
+    "a": "#aula-17",
+    "n": 17,
+    "st": "a seguir",
+    "k": [
+      "onde",
+      "dinheiro",
+      "ringgo",
+      "empresta?"
+    ]
+  },
+  {
+    "id": "aula-18",
+    "t": "aula",
+    "ti": "Aula 18 · Quanto capital o crédito consome?",
+    "tx": "Entender Patrimônio de Referência, ativos ponderados pelo risco, segmentos S1–S5 e a gestão de prazo, taxa e liquidez (ALM).",
+    "a": "#aula-18",
+    "n": 18,
+    "st": "a seguir",
+    "k": [
+      "quanto",
+      "capital",
+      "crédito",
+      "consome?"
+    ]
+  },
+  {
+    "id": "aula-19",
+    "t": "aula",
+    "ti": "Aula 19 · Por onde passa um pagamento e onde entra o Pix?",
+    "tx": "Entender arranjo de pagamento, instituidor, emissor e credenciador, e onde o Pix se encaixa.",
+    "a": "#aula-19",
+    "n": 19,
+    "st": "a seguir",
+    "k": [
+      "onde",
+      "passa",
+      "pagamento",
+      "onde",
+      "entra",
+      "pix?"
+    ]
+  },
+  {
+    "id": "aula-20",
+    "t": "aula",
+    "ti": "Aula 20 · Quem recebe o quê numa compra no cartão?",
+    "tx": "Seguir o dinheiro de uma transação de cartão e entender MDR, intercâmbio e prazos de liquidação.",
+    "a": "#aula-20",
+    "n": 20,
+    "st": "a seguir",
+    "k": [
+      "quem",
+      "recebe",
+      "numa",
+      "compra",
+      "cartão?"
+    ]
+  },
+  {
+    "id": "aula-21",
+    "t": "aula",
+    "ti": "Aula 21 · Como funciona a antecipação de recebíveis?",
+    "tx": "Entender antecipação de recebíveis, registro obrigatório e duplicata escritural como lastro.",
+    "a": "#aula-21",
+    "n": 21,
+    "st": "a seguir",
+    "k": [
+      "como",
+      "funciona",
+      "antecipação",
+      "recebíveis?"
+    ]
+  },
+  {
+    "id": "aula-22",
+    "t": "aula",
+    "ti": "Aula 22 · Como funcionam o rotativo e o parcelamento da fatura?",
+    "tx": "Conhecer as regras do rotativo, do parcelado e do teto de encargos criado em 2023.",
+    "a": "#aula-22",
+    "n": 22,
+    "st": "a seguir",
+    "k": [
+      "como",
+      "funcionam",
+      "rotativo",
+      "parcelamento",
+      "fatura?"
+    ]
+  }
+]

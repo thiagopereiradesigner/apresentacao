@@ -1,0 +1,81 @@
+<div id="panel-trilha-guiada" class="panel active anim">
+  <div id="trilha-app"></div>
+  <details class="guia-rapido">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Guia rápido</span></summary>
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Ringgo</dt><dd>Instituição de pagamento fictícia usada como fio condutor: folha, benefícios, cartão e crédito via parceiros.</dd>
+      <dt>Trilha guiada</dt><dd>Ordem sugerida do regulador ao produto no app antes das abas técnicas.</dd>
+      <dt>Dois limites da IP</dt><dd>Sem captação de depósito à vista como banco; sem concessão de crédito com recursos próprios — daí BaaS, SCD e BIN sponsor.</dd>
+      <dt>Custódia segregada</dt><dd>Recursos de clientes da IP separados do patrimônio da empresa, aplicados em ativos de baixo risco; custodiante costuma ser banco parceiro (proteção distinta do FGC em depósito).</dd>
+      <dt>Consignado</dt><dd>Crédito com desconto em folha via CCB emitida por originador parceiro — aba dedicada com fluxo operacional completo.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="btn btn-ghost !min-h-0 !px-0 !py-1 text-xs" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+  <div class="st" id="anchor-trilha-inicio">Comece por aqui — do Estado ao app (~15 min)</div>
+  <p class="cred-prose">Antes de qualquer produto existe o <strong>arcabouço regulatório</strong>. No Brasil, <strong>CMN</strong> e <strong>BCB</strong> definem o que é permitido; a <strong>licença</strong> traça o perímetro. O <strong>Ringgo</strong> é uma <strong>IP</strong>: pode conta de pagamento, Pix, cartão pré-pago e experiência — mas <strong>crédito com CCB</strong> (consignado) e <strong>boleto registrado na CIP</strong> em geral passam por <strong>parceiro</strong> com a licença certa. A leitura abaixo espelha o guia narrativo consolidado; cada passo abre a aba onde o tema é aprofundado.</p>
+  <div class="cred-callout cc-g rounded-2xl">
+    <div class="cc-t">Dois modos de estudo</div>
+    <strong>História:</strong> siga os 7 passos nesta ordem. <strong>Referência:</strong> use filtros <em>Fundamentos / Crédito / Pagamentos</em> e o <strong>Glossário</strong> quando já souber o que buscar.
+  </div>
+  <div class="g2 gap-5 mb-4">
+    <div class="sc card-bento">
+      <div class="sl">01 — O Estado que regula o dinheiro</div>
+      <p class="cred-prose" style="margin:0 0 10px 0">O <strong>CMN</strong> fixa diretrizes (ex.: tetos de linhas de crédito). O <strong>BCB</strong> autoriza instituições, fiscaliza e aplica regras. Toda empresa que movimenta dinheiro de terceiros precisa de autorização do BCB.</p>
+      <div class="card-bento-actions"><button type="button" class="btn" onclick="var e=document.querySelector('.tab[data-panel=sfn-licencas]');if(e)showPanel('sfn-licencas',e);">Abrir SFN &amp; Licenças</button></div>
+    </div>
+    <div class="sc card-bento">
+      <div class="sl">02 — Bancos: quem pode tudo</div>
+      <p class="cred-prose" style="margin:0 0 10px 0"><strong>Bancos S1/S2</strong> captam depósito à vista, emprestam e participam do <strong>SPB</strong>. O <strong>FGC</strong> cobre depósitos em IFs elegíveis até o limite legal; <strong>saldo em IP</strong> segue regime de segregação — não é o mesmo mecanismo.</p>
+      <div class="card-bento-actions"><button type="button" class="btn" onclick="var e=document.querySelector('.tab[data-panel=sfn-brasil]');if(e)showPanel('sfn-brasil',e);">Abrir Mapa SFN (BR)</button></div>
+    </div>
+  </div>
+  <div class="g2 gap-5 mb-4">
+    <div class="sc card-bento">
+      <div class="sl">03 — Onde está o Ringgo (IP e limites)</div>
+      <p class="cred-prose" style="margin:0 0 10px 0">A IP opera conta, Pix e cartão pré-pago, mas <strong>não</strong> capta depósito como banco universal nem concede crédito com recursos próprios. Cada produto que “atravessa” esse muro exige parceria ou nova licença — processo tipicamente longo no BCB.</p>
+      <div class="card-bento-actions"><button type="button" class="btn" onclick="var e=document.querySelector('.tab[data-panel=sfn-licencas]');if(e)showPanel('sfn-licencas',e);">Ver escada de licenças</button></div>
+    </div>
+    <div class="sc card-bento">
+      <div class="sl">04 — Parceiros: BMP, boleto, custódia</div>
+      <p class="cred-prose" style="margin:0 0 10px 0"><strong>Consignado</strong> exige <strong>CCB</strong> emitida por banco ou <strong>SCD</strong> (ex.: originação via parceiro). <strong>Boleto registrado</strong> pede participação na <strong>CIP</strong> — IP costuma usar banco ou <strong>BaaS</strong>. Recursos dos clientes ficam <strong>segregados</strong> com custodiante. Na <strong>folha</strong>, o funding costuma passar por <strong>bolsão / conta transitória</strong> do bancarizador — não confundir com caução ou escrow.</p>
+      <div class="card-bento-actions">
+        <button type="button" class="btn" onclick="var e=document.querySelector('.tab[data-panel=infra-bancaria]');if(e)showPanel('infra-bancaria',e);">Abrir Infra Bancária</button>
+        <button type="button" class="btn btn-secondary" onclick="var e=document.querySelector('.tab[data-panel=folha]');if(e)showPanel('folha',e);">Folha &amp; Pagamento</button>
+        <button type="button" class="btn btn-secondary" onclick="var e=document.querySelector('.tab[data-panel=consignado]');if(e)showPanel('consignado',e);">Consignado — fluxo completo</button>
+      </div>
+    </div>
+  </div>
+  <div class="g2 gap-5 mb-4">
+    <div class="sc card-bento">
+      <div class="sl">05 — Anatomia do cartão (4 partes)</div>
+      <p class="cred-prose" style="margin:0 0 10px 0"><strong>Bandeira</strong> roteia; <strong>emissor</strong> assume risco e recebe interchange; <strong>credenciadora</strong> serve o lojista e retém parte da <strong>MDR</strong>. Modalidades (débito, crédito, pré/pós-pago) e benefícios (MCC) aprofundam a mesma anatomia.</p>
+      <div class="card-bento-actions">
+        <button type="button" class="btn" onclick="var e=document.querySelector('.tab[data-panel=eco]');if(e)showPanel('eco',e);">Abrir Ecossistema</button>
+        <button type="button" class="btn btn-secondary" onclick="var e=document.querySelector('.tab[data-panel=taxas]');if(e)showPanel('taxas',e);">Taxas &amp; MDR</button>
+      </div>
+    </div>
+    <div class="sc card-bento">
+      <div class="sl">06 — BaaS, TaaS e operadores de trilho</div>
+      <p class="cred-prose" style="margin:0 0 10px 0"><strong>BaaS</strong> empresta licença + APIs; <strong>TaaS</strong> vende core para quem já tem licença. Provedores como <strong>Celcoin</strong> podem operar nos dois modos e aproximar a IP de trilhos como CIP e SPB.</p>
+      <div class="card-bento-actions"><button type="button" class="btn" onclick="var e=document.querySelector('.tab[data-panel=infra-bancaria]');if(e)showPanel('infra-bancaria',e);">Rever Infra Bancária</button></div>
+    </div>
+  </div>
+  <div class="sc card-bento mb-4">
+    <div class="sl">07 — Horizonte: ESD e antecipação</div>
+    <p class="cred-prose" style="margin:0 0 10px 0"><strong>ESD</strong> recebe folha direto do empregador — muda aquisição, dados e viabilidade de desconto na fonte. <strong>Antecipação salarial</strong> (adiantamento do já devido) costuma caber na IP sem ser “novo consignado”. Analogia: parceiros são “estações” hoje; ESD são “trilhos próprios” no longo prazo.</p>
+    <div class="card-bento-actions">
+      <button type="button" class="btn" onclick="var e=document.querySelector('.tab[data-panel=sfn-brasil]');if(e)showPanel('sfn-brasil',e);">Mapa SFN — card ESD</button>
+      <button type="button" class="btn btn-secondary" onclick="var e=document.querySelector('.tab[data-panel=folha]');if(e)showPanel('folha',e);">Folha &amp; Pagamento</button>
+      <button type="button" class="btn btn-secondary" onclick="var e=document.querySelector('.tab[data-panel=economia-credito]');if(e)showPanel('economia-credito',e);">Economia do crédito</button>
+    </div>
+  </div>
+  <div class="note"><strong>Precificação do crédito:</strong> quanto menor a <strong>fricção</strong> de uso e menor a <strong>garantia</strong> percebida (sem bem, sem desconto em folha), maior tende a ser a taxa — por isso rotativo e cheque especial convivem com <strong>consignado</strong> barato. Ver também <strong>Economia do crédito</strong> e tabela comparativa de produtos.</div>
+  <div class="note">Esta trilha condensa o guia narrativo e a parte “como o banco lucra com crédito” que antes estavam em arquivos separados na pasta <strong>fontes/</strong>.</div>
+  </details>
+</div>
+
+<!-- ══════ ECOSSISTEMA -->
