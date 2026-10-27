@@ -1,0 +1,190 @@
+<div id="panel-vc" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Venture Capital (VC)</dt><dd>Capital de risco em startups; busca retornos assimétricos (poucas empresas pagam o fundo inteiro).</dd>
+      <dt>Power Law</dt><dd>Poucos investimentos retornam muito; a maioria não devolve o capital — típico de portfólio de VC.</dd>
+      <dt>Rodadas (Seed, A, B…)</dt><dd>Capitais levantados em fases; cada fase olha métricas diferentes (tração, ARR, eficiência).</dd>
+      <dt>Diluição / Pro-rata</dt><dd>Nova entrada reduz seu %; pro-rata é o direito de investir de novo para manter a participação.</dd>
+      <dt>PMF, CAC, LTV, ARR, Churn</dt><dd>Encaixe produto-mercado; custo e valor do cliente; receita recorrente anualizada; cancelamento.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="btn btn-ghost !min-h-0 !px-0 !py-1 text-xs" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+  <div class="st">A lógica do Venture Capital — diferente do investidor comum</div>
+  <div class="sc">
+    <div class="sl">Power Law — a distribuição de retornos em VC não é normal, é exponencial</div>
+    <div style="margin:16px 0">
+      <div style="display:flex;align-items:flex-end;gap:8px;height:110px;padding:12px;background:var(--surface2);border-radius:10px;border:1px solid var(--border)">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--red);border-radius:4px 4px 0 0;height:10%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">0x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 1</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--red);border-radius:4px 4px 0 0;height:10%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">0x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 2</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--orange);border-radius:4px 4px 0 0;height:15%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">1x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 3</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--yellow);border-radius:4px 4px 0 0;height:20%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">2x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 4</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--yellow);border-radius:4px 4px 0 0;height:25%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">3x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 5</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--green);border-radius:4px 4px 0 0;height:30%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">5x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 6</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--green);border-radius:4px 4px 0 0;height:40%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">8x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 7</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:55%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">12x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 8</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--purple);border-radius:4px 4px 0 0;height:70%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">20x</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 9</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="width:100%;background:var(--teal);border-radius:4px 4px 0 0;height:100%;display:flex;align-items:flex-start;justify-content:center;padding-top:4px;font-size:9px;font-weight:700;color:var(--bar-fg)">50x 🏆</div>
+          <div style="font-size:9px;color:var(--muted);margin-top:4px;text-align:center">Startup 10</div>
+        </div>
+      </div>
+      <div class="note">💡 A startup 10 sozinha paga todas as 9 perdas e ainda deixa o fundo no lucro. Por isso VC não precisa que toda empresa funcione — precisa que <strong style="color:var(--text)">uma seja enorme</strong>.</div>
+    </div>
+  </div>
+
+  <div class="st">Fases de rodada — quem investe e o que olham</div>
+  <div class="round-timeline">
+    <div class="round-stage" style="background:rgba(167,139,250,.04)">
+      <div class="round-name" style="color:var(--purple)">Pre-Seed</div>
+      <div class="round-val" style="color:var(--purple)">R$ 500k–2M</div>
+      <div class="round-metric"><strong>Quem:</strong> Anjos, família<br><strong>Olham:</strong> Founder, ideia<br><strong>Risco:</strong> Máximo</div>
+      <span class="round-risk" style="background:rgba(247,95,95,.15);color:var(--red)">Ideia → MVP</span>
+    </div>
+    <div class="round-stage" style="background:rgba(79,142,247,.04)">
+      <div class="round-name" style="color:var(--blue)">Seed</div>
+      <div class="round-val" style="color:var(--blue)">R$ 2M–10M</div>
+      <div class="round-metric"><strong>Quem:</strong> Fundos seed<br><strong>Olham:</strong> PMF inicial, usuários<br><strong>Risco:</strong> Alto</div>
+      <span class="round-risk" style="background:rgba(251,146,60,.15);color:var(--orange)">MVP → Tração</span>
+    </div>
+    <div class="round-stage" style="background:rgba(245,200,66,.04)">
+      <div class="round-name" style="color:var(--yellow)">Série A</div>
+      <div class="round-val" style="color:var(--yellow)">R$ 10M–50M</div>
+      <div class="round-metric"><strong>Quem:</strong> Fundos VC médios<br><strong>Olham:</strong> Retenção, NPS, Churn<br><strong>Risco:</strong> Médio-alto</div>
+      <span class="round-risk" style="background:rgba(245,200,66,.15);color:var(--yellow)">PMF → Escala</span>
+    </div>
+    <div class="round-stage" style="background:rgba(45,212,160,.04)">
+      <div class="round-name" style="color:var(--green)">Série B</div>
+      <div class="round-val" style="color:var(--green)">R$ 50M–200M</div>
+      <div class="round-metric"><strong>Quem:</strong> Fundos grandes<br><strong>Olham:</strong> ARR, GMV, crescimento<br><strong>Risco:</strong> Médio</div>
+      <span class="round-risk" style="background:rgba(45,212,160,.15);color:var(--green)">Escala → Dominância</span>
+    </div>
+    <div class="round-stage" style="background:rgba(34,211,238,.04)">
+      <div class="round-name" style="color:var(--teal)">Série C+ / IPO</div>
+      <div class="round-val" style="color:var(--teal)">R$ 200M+</div>
+      <div class="round-metric"><strong>Quem:</strong> Growth equity, bolsa<br><strong>Olham:</strong> EBITDA, free cash flow<br><strong>Risco:</strong> Baixo-médio</div>
+      <span class="round-risk" style="background:rgba(34,211,238,.15);color:var(--teal)">Lucro → Bolsa</span>
+    </div>
+  </div>
+
+  <div class="st">Por que investidor existente entra na nova rodada?</div>
+  <div class="sc">
+    <div class="sl">Diluição — a matemática que explica o pro-rata</div>
+    <div class="dilution-demo">
+      <div class="dil-side">
+        <div class="dil-pct" style="color:var(--blue)">20%</div>
+        <div class="dil-label">Sua participação<br>após o Seed</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">Nova rodada entra</div>
+        <div style="display:flex;gap:8px;justify-content:center">
+          <div style="text-align:center">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:3px">Não entra</div>
+            <div style="font-family:'Roboto',system-ui,sans-serif;font-size:16px;font-weight:800;color:var(--red)">12%</div>
+            <div style="font-size:9px;color:var(--muted)">diluído</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:3px">Entra (pro-rata)</div>
+            <div style="font-family:'Roboto',system-ui,sans-serif;font-size:16px;font-weight:800;color:var(--green)">20%</div>
+            <div style="font-size:9px;color:var(--muted)">mantém</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:3px">Entra mais</div>
+            <div style="font-family:'Roboto',system-ui,sans-serif;font-size:16px;font-weight:800;color:var(--teal)">25%</div>
+            <div style="font-size:9px;color:var(--muted)">doubled down</div>
+          </div>
+        </div>
+      </div>
+      <div class="dil-side">
+        <div class="dil-pct" style="color:var(--teal);font-size:20px">R$ 1B?</div>
+        <div class="dil-label">Valuation potencial<br>se a empresa vingar</div>
+      </div>
+    </div>
+    <div class="note">💡 A pergunta do investidor: "Prefiro 20% de uma empresa que pode valer R$ 1 bilhão, ou 12% da mesma empresa?" — Se acredita no potencial, a matemática favorece entrar de novo mesmo sem lucro.</div>
+  </div>
+
+  <div class="st">O que VC olha antes do break-even</div>
+  <div class="phase-grid">
+    <div class="phase-card" style="--pc:var(--purple)">
+      <div class="phase-name">Pre-Seed / Seed</div>
+      <div class="phase-metric"><strong>Churn</strong> — usuários voltam?<br><strong>NPS</strong> — recomendam?<br><strong>Founder</strong> — executa bem?</div>
+    </div>
+    <div class="phase-card" style="--pc:var(--blue)">
+      <div class="phase-name">Série A</div>
+      <div class="phase-metric"><strong>PMF</strong> — produto encaixa?<br><strong>Retenção</strong> — mês a mês<br><strong>Crescimento orgânico</strong></div>
+    </div>
+    <div class="phase-card" style="--pc:var(--green)">
+      <div class="phase-name">Série B</div>
+      <div class="phase-metric"><strong>ARR</strong> — receita recorrente<br><strong>GMV</strong> — volume total<br><strong>Velocidade de crescimento</strong></div>
+    </div>
+    <div class="phase-card" style="--pc:var(--teal)">
+      <div class="phase-name">Série C+</div>
+      <div class="phase-metric"><strong>CAC</strong> — custo de aquisição<br><strong>LTV</strong> — valor do cliente<br><strong>Payback period</strong></div>
+    </div>
+  </div>
+
+  <div class="st">Vieses que levam à decisão "irracional" de reinvestir</div>
+  <div class="bias-grid">
+    <div class="bias-card">
+      <div class="bias-name">Sunk Cost Fallacy</div>
+      <div class="bias-desc">Dificuldade de abandonar algo onde já investiu muito, mesmo que o racional seja parar.</div>
+      <div class="bias-quote">"Já coloquei R$ 10M, não posso deixar morrer agora."</div>
+    </div>
+    <div class="bias-card">
+      <div class="bias-name">FOMO</div>
+      <div class="bias-desc">Fear of Missing Out. Medo de ficar de fora do próximo grande sucesso.</div>
+      <div class="bias-quote">"E se essa for a próxima Nubank e eu não entrei?"</div>
+    </div>
+    <div class="bias-card">
+      <div class="bias-name">Assimetria de Informação</div>
+      <div class="bias-desc">O founder sempre sabe mais que o investidor. Pitch deck é sempre otimista por natureza.</div>
+      <div class="bias-quote">"Os números do deck parecem promissores."</div>
+    </div>
+    <div class="bias-card">
+      <div class="bias-name">Pressão de Deploy</div>
+      <div class="bias-desc">Fundo captou dinheiro dos LPs e precisa investir dentro de um prazo contratual.</div>
+      <div class="bias-quote">"Melhor startup imperfeita que dinheiro parado."</div>
+    </div>
+    <div class="bias-card">
+      <div class="bias-name">Write-down Avoidance</div>
+      <div class="bias-desc">Admitir que a empresa perdeu valor força o fundo a registrar perda contábil para seus cotistas.</div>
+      <div class="bias-quote">"Melhor tentar mais uma rodada que marcar como zero."</div>
+    </div>
+    <div class="bias-card">
+      <div class="bias-name">Optimism Bias</div>
+      <div class="bias-desc">Tendência de superestimar chances de sucesso próprias e subestimar riscos sistêmicos.</div>
+      <div class="bias-quote">"Nossa empresa é diferente das que falharam."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ RECUPERAÇÃO JUDICIAL (NOVO) -->

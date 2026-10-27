@@ -1,0 +1,951 @@
+{
+  "nota": "Fonte única das fichas. tag, termo, definicao e rodape guardam o HTML interno original.",
+  "total": 135,
+  "fichas": [
+    {
+      "tagClass": "t-risco",
+      "tag": "Crédito",
+      "termo": "PDD",
+      "definicao": "Provisão para Devedores Duvidosos. Reserva contábil antecipando inadimplência; reduz lucro bruto conforme risco da carteira.",
+      "rodape": "Mais PDD em rotativo e cheque especial"
+    },
+    {
+      "tagClass": "t-taxa",
+      "tag": "Crédito",
+      "termo": "IOF",
+      "definicao": "Imposto sobre Operações Financeiras. Entra no CET de crédito (alíquotas fixa e diária sobre o principal).",
+      "rodape": "Sempre considerar no CET, não só nos juros"
+    },
+    {
+      "tagClass": "t-risco",
+      "tag": "Crédito",
+      "termo": "Anatocismo",
+      "definicao": "Juros sobre juros. Acelera o crescimento da dívida em rotativo e cheque especial.",
+      "rodape": "Saldo cresce rápido sem amortização"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Crédito",
+      "termo": "Portabilidade — cheque esp.",
+      "definicao": "Após 30 dias consecutivos no limite do cheque especial, o banco deve oferecer migração para modalidade mais barata (regra BCB).",
+      "rodape": "Cliente pode aceitar ou recusar"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Crédito",
+      "termo": "Limite pré-aprovado",
+      "definicao": "Crédito já disponível na conta sem contratação explícita — base do cheque especial.",
+      "rodape": "Fricção zero → preço alto"
+    },
+    {
+      "tagClass": "t-bias",
+      "tag": "Comportamento",
+      "termo": "Viés do presente",
+      "definicao": "Valorizar benefício imediato e subestimar custo futuro; explorado em produtos de uso instantâneo.",
+      "rodape": "Design de um clique"
+    },
+    {
+      "tagClass": "t-risco",
+      "tag": "Produto",
+      "termo": "Cheque especial",
+      "definicao": "Limite atrelado à conta corrente; juros desde o primeiro dia de uso do limite; teto regulatório mensal.",
+      "rodape": "Linha cara após rotativo"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Produto",
+      "termo": "Consórcio",
+      "definicao": "Grupo de consorciados forma fundo via parcelas para adquirir bem ou serviço; administradora autorizada; contemplação por sorteio ou lance. Taxa de administração e prazos de grupo — arquitetura distinta de empréstimo com CET.",
+      "rodape": "Poupança coletiva · não é rotativo"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Distribuição",
+      "termo": "Administradora de consórcios",
+      "definicao": "Instituição autorizada a constituir e administrar grupos; taxa de administração e regras próprias. Pode integrar canais de bancos ou parceiros (ex.: IP como canal).",
+      "rodape": "Regulação específica · não é “spread” de CDB"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Produto",
+      "termo": "Crédito pessoal",
+      "definicao": "Empréstimo com contratação explícita, prazo e parcelas; precificação por score e bureaus.",
+      "rodape": "CET obrigatório · cross-sell comum"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Produto",
+      "termo": "Consignado",
+      "definicao": "Empréstimo com parcela descontada na folha ou benefício; taxa tipicamente baixa. Três trilhas: privado, público servidor e INSS.",
+      "rodape": "Exige CCB e averbação · aba Consignado"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Consignado",
+      "termo": "Consignado privado",
+      "definicao": "Desconto na folha de empresa privada (CLT); averbação via RH/financeiro do empregador.",
+      "rodape": "Caso típico IP de folha · margem até 35% líquido"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Consignado",
+      "termo": "Consignado público (servidor)",
+      "definicao": "Desconto na folha de órgão público; convênio por ente — ex.: SIAPE no federal.",
+      "rodape": "Órgão pagador averba · não é INSS"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Consignado",
+      "termo": "Consignado INSS",
+      "definicao": "Desconto no benefício previdenciário; margem e averbação via Dataprev.",
+      "rodape": "Aposentado · pensionista · não é folha CLT"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Consignado",
+      "termo": "Dataprev",
+      "definicao": "Opera sistemas do INSS; concentra consulta de margem e averbação do consignado de benefício.",
+      "rodape": "Trilha INSS · canal nacional"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Consignado",
+      "termo": "SIAPE",
+      "definicao": "Sistema de folha do serviço público federal; trilho típico do consignado de servidores da União.",
+      "rodape": "Trilha público federal"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Consignado",
+      "termo": "Margem consignável",
+      "definicao": "Percentual máximo do salário ou benefício comprometível com empréstimos consignados (ex.: até 35% no privado).",
+      "rodape": "RH valida antes de averbar"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Consignado",
+      "termo": "Averbação",
+      "definicao": "Registro do contrato na folha/benefício para autorizar desconto mensal pelo empregador ou órgão pagador.",
+      "rodape": "Sem averbação, não há desconto"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Crédito",
+      "termo": "CCB",
+      "definicao": "Cédula de Crédito Bancário — forma canônica neste material. No mercado, o mesmo instrumento frequentemente aparece como <strong>CCD</strong>.",
+      "rodape": "Só IF com licença de crédito emite"
+    },
+    {
+      "tagClass": "t-risco",
+      "tag": "Crédito",
+      "termo": "Score de crédito",
+      "definicao": "Modelo que estima probabilidade de inadimplência; define faixa de taxa no pessoal.",
+      "rodape": "Serasa · Boa Vista · modelos internos"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Parceiro",
+      "termo": "BMP (Money Plus)",
+      "definicao": "Instituição com licença para crédito e atuação como BaaS; exemplo frequente de originador de CCB em consignado para IPs.",
+      "rodape": "Originador · APIs · CCB"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Parceiro",
+      "termo": "Celcoin",
+      "definicao": "Infratech com foco em BaaS e core; exemplo de operador com acesso a trilhos (CIP, SPB, SPI) para parceiros.",
+      "rodape": "BaaS + TaaS conforme caso"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Infra",
+      "termo": "Infratech",
+      "definicao": "Rótulo de mercado para trilho + software financeiro (BaaS, TaaS, CIP, SPB). Não é tipo de licença no BCB.",
+      "rodape": "Quem responde ao BCB é a IF contratante"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Conta",
+      "termo": "Conta bolsão",
+      "definicao": "Conta de concentração (“bolso grande”) onde o funding da folha ou benefício agrega antes de pulverizar para N contas.",
+      "rodape": "≠ caução · funding do bancarizador"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Conta",
+      "termo": "Conta transitória",
+      "definicao": "Conta de passagem entre pernas do fluxo (banco da empresa → bancarizador → contas finais); parqueia valor só pelo tempo da operação.",
+      "rodape": "Família operacional com bolsão"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Conta",
+      "termo": "Conta caução",
+      "definicao": "Conta ou depósito vinculado a garantia de uma obrigação — dinheiro preso como colateral. Não é o parking da folha.",
+      "rodape": "≠ bolsão · ≠ escrow (ênfase)"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Conta",
+      "termo": "Conta escrow",
+      "definicao": "Depósito sob condição: liberação só quando as partes cumprem o contrato. Ênfase em liberação condicionada.",
+      "rodape": "M&amp;A · imóvel · retenção marketplace"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Conta",
+      "termo": "Conta vinculada / concentradora",
+      "definicao": "Sinônimos de mercado: podem significar bolsão (concentração) ou caução (garantia) — o contrato define.",
+      "rodape": "Confirmar o sentido no desenho"
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "Funding",
+      "termo": "Debênture",
+      "definicao": "Título de dívida para captação no mercado; veículo comum para SCD financiar carteira sem depósito.",
+      "rodape": "Alternativa ao depósito bancário"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Produto",
+      "termo": "Antecipação salarial",
+      "definicao": "Adiantamento de valores já trabalhados, com acordo do empregador; não é o mesmo que consignado novo.",
+      "rodape": "IP pode operar em muitos desenhos"
+    },
+    {
+      "tagClass": "t-taxa",
+      "tag": "Taxa",
+      "termo": "MDR",
+      "definicao": "Taxa total cobrada do lojista. Inclui IC, scheme fee e margem do adquirente.",
+      "rodape": "Débito ~0,7–1,2% · Crédito ~1,8–3,5%"
+    },
+    {
+      "tagClass": "t-taxa",
+      "tag": "Taxa",
+      "termo": "IC — Interchange",
+      "definicao": "Parte do MDR repassada ao emissor. Principal receita de volume do banco.",
+      "rodape": "Classic ~0,75% · Titanium ~2,00%"
+    },
+    {
+      "tagClass": "t-taxa",
+      "tag": "Taxa",
+      "termo": "Scheme Fee",
+      "definicao": "Taxa da bandeira cobrada dos dois lados. Por transação ou por cartão ativo.",
+      "rodape": "~0,05–0,15% por transação"
+    },
+    {
+      "tagClass": "t-taxa",
+      "tag": "Taxa",
+      "termo": "TAC",
+      "definicao": "Taxa de Abertura de Crédito. Cobrada na concessão — nada a ver com atraso.",
+      "rodape": "Limitada pelo BACEN em crédito PF"
+    },
+    {
+      "tagClass": "t-taxa",
+      "tag": "Taxa",
+      "termo": "CET",
+      "definicao": "Custo Efetivo Total. Consolida juros + TAC + IOF + seguros. Obrigatório por lei.",
+      "rodape": "Resolução BACEN 3.517"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Ciclo",
+      "termo": "Float",
+      "definicao": "Prazo entre a compra e o pagamento. Banco aplica no CDI durante esse período.",
+      "rodape": "Gap médio ~30–40 dias"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Ciclo",
+      "termo": "CDI",
+      "definicao": "Taxa que os bancos cobram entre si. Referência de rendimento. Segue a Selic.",
+      "rodape": "~14,65% a.a. · ~1,14% a.m."
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "Investimento",
+      "termo": "CDB",
+      "definicao": "Certificado de Depósito Bancário. Você empresta para o banco, com garantia FGC até R$ 250k, e IR incidindo sobre o rendimento.",
+      "rodape": "Captação bancária típica: 90–130% do CDI"
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "Investimento",
+      "termo": "WACC",
+      "definicao": "Custo Médio Ponderado de Capital. Mínimo que empresa precisa render para não destruir valor.",
+      "rodape": "WACC = % dívida × custo + % equity × retorno"
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "Investimento",
+      "termo": "EVA",
+      "definicao": "Economic Value Added. Lucro op. menos custo do capital. Mede se criou valor real.",
+      "rodape": "EVA = Lucro Op. − (Capital × WACC)"
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "Métrica",
+      "termo": "Capex",
+      "definicao": "Capital expenditure — investimento em ativos (core, infra, certificações); entra no P&amp;L como depreciação.",
+      "rodape": "Escala exige investimento antes do retorno"
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "Métrica",
+      "termo": "Opex",
+      "definicao": "Despesas operacionais recorrentes: pessoal, cloud, atendimento, fraude, compliance operacional.",
+      "rodape": "Escala mal → come margem mesmo com spread bom"
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "Investimento",
+      "termo": "FIDC",
+      "definicao": "Fundo de Investimento em Direitos Creditórios. Securitização de carteiras de crédito.",
+      "rodape": "Cotas sênior, mezanino e júnior"
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "FIDC",
+      "termo": "Securitizadora",
+      "definicao": "Estrutura a operação, compra/cede direitos creditórios e viabiliza o FIDC.",
+      "rodape": "Não confundir com administradora do fundo"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "FIDC",
+      "termo": "Administradora de FIDC",
+      "definicao": "Opera o fundo perante a CVM: cotistas, relatórios, governança — não origina crédito na ponta.",
+      "rodape": "Distinta de administradora de consórcios"
+    },
+    {
+      "tagClass": "t-risco",
+      "tag": "FIDC",
+      "termo": "Gestora de margem",
+      "definicao": "Administra cota júnior / excesso de garantia no FIDC; absorve perdas antes da sênior. <strong>Não</strong> é margem consignável na folha.",
+      "rodape": "Skin in the game · ≠ RH / consignado"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Folha",
+      "termo": "e-Social",
+      "definicao": "Sistema do governo para obrigações trabalhistas e previdenciárias. Transmite dados oficiais; <strong>não liquida</strong> o salário.",
+      "rodape": "Dado ≠ pagamento · aba Folha"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Folha",
+      "termo": "ERP / Folha",
+      "definicao": "Sistema da empresa que calcula bruto, descontos, líquido e gera o arquivo de pagamento.",
+      "rodape": "Totvs · Senior · SAP"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Folha",
+      "termo": "Contador / escritório",
+      "definicao": "Comum sem ERP robusto: calcula a folha, gera obrigações e o arquivo bancário pela empresa.",
+      "rodape": "PME · folha light"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Folha",
+      "termo": "Arquivo / CNAB",
+      "definicao": "Layout (ou API) com lista de créditos (favorecido, valor, conta) — não o cálculo completo da folha.",
+      "rodape": "Integração RH → pagador"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Folha",
+      "termo": "Banco / IP de folha",
+      "definicao": "Recebe funding e executa o split; <strong>não recalcula</strong> INSS/IRRF.",
+      "rodape": "Convênio + bolsão"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Folha",
+      "termo": "Convênio de folha",
+      "definicao": "Contrato empresa ↔ banco/IP: tarifas, SLA, layouts, conciliação e regras de rejeição.",
+      "rodape": "Base do produto Ringgo B2B"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Folha",
+      "termo": "FGTS / guias",
+      "definicao": "Recolhimento ao Estado/fundos na competência — trilho distinto do crédito do líquido ao colaborador.",
+      "rodape": "≠ split do salário"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Produto",
+      "termo": "Antecipação de recebíveis",
+      "definicao": "Cessão de fluxos futuros (cartão D+n, duplicata, boleto) por caixa hoje, com desconto — produto PJ.",
+      "rodape": "≠ antecipação salarial"
+    },
+    {
+      "tagClass": "t-risco",
+      "tag": "Produto",
+      "termo": "Risco sacado",
+      "definicao": "Comprador do recebível assume risco do sacado; cedente em geral sem regresso pela inadimplência.",
+      "rodape": "Economia do crédito · ≠ antecipação salarial"
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "Investimento",
+      "termo": "Taxa Livre de Risco",
+      "definicao": "Piso mínimo que qualquer investimento precisa superar. Brasil = CDI. EUA = T-Bill.",
+      "rodape": "Brasil ~14,65% a.a."
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "VC",
+      "termo": "Venture Capital",
+      "definicao": "Investimento em startups com alto risco e potencial de retorno exponencial. Lógica da power law.",
+      "rodape": "1 acerto de 10 paga todas as perdas"
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "VC",
+      "termo": "Power Law",
+      "definicao": "Distribuição de retornos em VC: a maioria perde, uma startup retorna 50x+. Uma só acerta o portfólio inteiro.",
+      "rodape": "Motivo pelo qual VC não precisa de 100% de acerto"
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "VC",
+      "termo": "Pro-rata",
+      "definicao": "Direito do investidor de participar de rodadas futuras para manter sua porcentagem sem diluição.",
+      "rodape": "Mantém % mesmo com entrada de novos investidores"
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "VC",
+      "termo": "Diluição",
+      "definicao": "Redução da participação percentual de um investidor quando novos investidores entram.",
+      "rodape": "Seed 20% → nova rodada → 12% se não entrar"
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "VC",
+      "termo": "PMF",
+      "definicao": "Product-Market Fit. Quando o produto resolve um problema real de um mercado real. Usuários voltam por conta própria.",
+      "rodape": "Sem PMF, nenhuma rodada resolve"
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "VC",
+      "termo": "CAC",
+      "definicao": "Custo de Aquisição de Cliente. Quanto custa trazer 1 novo usuário pagante.",
+      "rodape": "Saudável: LTV/CAC > 3x"
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "VC",
+      "termo": "LTV",
+      "definicao": "Lifetime Value. Quanto um cliente gera de receita ao longo de toda a relação com a empresa.",
+      "rodape": "LTV = ticket médio × frequência × tempo"
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "VC",
+      "termo": "Churn",
+      "definicao": "Taxa de cancelamento ou abandono mensal. Acima de 5% ao mês é sinal crítico de problema de PMF.",
+      "rodape": "Saudável: &lt;2%/mês · Crítico: &gt;5%/mês"
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "VC",
+      "termo": "ARR",
+      "definicao": "Annual Recurring Revenue. Receita recorrente anualizada. Métrica central para startups SaaS e de assinatura.",
+      "rodape": "Principal métrica de Série B em diante"
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "VC",
+      "termo": "Break-even",
+      "definicao": "Ponto onde receita = custos totais. Empresa para de depender de capital externo para operar.",
+      "rodape": "Saudável: data visível no horizonte"
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "VC",
+      "termo": "IPO",
+      "definicao": "Initial Public Offering. Abertura de capital na bolsa de valores. Empresa passa a ter ações negociadas publicamente.",
+      "rodape": "Liquida investidores → acessa capital público"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Legal",
+      "termo": "Recuperação Judicial",
+      "definicao": "Mecanismo legal (Lei 11.101/2005) para negociar dívidas com credores sob supervisão judicial. Empresa continua operando.",
+      "rodape": "Prazo típico: 2 anos para plano aprovado"
+    },
+    {
+      "tagClass": "t-bias",
+      "tag": "Viés",
+      "termo": "Sunk Cost Fallacy",
+      "definicao": "Dificuldade de abandonar algo onde já investiu muito, mesmo que o racional seja parar.",
+      "rodape": "\"Não posso parar agora depois de tudo que investi\""
+    },
+    {
+      "tagClass": "t-bias",
+      "tag": "Viés",
+      "termo": "FOMO",
+      "definicao": "Fear of Missing Out. Medo de ficar de fora do próximo grande sucesso do mercado.",
+      "rodape": "\"E se for a próxima Nubank?\""
+    },
+    {
+      "tagClass": "t-risco",
+      "tag": "Encargo",
+      "termo": "Rotativo",
+      "definicao": "Juros sobre saldo não pago. Limitado ao dobro da dívida original (BACEN 2024).",
+      "rodape": "~15% a.m. · teto 100% da dívida"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Produto",
+      "termo": "Crébito",
+      "definicao": "Modalidade híbrida: parte a débito, parte a crédito. Criado pela Elo. Exclusivo do Brasil.",
+      "rodape": "IC duplo + float na parte crédito"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Infra",
+      "termo": "Split",
+      "definicao": "Divisão de transação em múltiplos recebedores (marketplace) ou modalidades (Crébito).",
+      "rodape": "iFood · Mercado Livre · Elo Crébito"
+    },
+    {
+      "tagClass": "t-seg",
+      "tag": "Segurança",
+      "termo": "PCI-DSS",
+      "definicao": "Padrão de segurança criado pelas bandeiras. Requisito contratual para quem aceita cartões.",
+      "rodape": "4 níveis por volume · multa + descredenciamento"
+    },
+    {
+      "tagClass": "t-seg",
+      "tag": "Segurança",
+      "termo": "Tokenização",
+      "definicao": "Substitui o PAN por token inútil fora do contexto. Se vazar, não serve para nada.",
+      "rodape": "Apple Pay · Google Pay · e-commerce"
+    },
+    {
+      "tagClass": "t-seg",
+      "tag": "Segurança",
+      "termo": "3DS",
+      "definicao": "Autenticação extra no e-commerce. Com 3DS, se houver fraude a responsabilidade vai para o emissor.",
+      "rodape": "Sem 3DS + fraude = lojista paga"
+    },
+    {
+      "tagClass": "t-fraude",
+      "tag": "Fraude",
+      "termo": "Chargeback",
+      "definicao": "Contestação de cobrança. Dinheiro volta ao portador, debitado do lojista/adquirente.",
+      "rodape": "Saudável: &lt;1% · Crítico: &gt;2%"
+    },
+    {
+      "tagClass": "t-fraude",
+      "tag": "Fraude",
+      "termo": "Friendly Fraud",
+      "definicao": "Portador faz a compra e contesta depois. Crescente no e-commerce.",
+      "rodape": "~20–40% dos chargebacks no e-com"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Infra",
+      "termo": "MCC",
+      "definicao": "Merchant Category Code. Código de 4 dígitos que classifica o estabelecimento na rede de cartões (POS, MDR, aceite de benefício).",
+      "rodape": "5411 = Supermercado · 5812 = Restaurante"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Cadastro",
+      "termo": "CNAE",
+      "definicao": "Classificação nacional de atividade econômica (Receita Federal). Cadastro fiscal da empresa — distinto do MCC; costuma orientar o mapeamento na afiliação.",
+      "rodape": "CNAE ≠ MCC"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Produto",
+      "termo": "Cartão de benefício",
+      "definicao": "Instrumento de uso restrito (alimentação, refeição, frota…). Rede semi-fechada filtrada por MCC/política — não é open loop pleno.",
+      "rodape": "PAT · folha · Ringgo"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Benefício",
+      "termo": "PAT",
+      "definicao": "Programa de Alimentação do Trabalhador — base clássica de vouchers de alimentação e refeição no Brasil.",
+      "rodape": "Alimentação · refeição"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Modalidade",
+      "termo": "Pré-pago",
+      "definicao": "Cartão ou conta que gasta saldo já carregado; risco baixo para o emissor. Em muitos desenhos cabe na licença de IP.",
+      "rodape": "≠ pós-pago / crédito"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Modalidade",
+      "termo": "Pós-pago",
+      "definicao": "Usa agora e paga depois; no varejo costuma equivaler ao cartão de crédito (fatura). Risco de crédito no emissor.",
+      "rodape": "= crédito no varejo típico"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Monetário",
+      "termo": "Reserva Fracionária",
+      "definicao": "Sistema em que o banco guarda só uma fração dos depósitos e empresta o resto. Base do sistema bancário moderno.",
+      "rodape": "Permite expansão de depósitos com a mesma base física"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Monetário",
+      "termo": "M0",
+      "definicao": "Base monetária: dinheiro físico e reservas bancárias no BACEN. É o dinheiro \"real\" de liquidação imediata.",
+      "rodape": "Notas + moedas + reservas BACEN"
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "Monetário",
+      "termo": "M2",
+      "definicao": "Dinheiro amplo: M0 + depósitos e investimentos líquidos. Inclui o dinheiro \"fantasma\" criado no sistema bancário.",
+      "rodape": "No Brasil, muito maior que M0"
+    },
+    {
+      "tagClass": "t-risco",
+      "tag": "Monetário",
+      "termo": "Compulsório",
+      "definicao": "Percentual do depósito que o banco é obrigado a manter travado no BACEN. Controla a criação de dinheiro e a liquidez.",
+      "rodape": "Ferramenta direta de política monetária"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Monetário",
+      "termo": "Moeda Escritural",
+      "definicao": "Dinheiro que existe só como registro contábil, criado pelo sistema bancário via empréstimos sucessivos.",
+      "rodape": "Não existe em cédulas equivalentes no cofre"
+    },
+    {
+      "tagClass": "t-fraude",
+      "tag": "Monetário",
+      "termo": "Bank Run (Corrida Bancária)",
+      "definicao": "Quando muitos depositantes sacam ao mesmo tempo. O sistema não tem dinheiro para todos e pode entrar em colapso.",
+      "rodape": "Crise de confiança acelera o próprio problema"
+    },
+    {
+      "tagClass": "t-taxa",
+      "tag": "Monetário",
+      "termo": "Multiplicador Monetário",
+      "definicao": "Efeito pelo qual um depósito inicial se multiplica no sistema via reservas fracionárias.",
+      "rodape": "Fórmula simplificada: 1 ÷ compulsório"
+    },
+    {
+      "tagClass": "t-risco",
+      "tag": "Macro",
+      "termo": "Inflação",
+      "definicao": "Aumento generalizado de preços. Causada por excesso de demanda, queda de oferta ou expansão monetária excessiva.",
+      "rodape": "Corroe poder de compra e pressiona juros"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Macro",
+      "termo": "Deflação",
+      "definicao": "Queda generalizada de preços. Parece boa no curto prazo, mas incentiva postergação de consumo e pode aprofundar recessão.",
+      "rodape": "Armadilha: consumo adiado → produção cai"
+    },
+    {
+      "tagClass": "t-taxa",
+      "tag": "Macro",
+      "termo": "Selic",
+      "definicao": "Taxa básica de juros definida pelo COPOM. É o preço do dinheiro na economia brasileira.",
+      "rodape": "Sobe para conter inflação, cai para estimular crescimento"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Macro",
+      "termo": "IPCA",
+      "definicao": "Índice de Preços ao Consumidor Amplo. Principal medidor de inflação no Brasil, calculado pelo IBGE.",
+      "rodape": "Referência oficial do sistema de metas"
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "Macro",
+      "termo": "Open Market",
+      "definicao": "Operações de compra e venda de títulos públicos pelo BACEN para controlar a liquidez do sistema.",
+      "rodape": "Venda retira liquidez · compra injeta"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Macro",
+      "termo": "Oferta e Demanda",
+      "definicao": "Lei fundamental da economia: se demanda supera oferta, preço sobe; se oferta supera demanda, preço cai.",
+      "rodape": "Base de preços, juros, câmbio e crédito"
+    },
+    {
+      "tagClass": "t-seg",
+      "tag": "Macro",
+      "termo": "COPOM",
+      "definicao": "Comitê de Política Monetária do BACEN. Define a Selic a cada 45 dias com base no cenário inflacionário.",
+      "rodape": "Diretoria do BACEN em reuniões periódicas"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Título",
+      "termo": "LCI",
+      "definicao": "Letra de Crédito Imobiliário. Você empresta para o banco financiar imóveis. Isenta de IR para pessoa física e com prazo mínimo de 90 dias.",
+      "rodape": "Perfil: taxa menor, líquido competitivo pela isenção"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Título",
+      "termo": "LCA",
+      "definicao": "Letra de Crédito do Agronegócio. Você empresta para o banco financiar agro. Isenta de IR para PF e similar à LCI em estrutura de prazo.",
+      "rodape": "Mesmo perfil de risco/estrutura da LCI"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Título",
+      "termo": "Precatório",
+      "definicao": "Dívida da União reconhecida judicialmente. Pode ser negociada com desconto no mercado secundário e costuma ter baixa liquidez.",
+      "rodape": "Ativo longo com risco de prazo e reprecificação"
+    },
+    {
+      "tagClass": "t-risco",
+      "tag": "Risco",
+      "termo": "Moral Hazard",
+      "definicao": "Quando um agente assume risco excessivo porque sabe que as perdas serão absorvidas por terceiros. Clássico em sistemas com garantia.",
+      "rodape": "Lucro privatizado, perda socializada"
+    },
+    {
+      "tagClass": "t-fraude",
+      "tag": "Risco",
+      "termo": "Seleção Adversa",
+      "definicao": "Assimetria de informação que faz os piores candidatos aceitarem um contrato enquanto os bons saem da operação.",
+      "rodape": "No crédito: tomador ruim aceita taxa alta, bom recusa"
+    },
+    {
+      "tagClass": "t-taxa",
+      "tag": "Risco",
+      "termo": "Spread Bancário",
+      "definicao": "Diferença entre o custo de captação do banco e a taxa cobrada no crédito ao cliente final.",
+      "rodape": "Ex.: capta ~100% CDI e empresta no rotativo com taxa muito maior"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Global",
+      "termo": "Reservas Internacionais",
+      "definicao": "Dólares e outros ativos que o BACEN acumula via exportações e fluxos externos. Lastro do câmbio e proteção contra crises.",
+      "rodape": "Brasil: ~US$ 370 bilhões"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Global",
+      "termo": "Câmbio",
+      "definicao": "Preço de uma moeda em relação a outra. Segue oferta e demanda por divisas.",
+      "rodape": "Mais dólares no Brasil: real valoriza · menos dólares: real desvaloriza"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Global",
+      "termo": "Padrão Ouro",
+      "definicao": "Sistema em que moedas eram conversíveis em quantidade fixa de ouro. Abandonado pelos EUA em 1971 (Nixon Shock).",
+      "rodape": "Âncora física do sistema pré-fiat"
+    },
+    {
+      "tagClass": "t-risco",
+      "tag": "Global",
+      "termo": "Privilégio Exorbitante",
+      "definicao": "Vantagem dos EUA de se endividarem na própria moeda, aceita globalmente. Termo cunhado por Valéry Giscard d'Estaing.",
+      "rodape": "Exclusividade geopolítica/financeira americana"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Global",
+      "termo": "Petrodólar",
+      "definicao": "Convenção (desde 1974) de cotação e pagamento do petróleo em dólar, sustentando demanda global pela moeda.",
+      "rodape": "Energia global ancorando fluxo em dólar"
+    },
+    {
+      "tagClass": "t-inv",
+      "tag": "Global",
+      "termo": "Bretton Woods",
+      "definicao": "Acordo de 1944 que organizou o sistema monetário internacional do pós-guerra com dólar como reserva global lastreada em ouro.",
+      "rodape": "Base histórica da arquitetura monetária moderna"
+    },
+    {
+      "tagClass": "t-seg",
+      "tag": "Global",
+      "termo": "Fed (Federal Reserve)",
+      "definicao": "Banco central dos EUA. Define juros americanos (Fed Funds Rate) e influencia fluxos de capital globais.",
+      "rodape": "Decisões locais com efeito mundial"
+    },
+    {
+      "tagClass": "t-fraude",
+      "tag": "Global",
+      "termo": "Fuga de Capital",
+      "definicao": "Saída de recursos de um país quando investidores percebem risco maior ou retorno melhor no exterior.",
+      "rodape": "Pressiona câmbio e pode acelerar inflação importada"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Instituição",
+      "termo": "SFN",
+      "definicao": "Sistema Financeiro Nacional. Conjunto de instituições, instrumentos e infraestruturas que organizam o dinheiro no Brasil.",
+      "rodape": "Arcabouço geral do sistema financeiro"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Instituição",
+      "termo": "CMN",
+      "definicao": "Conselho Monetário Nacional. Órgão normativo máximo que define diretrizes de política monetária e de crédito.",
+      "rodape": "Define regras; BACEN executa e fiscaliza"
+    },
+    {
+      "tagClass": "t-seg",
+      "tag": "Instituição",
+      "termo": "BCB / BACEN",
+      "definicao": "Banco Central do Brasil. Autoriza instituições, supervisiona o sistema e aplica regulação prudencial.",
+      "rodape": "Regulador central do SFN"
+    },
+    {
+      "tagClass": "t-risco",
+      "tag": "Instituição",
+      "termo": "S1 / S2",
+      "definicao": "Segmentos de bancos de maior porte/complexidade, com exigências mais fortes de capital, governança e controle de risco.",
+      "rodape": "Camada de bancos com maior impacto sistêmico"
+    },
+    {
+      "tagClass": "t-seg",
+      "tag": "Instituição",
+      "termo": "Basileia III",
+      "definicao": "Conjunto internacional de regras para capital, liquidez e gestão de risco em bancos.",
+      "rodape": "Base prudencial da resiliência bancária"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Licença",
+      "termo": "IP — Instituição de Pagamento",
+      "definicao": "Permite conta de pagamento, Pix e cartão, mas sem captação à vista típica de banco tradicional.",
+      "rodape": "Modelo comum de fintech de pagamentos"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Licença",
+      "termo": "SCD / SEP",
+      "definicao": "Licenças orientadas a crédito reguladas pelo BACEN, sem captação à vista típica de banco comercial. No mercado, SCD às vezes aparece como <strong>SFD</strong>.",
+      "rodape": "Camada intermediária entre IP e banco"
+    },
+    {
+      "tagClass": "t-vc",
+      "tag": "Licença",
+      "termo": "ESD",
+      "definicao": "Estrutura para operar salário de forma mais direta com empregadores, elevando controle de relacionamento e dados.",
+      "rodape": "Alta barreira de implementação regulatória"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Infra",
+      "termo": "BaaS",
+      "definicao": "Banking as a Service. Provedor que combina licença regulatória e APIs para terceiros ofertarem serviços financeiros.",
+      "rodape": "\"Licença + tecnologia\" como serviço"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Infra",
+      "termo": "TaaS / Core Bancário",
+      "definicao": "Technology as a Service. Entrega plataforma bancária sem emprestar licença regulatória.",
+      "rodape": "\"Tecnologia sem licença\""
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Infra",
+      "termo": "CIP",
+      "definicao": "Infraestrutura usada para registro e liquidação de cobranças como boletos, entre outros fluxos.",
+      "rodape": "Camada crítica para cobrança bancária"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Infra",
+      "termo": "SPB",
+      "definicao": "Sistema de Pagamentos Brasileiro. Conjunto de trilhos e câmaras que suportam compensação e liquidação no país.",
+      "rodape": "Espinha dorsal dos pagamentos"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Infra",
+      "termo": "SPI",
+      "definicao": "Sistema de Pagamentos Instantâneos, trilho operacional do Pix para liquidação em tempo real.",
+      "rodape": "Motor de liquidação do Pix"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Infra",
+      "termo": "STR",
+      "definicao": "Sistema de Transferência de Reservas. Infraestrutura de liquidação bruta em tempo real entre participantes autorizados.",
+      "rodape": "Base de liquidação interbancária"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Infra",
+      "termo": "DICT",
+      "definicao": "Diretório de identificadores de contas no ecossistema Pix (chaves), usado para roteamento e validação.",
+      "rodape": "Cadastro central das chaves Pix"
+    },
+    {
+      "tagClass": "t-legal",
+      "tag": "Crédito",
+      "termo": "CCD",
+      "definicao": "Alias de mercado para a <strong>CCB</strong> (Cédula de Crédito Bancário). Neste material usamos CCB; a busca encontra os dois.",
+      "rodape": "Sinônimo · ver ficha CCB"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Cobrança",
+      "termo": "Boleto Registrado",
+      "definicao": "Boleto com dados registrados em infraestrutura autorizada, permitindo rastreabilidade e liquidação formal.",
+      "rodape": "Padrão obrigatório de cobrança bancária"
+    },
+    {
+      "tagClass": "t-prod",
+      "tag": "Distribuição",
+      "termo": "Correspondente Bancário",
+      "definicao": "Canal terceiro que distribui serviços financeiros em nome de uma instituição contratante, sob responsabilidade desta.",
+      "rodape": "Extensão comercial da instituição"
+    },
+    {
+      "tagClass": "t-seg",
+      "tag": "Cartão",
+      "termo": "BIN",
+      "definicao": "Bank Identification Number. Prefixo do cartão que identifica emissor e bandeira na rede de pagamentos.",
+      "rodape": "Identidade técnica do emissor"
+    },
+    {
+      "tagClass": "t-seg",
+      "tag": "Cartão",
+      "termo": "BIN Sponsor",
+      "definicao": "Banco parceiro que cede BIN para uma operação de cartões conduzida por outra empresa.",
+      "rodape": "Modelo comum de emissão indireta"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Cartão",
+      "termo": "Program Manager",
+      "definicao": "Empresa que opera produto, experiência e distribuição do cartão, enquanto sponsor sustenta a emissão regulatória.",
+      "rodape": "Separação entre experiência e licença"
+    },
+    {
+      "tagClass": "t-infra",
+      "tag": "Open Finance",
+      "termo": "ITP",
+      "definicao": "Iniciador de Transação de Pagamento. Inicia pagamento em nome do usuário sem necessariamente custodiar a conta.",
+      "rodape": "Camada de iniciação no Open Finance"
+    },
+    {
+      "tagClass": "t-ciclo",
+      "tag": "Liquidação",
+      "termo": "Banco Liquidante",
+      "definicao": "Instituição que liquida operações financeiras em câmaras e sistemas para si e, em alguns casos, para parceiros.",
+      "rodape": "Ponto final da liquidação financeira"
+    }
+  ]
+}

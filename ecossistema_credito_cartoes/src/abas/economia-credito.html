@@ -1,0 +1,136 @@
+<div id="panel-economia-credito" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Spread</dt><dd>Diferença entre custo de captação (ex.: CDI) e taxa cobrada do cliente — margem bruta do crédito.</dd>
+      <dt>PDD</dt><dd>Provisão para devedores duvidosos; reserva contábil que reduz lucro conforme risco de inadimplência.</dd>
+      <dt>Interchange</dt><dd>Parcela da MDR que vai ao emissor; receita de quem paga a fatura em dia também gera interchange.</dd>
+      <dt>Rotativo</dt><dd>Saldo da fatura não pago em integral; taxa regulada (teto sobre principal em 30 dias).</dd>
+      <dt>Float</dt><dd>Dinheiro transitório aplicado pelo banco entre compra, liquidação e pagamento (ex.: parcelado lojista).</dd>
+      <dt>Limite pré-aprovado</dt><dd>Crédito já disponível na conta (cheque especial) sem contratação explícita.</dd>
+      <dt>CET</dt><dd>Custo efetivo total — juros + IOF + tarifas + seguros obrigatórios.</dd>
+      <dt>Score de crédito</dt><dd>Modelo que estima risco e define a taxa no crédito pessoal.</dd>
+      <dt>Viés do presente</dt><dd>Tendência a valorizar benefício imediato e subestimar custo futuro — explorado em produtos de baixa fricção.</dd>
+      <dt>Anatocismo</dt><dd>Juros sobre juros; acelera dívida em rotativo e cheque especial.</dd>
+      <dt>Portabilidade (cheque esp.)</dt><dd>Após 30 dias no limite, o banco deve oferecer migração para modalidade mais barata (regra BCB).</dd>
+      <dt>Consórcio</dt><dd>Grupo de pessoas físicas ou jurídicas que se unem para formar fundo visando a aquisição de bem ou serviço, com administradora autorizada; contemplação por sorteio ou lance — não é empréstimo bancário clássico.</dd>
+      <dt>Administradora de consórcios</dt><dd>Instituição autorizada a formar e administrar grupos; cobra taxa de administração e segue regulação própria (não confundir com emissor de crédito rotativo).</dd>
+      <dt>Antecipação de recebíveis</dt><dd>Cessão de fluxos futuros de vendas (cartão, duplicata) em troca de caixa hoje — produto PJ, distinto da antecipação salarial.</dd>
+      <dt>Risco sacado</dt><dd>Quem compra o recebível assume o risco do sacado; cedente em geral não responde pela inadimplência.</dd>
+      <dt>Consignado</dt><dd>Crédito com parcela descontada na folha ou benefício; taxa baixa por desconto na fonte — ver trilhas privado, público e INSS na aba Consignado.</dd>
+      <dt>Opex</dt><dd>Despesas operacionais recorrentes (pessoal, cloud, atendimento) — reduzem margem após o spread.</dd>
+      <dt>Capex</dt><dd>Investimento em ativos (core, infra); entra no P&amp;L como depreciação — ver também <strong>WACC &amp; EVA</strong>.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="btn btn-ghost !min-h-0 !px-0 !py-1 text-xs" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+
+  <div class="st" id="anchor-logica-credito">A lógica universal do crédito bancário</div>
+  <p class="cred-prose">Em todo produto de crédito o banco tende a <strong>captar dinheiro mais barato</strong> (depósitos, CDB, referência CDI) e <strong>emprestar mais caro</strong>. A diferença é o <strong>spread</strong>. Do spread saem inadimplência e <strong>PDD</strong>, <strong>Opex</strong>, capital regulatório e impostos — o que sobra alimenta o lucro operacional e, depois, o <strong>EVA</strong>.</p>
+  <div class="note">Analogia: o banco compra “dinheiro atacado” perto do CDI e vende “varejo” em linhas de crédito com margens diferentes conforme o risco.</div>
+  <div class="note"><strong>Fio da precificação:</strong> na prática, <strong>quanto menor a fricção</strong> (uso imediato, sem contratação explícita) e <strong>menor a garantia</strong> percebida (sem bem penhorado, sem desconto em folha), <strong>maior tende a ser a taxa</strong> — daí o contraste entre rotativo/cheque especial e <strong>consignado</strong> com desconto em folha. Aprofundar: aba <strong>Consignado</strong>.</div>
+
+  <div class="st">Decomposição didática (ordem de grandeza)</div>
+  <div class="sc">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num" style="color:var(--green)">+</div><div><div class="chain-title">Taxa cobrada do cliente</div><div class="chain-desc">Base 100% para comparar encargos.</div></div></div>
+      <div class="chain-item"><div class="chain-num" style="color:var(--dim)">−</div><div><div class="chain-title">Custo de captação (CDI)</div><div class="chain-desc">Referência de mercado para funding.</div></div></div>
+      <div class="chain-item"><div class="chain-num" style="color:var(--blue)">=</div><div><div class="chain-title">Spread bruto</div><div class="chain-desc">Margem antes de risco e operação.</div></div></div>
+      <div class="chain-item"><div class="chain-num" style="color:var(--red)">−</div><div><div class="chain-title">PDD e inadimplência</div><div class="chain-desc">Quanto mais arriscado o produto, maior a fatia.</div></div></div>
+      <div class="chain-item"><div class="chain-num" style="color:var(--yellow)">−</div><div><div class="chain-title">Opex + impostos</div><div class="chain-desc">Custo de manter a máquina, atender cliente e tributos.</div></div></div>
+      <div class="chain-item"><div class="chain-num" style="color:var(--green)">≈</div><div><div class="chain-title">Lucro líquido da operação</div><div class="chain-desc">O que resta para o acionista — alvo de gestão de risco e preço.</div></div></div>
+    </div>
+  </div>
+
+  <div class="st">Cartão de crédito — várias fontes de receita</div>
+  <p class="cred-prose">Além do <strong>rotativo</strong>, o cartão monetiza <strong>interchange</strong> em toda compra, <strong>float</strong> (especialmente parcelado lojista), <strong>anuidade</strong> e tarifas. Quem paga em dia ainda gera interchange; quem rota o saldo paga juros altos, mas também eleva provisão de risco.</p>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">Insight</div>
+    O banco não depende só de inadimplência para lucrar com cartão: <strong>volume com interchange + float</strong> já sustenta parte do modelo. O “ótimo” comercial costuma ser uso alto com pagamento em dia e uso ocasional de crédito remunerado.
+  </div>
+
+  <div class="st">Cheque especial — baixa fricção, alto spread</div>
+  <p class="cred-prose"><strong>Limite pré-aprovado</strong> na conta: o cliente usa sem contratar explicitamente. Taxa histórica muito alta; após regulação, <strong>teto de 8% ao mês</strong> e regra de <strong>portabilidade</strong> após 30 dias consecutivos no limite. <strong>Anatocismo</strong> acelera a dívida.</p>
+  <div class="cred-callout cc-r">
+    <div class="cc-t">Por que é caro</div>
+    Sem garantia real, uso em momento de aperto e pouca previsibilidade de uso para o banco — o preço compensa risco e seleção adversa.
+  </div>
+
+  <div class="st">Crédito pessoal — decisão ativa e score</div>
+  <p class="cred-prose">Há fricção intencional (pedido, prazo, contrato). A taxa reflete <strong>score de crédito</strong> e bureaus. O <strong>CET</strong> (não só a taxa nominal) mostra o custo real com IOF e tarifas. Para instituições digitais, o produto costuma ser <strong>porta de entrada</strong> para LTV maior no relacionamento.</p>
+  <div class="g3" style="margin-bottom:12px">
+    <div class="tc"><div class="tag t-bias">Score alto</div><div class="tn">~1,5% a.m.</div><div class="td">Perfil mais barato — risco menor.</div></div>
+    <div class="tc"><div class="tag t-ciclo">Score médio</div><div class="tn">~3,5% a.m.</div><div class="td">Faixa intermediária típica.</div></div>
+    <div class="tc"><div class="tag t-risco">Score baixo</div><div class="tn">7%+ a.m.</div><div class="td">Precificação de risco elevado.</div></div>
+  </div>
+  <div class="cred-callout cc-p">
+    <div class="cc-t">LTV e aquisição</div>
+    Crédito pessoal pode ter margem fina no contrato isolado, mas viabiliza <strong>cross-sell</strong> (cartão, seguros, investimentos) quando o CAC é diluído no tempo.
+  </div>
+
+  <div class="st">Comparativo rápido</div>
+  <div class="resp-matrix">
+    <table class="resp-table">
+      <thead><tr><th>Dimensão</th><th>Rotativo cartão</th><th>Cheque especial</th><th>Crédito pessoal</th></tr></thead>
+      <tbody>
+        <tr><td>Fricção</td><td>Automático após uso</td><td>Automático</td><td>Contratação explícita</td></tr>
+        <tr><td>Receita típica</td><td>IC + juros + float + anuidade</td><td>Sobretudo juros</td><td>Juros + tarifas + IOF</td></tr>
+        <tr><td>Regulação recente</td><td>Teto sobre principal (30 d)</td><td>Teto 8% a.m. + portabilidade</td><td>CET obrigatório</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cred-callout cc-o">
+    <div class="cc-t">Comportamento</div>
+    <strong>Viés do presente:</strong> quanto mais fácil usar crédito agora, maior tendência a subestimar o custo futuro — por isso produtos “zero clique” tendem a ser os mais caros.
+  </div>
+
+  <div class="st" id="anchor-consorcio">Consórcio — não é “crédito rotativo”</div>
+  <p class="cred-prose"><strong>Consórcio</strong> é modalidade em que um <strong>grupo</strong> paga parcelas para formar fundo administrado por uma <strong>administradora autorizada</strong>; a <strong>contemplação</strong> (sorteio ou lance) define quem usa o valor para adquirir o bem ou serviço. Há <strong>carência</strong> até a contemplação e <strong>taxa de administração</strong>. Não substitui análise de <strong>CET</strong> em empréstimos, nem se confunde com limite de cartão ou cheque especial — a lógica é poupança coletiva com disciplina contratual, não spread bancário sobre captação à vista.</p>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">Para o Ringgo / IP</div>
+    Consórcio é produto de <strong>distribuição e parceria</strong> típica de administradora ou banco com mesa de consórcio; uma IP pode atuar como <strong>canal</strong> se o desenho regulatório e contratual estiver alinhado — o risco e a natureza do produto são diferentes do crédito direto com <strong>PDD</strong>.
+  </div>
+
+  <div class="st">IP (Instituição de Pagamento) e estes produtos</div>
+  <p class="cred-prose">Uma <strong>IP</strong> não concede crédito com recursos próprios nem capta depósito à vista como banco universal. <strong>Cartão pré-pago</strong> e <strong>antecipação salarial</strong> (adiantamento de salário já trabalhado, com acordo do empregador) costumam caber na licença; <strong>cartão de crédito</strong>, <strong>cheque especial</strong> e <strong>crédito pessoal</strong> em geral exigem <strong>parceiro</strong> com licença adequada (banco, SCD/SEP) ou modelo de sponsor.</p>
+  <div class="resp-matrix">
+    <table class="resp-table">
+      <thead><tr><th>Produto</th><th>IP sozinha</th><th>Como viabilizar</th></tr></thead>
+      <tbody>
+        <tr><td>Cartão pré-pago</td><td>Sim</td><td>Dentro da licença de IP.</td></tr>
+        <tr><td>Cartão de crédito</td><td>Não sozinha</td><td>BIN sponsor + banco emissor do crédito.</td></tr>
+        <tr><td>Cheque especial</td><td>Não</td><td>Licença bancária ou parceiro.</td></tr>
+        <tr><td>Crédito pessoal</td><td>Não sozinha</td><td>Originador SCD/banco (ex.: via BaaS).</td></tr>
+        <tr><td>Consignado</td><td>Distribuição</td><td>Parceiro emite CCB; IP faz canal e UX.</td></tr>
+        <tr><td>Antecipação salarial</td><td>Sim (caso típico)</td><td>Não é crédito novo — adiantamento devido.</td></tr>
+        <tr><td>Consórcio (canal)</td><td>Via parceiro</td><td>Administradora autorizada; IP pode distribuir conforme contrato e regulação.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="st" id="anchor-antecipacao-recebiveis">Antecipação de recebíveis e risco sacado</div>
+  <div id="anchor-risco-sacado" class="cred-prose" style="margin:0 0 14px 0">Para <strong>empresas e lojistas</strong>, antecipar recebíveis é vender o direito de receber vendas futuras (cartão em <strong>D+n</strong>, duplicatas, boletos) em troca de caixa hoje, com desconto. No <strong>risco sacado</strong>, quem compra o recebível assume o risco do <strong>sacado</strong> (devedor final) — o cedente, em regra, não responde pela inadimplência. É capital de giro atrelado a vendas — arquitetura diferente do adiantamento de salário ao trabalhador.</div>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">O que NÃO é</div>
+    <strong>Risco sacado / antecipação de recebíveis ≠ antecipação salarial.</strong> Aqui é PJ e vendas futuras; antecipação salarial é PF e salário já ganho.
+  </div>
+  <div class="resp-matrix" style="margin-bottom:14px">
+    <table class="resp-table">
+      <thead><tr><th>Dimensão</th><th>Antecipação salarial</th><th>Antecipação de recebíveis</th><th>Risco sacado</th></tr></thead>
+      <tbody>
+        <tr><td>Quem usa</td><td>Trabalhador PF</td><td>Lojista / empresa</td><td>Empresa que cede recebível</td></tr>
+        <tr><td>Base do fluxo</td><td>Salário já ganho</td><td>Vendas cartão / duplicata / boleto</td><td>Mesmo, com cessão sem regresso típico</td></tr>
+        <tr><td>Risco principal</td><td>Baixo (desconto em folha)</td><td>Inadimplência do sacado</td><td>Fica com quem comprou o recebível</td></tr>
+        <tr><td>Licença típica</td><td>IP</td><td>Banco, SCD, credenciadora, FIDC</td><td>Idem</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">O recebível nasce na <strong>credenciadora</strong> (liquidação D+n) — ver <strong>Ecossistema</strong> e <strong>Taxas &amp; MDR</strong>. Em escala, essas carteiras podem ser lastro de <strong>FIDC</strong> (aba <strong>FIDC &amp; Ações</strong>: cotas e atores do fundo).</div>
+  <div class="cred-callout cc-g">
+    <div class="cc-t">Estratégia de plataforma</div>
+    Conta + folha + benefícios + cartão + crédito parceiro formam ecossistema: cada produto reforça dados, frequência e LTV — desde que a <strong>licença</strong> e o <strong>risco</strong> estejam no lugar certo (ver <strong>SFN &amp; Licenças</strong> e <strong>Mapa SFN (BR)</strong>).
+  </div>
+  <div class="note">Conexões: <strong>CDI &amp; CDB</strong> (custo de funding), <strong>Encargos</strong> (CET e rotativo), <strong>Taxas &amp; MDR</strong> (interchange), <strong>Ecossistema</strong> (quem ganha o quê na compra), <strong>WACC &amp; EVA</strong> (PDD e Opex na conta de valor), <strong>FIDC &amp; Ações</strong> (securitização em escala), <strong>Consignado</strong> (produto e operação de ponta a ponta).</div>
+</div>
+
+<!-- ══════ CONSIGNADO -->

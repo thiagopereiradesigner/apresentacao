@@ -1,0 +1,53 @@
+<div id="panel-eva" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>WACC</dt><dd>Custo médio ponderado de capital — taxa mínima que o negócio precisa gerar para remunerar dívidas e sócios.</dd>
+      <dt>EVA</dt><dd>Economic Value Added — lucro operacional menos o custo de usar o capital (× WACC).</dd>
+      <dt>PDD</dt><dd>Provisão para Devedores Duvidosos — reserva contábil que antecipa inadimplência e reduz lucro operacional.</dd>
+      <dt>Opex</dt><dd>Despesas operacionais recorrentes (pessoal, cloud, atendimento, fraude) para manter o produto rodando.</dd>
+      <dt>Capex</dt><dd>Investimento em ativos (core, infra, certificações); vira depreciação no P&amp;L ao longo do tempo.</dd>
+      <dt>CDI no WACC</dt><dd>Quando o CDI sobe, o custo da dívida e muitas vezes o retorno exigido sobem — o WACC tende a subir.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="btn btn-ghost !min-h-0 !px-0 !py-1 text-xs" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+  <div class="st">WACC — Custo Médio Ponderado de Capital</div>
+  <div class="sc">
+    <div class="wacc-bar"><div class="wacc-debt" style="flex:.6">Dívida 60% × 12% = 7,2%</div><div class="wacc-eq" style="flex:.4">Equity 40% × 18% = 7,2%</div></div>
+    <div style="text-align:center;font-family:'Roboto',system-ui,sans-serif;font-size:18px;font-weight:800;color:var(--teal);margin:10px 0 4px">WACC = 14,4% a.a.</div>
+    <div class="g2" style="margin-top:14px">
+      <div><div class="rr"><span class="rk">CDI alto →</span><span class="rv d">WACC sobe</span></div><div class="rr"><span class="rk">CDI baixo →</span><span class="rv o">WACC cai</span></div></div>
+      <div><div class="rr"><span class="rk">Rende 10%, WACC 14%</span><span class="rv d">Destrói valor</span></div><div class="rr"><span class="rk">Rende 20%, WACC 14%</span><span class="rv o">Cria valor</span></div></div>
+    </div>
+  </div>
+  <div class="st">PDD, Opex e Capex — da margem de produto ao lucro operacional</div>
+  <p class="cred-prose"><strong>PDD</strong> não é prejuízo já realizado — é <strong>provisão contábil</strong> que antecipa inadimplência e reduz o lucro antes do calote efetivo. <strong>Opex</strong> é o custo de manter a operação (pessoal, cloud, cobrança, fraude). <strong>Capex</strong> é investimento que vira ativo (core, POS, certificação PCI) e entra no P&amp;L como <strong>depreciação</strong> ao longo do tempo. Spread alto com PDD alta e Opex alta ainda pode destruir valor se o capital regulatório × WACC for pesado.</p>
+  <div class="g3" style="margin-bottom:14px">
+    <div class="tc"><div class="tag t-risco">Risco</div><div class="tn">PDD</div><div class="td">Reserva antecipada conforme risco da carteira; sobe em rotativo e cheque especial.</div><div class="tv">Despesa contábil · não é só calote efetivo</div></div>
+    <div class="tc"><div class="tag t-ciclo">Operação</div><div class="tn">Opex</div><div class="td">Custo recorrente de servir o cliente: app, CX, cobrança, compliance operacional.</div><div class="tv">Escala mal → come a margem mesmo com spread bom</div></div>
+    <div class="tc"><div class="tag t-infra">Investimento</div><div class="tn">Capex</div><div class="td">Gasto em ativo de longo prazo; deprecia e entra no lucro operacional aos poucos.</div><div class="tv">Core · infra · certificações</div></div>
+  </div>
+  <div class="st" id="anchor-eva-produto">EVA aplicado ao produto</div>
+  <div class="sc">
+    <div class="eva-flow">
+      <div class="eva-box"><div class="eva-label">Receita Op.</div><div class="eva-val" style="color:var(--green)">R$ 8M</div></div>
+      <div class="eva-op">−</div>
+      <div class="eva-box"><div class="eva-label">PDD</div><div class="eva-val" style="color:var(--red)">R$ 2M</div></div>
+      <div class="eva-op">−</div>
+      <div class="eva-box"><div class="eva-label">Opex</div><div class="eva-val" style="color:var(--red)">R$ 1,2M</div></div>
+      <div class="eva-op">−</div>
+      <div class="eva-box"><div class="eva-label">Deprec. (Capex)</div><div class="eva-val" style="color:var(--red)">R$ 0,3M</div></div>
+      <div class="eva-op">=</div>
+      <div class="eva-box"><div class="eva-label">Lucro Op.</div><div class="eva-val" style="color:var(--yellow)">R$ 4,5M</div></div>
+      <div class="eva-op">−</div>
+      <div class="eva-box"><div class="eva-label">Capital × WACC</div><div class="eva-val" style="color:var(--red)">R$ 4,32M</div></div>
+      <div class="eva-op">=</div>
+      <div class="eva-box" style="border-color:var(--yellow)"><div class="eva-label">EVA</div><div class="eva-val" style="color:var(--yellow)">+R$ 180K ⚠️</div></div>
+    </div>
+    <div class="note">💡 EVA próximo de zero → qualquer aumento de <strong>PDD</strong> ou <strong>Opex</strong> coloca o produto no negativo. A decomposição de spread em <strong>Economia do crédito</strong> é o passo anterior a esta conta.</div>
+  </div>
+</div>
+
+<!-- ══════ FIDC & AÇÕES -->

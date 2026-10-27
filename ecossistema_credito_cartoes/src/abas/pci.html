@@ -1,0 +1,49 @@
+<div id="panel-pci" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>PCI-DSS</dt><dd>Conjunto de requisitos de segurança para quem armazena, processa ou transmite dados de cartão.</dd>
+      <dt>PAN</dt><dd>Número de 16 dígitos do cartão — dado sensível; só pode ser armazenado com controles PCI.</dd>
+      <dt>Tokenização</dt><dd>Substituir o PAN por um token inútil fora do ambiente seguro do pagamento.</dd>
+      <dt>3DS (3-D Secure)</dt><dd>Autenticação extra no e-commerce; muda a alocação de risco de fraude entre emissor e lojista.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="btn btn-ghost !min-h-0 !px-0 !py-1 text-xs" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+  <div class="st" id="anchor-pci">PCI-DSS — padrão de segurança criado pelas bandeiras</div>
+  <div class="sc">
+    <div class="sl">Payment Card Industry Data Security Standard — requisito contratual, não lei</div>
+    <div class="g3" style="margin-top:14px">
+      <div class="tc"><div class="tag t-seg">Rede</div><div class="tn">Rede Segura</div><div class="td">Firewall configurado. Senhas padrão alteradas. Segmentação.</div></div>
+      <div class="tc"><div class="tag t-seg">Dados</div><div class="tn">Proteger Dados</div><div class="td">Nunca armazenar CVV. Criptografar PAN se armazenado.</div></div>
+      <div class="tc"><div class="tag t-seg">Acesso</div><div class="tn">Controle</div><div class="td">Acesso mínimo necessário. Autenticação única. Logs de tudo.</div></div>
+    </div>
+  </div>
+  <div class="st">Jornada do dado — quem é responsável em cada ponto</div>
+  <div class="pci-journey">
+    <div class="pci-step" style="background:rgba(45,212,160,.04)"><div class="pci-icon">💳</div><div><div class="pci-title">Portador passa o cartão</div><div class="pci-desc">Maquininha captura — hardware certificado pelo adquirente</div></div><span class="pci-badge badge-adq">Adquirente</span></div>
+    <div class="pci-step" style="background:rgba(247,95,95,.04)"><div class="pci-icon">🌐</div><div><div class="pci-title">Dado trafega pela rede interna do lojista</div><div class="pci-desc">Entre o POS e o sistema de gestão — responsabilidade do lojista</div></div><span class="pci-badge badge-loj">Lojista</span></div>
+    <div class="pci-step" style="background:rgba(247,95,95,.04)"><div class="pci-icon">🖥️</div><div><div class="pci-title">Sistema e banco de dados do lojista</div><div class="pci-desc">Se armazenar qualquer dado de cartão, precisa estar criptografado</div></div><span class="pci-badge badge-loj">Lojista</span></div>
+    <div class="pci-step" style="background:rgba(45,212,160,.04)"><div class="pci-icon">📡</div><div><div class="pci-title">Adquirente recebe e roteia</div><div class="pci-desc">Transmissão criptografada — responsabilidade do adquirente</div></div><span class="pci-badge badge-adq">Adquirente</span></div>
+  </div>
+  <div class="st">Tokenização e 3DS</div>
+  <div class="g2">
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">Tokenização</div>
+      <div class="token-demo">
+        <div><div class="token-val" style="color:var(--red)">4111 1111 1111 1234</div><div class="token-label">PAN real</div></div>
+        <div class="token-arrow">→</div>
+        <div><div class="token-val" style="color:var(--green)">8f3k-92mc-xx71</div><div class="token-label">Token — inútil se vazar</div></div>
+      </div>
+    </div>
+    <div class="sc" style="margin-bottom:0">
+      <div class="sl">3DS — 3D Secure</div>
+      <div class="rr" style="margin-top:10px"><span class="rk">Sem 3DS + fraude</span><span class="rv d">Lojista paga o chargeback</span></div>
+      <div class="rr"><span class="rk">Com 3DS + fraude</span><span class="rv o">Emissor absorve o chargeback</span></div>
+      <div class="rr"><span class="rk">O que é</span><span class="rv">Autenticação extra antes de finalizar compra</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ CHARGEBACK -->

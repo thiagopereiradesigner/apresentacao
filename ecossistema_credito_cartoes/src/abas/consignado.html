@@ -1,0 +1,170 @@
+<div id="panel-consignado" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Consignado</dt><dd>Empréstimo com parcela descontada direto na folha de pagamento ou benefício — menor risco relativo, taxa tipicamente mais baixa.</dd>
+      <dt>Consignado privado</dt><dd>Desconto na folha de empresa privada (CLT); averbação via RH/financeiro do empregador.</dd>
+      <dt>Consignado público (servidor)</dt><dd>Desconto na folha de órgão público (federal, estadual ou municipal); convênio e sistema do ente (ex.: SIAPE no federal).</dd>
+      <dt>Consignado INSS</dt><dd>Desconto no benefício previdenciário; averbação e margem via convênio Dataprev — não é folha de servidor.</dd>
+      <dt>Dataprev</dt><dd>Empresa pública que opera sistemas do INSS; concentra consulta de margem e averbação do consignado de benefício.</dd>
+      <dt>SIAPE</dt><dd>Sistema de administração de pessoal do serviço público federal; trilho típico do consignado de servidores da União.</dd>
+      <dt>Órgão pagador</dt><dd>Ente que paga salário ao servidor público e executa o desconto consignado na folha pública.</dd>
+      <dt>CCB</dt><dd>Cédula de Crédito Bancário — instrumento jurídico da operação (no mercado, às vezes chamada <strong>CCD</strong>). Só IF com licença de crédito emite.</dd>
+      <dt>Margem consignável</dt><dd>Percentual máximo do salário ou benefício que pode ser comprometido com descontos de empréstimos consignados.</dd>
+      <dt>Averbação</dt><dd>Registro do contrato na folha/benefício para autorizar o desconto mensal pelo empregador ou órgão pagador.</dd>
+      <dt>Originador</dt><dd>Banco ou SCD que analisa crédito, emite a cédula, desembolsa e recebe as parcelas — carrega risco regulatório.</dd>
+      <dt>Canal / IP</dt><dd>Fintech ou IP que distribui o produto e mantém UX; em geral não emite a cédula sozinha.</dd>
+      <dt>RH / Financeiro</dt><dd>Área do empregador que valida margem, averba o contrato e envia arquivo de descontos na folha.</dd>
+      <dt>CET</dt><dd>Custo Efetivo Total — juros + IOF + tarifas; obrigatório na contratação.</dd>
+      <dt>Servicing</dt><dd>Gestão mensal do contrato: recebimento de parcelas, baixa, inadimplência, portabilidade.</dd>
+      <dt>Cessão / FIDC</dt><dd>Originador vende parcelas futuras ao fundo para liberar caixa e financiar novas originações.</dd>
+      <dt>Securitizadora</dt><dd>Estrutura a cessão e compra direitos creditórios para o FIDC.</dd>
+      <dt>Administradora de FIDC</dt><dd>Opera o fundo perante a CVM — cotistas, relatórios, governança.</dd>
+      <dt>Gestora de margem</dt><dd>Sustenta cota júnior / subordinação que protege cotas sênior.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="btn btn-ghost !min-h-0 !px-0 !py-1 text-xs" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+
+  <div class="st" id="anchor-consignado-produto">O que é consignado e por que a taxa é baixa</div>
+  <p class="cred-prose">O <strong>consignado</strong> é crédito em que a parcela é <strong>descontada na fonte</strong> — antes ou no momento em que a renda chega ao trabalhador ou beneficiário. O risco de inadimplência é muito menor que no rotativo ou no pessoal sem garantia: quem empresta “enxerga” o pagamento todo mês. Por isso as taxas tendem a ficar na faixa mais baixa do varejo PF. Mas o produto exige <strong>originador licenciado</strong>, <strong>averbação</strong> e integração com o <strong>trilho certo</strong> — privado, público servidor ou INSS — não é só experiência no app.</p>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">O que NÃO é</div>
+    Consignado <strong>não é</strong> antecipação salarial (adiantamento do já devido) nem <strong>consórcio</strong> (poupança em grupo). Exige CCB e originador com licença de crédito.
+  </div>
+  <div class="note">Ver <strong>Economia do crédito</strong> para comparativo de taxas.</div>
+
+  <div class="st" id="anchor-consignado-trilhas">Três trilhas — privado, público servidor e INSS</div>
+  <p class="cred-prose">O desconto na fonte é o que une as modalidades — mas <strong>quem executa o desconto</strong> define a arquitetura. No <strong>privado</strong>, a empresa é parceira obrigatória. No <strong>público servidor</strong>, o órgão pagador e o convênio do ente mandam no fluxo. No <strong>INSS</strong>, a <strong>Dataprev</strong> concentra margem e averbação no benefício. Misturar as três trilhas na mesma integração técnica é erro comum de desenho de produto.</p>
+  <div class="g3" style="margin-bottom:14px">
+    <div class="tc"><div class="tag t-prod">Trilha 1</div><div class="tn">Consignado privado</div><div class="td">CLT em empresa privada. Desconto pelo <strong>empregador</strong> (RH/financeiro). Convênio com a empresa cliente.</div><div class="tv">Caso típico Ringgo / IP de folha</div></div>
+    <div class="tc"><div class="tag t-legal">Trilha 2</div><div class="tn">Consignado público (servidor)</div><div class="td">Servidor federal, estadual ou municipal. Desconto pelo <strong>órgão pagador</strong> — ex.: <strong>SIAPE</strong> no federal.</div><div class="tv">Convênio por ente · menos padronizado</div></div>
+    <div class="tc"><div class="tag t-ciclo">Trilha 3</div><div class="tn">Consignado INSS (benefício)</div><div class="td">Aposentado, pensionista etc. Desconto no <strong>benefício</strong> via <strong>Dataprev</strong> — não passa pelo RH da empresa.</div><div class="tv">Não é o mesmo que “público servidor”</div></div>
+  </div>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">O que NÃO é</div>
+    <strong>INSS ≠ servidor público.</strong> Benefício previdenciário (Dataprev) não é folha de órgão pagador (SIAPE/ente). São trilhas, convênios e riscos diferentes.
+  </div>
+  <div class="resp-matrix">
+    <table class="resp-table">
+      <thead><tr><th>Dimensão</th><th>Privado</th><th>Público (servidor)</th><th>INSS (benefício)</th></tr></thead>
+      <tbody>
+        <tr><td>Fonte da renda</td><td>Salário CLT</td><td>Vencimento de servidor</td><td>Benefício previdenciário</td></tr>
+        <tr><td>Quem desconta</td><td>Empregador</td><td>Órgão pagador</td><td>INSS (via Dataprev)</td></tr>
+        <tr><td>Onde averba</td><td>RH / folha da empresa</td><td>Sistema do ente (ex.: SIAPE)</td><td>Dataprev</td></tr>
+        <tr><td>Margem (didático)</td><td>Até 35% do líquido (privado)</td><td>Conforme convênio do ente</td><td>Regras INSS / Dataprev</td></tr>
+        <tr><td>Originador precisa</td><td>Licença + convênio empresa</td><td>+ habilitação no ente</td><td>+ habilitação Dataprev</td></tr>
+        <tr><td>Papel típico da IP</td><td>Canal + dados de folha</td><td>Menos comum sem convênio</td><td>Canal se parceiro autorizado</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note note-warn">Ordem de grandeza didática — margens, prazos e produtos no benefício INSS <strong>mudam com norma</strong> (CMN/BCB, convênios Dataprev, atos por ente). Conferir tabela e norma vigentes; valores aqui não substituem consulta regulatória.</div>
+
+  <div class="st" id="anchor-consignado-regras">Margem consignável e parcelas por trilha</div>
+  <div class="g3" style="margin-bottom:14px">
+    <div class="tc"><div class="tag t-prod">Privado</div><div class="tn">Margem — folha CLT</div><div class="td">Até <strong>35%</strong> do salário líquido para empréstimos consignados (teto macro CMN/BCB — <em>ordem de grandeza didática</em>). Outros descontos na folha reduzem o disponível.</div><div class="tv">RH valida antes da averbação</div></div>
+    <div class="tc"><div class="tag t-legal">Público</div><div class="tn">Margem — servidor</div><div class="td">Definida pelo <strong>convênio do ente</strong> (federal via SIAPE, estadual ou municipal com regras próprias).</div><div class="tv">Originador habilitado no órgão</div></div>
+    <div class="tc"><div class="tag t-ciclo">INSS</div><div class="tn">Margem — benefício</div><div class="td">Tetos e composição próprios no benefício (empréstimo vs. cartão consignado etc.); consulta e averbação na <strong>Dataprev</strong>.</div><div class="tv">Canal nacional padronizado</div></div>
+  </div>
+  <div class="sc" style="margin-bottom:14px">
+    <div class="sl">Prazo de parcelas (todas as trilhas)</div>
+    <div class="rr"><span class="rk">Faixa típica</span><span class="rv"><strong>6 a 96 meses</strong>, conforme política do originador, idade e tipo de vínculo</span></div>
+    <div class="rr"><span class="rk">CET</span><span class="rv o">Obrigatório na oferta — não comparar só pela taxa nominal</span></div>
+  </div>
+  <div class="resp-matrix">
+    <table class="resp-table">
+      <thead><tr><th>Dimensão</th><th>Consignado</th><th>Crédito pessoal</th><th>Rotativo cartão</th></tr></thead>
+      <tbody>
+        <tr><td>Garantia percebida</td><td>Desconto em folha</td><td>Score / renda</td><td>Limite pré-aprovado</td></tr>
+        <tr><td>Taxa típica (didática)</td><td>~1,5–3% a.m.</td><td>~3–8% a.m.</td><td>~15% a.m.</td></tr>
+        <tr><td>Fricção</td><td>Contratação + averbação</td><td>Contratação explícita</td><td>Automático após uso</td></tr>
+        <tr><td>Quem emite CCB</td><td>Banco / SCD / SEP</td><td>Banco / SCD / SEP</td><td>Emissor de cartão</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">Taxas acima são <strong>ordem de grandeza didática</strong> para comparar fricção e garantia — conferir tabela e CET vigentes.</div>
+
+  <div class="st" id="anchor-consignado-visivel">Fluxo visível — três trilhas em 5 passos</div>
+  <div class="sl" style="margin-bottom:8px">Trilha 1 — Consignado privado (empresa CLT)</div>
+  <div class="sc" style="margin-bottom:14px">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Pedido no app</div><div class="chain-desc">Simula valor, prazo e parcela; IP valida elegibilidade com a empresa.</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Aceite e assinatura</div><div class="chain-desc">Contrato + autorização de desconto em folha.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Análise do originador</div><div class="chain-desc">Score, margem disponível, contratos ativos.</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Averbação no empregador</div><div class="chain-desc">RH/financeiro registra o desconto autorizado.</div></div></div>
+      <div class="chain-item"><div class="chain-num">05</div><div><div class="chain-title">Liberação e desconto mensal</div><div class="chain-desc">Crédito na conta; parcelas descontadas na folha da empresa.</div></div></div>
+    </div>
+  </div>
+  <div class="sl" style="margin-bottom:8px">Trilha 2 — Consignado público (servidor)</div>
+  <div class="sc" style="margin-bottom:14px">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Pedido no canal autorizado</div><div class="chain-desc">Originador precisa estar habilitado no ente (federal, estado ou município).</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Consulta de margem no órgão</div><div class="chain-desc">Ex.: integração <strong>SIAPE</strong> no serviço federal; sistemas próprios nos demais entes.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Emissão da CCB</div><div class="chain-desc">Originador formaliza e desembolsa após análise.</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Averbação no sistema do ente</div><div class="chain-desc">Órgão pagador registra o desconto na folha pública.</div></div></div>
+      <div class="chain-item"><div class="chain-num">05</div><div><div class="chain-title">Desconto na folha do servidor</div><div class="chain-desc">Parcela repassada ao originador todo mês.</div></div></div>
+    </div>
+  </div>
+  <div class="sl" style="margin-bottom:8px">Trilha 3 — Consignado INSS (benefício)</div>
+  <div class="sc" style="margin-bottom:14px">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Pedido no app ou banco</div><div class="chain-desc">Canal de instituição habilitada no convênio Dataprev.</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Consulta de margem na Dataprev</div><div class="chain-desc">Sistema retorna quanto do benefício pode ser comprometido.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Emissão da CCB e averbação</div><div class="chain-desc">Originador emite e registra eletronicamente na Dataprev.</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Desconto no benefício</div><div class="chain-desc">INSS retém a parcela antes de creditar o benefício.</div></div></div>
+      <div class="chain-item"><div class="chain-num">05</div><div><div class="chain-title">Repasse ao originador</div><div class="chain-desc">Liquidação mensal; inadimplência é exceção (benefício suspenso etc.).</div></div></div>
+    </div>
+  </div>
+
+  <div class="st" id="anchor-consignado-backoffice">Debaixo dos panos — modelo privado (emissão à liquidação)</div>
+  <p class="cred-prose">A chain abaixo detalha o <strong>consignado privado</strong> (empresa CLT + RH). Nos passos <strong>04–07</strong>, as trilhas divergem: no <strong>público servidor</strong>, troque RH por <strong>órgão pagador / SIAPE</strong>; no <strong>INSS</strong>, troque por <strong>Dataprev e desconto no benefício</strong>. As etapas <strong>09–12</strong> (FIDC) são comuns quando o originador cede carteira.</p>
+  <div class="sc">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title" style="color:var(--purple)">IP envia proposta ao originador (API)</div><div class="chain-desc">Canal distribui; IF originadora responde perante o BCB.</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title" style="color:var(--blue)">Originador emite CCB</div><div class="chain-desc">Registro jurídico: valor, taxa, CET, prazo, credor.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title" style="color:var(--teal)">Desembolso</div><div class="chain-desc">Pix/TED para conta do trabalhador (IP ou conta indicada).</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title" style="color:var(--green)">Documentos ao RH / financeiro</div><div class="chain-desc">Averbação, termo de desconto, convênio conforme layout do empregador.</div></div></div>
+      <div class="chain-item"><div class="chain-num">05</div><div><div class="chain-title" style="color:var(--yellow)">RH confirma margem e averbação</div><div class="chain-desc">Bloqueia contratação acima do limite consignável.</div></div></div>
+      <div class="chain-item"><div class="chain-num">06</div><div><div class="chain-title" style="color:var(--orange)">Ciclo mensal — folha</div><div class="chain-desc">Financeiro envia arquivo de descontos ou integração automática.</div></div></div>
+      <div class="chain-item"><div class="chain-num">07</div><div><div class="chain-title" style="color:var(--blue)">Liquidação da parcela</div><div class="chain-desc">Valor descontado repassa ao originador.</div></div></div>
+      <div class="chain-item"><div class="chain-num">08</div><div><div class="chain-title" style="color:var(--red)">Baixa contábil e PDD</div><div class="chain-desc">Amortiza saldo; se desconto falhar, entra inadimplência e provisão.</div></div></div>
+      <div class="chain-item"><div class="chain-num">09</div><div><div class="chain-title" style="color:var(--purple)">(Opcional) Cessão ao FIDC</div><div class="chain-desc">Originador empacota carteira performada para funding.</div></div></div>
+      <div class="chain-item"><div class="chain-num">10</div><div><div class="chain-title" style="color:var(--blue)">Securitizadora estrutura cessão</div><div class="chain-desc">Compra direitos creditórios das parcelas.</div></div></div>
+      <div class="chain-item"><div class="chain-num">11</div><div><div class="chain-title" style="color:var(--teal)">Administradora de FIDC opera o fundo</div><div class="chain-desc">Cotistas, relatórios, governança CVM.</div></div></div>
+      <div class="chain-item"><div class="chain-num">12</div><div><div class="chain-title" style="color:var(--green)">Gestora de margem + cotas</div><div class="chain-desc">Subordinação protege sênior; caixa volta ao originador.</div></div></div>
+    </div>
+  </div>
+  <div class="note">Visão resumida do canal (4 passos) permanece em <strong>Infra Bancária</strong>. Papéis do FIDC em detalhe: <strong>FIDC &amp; Ações</strong>.</div>
+
+  <div class="st" id="anchor-consignado-players">Players do ecossistema</div>
+  <div class="g4" style="margin-bottom:14px">
+    <div class="tc"><div class="tag t-prod">Canal</div><div class="tn">IP / fintech</div><div class="td">UX, simulação, dados de folha, relacionamento com trabalhador e empregador.</div><div class="tv">Ringgo — distribui, não emite CCB sozinha</div></div>
+    <div class="tc"><div class="tag t-ciclo">Originador</div><div class="tn">SCD / banco</div><div class="td">Emite CCB, desembolsa, cobra parcelas, provisiona PDD, pode ceder ao FIDC.</div><div class="tv">Ex.: BMP como parceiro originador</div></div>
+    <div class="tc"><div class="tag t-legal">Empregador</div><div class="tn">RH / Financeiro</div><div class="td">Valida margem, averba, desconta na folha, envia conciliação mensal.</div><div class="tv">Sem RH, não há consignado privado</div></div>
+    <div class="tc"><div class="tag t-inv">Funding</div><div class="tn">FIDC e atores</div><div class="td">Securitizadora, administradora, gestora de margem, cotista sênior.</div><div class="tv">Libera caixa para nova originação</div></div>
+    <div class="tc"><div class="tag t-ciclo">INSS</div><div class="tn">Dataprev</div><div class="td">Consulta margem e averbação do consignado de benefício — trilha INSS.</div><div class="tv">Não confundir com RH privado</div></div>
+    <div class="tc"><div class="tag t-legal">Público</div><div class="tn">SIAPE / órgão pagador</div><div class="td">Trilho do consignado de servidor público federal (SIAPE) ou sistemas de entes estaduais/municipais.</div><div class="tv">Trilha público · convênio por ente</div></div>
+  </div>
+  <div class="resp-matrix">
+    <table class="resp-table">
+      <thead><tr><th>Papel</th><th>Emite CCB?</th><th>Averba folha?</th><th>Cede ao FIDC?</th><th>Fica com UX?</th></tr></thead>
+      <tbody>
+        <tr><td>IP sozinha</td><td>Não</td><td>Via parceiro / convênio</td><td>Não</td><td>Sim</td></tr>
+        <tr><td>SCD originador</td><td>Sim</td><td>Via integração (conforme trilha)</td><td>Sim</td><td>Opcional (white-label)</td></tr>
+        <tr><td>Empregador (RH)</td><td>Não</td><td>Sim (privado)</td><td>Não</td><td>Não</td></tr>
+        <tr><td>Órgão pagador / SIAPE</td><td>Não</td><td>Sim (servidor)</td><td>Não</td><td>Não</td></tr>
+        <tr><td>Dataprev</td><td>Não</td><td>Sim (INSS / benefício)</td><td>Não</td><td>Não</td></tr>
+        <tr><td>Securitizadora / FIDC</td><td>Não</td><td>Não</td><td>Compra carteira</td><td>Não</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cred-callout cc-g">
+    <div class="cc-t">Para o Ringgo / IP</div>
+    O caso <strong>Ringgo</strong> espelha sobretudo o <strong>consignado privado</strong>: IP distribui, originador emite CCB, <strong>RH do empregador cliente</strong> averba. <strong>INSS</strong> e <strong>servidor público</strong> são mercados adjacentes, mas exigem <strong>convênios e integrações distintas</strong> (Dataprev, SIAPE/ente) — não são extensão automática da mesma API de folha privada. Com <strong>ESD</strong> no horizonte, a trilha privada fica mais natural; não substitui Dataprev nem folha de servidor.
+  </div>
+  <div class="note">Conexões: <strong>Folha &amp; Pagamento</strong> (ERP → líquido → desconto), <strong>Economia do crédito</strong> (spread e taxa), <strong>Infra Bancária</strong> (parceiro e APIs), <strong>FIDC &amp; Ações</strong> (cessão e cotas), <strong>WACC &amp; EVA</strong> (PDD na carteira).</div>
+</div>
+
+<!-- ══════ CDI & CDB -->

@@ -1,0 +1,75 @@
+<div id="panel-sfn-brasil" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>BCB / CMN</dt><dd>Apex regulatório: normas, autorização e supervisão do SFN.</dd>
+      <dt>S1 / S2</dt><dd>Bancos de maior porte e exigência prudencial; acesso direto a trilhos centrais.</dd>
+      <dt>IP / SCD / ESD</dt><dd>Instituição de Pagamento, Sociedade de Crédito Direto, Emissor de Salário Digital — licenças diferentes, poderes diferentes.</dd>
+      <dt>BaaS / TaaS</dt><dd>Licença+API vs. apenas tecnologia; confundir os dois quebra o desenho de risco.</dd>
+      <dt>Credenciadora</dt><dd>Adquirente que habilita lojista; MDR e liquidação D+n.</dd>
+      <dt>CCB</dt><dd>Cédula que formaliza crédito (ex.: consignado); exige originador licenciado.</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="btn btn-ghost !min-h-0 !px-0 !py-1 text-xs" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+  <div class="st" id="anchor-mapa-sfn">Camadas do sistema — leitura de cima para baixo</div>
+  <p class="cred-prose">Cada card resume um papel no SFN brasileiro. <strong>Clique</strong> para ver responsabilidades, exemplos e uma coluna “exemplo ilustrativo” para o caso de uma <strong>IP de folha/benefícios</strong> (cartão corporativo, consignado parceiro, Pix). Valores e nomes de mercado são didáticos.</p>
+  <div class="sfn-map-wrap">
+    <div class="sfn-map-main">
+      <div class="sfn-tier-label" style="color:var(--red)"><span>Camada 1 — Reguladores</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('bcb',this)"><span class="sfn-card-badge sb-r">APEX</span><div class="sfn-card-ico" aria-hidden="true">🏛️</div><div class="sfn-card-title">Banco Central</div><div class="sfn-card-sub">BCB · autoriza e fiscaliza</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('cmn',this)"><span class="sfn-card-badge sb-r">NORMA</span><div class="sfn-card-ico" aria-hidden="true">⚖️</div><div class="sfn-card-title">CMN</div><div class="sfn-card-sub">Diretrizes macro</div></button>
+      </div>
+      <div class="sfn-conn">regula e autoriza as camadas abaixo</div>
+
+      <div class="sfn-tier-label" style="color:var(--blue)"><span>Camada 2 — IF plenas</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('banco_s1_s2',this)"><span class="sfn-card-badge sb-b">S1/S2</span><div class="sfn-card-ico" aria-hidden="true">🏦</div><div class="sfn-card-title">Banco múltiplo</div><div class="sfn-card-sub">Captação + crédito + SPB</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('banco_emissao',this)"><span class="sfn-card-badge sb-b">EMISSOR</span><div class="sfn-card-ico" aria-hidden="true">💳</div><div class="sfn-card-title">Emissor de cartão</div><div class="sfn-card-sub">Membro de bandeira</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('idic',this)"><span class="sfn-card-badge sb-b">FGC</span><div class="sfn-card-ico" aria-hidden="true">🛡️</div><div class="sfn-card-title">FGC / proteção</div><div class="sfn-card-sub">Depósitos vs. conta IP</div></button>
+      </div>
+      <div class="sfn-conn">infraestrutura habilitante para IPs e SCDs</div>
+
+      <div class="sfn-tier-label" style="color:var(--teal)"><span>Camada 3 — IP &amp; SCD</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('ip',this)"><span class="sfn-card-badge sb-c">IP</span><div class="sfn-card-ico" aria-hidden="true">⚡</div><div class="sfn-card-title">Instituição de Pagamento</div><div class="sfn-card-sub">Ex.: IP de folha · você está aqui</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('sfd',this)"><span class="sfn-card-badge sb-c">SCD</span><div class="sfn-card-ico" aria-hidden="true">🤝</div><div class="sfn-card-title">Sociedade de Crédito Direto</div><div class="sfn-card-sub">Crédito sem depósito</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('esd',this)"><span class="sfn-card-badge sb-c">ESD</span><div class="sfn-card-ico" aria-hidden="true">🚀</div><div class="sfn-card-title">Emissor Salário Digital</div><div class="sfn-card-sub">Folha direto na conta</div></button>
+      </div>
+      <div class="sfn-conn">habilitam produtos via contrato e API</div>
+
+      <div class="sfn-tier-label" style="color:var(--green)"><span>Camada 4 — Infra &amp; distribuição</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('baas',this)"><span class="sfn-card-badge sb-g">BaaS</span><div class="sfn-card-ico" aria-hidden="true">🔌</div><div class="sfn-card-title">Banking as a Service</div><div class="sfn-card-sub">Licença + API</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('correspondente',this)"><span class="sfn-card-badge sb-g">CORR</span><div class="sfn-card-ico" aria-hidden="true">🏪</div><div class="sfn-card-title">Correspondente</div><div class="sfn-card-sub">Distribui para IF</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('boleto',this)"><span class="sfn-card-badge sb-g">BOLETO</span><div class="sfn-card-ico" aria-hidden="true">📄</div><div class="sfn-card-title">Boleto registrado</div><div class="sfn-card-sub">CIP / câmaras</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('taas',this)"><span class="sfn-card-badge sb-g">TaaS</span><div class="sfn-card-ico" aria-hidden="true">🛠️</div><div class="sfn-card-title">Core / TaaS</div><div class="sfn-card-sub">Tech sem licença IF</div></button>
+      </div>
+      <div class="sfn-conn">chega ao usuário final via app e parceiros</div>
+
+      <div class="sfn-tier-label" style="color:var(--yellow)"><span>Camada 5 — Produtos</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('consignado',this)"><span class="sfn-card-badge sb-y">CRÉD</span><div class="sfn-card-ico" aria-hidden="true">💰</div><div class="sfn-card-title">Consignado / CCB</div><div class="sfn-card-sub">Desconto em folha</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('antecipacao',this)"><span class="sfn-card-badge sb-y">ANTEC</span><div class="sfn-card-ico" aria-hidden="true">⏩</div><div class="sfn-card-title">Antecipação salarial</div><div class="sfn-card-sub">Adiantamento devido</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('cartao_corp',this)"><span class="sfn-card-badge sb-y">CARTÃO</span><div class="sfn-card-ico" aria-hidden="true">🪙</div><div class="sfn-card-title">Cartão corporativo</div><div class="sfn-card-sub">Program manager</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('pix',this)"><span class="sfn-card-badge sb-y">PIX</span><div class="sfn-card-ico" aria-hidden="true">⚡</div><div class="sfn-card-title">Pix / TED</div><div class="sfn-card-sub">Trilhos BCB</div></button>
+      </div>
+
+      <div class="sfn-tier-label" style="color:var(--purple)"><span>Paralelo — rede de cartões</span><span class="sfn-tier-line"></span></div>
+      <div class="sfn-cards-row">
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('bandeiras',this)"><span class="sfn-card-badge sb-p">REDE</span><div class="sfn-card-ico" aria-hidden="true">🌐</div><div class="sfn-card-title">Bandeiras</div><div class="sfn-card-sub">Visa · MC · Elo</div></button>
+        <button type="button" class="sfn-card" onclick="sfnMapShowDetail('credenciadora',this)"><span class="sfn-card-badge sb-p">ADQ</span><div class="sfn-card-ico" aria-hidden="true">🖥️</div><div class="sfn-card-title">Credenciadora</div><div class="sfn-card-sub">Lojista · MDR</div></button>
+      </div>
+    </div>
+    <div class="sfn-map-side">
+      <div class="sfn-side-hint" id="sfn-map-hint"><span aria-hidden="true">🗺️</span>Clique em um card à esquerda para ver detalhes, tags e o encaixe com uma IP de folha/benefícios (exemplo ilustrativo).</div>
+      <div id="sfn-map-detail" style="display:none" class="sfn-map-detail-inner"></div>
+    </div>
+  </div>
+  <div class="note">Narrativa integrada: no modelo de <strong>quatro partes</strong> (portador, emissor, bandeira, adquirente), o emissor é quem concentra risco de crédito e interchange; a credenciadora serve o lojista. Ver aba <strong>Ecossistema</strong> para o fluxo da compra e <strong>Taxas &amp; MDR</strong> para a conta do lojista.</div>
+  <div class="note"><strong>BaaS vs. TaaS:</strong> BaaS oferece licença + tecnologia; TaaS vende sistema para quem já tem (ou busca) licença. Provedores como Celcoin podem operar nos dois modos conforme o cliente — o ponto é saber quem carrega o risco regulatório em cada contrato.</div>
+</div>
+
+<!-- ══════ GLOSSÁRIO -->

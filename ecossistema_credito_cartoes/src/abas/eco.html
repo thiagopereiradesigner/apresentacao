@@ -1,0 +1,107 @@
+<div id="panel-eco" class="panel anim">
+  <details class="panel-terms">
+    <summary class="pt-summary"><span class="pt-chevron" aria-hidden="true">&#9654;</span><span class="pt-head">Termos nesta seção</span></summary>
+    <div class="pt-inner">
+    <dl class="pt-dl">
+      <dt>Portador</dt><dd>Cliente (PF ou PJ) que usa o cartão e paga a fatura ao emissor (ou gasta saldo no pré-pago).</dd>
+      <dt>Emissor</dt><dd>Instituição que concede o cartão ao portador, define limite/saldo e recebe interchange (e juros, se crédito).</dd>
+      <dt>Bandeira</dt><dd>Rede (Visa, Mastercard, Elo…) que roteia autorização, define regras e cobra scheme fee.</dd>
+      <dt>Adquirente</dt><dd>Empresa que equipa o lojista (POS) e liquida; retém parte do MDR após IC e scheme fee.</dd>
+      <dt>IC / MDR / Scheme fee</dt><dd>IC vai ao emissor; MDR é a taxa total do lojista; scheme fee é a parcela da bandeira (em geral dos dois lados).</dd>
+      <dt>Pré-pago / Pós-pago</dt><dd>Pré-pago gasta saldo carregado; pós-pago (crédito) usa agora e paga depois na fatura.</dd>
+      <dt>Débito / Crédito / Crébito</dt><dd>Débito sai da conta; crédito vai à fatura; crébito (Elo) combina os dois na mesma compra.</dd>
+      <dt>Cartão de benefício</dt><dd>Instrumento de uso restrito (alimentação, refeição, frota…) — rede semi-fechada, não open loop pleno.</dd>
+      <dt>MCC</dt><dd>Código de 4 dígitos da rede de cartões que classifica o estabelecimento no POS.</dd>
+      <dt>CNAE</dt><dd>Classificação fiscal da empresa na Receita Federal — distinto do MCC; costuma orientar o mapeamento de aceite.</dd>
+      <dt>PAT</dt><dd>Programa de Alimentação do Trabalhador — base regulatória clássica de vouchers de alimentação/refeição.</dd>
+      <dt>D+1 / D+30</dt><dd>Dias úteis até o lojista receber (débito costuma ser mais rápido que crédito).</dd>
+    </dl>
+    <p class="pt-more"><button type="button" class="btn btn-ghost !min-h-0 !px-0 !py-1 text-xs" onclick="document.getElementById('tab-glossario').click()">Abrir glossário completo</button></p>
+    </div>
+  </details>
+  <div class="st" id="anchor-eco-4partes">Os 4 participantes do modelo de 4 partes</div>
+  <div class="g4" style="margin-bottom:20px">
+    <div class="pc" style="--ac:var(--purple)"><div class="pi">👤</div><div class="pn" style="color:var(--purple)">Portador</div><div class="pe">Cliente final · PF ou PJ</div><div class="pg">Usa o cartão, paga fatura, acumula pontos</div></div>
+    <div class="pc" style="--ac:var(--blue)"><div class="pi">🏦</div><div class="pn" style="color:var(--blue)">Emissor</div><div class="pe">Nubank · Itaú · Ringgo<br>C6 · Inter · XP</div><div class="pg">Ganha: IC + Juros rotativos + Anuidade + Float</div></div>
+    <div class="pc" style="--ac:var(--yellow)"><div class="pi">🏷️</div><div class="pn" style="color:var(--yellow)">Bandeira</div><div class="pe">Visa · Mastercard · Elo<br>Amex · Hipercard</div><div class="pg">Ganha: Scheme fee dos dois lados</div></div>
+    <div class="pc" style="--ac:var(--green)"><div class="pi">📟</div><div class="pn" style="color:var(--green)">Adquirente</div><div class="pe">Cielo · Stone · PagSeguro<br>Rede · Getnet · SumUp</div><div class="pg">Ganha: MDR − IC − Scheme fee − Operacional</div></div>
+  </div>
+  <div class="st">Fluxo de uma compra em tempo real</div>
+  <div class="txf">
+    <div class="txs"><div class="txn">01</div><div class="txt">Captura</div><div class="txd">Portador passa o cartão na maquininha (POS)</div></div>
+    <div class="txs"><div class="txn">02</div><div class="txt">Roteamento</div><div class="txd">Adquirente envia para a rede da bandeira</div></div>
+    <div class="txs"><div class="txn">03</div><div class="txt">Autorização</div><div class="txd">Emissor verifica limite, saldo e risco</div></div>
+    <div class="txs"><div class="txn">04</div><div class="txt">Resposta</div><div class="txd">Bandeira devolve ao adquirente</div><div class="txtime">⚡ ~1 segundo</div></div>
+    <div class="txs"><div class="txn">05</div><div class="txt">Liquidação</div><div class="txd">Lojista recebe D+1 (débito) ou D+30 (crédito)</div></div>
+  </div>
+
+  <div class="st" id="anchor-bandeira-emissor">Bandeira × emissor — quem cobra quem e onde está o lucro</div>
+  <p class="cred-prose">A <strong>bandeira</strong> (Visa, Mastercard, Elo) não “vende o cartão” ao portador: ela opera a <strong>rede</strong>, as regras de autorização e a marca. O <strong>emissor</strong> é quem tem o relacionamento com o portador (limite, fatura, saldo). No meio, o <strong>adquirente</strong> conecta o lojista. O lucro de cada um nasce de taxas diferentes — e misturar scheme fee com interchange é o erro didático mais comum.</p>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">O que NÃO é</div>
+    <strong>Bandeira ≠ emissor.</strong> Scheme fee (bandeira) ≠ interchange (emissor). MDR é a taxa <em>do lojista</em>, que depois se parte entre os três.
+  </div>
+  <div class="resp-matrix" style="margin-bottom:14px">
+    <table class="resp-table">
+      <thead><tr><th>Quem</th><th>Cobra / recebe</th><th>Fonte típica de lucro</th><th>Risco principal</th></tr></thead>
+      <tbody>
+        <tr><td>Bandeira</td><td>Scheme fee (emissor e/ou adquirente)</td><td>Volume na rede + marca + serviços</td><td>Reputação, compliance da rede</td></tr>
+        <tr><td>Emissor</td><td>Interchange (fatia do MDR)</td><td>IC + anuidade + float + juros (crédito)</td><td>Inadimplência do portador (pós-pago)</td></tr>
+        <tr><td>Adquirente</td><td>MDR − IC − scheme − custo</td><td>Margem de captura + antecipação de recebíveis</td><td>Chargeback, fraude, preço comercial</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="g2" style="margin-bottom:14px">
+    <div class="tc"><div class="tag t-taxa">Bandeira</div><div class="tn">Scheme fee</div><div class="td">Tarifa da rede, em geral nos dois lados (issuing e acquiring). Ordem de grandeza pequena % ou fixo — escala no volume.</div><div class="tv">Visa · Mastercard · Elo</div></div>
+    <div class="tc"><div class="tag t-ciclo">Emissor</div><div class="tn">Interchange (IC)</div><div class="td">Fatia do MDR que remunera quem autoriza e carrega o portador. Sobe com tier e modalidade (crédito &gt; débito).</div><div class="tv">Ver aba Tiers e Taxas &amp; MDR</div></div>
+  </div>
+  <div class="cred-callout cc-g">
+    <div class="cc-t">Para o Ringgo / IP</div>
+    No cartão corporativo ou de benefícios, o Ringgo costuma atuar como <strong>program manager</strong> (UX, regras, app). A <strong>bandeira</strong> e o <strong>BIN sponsor</strong> (banco emissor) carregam a licença de emissão. Sem esse trio claro, o desenho de produto mistura “marca do app” com “risco de crédito”.
+  </div>
+
+  <div class="st" id="anchor-modalidades-cartao">Modalidades — débito, crédito, crébito, pré-pago e pós-pago</div>
+  <p class="cred-prose">Antes de falar de benefícios, fixe <strong>quando o dinheiro sai</strong> e <strong>quem assume risco</strong>. No varejo brasileiro, <strong>pós-pago</strong> quase sempre significa cartão de <strong>crédito</strong> (usa agora, paga na fatura). <strong>Pré-pago</strong> gasta saldo já carregado — encaixa bem na licença de IP.</p>
+  <div class="resp-matrix" style="margin-bottom:14px">
+    <table class="resp-table">
+      <thead><tr><th>Modalidade</th><th>Quando sai o $</th><th>Risco típico</th><th>Receita típica do emissor</th><th>Nota BR</th></tr></thead>
+      <tbody>
+        <tr><td>Débito</td><td>Conta agora</td><td>Baixo (saldo)</td><td>IC menor</td><td>Liquidação mais rápida (ex.: D+1)</td></tr>
+        <tr><td>Crédito à vista</td><td>Fatura (~30d)</td><td>Emissor (portador)</td><td>IC + float</td><td>MDR maior que débito</td></tr>
+        <tr><td>Crédito parcelado</td><td>Fatura / parcelas</td><td>Emissor + float longo</td><td>IC + float</td><td>MDR ainda maior; lojista pode antecipar</td></tr>
+        <tr><td>Crébito</td><td>Parte conta + parte fatura</td><td>Misto</td><td>IC duplo</td><td>Elo — híbrido na mesma compra</td></tr>
+        <tr><td>Pré-pago</td><td>Saldo carregado</td><td>Baixo</td><td>IC / float curto</td><td>Cabe na IP em muitos desenhos</td></tr>
+        <tr><td>Pós-pago</td><td>Depois do uso</td><td>Como crédito</td><td>Como crédito</td><td>No varejo = crédito; ≠ pré-pago</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">Detalhe de preço do lojista: <strong>Taxas &amp; MDR</strong>. Crébito em fluxo: <strong>Split &amp; Crébito</strong>. Licença IP × crédito: <strong>Economia do crédito</strong>.</div>
+
+  <div class="st" id="anchor-beneficios">Cartões de benefícios — introdução (rede semi-fechada)</div>
+  <p class="cred-prose">Cartão de <strong>benefício</strong> (alimentação, refeição, frota, cultura…) não é o mesmo produto que um Visa/Mastercard “open loop” de livre uso. O aceite é <strong>restrito</strong> a estabelecimentos elegíveis — em geral filtrados por <strong>MCC</strong> (e políticas do emissor/arranjos). A base clássica no Brasil passa pelo <strong>PAT</strong> (alimentação/refeição); frota e outros benefícios seguem lógica parecida de <strong>uso dirigido</strong>.</p>
+  <div class="cred-callout cc-y">
+    <div class="cc-t">O que NÃO é</div>
+    Benefício <strong>não é</strong> crédito consignado nem cartão de crédito open loop. É saldo ou limite com <strong>destino de gasto</strong> — e o controle vive no MCC/aceite, não só no app.
+  </div>
+  <div class="g4" style="margin-bottom:14px">
+    <div class="vc"><div class="vi">🍽️</div><div class="vn" style="color:var(--green)">Alimentação</div><div class="vd">Supermercados / atacado. PAT. MCC típico 5411.</div></div>
+    <div class="vc"><div class="vi">🥘</div><div class="vn" style="color:var(--orange)">Refeição</div><div class="vd">Restaurantes. PAT. MCC típico 5812.</div></div>
+    <div class="vc"><div class="vi">⛽</div><div class="vn" style="color:var(--yellow)">Combustível / frota</div><div class="vd">Postos. MCC 5541 e afins. Controle de frota.</div></div>
+    <div class="vc"><div class="vi">💊</div><div class="vn" style="color:var(--blue)">Outros</div><div class="vd">Farmácia, cultura, mobilidade — regras por produto.</div></div>
+  </div>
+  <div class="sc" style="margin-bottom:14px">
+    <div class="chain">
+      <div class="chain-item"><div class="chain-num">01</div><div><div class="chain-title">Empresa contrata o benefício</div><div class="chain-desc">RH/procurement define modalidade e valor por colaborador.</div></div></div>
+      <div class="chain-item"><div class="chain-num">02</div><div><div class="chain-title">Emissor / program manager carrega o saldo</div><div class="chain-desc">App Ringgo + regras de uso; BIN/arranjos conforme o desenho.</div></div></div>
+      <div class="chain-item"><div class="chain-num">03</div><div><div class="chain-title">Colaborador gasta no MCC permitido</div><div class="chain-desc">POS autoriza só se estabelecimento estiver elegível.</div></div></div>
+      <div class="chain-item"><div class="chain-num">04</div><div><div class="chain-title">Liquidação e conciliação</div><div class="chain-desc">Rede/credenciadora liquidam; empresa vê consumo e saldo.</div></div></div>
+    </div>
+  </div>
+  <div class="cred-callout cc-g">
+    <div class="cc-t">Para o Ringgo</div>
+    Folha + benefícios + cartão formam o mesmo ecossistema de relacionamento: frequência de uso, dados de consumo e LTV. O próximo passo técnico é ligar <strong>MCC</strong> (rede) ao <strong>CNAE</strong> (cadastro do lojista) — ver aba <strong>Tiers</strong>.
+  </div>
+  <div class="note">Ver também: <strong>SFN &amp; Licenças</strong> (quem pode emitir), <strong>Folha &amp; Pagamento</strong> (ciclo mensal), <strong>Infra Bancária</strong> (BIN sponsor / program manager), <strong>Taxas &amp; MDR</strong> (preço no open loop).</div>
+</div>
+
+<!-- ══════ FOLHA & PAGAMENTO -->
