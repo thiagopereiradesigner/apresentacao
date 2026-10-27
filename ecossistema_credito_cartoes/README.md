@@ -1,45 +1,61 @@
 # Ecossistema de cartões & crédito
 
-**Versão do artefato:** v8.7 (ver badge no `index.html`).  
-**Fio narrativo:** IP fictícia **Ringgo** (folha, benefícios, cartão e crédito via parceiros).
+**Versão:** v9.0.0  
+**Fio narrativo:** IP fictícia **Ringgo** (folha, benefícios, cartão e crédito via parceiros). Não usar Onnibank.
 
 ## O que abrir
 
-- **Página principal (bíblia de estudo, HTML completo):** [`index.html`](index.html)
-- **Atalhos legados:** [`ecossistema-cartoes.html`](ecossistema-cartoes.html) e [`mapa-sistema-financeiro.html`](mapa-sistema-financeiro.html) redirecionam para `index.html`.
+- A página que você abre hoje continua sendo o [`index.html`](index.html) da raiz (v8.7), até a troca ser aprovada.
+- A versão gerada, com trilha, busca e fórmulas, é [`dist/index.html`](dist/index.html). Ela abre offline, por duplo clique.
+- [`ecossistema-cartoes.html`](ecossistema-cartoes.html) e [`mapa-sistema-financeiro.html`](mapa-sistema-financeiro.html) redirecionam para o `index.html` da raiz.
 
-## Stack (resumo)
+## Como rodar o build
 
-- HTML estático único, CSS inline + **Tailwind CDN** (`preflight` desligado; tema escuro por `data-theme`).
-- **Roboto** (Google Fonts). **Modo claro:** paleta e superfícies inspiradas em [Material Design 3](https://m3.material.io/) (bloco `#theme-m3-light-roboto` após o DS). **Modo escuro:** tokens **Ringgo** via ponte abaixo.
-- Sem app React; não há shadcn/ui instalado como dependência.
+Na raiz do projeto:
 
-## Design System (tokens Ringgo)
+```bash
+npm install
+npm run build
+```
 
-- [`assets/ds/ds-demo-base.css`](assets/ds/ds-demo-base.css) — cópia versionada dos tokens (evita caminhos fora do repo).
-- [`assets/ds/ds-ringgo-bridge.css`](assets/ds/ds-ringgo-bridge.css) — ponte das variáveis semânticas do mapa (`--bg`, `--accent`, …) para `--ds-*`.
+O comando gera `dist/index.html`. Não edite esse arquivo à mão. A fonte fica em `src/`, `data/` e `build/`.
 
-O **tema claro** aplica cores M3 **por cima** da ponte (último `<style>` no `<head>`), para não depender do verde Ringgo na leitura diurna. O **tema escuro** segue a ponte como antes.
+## Como adicionar uma aula
 
-Se atualizar o DS noutro projeto, substitua `ds-demo-base.css` e confira se os nomes dos tokens batem com o bridge; depois revise o bloco M3 claro se algum token compartilhado mudar de significado.
+1. Crie o arquivo em `src/aulas/mMM/aulaNN.html` se a aula precisar de um trecho próprio.
+2. Registre a aula em `data/curriculo.json`: número, título, módulo, status (`dada` ou `a seguir`) e `abas_relacionadas`.
+3. Se a aula tiver fórmula, preencha `formula.tex`, `formula.linear` e `formula.leitura`. Sem `linear` ou `leitura`, o build para.
+4. Rode `npm run build`.
 
-## Pasta `fontes/`
+O nome na tela é Ringgo. Número que não estiver no material fica `[a validar]`. Afirmação regulatória leva "Validar com o jurídico".
 
-HTML usados como **referência histórica** após integração em `index.html`. **Não são a fonte da verdade** — para estudar, use sempre a raiz. A nomenclatura canônica (SCD, CCB, Ringgo) está no `index.html`.
+## Estrutura
 
-- `fontes/como-banco-lucra-credito.html`
-- `fontes/ecosistema-bancario-narrativo.html`
-- `fontes/ecossistema-bancario-br.html`
+- `src/shell.html` — cabeçalho, chips, abas e busca
+- `src/abas/` — os 24 painéis
+- `src/scripts/` — navegação, busca, tema, trilha e componentes
+- `src/styles/` — CSS da página, tema claro e componentes
+- `data/curriculo.json` — módulos e aulas
+- `data/glossario.json` — 135 fichas
+- `data/ancoras.json` — ids de seção
+- `build/build.mjs` — gera o `dist`
+- `assets/ds/` — tokens do design system
+- `baseline/` e `_archive/` — cópia da v8.7, sem edição
+- `tests/formulas-aula08.html` — F1, F2 e F3 da Aula 08
+- `fontes/` — referência histórica, não é a fonte da verdade
+
+## Stack
+
+- HTML único gerado, sem CDN.
+- Tailwind CSS 3.4.17 compilado, com preflight desligado.
+- Roboto embutida.
+- Tema escuro: tokens Ringgo. Tema claro: Material 3 por cima do design system.
+- Fórmula em MathML gerado no build com Temml 0.14.0. O Temml não vai para a página.
+
+O piloto da Aula 08 no Safari/iOS ainda não foi feito. Enquanto isso, o renderizador continua o Temml. O registro está em `docs/piloto-aula08.md`.
 
 ## Documentação
 
-- [`PRD-ecossistema-cartoes.md`](PRD-ecossistema-cartoes.md) — visão de produto, escopo por seção, glossário (~135 termos), stack, UX e acessibilidade.
-
-## Destaques de conteúdo (v8.7)
-
-- Vocabulário canônico: **SCD** (alias SFD), **CCB** (alias CCD); fio **Ringgo**.
-- Aba **Folha & Pagamento** enriquecida: quem calcula/declara/paga; arquivo vs ERP; FGTS/guias ≠ líquido; sem ERP (contador); Dataprev só no INSS; fiscalização vs certeza em tempo real.
-- Aba **Consignado** com três trilhas (privado, público servidor, INSS).
-- **Ecossistema:** bandeira × emissor, modalidades e benefícios; **Tiers** MCC × CNAE.
-- **Infra:** bolsão, transitória, caução, escrow.
-- Glossário ~135 termos.
+- [`PRD-ecossistema-cartoes.md`](PRD-ecossistema-cartoes.md)
+- [`docs/tailwind-versao.md`](docs/tailwind-versao.md)
+- [`docs/build-report.md`](docs/build-report.md)

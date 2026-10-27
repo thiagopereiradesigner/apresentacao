@@ -1,0 +1,65 @@
+
+
+<div id="route-live" class="visually-hidden" role="status" aria-live="polite"></div>
+<div class="theme-bar rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-3 shadow-none dark:border-white/[0.08] dark:shadow-bento-dark">
+  <span class="theme-bar-label" id="theme-label">Aparência</span>
+  <div class="nav-search-wrap">
+    <span class="nav-search-ico" aria-hidden="true">⌕</span>
+    <label class="visually-hidden" for="nav-search-input">Buscar seções e termos no material</label>
+    <input type="search" id="nav-search-input" class="nav-search-input !rounded-xl !min-h-[44px]" placeholder="Buscar seção ou termo…" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-controls="nav-search-dropdown" aria-expanded="false" role="combobox">
+    <div id="nav-search-dropdown" class="nav-search-dropdown" role="listbox" aria-label="Resultados da busca" hidden></div>
+  </div>
+  <div class="theme-seg" role="group" aria-labelledby="theme-label">
+    <button type="button" id="btn-theme-light" aria-pressed="false">Claro</button>
+    <button type="button" id="btn-theme-dark" aria-pressed="true">Escuro</button>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-label">Material único de referência</div>
+  <h1>Ecossistema de cartões <span class="h1-muted text-primary opacity-95">&amp; crédito</span></h1>
+  <p>SFN · Sistema Monetário · Inflação · Câmbio · Crédito · Pagamentos · Risco · Mercado de Capitais — com trilha guiada e glossário unificado.</p>
+  <span class="version rounded-full border-primary/40 px-4 py-1.5 shadow-none">v9.0.0</span>
+</div>
+
+<div class="menu-story" role="group" aria-label="Filtrar seções do menu">
+  <button type="button" class="menu-chip menu-chip--all" data-filter="all" aria-pressed="true">Todos</button>
+  <button type="button" class="menu-chip menu-chip--fund" data-filter="fund" aria-pressed="false">Fundamentos</button>
+  <button type="button" class="menu-chip menu-chip--cred" data-filter="cred" aria-pressed="false">Crédito</button>
+  <button type="button" class="menu-chip menu-chip--pay" data-filter="pay" aria-pressed="false">Pagamentos</button>
+  <button type="button" class="menu-chip menu-chip--risk" data-filter="risk" aria-pressed="false">Risco</button>
+  <button type="button" class="menu-chip menu-chip--mkt" data-filter="mkt" aria-pressed="false">Mercado</button>
+</div>
+
+<div class="tabs rounded-2xl border border-[var(--border)] p-1.5 shadow-none dark:border-white/[0.08]" role="tablist" aria-label="Trilha narrativa">
+  <button type="button" class="tab tab--fund active" data-cat="fund" data-panel="trilha-guiada" onclick="showPanel('trilha-guiada',this)"><span class="tab-badge">Fund</span>Trilha guiada</button>
+  <button type="button" class="tab tab--fund" data-cat="fund" data-panel="sistema-monetario" onclick="showPanel('sistema-monetario',this)"><span class="tab-badge">Fund</span>Sistema Monetário</button>
+  <button type="button" class="tab tab--fund" data-cat="fund" data-panel="inflacao-juros" onclick="showPanel('inflacao-juros',this)"><span class="tab-badge">Fund</span>Inflação & Juros</button>
+  <button type="button" class="tab tab--fund" data-cat="fund" data-panel="sistema-global" onclick="showPanel('sistema-global',this)"><span class="tab-badge">Fund</span>Sistema Global</button>
+  <button type="button" class="tab tab--fund" data-cat="fund" data-panel="sfn-licencas" onclick="showPanel('sfn-licencas',this)"><span class="tab-badge">Fund</span>SFN & Licenças</button>
+  <button type="button" class="tab tab--fund" data-cat="fund" data-panel="sfn-brasil" onclick="showPanel('sfn-brasil',this)"><span class="tab-badge">Fund</span>Mapa SFN (BR)</button>
+  <span class="tab-sep" aria-hidden="true"></span>
+  <button type="button" class="tab tab--cred" data-cat="cred" data-panel="cdi" onclick="showPanel('cdi',this)"><span class="tab-badge">Cred</span>CDI & CDB</button>
+  <button type="button" class="tab tab--cred" data-cat="cred" data-panel="titulos-credito" onclick="showPanel('titulos-credito',this)"><span class="tab-badge">Cred</span>Títulos & Crédito</button>
+  <button type="button" class="tab tab--cred" data-cat="cred" data-panel="encargos" onclick="showPanel('encargos',this)"><span class="tab-badge">Cred</span>Encargos</button>
+  <button type="button" class="tab tab--cred" data-cat="cred" data-panel="economia-credito" onclick="showPanel('economia-credito',this)"><span class="tab-badge">Cred</span>Economia do crédito</button>
+  <button type="button" class="tab tab--cred" data-cat="cred" data-panel="consignado" onclick="showPanel('consignado',this)"><span class="tab-badge">Cred</span>Consignado</button>
+  <span class="tab-sep" aria-hidden="true"></span>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="eco" onclick="showPanel('eco',this)"><span class="tab-badge">Pay</span>Ecossistema</button>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="folha" onclick="showPanel('folha',this)"><span class="tab-badge">Pay</span>Folha & Pagamento</button>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="infra-bancaria" onclick="showPanel('infra-bancaria',this)"><span class="tab-badge">Pay</span>Infra Bancária</button>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="taxas" onclick="showPanel('taxas',this)"><span class="tab-badge">Pay</span>Taxas & MDR</button>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="tiers" onclick="showPanel('tiers',this)"><span class="tab-badge">Pay</span>Tiers</button>
+  <button type="button" class="tab tab--pay" data-cat="pay" data-panel="split" onclick="showPanel('split',this)"><span class="tab-badge">Pay</span>Split & Crébito</button>
+  <span class="tab-sep" aria-hidden="true"></span>
+  <button type="button" class="tab tab--risk" data-cat="risk" data-panel="pci" onclick="showPanel('pci',this)"><span class="tab-badge">Risco</span>PCI-DSS</button>
+  <button type="button" class="tab tab--risk" data-cat="risk" data-panel="chargeback" onclick="showPanel('chargeback',this)"><span class="tab-badge">Risco</span>Chargeback</button>
+  <button type="button" class="tab tab--risk" data-cat="risk" data-panel="rj" onclick="showPanel('rj',this)"><span class="tab-badge">Risco</span>Rec. Judicial</button>
+  <span class="tab-sep" aria-hidden="true"></span>
+  <button type="button" class="tab tab--mkt" data-cat="mkt" data-panel="eva" onclick="showPanel('eva',this)"><span class="tab-badge">Mkt</span>WACC & EVA</button>
+  <button type="button" class="tab tab--mkt" data-cat="mkt" data-panel="mercado" onclick="showPanel('mercado',this)"><span class="tab-badge">Mkt</span>FIDC & Ações</button>
+  <button type="button" class="tab tab--mkt" data-cat="mkt" data-panel="vc" onclick="showPanel('vc',this)"><span class="tab-badge">Mkt</span>VC & Rodadas</button>
+  <button type="button" class="tab tab--mkt" data-cat="mkt" id="tab-glossario" data-panel="glossario" onclick="showPanel('glossario',this)"><span class="tab-badge">Mkt</span>Glossário</button>
+</div>
+
+<!-- ══════ TRILHA GUIADA -->

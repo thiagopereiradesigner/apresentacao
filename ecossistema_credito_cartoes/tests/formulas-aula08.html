@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fórmulas da Aula 08</title>
+<style>
+:root{--surface:#141414;--surface2:#1c1c1c;--border:rgba(255,255,255,.14);--text:#fafafa;--muted:#a1a1aa;--accent:#f97316;--radius:8px;--radius-sm:6px;--shadow-card:none}
+html[data-theme="light"]{--surface:#F3EDF7;--surface2:#ECE6F0;--border:#CAC4D0;--text:#1D1B20;--muted:#49454F;--accent:#6750A4}
+body{margin:0;padding:24px;background:var(--surface);color:var(--text);font-family:Roboto,system-ui,sans-serif}
+button{min-height:44px;font:inherit}
+.cmp{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;color:var(--text);margin:16px 0}
+html[data-theme="light"] .cmp{border:none;border-radius:28px}
+html[data-theme="dark"] .cmp{box-shadow:var(--shadow-card)}
+.cmp figcaption{font-weight:600;margin-bottom:12px}
+.cmp figcaption small{display:block;font-weight:400;color:var(--muted);margin-top:4px}
+.cmp :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cmp-desc summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--accent)}
+.cmp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cmp-num{font-variant-numeric:tabular-nums}
+.cmp-hint{color:var(--muted);font-size:.8rem;margin:0 0 8px}
+@media (min-width:1024px){.cmp-hint{display:none}}
+@media (prefers-reduced-motion:reduce){.cmp *{transition:none!important;animation:none!important}}
+
+.cmp-fluxo-list{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:8px;padding:0;margin:0}
+.cmp-fluxo-list li{counter-increment:s;background:var(--surface2);border-radius:var(--radius-sm);padding:12px 12px 12px 48px;position:relative;min-height:44px}
+.cmp-fluxo-list li::before{content:counter(s);position:absolute;left:12px;top:12px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--surface);display:grid;place-items:center;font-size:.8rem;font-weight:700}
+.cmp-edge{display:block;color:var(--muted);font-size:.8rem}
+@media (min-width:1024px){.cmp-fluxo-list.is-row{flex-direction:row}.cmp-fluxo-list.is-row li{flex:1}}
+
+.cmp-table{width:100%;border-collapse:collapse;min-width:320px}
+.cmp-table th,.cmp-table td{padding:12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+.cmp-table thead th{color:var(--text);font-weight:600;background:var(--surface2)}
+.cmp-table th:first-child,.cmp-table td:first-child{position:sticky;left:0;background:var(--surface)}
+@media (max-width:479px){
+  .cmp-comparativo.is-2col .cmp-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .cmp-comparativo.is-2col .cmp-table,.cmp-comparativo.is-2col .cmp-table tbody,.cmp-comparativo.is-2col .cmp-table tr,.cmp-comparativo.is-2col .cmp-table td{display:block;width:100%;min-width:0}
+  .cmp-comparativo.is-2col .cmp-table tr{margin-bottom:8px;background:var(--surface2);border-radius:var(--radius-sm)}
+  .cmp-comparativo.is-2col .cmp-table td::before{content:attr(data-col);display:block;color:var(--muted);font-size:.75rem;font-weight:600}
+}
+
+.cmp-tempo-list{list-style:none;margin:0;padding:0 0 0 20px;border-left:2px solid var(--border);display:grid;gap:12px}
+.cmp-tempo-list li{display:grid;gap:2px;position:relative;min-height:44px}
+.cmp-tempo-list li::before{content:"";position:absolute;left:-27px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.cmp-tempo-list .t{color:var(--muted);font-size:.85rem}
+.cmp-tempo-list .in{color:var(--green)}
+.cmp-tempo-list .out{color:var(--red)}
+@media (min-width:1024px){
+  .cmp-tempo-list.is-row{grid-auto-flow:column;border-left:0;border-top:2px solid var(--border);padding:20px 0 0}
+  .cmp-tempo-list.is-row li::before{left:0;top:-27px}
+}
+
+.cmp-formula math{font-family:math,"STIX Two Math","Cambria Math",serif;font-size:1.25rem;color:var(--text);math-style:normal}
+.cmp-formula math mo{color:var(--muted)}
+.cmp-formula math mn,.cmp-formula math mi,.cmp-formula math mtext{color:var(--text)}
+.cmp-math-fallback{display:none}
+.cmp-read{margin:12px 0}
+.cmp-vars{display:grid;gap:8px;margin:0}
+@media (min-width:1024px){.cmp-vars{grid-template-columns:1fr 1fr}}
+.cmp-vars dt{font-weight:600}
+.cmp-vars dd{margin:0 0 8px;color:var(--muted)}
+@supports not (display: math){
+  .cmp-formula math{display:none}
+  .cmp-math-fallback{display:block;font-size:1.125rem;line-height:1.6;color:var(--text);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+}
+@media (forced-colors:active){.cmp-formula math,.cmp-formula math *{color:CanvasText}}
+.cmp-blocos{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cmp-blocos span{background:var(--surface2);border-radius:var(--radius-sm);padding:12px;min-height:44px;display:inline-flex;align-items:center}
+
+.cmp-layer ul{list-style:none;padding:0;margin:0 0 12px;display:grid;gap:8px;grid-template-columns:1fr}
+@media (min-width:480px){.cmp-layer ul{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.cmp-layer ul{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}}
+.cmp-layer h4{margin:8px 0;color:var(--muted);font-size:.85rem}
+.cmp-actor{background:var(--surface2);border-radius:var(--radius-sm);padding:12px;display:grid}
+.cmp-actor a{display:grid;min-height:44px;color:inherit;text-decoration:none;align-content:center}
+.cmp-actor a span,.cmp-actor span{color:var(--muted);font-size:.85rem}
+.cmp-aqui{display:inline-block;margin-top:6px;font-size:.75rem;font-weight:600;color:var(--text);border:1px solid var(--accent);border-radius:999px;padding:2px 8px}
+
+.menu-story{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+button.menu-chip{min-height:44px;flex:0 0 auto}
+.nav-select{display:none;width:100%;min-height:44px;font-size:1rem;font-family:inherit;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);margin:0 0 16px;padding:8px 12px}
+.nav-select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+html[data-theme="light"] .nav-select{background:#FFFBFE}
+@media (max-width:768px){
+  .tabs{display:none}
+  .nav-select{display:block}
+}
+.aula-indice{display:none}
+@media (min-width:1280px){
+  .aula-layout{display:grid;grid-template-columns:minmax(0,72ch) 200px;gap:24px;align-items:start}
+  .aula-indice{display:block;position:sticky;top:16px}
+  .aula-indice a{display:flex;align-items:center;min-height:44px;color:var(--text);text-decoration:none}
+}
+
+</style>
+</head>
+<body>
+<p>Casos F1, F2 e F3 da Aula 08. A fórmula não usa script.</p>
+<p><button type="button" id="tema">Alternar tema</button></p>
+<figure class="cmp cmp-formula" aria-labelledby="f1-t">
+  <figcaption id="f1-t">Como a taxa do mês vira taxa do ano?</figcaption>
+  <div class="cmp-scroll" role="region" aria-label="Como a taxa do mês vira taxa do ano? (role para os lados)" tabindex="0">
+    <math alttext="Eleve o fator mensal a 12 e tire 1." display="block"><mrow><msub><mi>i</mi><mtext>ano</mtext></msub><mo>=</mo><msup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><msub><mi>i</mi><mtext>mês</mtext></msub><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mn>12</mn></msup><mo>−</mo><mn>1</mn></mrow></math>
+    <span class="cmp-math-fallback">i_ano = (1 + i_mês)^12 − 1</span>
+  </div>
+  <p class="cmp-read"><b>Em palavras:</b> Eleve o fator mensal a 12 e tire 1.</p>
+  
+</figure>
+<figure class="cmp cmp-formula" aria-labelledby="f2-t">
+  <figcaption id="f2-t">Como converter a taxa de um período para o outro?</figcaption>
+  <div class="cmp-scroll" role="region" aria-label="Como converter a taxa de um período para o outro? (role para os lados)" tabindex="0">
+    <math alttext="Tire a raiz 12 do fator anual e tire 1." display="block"><mrow><msub><mi>i</mi><mtext>mês</mtext></msub><mo>=</mo><msup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><msub><mi>i</mi><mtext>ano</mtext></msub><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mfrac><mn scriptlevel="2">1</mn><mn scriptlevel="2">12</mn></mfrac></msup><mo>−</mo><mn>1</mn></mrow></math>
+    <span class="cmp-math-fallback">i_mês = (1 + i_ano)^(1/12) − 1</span>
+  </div>
+  <p class="cmp-read"><b>Em palavras:</b> Tire a raiz 12 do fator anual e tire 1.</p>
+  <dl class="cmp-vars"><dt>i_mês</dt><dd>taxa equivalente ao mês</dd><dt>i_ano</dt><dd>taxa ao ano</dd></dl>
+</figure>
+<figure class="cmp cmp-formula" aria-labelledby="f3-t">
+  <figcaption id="f3-t">Como trazer um valor futuro para hoje?</figcaption>
+  <div class="cmp-scroll" role="region" aria-label="Como trazer um valor futuro para hoje? (role para os lados)" tabindex="0">
+    <math alttext="Divida o valor futuro pelo fator de juros." display="block"><mrow><mi>V</mi><mi>P</mi><mo>=</mo><mi>V</mi><mi>F</mi><mo>÷</mo><msup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>i</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mi>n</mi></msup></mrow></math>
+    <span class="cmp-math-fallback">VP = VF ÷ (1 + i)^n</span>
+  </div>
+  <p class="cmp-read"><b>Em palavras:</b> Divida o valor futuro pelo fator de juros.</p>
+  
+</figure>
+<script>
+document.getElementById('tema').addEventListener('click',function(){
+  var html=document.documentElement;
+  html.setAttribute('data-theme', html.getAttribute('data-theme')==='dark'?'light':'dark');
+});
+</script>
+</body>
+</html>
