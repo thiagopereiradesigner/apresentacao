@@ -5,8 +5,8 @@
 
 ## O que abrir
 
-- A página que você abre hoje continua sendo o [`index.html`](index.html) da raiz (v8.7), até a troca ser aprovada.
-- A versão gerada, com trilha, busca e fórmulas, é [`dist/index.html`](dist/index.html). Ela abre offline, por duplo clique.
+- O endereço público abre o [`index.html`](index.html) desta pasta. O build grava nele a mesma página de [`dist/index.html`](dist/index.html).
+- As duas abrem offline, por duplo clique.
 - [`ecossistema-cartoes.html`](ecossistema-cartoes.html) e [`mapa-sistema-financeiro.html`](mapa-sistema-financeiro.html) redirecionam para o `index.html` da raiz.
 
 ## Como rodar o build
@@ -18,7 +18,7 @@ npm install
 npm run build
 ```
 
-O comando gera `dist/index.html`. Não edite esse arquivo à mão. A fonte fica em `src/`, `data/` e `build/`.
+O comando gera `dist/index.html` e copia a mesma página para `index.html`. Não edite esses arquivos à mão. A fonte fica em `src/`, `data/` e `build/`.
 
 ## Como adicionar uma aula
 

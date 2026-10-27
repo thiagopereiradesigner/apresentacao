@@ -550,6 +550,7 @@ fs.writeFileSync(path.join(root, 'tests/formulas-aula08.html'), paginaFormulas);
 
 fs.mkdirSync(path.join(root, 'dist'), { recursive: true });
 fs.writeFileSync(path.join(root, 'dist/index.html'), dist);
+fs.writeFileSync(path.join(root, 'index.html'), dist);
 const distBytes = Buffer.byteLength(dist);
 const indiceBytes = Buffer.byteLength(indiceJson);
 const indiceGzip = zlib.gzipSync(indiceJson).length;
