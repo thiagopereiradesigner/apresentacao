@@ -1,6 +1,6 @@
 {
   "v": 1,
-  "nota": "[inferência] abas_relacionadas vêm da tabela 2.2 do anexo UX v3. secao ficou null até a seção existir em data/ancoras.json. papel não foi preenchido. Cenário e erros comuns das aulas 01–14 e o bloco No seu trabalho das aulas 15–22 vêm do Prompt 3. Números só os desse prompt. Onde falta número do produto: [a validar]. Nome na tela: Ringgo.",
+  "nota": "[inferência] abas_relacionadas vêm da tabela 2.2 do anexo UX v3. secao ficou null até a seção existir em data/ancoras.json. papel não foi preenchido. Cenário e erros comuns das aulas 01–14 e o bloco No seu trabalho das aulas 15–22 vêm do Prompt 3. Números só os desse prompt. Onde falta número do produto: [a validar]. Nome na tela: Ringgo. Referências das aulas 15–22 são os nomes da tabela 2.3 do anexo, sem URL: a trilha oficial não está no repositório.",
   "modulos": [
     {
       "id": "M1",
@@ -629,7 +629,12 @@
           "secao": null
         }
       ],
-      "no_trabalho": "Você liga a provisão por perda esperada à Resolução 4.966. O 3040 e o 3044 vão ao SCR do Banco Central, e a CVM cobra o administrador do FIDC. Validar com o jurídico."
+      "no_trabalho": "Você liga a provisão por perda esperada à Resolução 4.966. O 3040 e o 3044 vão ao SCR do Banco Central, e a CVM cobra o administrador do FIDC. Validar com o jurídico.",
+      "referencias": [
+        "Res. CMN 4.966/2021",
+        "Res. BCB 352/2023",
+        "Res. 2.682/1999 (revogada)"
+      ]
     },
     {
       "n": 16,
@@ -645,7 +650,12 @@
           "secao": null
         }
       ],
-      "no_trabalho": "Você acompanha atraso, safra e roll rate da carteira. O risco da empresa conveniada que repassa a folha entra nesse acompanhamento. O indicador do seu book fica [a validar]."
+      "no_trabalho": "Você acompanha atraso, safra e roll rate da carteira. O risco da empresa conveniada que repassa a folha entra nesse acompanhamento. O indicador do seu book fica [a validar].",
+      "referencias": [
+        "Relatório de Economia Bancária (BCB)",
+        "Relatório de Estabilidade Financeira (BCB)",
+        "Res. CMN 4.966/2021"
+      ]
     },
     {
       "n": 17,
@@ -673,7 +683,12 @@
           "secao": null
         }
       ],
-      "no_trabalho": "Você compara de onde vem o dinheiro que a Ringgo empresta, inclusive o funding via FIDC com a BMP. Custo e prazo mudam o preço do consignado. O custo de cada fonte fica [a validar]."
+      "no_trabalho": "Você compara de onde vem o dinheiro que a Ringgo empresta, inclusive o funding via FIDC com a BMP. Custo e prazo mudam o preço do consignado. O custo de cada fonte fica [a validar].",
+      "referencias": [
+        "Res. Conjunta 16/2025 (BaaS)",
+        "Res. CVM 175/2022 (FIDC)",
+        "Res. CMN 5.050/2022 (SCD e SEP)"
+      ]
     },
     {
       "n": 18,
@@ -693,7 +708,12 @@
           "secao": null
         }
       ],
-      "no_trabalho": "Você mede quanto capital o crédito consome. No Ringgo Adianta, o desembolso sai hoje e o repasse volta na folha. O patrimônio de referência do caso fica [a validar]."
+      "no_trabalho": "Você mede quanto capital o crédito consome. No Ringgo Adianta, o desembolso sai hoje e o repasse volta na folha. O patrimônio de referência do caso fica [a validar].",
+      "referencias": [
+        "Recomendações de Basileia (BCB)",
+        "Res. CMN 4.958/2021",
+        "Res. CMN 4.557/2017"
+      ]
     },
     {
       "n": 19,
@@ -717,7 +737,12 @@
           "secao": null
         }
       ],
-      "no_trabalho": "Você segue o Pix ou o TED do desembolso até quem recebe. O arranjo define quem pode iniciar esse pagamento. O prazo do seu fluxo fica [a validar]."
+      "no_trabalho": "Você segue o Pix ou o TED do desembolso até quem recebe. O arranjo define quem pode iniciar esse pagamento. O prazo do seu fluxo fica [a validar].",
+      "referencias": [
+        "Lei 12.865/2013",
+        "Res. BCB 150/2021",
+        "Res. BCB 1/2020 (Pix)"
+      ]
     },
     {
       "n": 20,
@@ -741,7 +766,12 @@
           "secao": null
         }
       ],
-      "no_trabalho": "Você separa quem fica com cada parte de uma compra no cartão e nos benefícios do Ringgo Clube. A MDR (taxa de desconto do lojista) não é o intercâmbio. A divisão do seu contrato fica [a validar]."
+      "no_trabalho": "Você separa quem fica com cada parte de uma compra no cartão e nos benefícios do Ringgo Clube. A MDR (taxa de desconto do lojista) não é o intercâmbio. A divisão do seu contrato fica [a validar].",
+      "referencias": [
+        "Res. BCB 246/2022",
+        "BCB Arranjos de Pagamento",
+        "ABECS Indicadores"
+      ]
     },
     {
       "n": 21,
@@ -765,7 +795,12 @@
           "secao": null
         }
       ],
-      "no_trabalho": "Você trata a antecipação de recebíveis e o risco sacado como adiantar um valor que a âncora vai pagar. O registro do recebível faz parte da operação. A taxa do seu contrato fica [a validar]."
+      "no_trabalho": "Você trata a antecipação de recebíveis e o risco sacado como adiantar um valor que a âncora vai pagar. O registro do recebível faz parte da operação. A taxa do seu contrato fica [a validar].",
+      "referencias": [
+        "Res. CMN 4.734/2019",
+        "Res. BCB 264/2022",
+        "Lei 13.775/2018"
+      ]
     },
     {
       "n": 22,
@@ -785,7 +820,12 @@
           "secao": null
         }
       ],
-      "no_trabalho": "Você liga o rotativo e o parcelamento da fatura ao cartão e ao saque parcelado. O teto de encargos muda o que a pessoa paga após o vencimento. A taxa do seu cartão fica [a validar]."
+      "no_trabalho": "Você liga o rotativo e o parcelamento da fatura ao cartão e ao saque parcelado. O teto de encargos muda o que a pessoa paga após o vencimento. A taxa do seu cartão fica [a validar].",
+      "referencias": [
+        "Res. CMN 4.549/2017",
+        "Res. CMN 5.112/2023",
+        "Lei 14.690/2023"
+      ]
     }
   ]
 }

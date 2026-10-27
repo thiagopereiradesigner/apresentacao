@@ -5,6 +5,9 @@ const pares = {
     muted: '#49454F',
     green: '#146C2E',
     red: '#B3261E',
+    accent: '#6750A4',
+    accentRgb: [103, 80, 164],
+    alpha: 0.12,
   },
   escuro: {
     superficie: '#141414',
@@ -12,6 +15,9 @@ const pares = {
     muted: '#a1a1aa',
     green: '#4ade80',
     red: '#f87171',
+    accent: '#f97316',
+    accentRgb: [249, 115, 22],
+    alpha: 0.12,
   },
 };
 
@@ -36,6 +42,17 @@ function contraste(a, b) {
   return (alto + 0.05) / (baixo + 0.05);
 }
 
+function rgb(hex) {
+  const n = hex.replace('#', '');
+  return [parseInt(n.slice(0, 2), 16), parseInt(n.slice(2, 4), 16), parseInt(n.slice(4, 6), 16)];
+}
+
+function compor(fg, bgHex, alpha) {
+  const bg = rgb(bgHex);
+  const n = fg.map((canalFg, i) => Math.round(canalFg * alpha + bg[i] * (1 - alpha)));
+  return '#' + n.map((v) => v.toString(16).padStart(2, '0')).join('');
+}
+
 let falhou = false;
 for (const tema of Object.keys(pares)) {
   const p = pares[tema];
@@ -43,6 +60,17 @@ for (const tema of Object.keys(pares)) {
     const razao = contraste(p[nome], p.superficie);
     const ok = razao >= 4.5;
     console.log(tema + ' ' + nome + ' sobre superfície: ' + razao.toFixed(2) + ':1 ' + (ok ? 'ok' : 'abaixo de 4.5'));
+    if (!ok) falhou = true;
+  }
+  const fundoBadge = compor(p.accentRgb, p.superficie, p.alpha);
+  const textoBadge = contraste(p.texto, fundoBadge);
+  const okBadge = textoBadge >= 4.5;
+  console.log(tema + ' texto sobre accent-soft: ' + textoBadge.toFixed(2) + ':1 ' + (okBadge ? 'ok' : 'abaixo de 4.5'));
+  if (!okBadge) falhou = true;
+  for (const nome of ['accent', 'muted']) {
+    const razao = contraste(p[nome], p.superficie);
+    const ok = razao >= 3;
+    console.log(tema + ' ' + nome + ' como ícone ou borda: ' + razao.toFixed(2) + ':1 ' + (ok ? 'ok' : 'abaixo de 3'));
     if (!ok) falhou = true;
   }
 }

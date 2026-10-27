@@ -150,15 +150,40 @@ function escaparScript(json) {
 }
 
 const curriculoObj = JSON.parse(curriculo);
+const idsPainel = new Set(order);
+const numeros = curriculoObj.aulas.map((aula) => aula.n).sort((a, b) => a - b);
+if (numeros.length !== 22 || numeros.some((n, i) => n !== i + 1)) {
+  throw new Error('As aulas precisam ir de 1 a 22, sem repetir e sem buraco.');
+}
+const termosACriar = [];
+let ligacoesSemPapel = 0;
 for (const aula of curriculoObj.aulas) {
   if (aula.papel) throw new Error('Aula ' + aula.n + ': papel não pode ser preenchido pelo build.');
+  if (!['dada', 'a seguir'].includes(aula.status)) throw new Error('Aula ' + aula.n + ': status inválido.');
+  if (String(aula.titulo || '').length > 60) throw new Error('Aula ' + aula.n + ': título passa de 60 caracteres.');
+  if (aula.resumo && String(aula.resumo).length > 140) throw new Error('Aula ' + aula.n + ': resumo passa de 140 caracteres.');
   if (aula.status === 'a seguir' && (aula.cenario || (aula.erros && aula.erros.length))) {
     throw new Error('Aula ' + aula.n + ' é a seguir e não leva cenário nem erros comuns.');
   }
-  if (aula.status === 'dada' && aula.no_trabalho) {
-    throw new Error('Aula ' + aula.n + ' é dada e não usa o bloco no-trabalho.');
+  if (aula.status === 'dada' && (aula.no_trabalho || aula.referencias)) {
+    throw new Error('Aula ' + aula.n + ' é dada e não usa o bloco no-trabalho nem referências de roteiro.');
   }
+  if (aula.formula && aula.formulaBlocos) throw new Error('Aula ' + aula.n + ' tem duas fórmulas.');
   if (aula.erros && aula.erros.length > 3) throw new Error('Aula ' + aula.n + ' tem mais de 3 erros comuns.');
+  for (const pre of aula.pre_requisitos || []) {
+    if (!(Number.isInteger(pre) && pre < aula.n)) throw new Error('Aula ' + aula.n + ': pré-requisito inválido.');
+  }
+  for (const rel of aula.abas_relacionadas || []) {
+    if (!idsPainel.has(rel.slug)) throw new Error('Aula ' + aula.n + ': aba inexistente ' + rel.slug + '.');
+    if (rel.papel && String(rel.papel).length > 80) throw new Error('Aula ' + aula.n + ': papel passa de 80 caracteres.');
+    if (!rel.papel) ligacoesSemPapel += 1;
+  }
+  for (const nome of aula.referencias || []) {
+    if (typeof nome !== 'string' || /https?:\/\//.test(nome)) {
+      throw new Error('Aula ' + aula.n + ': referência precisa ser o nome, sem URL inventada.');
+    }
+  }
+  for (const termo of aula.termos || []) termosACriar.push({ aula: aula.n, termo });
 }
 const pacote = JSON.parse(read('package.json'));
 const versaoTemml = pacote.devDependencies && pacote.devDependencies.temml;
@@ -213,11 +238,19 @@ for (const aula of curriculoObj.aulas) {
   }
 }
 
+function iconeBadge(status) {
+  if (status === 'dada') {
+    return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>';
+  }
+  return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg>';
+}
+
 function itemVisto(aula) {
-  const status = aula.status === 'a seguir' ? 'a seguir' : 'dada';
-  const label = status === 'dada' ? 'Dada' : 'A seguir';
+  const aSeguir = aula.status === 'a seguir';
+  const status = aSeguir ? 'a-seguir' : 'dada';
+  const label = aSeguir ? 'A seguir' : 'Dada';
   const num = String(aula.n).padStart(2, '0');
-  return `<li><a href="#aula-${num}" class="va-link"><span class="va-n">Aula ${num}</span><span class="va-t">${plain(aula.titulo)}</span></a><span class="badge-status" data-status="${status}">${label}<span class="visually-hidden">Status: ${label}</span></span></li>`;
+  return `<li><a href="#aula-${num}" class="va-link"><span class="va-n">Aula ${num}</span><span class="va-t">${plain(aula.titulo)}</span></a><span class="badge-status" data-status="${status}">${iconeBadge(status)}${label}<span class="visually-hidden">Status: ${label}</span></span></li>`;
 }
 
 function htmlVisto(id, aulas) {
@@ -287,6 +320,16 @@ if (!panels.includes('<!--GLOSSARIO-->')) throw new Error('Marcador do glossári
 panels = panels.replace('<!--GLOSSARIO-->', grid);
 fs.mkdirSync(path.dirname(ancorasPath), { recursive: true });
 fs.writeFileSync(ancorasPath, JSON.stringify(ancoras, null, 2) + '\n');
+const idsAncora = new Set(ancoras.secoes.map((secao) => secao.painel + '|' + secao.id));
+for (const aula of curriculoObj.aulas) {
+  for (const rel of aula.abas_relacionadas || []) {
+    if (rel.secao && !idsAncora.has(rel.slug + '|' + rel.secao)) {
+      throw new Error('Aula ' + aula.n + ': seção inexistente ' + rel.slug + '/' + rel.secao + '.');
+    }
+  }
+}
+const idsGlossario = new Set((glossario.fichas || []).map((ficha) => ficha._id));
+const termosFora = termosACriar.filter((item) => !idsGlossario.has(item.termo));
 
 const indice = [];
 const idsIndice = new Set();
@@ -441,6 +484,9 @@ ${read('src/scripts/trilha.js').trim()}
 if (/cdn\.tailwindcss\.com|fonts\.googleapis\.com|fonts\.gstatic\.com/.test(dist)) {
   throw new Error('O dist ainda aponta para CDN.');
 }
+const semAncoraExterna = dist.replace(/<a\b[^>]*>/gi, '');
+const remoto = semAncoraExterna.match(/<(?:script|link)\b[^>]*?(?:src|href)\s*=\s*["']https?:\/\/[^"']+|@import\s+(?:url\(\s*)?["']?https?:\/\/|url\(\s*["']?https?:\/\//i);
+if (remoto) throw new Error('O dist traz endereço remoto fora de link de referência: ' + remoto[0].slice(0, 80));
 for (const id of order) {
   if (!dist.includes('id="panel-' + id + '"')) throw new Error('Painel ausente: ' + id);
 }
@@ -532,6 +578,9 @@ const relatorio = [
   alerta,
   '',
   'Abas sem aula ligada: ' + (semAula.join(', ') || 'nenhuma'),
+  'Ligações sem papel: ' + ligacoesSemPapel + ' (informação; Joca e Micky escrevem o papel).',
+  'Termos a criar: ' + (termosFora.length ? termosFora.map((item) => 'aula ' + item.aula + ' / ' + item.termo).join(', ') : 'nenhum'),
+  'Referências oficiais: nomes da tabela 2.3 do anexo, sem URL. O arquivo da trilha não está no repositório.',
   '',
 ].filter((linha) => linha !== '').join('\n') + '\n';
 fs.mkdirSync(path.join(root, 'docs'), { recursive: true });

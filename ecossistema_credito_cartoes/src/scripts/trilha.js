@@ -28,10 +28,16 @@
     if(kind==='a seguir') return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg>';
     return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
   }
+  function statusAttr(status){
+    if(status==='a seguir') return 'a-seguir';
+    if(status==='em breve') return 'em-breve';
+    return 'dada';
+  }
   function badge(status){
     var label=status==='dada'?'Dada':status==='a seguir'?'A seguir':'Em breve';
-    return '<span class="badge-status" data-status="'+esc(status)+'">'+icon(status)+esc(label)+'<span class="visually-hidden">Status: '+esc(label)+'</span></span>';
+    return '<span class="badge-status" data-status="'+statusAttr(status)+'">'+icon(status)+esc(label)+'<span class="visually-hidden">Status: '+esc(label)+'</span></span>';
   }
+  window.badgeTrilha=badge;
   function lerProgresso(){
     try{
       var raw=localStorage.getItem(PROG);
@@ -118,8 +124,8 @@
     html+='<p id="trilha-lidas">'+lidasN+' de '+dadas+' aulas lidas</p>';
     html+='<div role="progressbar" aria-valuemin="0" aria-valuemax="'+dadas+'" aria-valuenow="'+lidasN+'" aria-valuetext="'+lidasN+' de '+dadas+' aulas lidas" style="height:8px;border-radius:99px;background:var(--surface2);overflow:hidden"><div style="height:100%;width:'+(dadas?Math.round(100*lidasN/dadas):0)+'%;background:var(--accent)"></div></div>';
     html+='<p class="trilha-nota">'+dadas+' de '+curriculo.aulas.length+' aulas dadas até agora. Seu progresso fica só neste navegador.</p>';
-    if(prog.bloqueado||avisoSalvo) html+='<p class="note">Não consegui salvar seu progresso neste navegador.</p>';
-    html+='</div>';
+    if(prog.bloqueado||avisoSalvo) html+='<p class="note" role="status">Não consegui salvar seu progresso neste navegador.</p>';
+    html+='</div><div class="modulos-grid">';
     curriculo.modulos.forEach(function(mod){
       var ys=mod.aulas.filter(function(n){var a=aulaPorNumero(n);return a&&a.status==='dada';}).length;
       html+='<article class="card-bento"><h2 class="st">'+esc(mod.id)+' · '+esc(mod.titulo)+'</h2>';
@@ -133,7 +139,7 @@
       });
       html+='</ol></article>';
     });
-    html+='<div id="aula-aberta"></div>';
+    html+='</div><div id="aula-aberta"></div>';
     html+='<h2 class="st">Próximos módulos</h2><div class="em-breve-grid">';
     curriculo.modulos_em_breve.forEach(function(mod){
       var faixa=typeof mod.aulas==='string'?(/[–-]/.test(mod.aulas)?'Aulas '+mod.aulas:'Aula '+mod.aulas):(mod.aulas.length===1?('Aula '+mod.aulas[0]):('Aulas '+mod.aulas[0]+' a '+mod.aulas[mod.aulas.length-1]));
@@ -163,20 +169,53 @@
     }
     return html;
   }
+  function listaAbas(rel){
+    return rel.map(function(r){
+      return '<li><a class="trilha-aula" href="#aba-'+esc(r.slug)+'">'+esc(nomeAba(r.slug))+'</a></li>';
+    }).join('');
+  }
+  function listaVizinhos(n){
+    var html='';
+    if(n>1){
+      var ant=aulaPorNumero(n-1);
+      html+='<li><a class="trilha-aula" href="#aula-'+nn(n-1)+'">← Aula '+nn(n-1)+(ant?' · '+esc(ant.titulo):'')+'</a></li>';
+    }
+    if(n<curriculo.aulas.length){
+      var prox=aulaPorNumero(n+1);
+      html+='<li><a class="trilha-aula" href="#aula-'+nn(n+1)+'">Aula '+nn(n+1)+(prox?' · '+esc(prox.titulo):'')+' →</a></li>';
+    }
+    return html;
+  }
   function desenharAula(n,prog){
     var box=document.getElementById('aula-aberta');
     var a=aulaPorNumero(n);
     if(!box||!a) return;
     var lidas=lidasValidas(prog);
     var indice=[];
+    var rel=a.abas_relacionadas||[];
     var html='<article class="card-bento aula-corpo" id="aula-'+nn(n)+'">';
     html+='<p class="trilha-nota">Aula '+nn(n)+'</p>';
     html+='<h2 class="aula-title" tabindex="-1">'+esc(a.titulo)+'</h2>'+badge(a.status);
+    var mod=moduloDa(n);
+    html+='<p class="aula-chips">';
+    if(mod) html+='<span class="aula-chip">'+esc(mod.m.id)+' · '+esc(mod.m.titulo)+'</span>';
+    (a.pre_requisitos||[]).forEach(function(pre){
+      html+='<a class="aula-chip" href="#aula-'+nn(pre)+'">Aula '+nn(pre)+'</a>';
+    });
+    html+='</p>';
     html+='<div class="aula-layout"><div class="aula-main">';
     if(a.status==='a seguir'){
       html+='<p class="note">Esta aula ainda não foi dada. O que segue é um roteiro para você acompanhar, não o conteúdo final.</p>';
       if(a.resumo){ html+=secaoBloco(n,'resumo','Resumo','<p>'+esc(a.resumo)+'</p>'); indice.push({slug:'resumo',rotulo:'Resumo'}); }
       if(a.no_trabalho){ html+=secaoBloco(n,'no-trabalho','No seu trabalho','<p>'+esc(a.no_trabalho)+'</p>'); indice.push({slug:'no-trabalho',rotulo:'No seu trabalho'}); }
+      if(rel.length){ html+=secaoBloco(n,'estudo','Estude agora nas abas','<ul class="trilha-ol">'+listaAbas(rel)+'</ul>'); indice.push({slug:'estudo',rotulo:'Estude agora'}); }
+      if(a.referencias&&a.referencias.length){
+        var refs=a.referencias.map(function(nome){return '<li>'+esc(nome)+'</li>';}).join('');
+        html+=secaoBloco(n,'referencias','Referências oficiais','<ul class="trilha-ol">'+refs+'</ul>');
+        indice.push({slug:'referencias',rotulo:'Referências'});
+      }
+      var viz=listaVizinhos(n);
+      if(viz){ html+=secaoBloco(n,'ligacoes','Ligações','<ul class="trilha-ol">'+viz+'</ul>'); indice.push({slug:'ligacoes',rotulo:'Ligações'}); }
     } else {
       if(a.resumo) html+='<p class="trilha-nota">'+esc(a.resumo)+'</p>';
       if(a.cenario){ html+=secaoBloco(n,'cenario','Cenário Ringgo','<p>'+esc(a.cenario)+'</p>'); indice.push({slug:'cenario',rotulo:'Cenário Ringgo'}); }
@@ -189,8 +228,7 @@
         indice.push({slug:'erros',rotulo:'Erros comuns'});
       }
     }
-    var rel=a.abas_relacionadas||[];
-    if(rel.length){
+    if(a.status!=='a seguir'&&rel.length){
       indice.push({slug:'ligacoes',rotulo:'Ligações'});
       html+='<section id="aula-'+nn(n)+'-ligacoes"><h3 class="st">Ligações</h3><ul class="trilha-ol">';
       rel.forEach(function(r){
@@ -280,7 +318,8 @@
       var alvo=secEl||document.querySelector('#panel-'+rota.id+' .st, #panel-'+rota.id+' h2');
       pousar(alvo);
       document.title=nomeAba(rota.id)+' — '+baseTitle;
-      anunciar(secEl?('Aba '+nomeAba(rota.id)+', seção aberta.'):('Aba '+nomeAba(rota.id)+' aberta.'));
+      var nomeSec=secEl?(secEl.textContent||'').replace(/\s+/g,' ').trim():'';
+      anunciar(secEl?('Aba '+nomeAba(rota.id)+', seção '+nomeSec+' aberta.'):('Aba '+nomeAba(rota.id)+' aberta.'));
       banner(rota);
       return;
     }

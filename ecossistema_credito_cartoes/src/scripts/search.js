@@ -95,8 +95,8 @@
       try{return JSON.parse(node.textContent)||[];}catch(e){return [];}
     }
     function deIndice(item){
-      var tipo=item.t==='termo'?'Termo':item.t==='secao'?'Seção':item.t==='aula'?('Aula '+String(item.n).padStart(2,'0')+(item.st==='a seguir'?' · A seguir':'')):'Aba';
-      return {title:item.ti,cat:tipo+(item.tx?' · '+item.tx:''),panel:item.t==='aula'?'trilha-guiada':(item.ab||''),anchor:'',kind:item.t,hash:item.a||''};
+      var tipo=item.t==='termo'?'Termo':item.t==='secao'?'Seção':item.t==='aula'?('Aula '+String(item.n).padStart(2,'0')):'Aba';
+      return {title:item.ti,cat:tipo+(item.tx?' · '+item.tx:''),panel:item.t==='aula'?'trilha-guiada':(item.ab||''),anchor:'',kind:item.t,hash:item.a||'',st:item.st||''};
     }
     function scoreIndice(qn,item){
       var hay=norm((item.ti||'')+' '+(item.tx||'')+' '+((item.k)||[]).join(' '));
@@ -166,6 +166,11 @@
           btn.innerHTML='<span class="ns-title"></span><span class="ns-meta"></span>';
           btn.querySelector('.ns-title').textContent=e.title;
           btn.querySelector('.ns-meta').textContent=e.kind?e.cat:('Aba: '+e.cat+(e.anchor?' · salta para seção':''));
+          if(e.kind==='aula'&&e.st&&window.badgeTrilha){
+            var marca=document.createElement('span');
+            marca.innerHTML=window.badgeTrilha(e.st);
+            if(marca.firstChild) btn.querySelector('.ns-meta').appendChild(marca.firstChild);
+          }
           btn.addEventListener('mousedown',function(ev){ev.preventDefault();});
           btn.addEventListener('click',function(){applyEntry(e);});
           dd.appendChild(btn);
