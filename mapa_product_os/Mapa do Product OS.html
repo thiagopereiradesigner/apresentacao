@@ -1,0 +1,1012 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Mapa do Product OS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: cabeçalho curto, faixa do fluxo do pipeline, mapa mental com painel de detalhe ao lado (embaixo no celular), histórico no fim */
+:root {
+  --bg: #f3f5f2;
+  --surface: #ffffff;
+  --ink: #18211d;
+  --muted: #5a6660;
+  --line: #d3dad5;
+  --accent: #1d6b58;
+  --accent-soft: #dcebe5;
+  --gate: #a8432f;
+  --b-entrada: #1d6b58;
+  --b-pipeline: #2d5ca3;
+  --b-shared: #7d4aa8;
+  --b-skills: #a8601c;
+  --b-memoria: #a3384a;
+  --b-templates: #2a7f63;
+  --b-contexto: #66792a;
+  --b-tools: #4a5560;
+  --b-externo: #7a837e;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121815; --surface: #1a221e; --ink: #e6ece8; --muted: #9aa8a1; --line: #2e3a34;
+    --accent: #5fc4a6; --accent-soft: #1f3a31; --gate: #e98a73;
+    --b-entrada: #5fc4a6; --b-pipeline: #7ea8ea; --b-shared: #bf96e3; --b-skills: #e3a463;
+    --b-memoria: #ec8796; --b-templates: #6cd0aa; --b-contexto: #b6cc6c; --b-tools: #a6b1bb; --b-externo: #8f9a94;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121815; --surface: #1a221e; --ink: #e6ece8; --muted: #9aa8a1; --line: #2e3a34;
+  --accent: #5fc4a6; --accent-soft: #1f3a31; --gate: #e98a73;
+  --b-entrada: #5fc4a6; --b-pipeline: #7ea8ea; --b-shared: #bf96e3; --b-skills: #e3a463;
+  --b-memoria: #ec8796; --b-templates: #6cd0aa; --b-contexto: #b6cc6c; --b-tools: #a6b1bb; --b-externo: #8f9a94;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 40px;
+}
+.wrap { max-width: 1440px; margin: 0 auto; display: grid; gap: 20px; }
+header { display: grid; gap: 6px; }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.1; margin: 0; text-wrap: balance; }
+.lede { color: var(--muted); margin: 0; max-width: 68ch; }
+.meta { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; margin: 0; }
+.label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+/* Fluxo */
+.flow { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: grid; gap: 10px; }
+.flow-head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
+.flow-strip { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; align-items: center; }
+.stage { flex: 0 0 auto; border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 999px; padding: 4px 10px; font: 500 12.5px var(--font-body); cursor: pointer; white-space: nowrap; }
+.stage:hover, .stage:focus-visible { border-color: var(--b-pipeline); outline: none; }
+.stage .n { font-family: var(--font-mono); color: var(--muted); margin-right: 4px; font-size: 11px; }
+.arrow { color: var(--muted); flex: 0 0 auto; font-size: 12px; }
+.gate { flex: 0 0 auto; font: 600 10px var(--font-mono); color: var(--gate); border: 1px dashed var(--gate); border-radius: 4px; padding: 1px 5px; letter-spacing: .04em; }
+.loop { font: 500 12px var(--font-mono); color: var(--accent); flex: 0 0 auto; }
+
+/* Mapa + painel */
+.main { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: start; }
+@media (max-width: 900px) { .main { grid-template-columns: minmax(0, 1fr); } }
+.mapbox { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; position: relative; min-width: 0; overflow: hidden; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; border-bottom: 1px solid var(--line); align-items: center; }
+.toolbar input { flex: 1 1 180px; min-width: 0; font: 14px var(--font-body); padding: 7px 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--bg); color: var(--ink); }
+.toolbar input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+button.btn { font: 500 13px var(--font-body); padding: 7px 11px; border-radius: 7px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+button.btn:hover { border-color: var(--accent); }
+button.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+button.btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); }
+svg#map { display: block; width: 100%; height: 72vh; min-height: 460px; cursor: grab; touch-action: none; }
+svg#map:active { cursor: grabbing; }
+.lista { padding: 6px 10px 12px; max-height: 72vh; overflow-y: auto; }
+.lista .kids { margin-left: 11px; border-left: 1px solid var(--line); padding-left: 10px; }
+.lista summary { list-style: none; }
+.lista summary::-webkit-details-marker { display: none; }
+.lista summary, .lista .li-row { display: flex; align-items: center; gap: 8px; min-height: 38px; padding: 4px 6px; border-radius: 6px; cursor: pointer; }
+.lista summary:hover, .lista .li-row:hover { background: var(--bg); }
+.lista summary:focus-visible, .lista .li-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.lista .chev { width: 12px; flex: 0 0 auto; color: var(--muted); font-size: 11px; transition: transform .15s; display: inline-block; text-align: center; }
+.lista details[open] > summary .chev { transform: rotate(90deg); }
+.lista .dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
+.lista .dot.ext { background: transparent !important; border: 1.5px dashed currentColor; }
+.lista .nm { min-width: 0; overflow-wrap: anywhere; }
+.lista .depth-1 > summary .nm { font-family: var(--font-display); font-weight: 600; font-size: 15px; }
+.lista .k { color: var(--muted); font-size: 12px; margin-left: auto; flex: 0 0 auto; white-space: nowrap; }
+.lista .active { background: var(--accent-soft) !important; }
+.lista .nomatch { display: none; }
+.lista mark { background: var(--accent-soft); color: inherit; border-radius: 3px; padding: 0 2px; }
+@media (max-width: 600px) {
+  svg#map { height: 62vh; min-height: 360px; }
+  .toolbar input { flex-basis: 100%; }
+  .panel h3 { font-size: 1.15rem; }
+  .lista .k { display: none; }
+}
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 10px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); }
+.legend span { display: inline-flex; gap: 6px; align-items: center; }
+.legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.legend i.dash { border-radius: 0; height: 0; width: 18px; border-top: 2px dashed var(--accent); }
+
+.node text { font-family: var(--font-body); font-size: 12.5px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; stroke-linejoin: round; }
+.node.branch text { font-family: var(--font-display); font-weight: 600; font-size: 14.5px; }
+.node.root text { font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+.node { cursor: pointer; }
+.node.dim { opacity: .28; }
+.node.hit text { fill: var(--accent); font-weight: 600; }
+.node.sel text { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.node:focus-visible circle, .node:focus-visible rect { stroke: var(--accent); stroke-width: 3px; }
+.node:focus { outline: none; }
+.tlink { fill: none; stroke: var(--line); stroke-width: 1.4px; }
+.xlink { fill: none; stroke: var(--accent); stroke-width: 1.6px; stroke-dasharray: 5 4; opacity: .85; }
+.xlink.out { stroke: var(--b-pipeline); }
+.xlabel { font: 500 10.5px var(--font-mono); fill: var(--muted); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 14px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); max-height: calc(100vh - 24px); overflow-y: auto; min-width: 0; }
+@media (max-width: 900px) { .panel { position: static; max-height: none; } }
+.panel h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; margin: 0; line-height: 1.2; text-wrap: balance; }
+.badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; width: fit-content; }
+.path { display: flex; gap: 8px; align-items: center; min-width: 0; }
+.path code { font-family: var(--font-mono); font-size: 12.5px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 3px 7px; overflow-x: auto; white-space: nowrap; min-width: 0; flex: 1 1 auto; }
+.path button { flex: 0 0 auto; font: 500 12px var(--font-body); padding: 4px 8px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.desc { margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--font-mono); font-size: 12px; background: var(--accent-soft); color: var(--ink); border-radius: 5px; padding: 2px 7px; }
+.rel { display: grid; gap: 6px; }
+.rel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.rel li button { all: unset; cursor: pointer; display: flex; gap: 8px; align-items: baseline; font-size: 13.5px; }
+.rel li button:hover .t, .rel li button:focus-visible .t { text-decoration: underline; }
+.rel li button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+.rel .why { color: var(--muted); font-size: 12.5px; }
+.files { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin: 0; padding-left: 18px; display: grid; gap: 2px; }
+.empty { color: var(--muted); margin: 0; }
+
+.history { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; }
+.history ol { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.history time { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); margin-right: 6px; }
+
+/* Guia por momento */
+.moment { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: grid; gap: 12px; }
+.mchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.mchip { font: 500 13px var(--font-body); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; min-height: 36px; }
+.mchip:hover { border-color: var(--accent); }
+.mchip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mchip[aria-checked="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.mcard { display: grid; gap: 10px; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: start; }
+@media (max-width: 900px) { .mcard { grid-template-columns: minmax(0, 1fr); } }
+.mcard .q { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; margin: 0; text-wrap: balance; }
+.mcard p { margin: 0; }
+.mcard .muted { color: var(--muted); font-size: 13.5px; }
+.seq { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; counter-reset: passo; }
+.seq button { font: 500 12.5px var(--font-body); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--accent); background: var(--accent-soft); color: var(--ink); cursor: pointer; counter-increment: passo; }
+.seq button::before { content: counter(passo) ". "; font-family: var(--font-mono); color: var(--muted); }
+.seq button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mleg { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--muted); }
+.mleg span { display: inline-flex; gap: 6px; align-items: center; }
+.mleg i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; border: 2px solid var(--accent); }
+.mleg i.e { background: var(--accent); }
+.mleg i.s { border-style: dashed; background: transparent; }
+.mleg i.x { opacity: .3; background: var(--muted); border-color: var(--muted); }
+.mleg i.a { border-color: var(--muted); background: transparent; }
+.node.m-e circle { stroke: var(--accent); stroke-width: 3.5px; }
+.node.m-e text { font-weight: 700; }
+.node.m-s circle { stroke-dasharray: 2 2; stroke-width: 2px; }
+.node.m-a text { font-style: italic; }
+.node.m-x, .node.m-n { opacity: .2; }
+.stage.m-e { border-color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.stage.m-x { opacity: .35; }
+.lista .m-e .nm { font-weight: 700; }
+.lista .m-x, .lista .m-n { opacity: .35; }
+.pmom { border-left: 3px solid var(--accent); padding: 4px 10px; background: var(--bg); border-radius: 0 6px 6px 0; font-size: 13.5px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="label">Mapa vivo · atualizado a cada mudança no método</span>
+    <h1>Mapa do Product OS</h1>
+    <p class="lede">Como pastas, agentes, sub-agentes, mecânicas e skills se organizam e se ligam. Clique num nó para ver o que ele faz, de onde lê e o que alimenta. Em dúvida sobre o que usar, escolha o momento do produto e o mapa destaca os frameworks que fazem sentido.</p>
+    <span class="meta" id="versao"></span>
+  </header>
+
+  <section class="moment" aria-labelledby="mom-title">
+    <div class="flow-head">
+      <h2 id="mom-title">Guia por momento do produto</h2>
+      <span class="meta">O momento é do produto ou da iniciativa, não da empresa. Guia pessoal: sugestão, não regra</span>
+    </div>
+    <div class="mchips" id="mchips" role="radiogroup" aria-label="Momento do produto"></div>
+    <div id="mcard"></div>
+  </section>
+
+  <section class="flow" aria-labelledby="flow-title">
+    <div class="flow-head">
+      <h2 id="flow-title">Fluxo do pipeline</h2>
+      <span class="meta">Cada etapa ativa só por menção. Só 3 bloqueios obrigatórios</span>
+    </div>
+    <div class="flow-strip" id="flow"></div>
+  </section>
+
+  <div class="main">
+    <section class="mapbox" aria-label="Mapa mental">
+      <div class="toolbar">
+        <label class="label" for="busca" style="position:absolute;left:-9999px">Buscar no mapa</label>
+        <input id="busca" type="search" placeholder="Buscar: jornada, gtm, @prd, RACI…" autocomplete="off">
+        <button class="btn" id="btn-expandir" type="button">Abrir tudo</button>
+        <button class="btn" id="btn-recolher" type="button">Recolher</button>
+        <button class="btn" id="btn-ajustar" type="button">Centralizar</button>
+        <button class="btn" id="btn-vista" type="button" aria-pressed="false">Ver em lista</button>
+      </div>
+      <svg id="map" role="img" aria-label="Mapa mental do Product OS"></svg>
+      <div id="lista" class="lista" hidden></div>
+      <div class="legend" id="legend"></div>
+    </section>
+
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </div>
+
+  <section class="history" aria-labelledby="hist-title">
+    <h2 id="hist-title">Histórico do mapa</h2>
+    <ol id="historico"></ol>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+/* ============================================================
+   DADOS DO MAPA — editar aqui quando o Product OS mudar.
+   kind: root | branch | group | agent | sub | file | skill | external
+   ============================================================ */
+const VERSAO = { data: "2026-11-24", commit: "a6d2b6f + alterações de 24/11 ainda sem commit", repo: "thiagopereiradesigner/product-os" };
+
+const HISTORICO = [
+  ["2026-11-24", "Guia por momento do produto: escolha Do zero, Primeira tração, Escala, Otimizar ou Resolver problema e o mapa destaca o essencial, marca o opcional e esmaece o que fica para depois, com pergunta, sequência sugerida e nota sobre o estágio da empresa. Novos nós: Matriz CSD e Edge cases; o nó de estratégia foi separado em SWOT e stakeholders, OKR e roadmap, BCG e ciclo de vida."],
+  ["2026-11-24", "Story Map (@prd story-map, entre blueprint e MoSCoW) e Mapa de Suposições (@hipoteses suposicoes, usa os S-NN da CSD) entram com suas ligações. Aula Growth para PMs no pacote growth: ciclos × táticas lineares, réguas de comunicação, definições de usuário novo/ativo/retido, Awareness opcional, Bullseye no GTM, escada LTV:CAC e árvore de problemas a partir de métrica que caiu."],
+  ["2026-11-19", "Correção do responsivo: a página passa a declarar a largura do aparelho (antes o celular a desenhava com 980px e encolhia) e o mapa some de verdade quando a lista está aberta."],
+  ["2026-11-19", "Responsivo: no celular, o mapa abre em lista recolhível (com botão para ver o mapa), os ramos ficam todos de um lado e o painel de detalhes aparece ao tocar num item."],
+  ["2026-11-19", "Mapa criado. Inclui o pacote Growth (jornada ponta a ponta, árvore de problemas, @estrategia gtm, linha de medição, skill growth) e o Product OS como repositório próprio."]
+];
+
+const BRANCHES = {
+  entrada:   { label: "Entrada e regras de carga", color: "--b-entrada" },
+  pipeline:  { label: "Pipeline (17 etapas)", color: "--b-pipeline" },
+  shared:    { label: "Mecânicas compartilhadas", color: "--b-shared" },
+  skills:    { label: "Skills", color: "--b-skills" },
+  memoria:   { label: "Memória do método", color: "--b-memoria" },
+  templates: { label: "Templates", color: "--b-templates" },
+  contexto:  { label: "Contexto do PM", color: "--b-contexto" },
+  tools:     { label: "Ferramentas", color: "--b-tools" },
+  externo:   { label: "Fora do Product OS", color: "--b-externo" }
+};
+
+const TREE = {
+  id: "root", label: "Product OS", kind: "root", path: "projects/product-os/",
+  desc: "Sistema de gestão de produto operado por agentes: playbooks em Markdown, memória persistente e regras. É modelo e consulta: não guarda projeto nem empresa (RULES #56, #35). Repositório próprio, clonado dentro de projects/.",
+  children: [
+    { id: "entrada", branch: "entrada", kind: "branch", label: "Entrada e regras de carga", path: "/",
+      desc: "O que cada ambiente lê primeiro. CLAUDE.md é a fonte canônica; o resto aponta para ele.",
+      children: [
+        { id: "claude", label: "CLAUDE.md", kind: "file", path: "CLAUDE.md", desc: "Fonte canônica: identidade, princípios, protocolo de memória, pipeline, ativação por @, restrições. Contradição com um ponteiro é bug do sistema." },
+        { id: "agentsmd", label: "AGENTS.md", kind: "file", path: "AGENTS.md", desc: "Ponteiro para Cursor, Codex e outros: ordem de leitura, regras duras, estrutura do repositório." },
+        { id: "cursorrules", label: ".cursor/rules/", kind: "file", path: ".cursor/rules/*.mdc", desc: "Regras do Cursor por pasta. product-os-core.mdc repete as 9 regras irredutíveis inline.", files: ["product-os-core.mdc", "agents-method.mdc", "memory.mdc", "outputs.mdc", "skills.mdc"] },
+        { id: "readme", label: "README.md", kind: "file", path: "README.md", desc: "Apresentação do repositório: o que é, por que existe, estrutura, o que não fica aqui e como começar." },
+        { id: "skillconta", label: "Skill product-os (conta)", kind: "external", path: "claude.ai · Skills", desc: "Ponteiro do app Claude e do Cowork: conecta a pasta e manda ler na ordem certa. Precisa ser regenerada quando mudam modos, ordem de leitura ou pontos de entrada." },
+        { id: "hook", label: "Hook gitleaks", kind: "file", path: ".githooks/pre-commit · .gitleaks.toml", desc: "Bloqueia commit com credencial. Ativar uma vez por clone com git config core.hooksPath .githooks (RULES #57)." }
+      ] },
+
+    { id: "pipeline", branch: "pipeline", kind: "branch", label: "Pipeline (17 etapas)", path: "agents/",
+      desc: "Uma pasta por etapa, com AGENT.md, method.md, output_format.md e arquivos de apoio. Cada etapa roda sozinha; nenhuma encadeia a próxima (RULES #37).",
+      children: [
+        { id: "f-descoberta", kind: "group", label: "Descoberta", desc: "Entender o problema e transformar em hipóteses testáveis.",
+          children: [
+            { id: "research", label: "01 Research", kind: "agent", path: "agents/01_research/", modes: ["@research", "@research csd"], desc: "Orquestra a pesquisa e sintetiza em research_synthesis.md. A Matriz CSD organiza o que se sabe no Dia 0.", files: ["AGENT.md", "csd_matrix.md", "method.md", "output_format.md"],
+              children: [
+                { id: "r-mercado", label: "Mercado", kind: "sub", path: "agents/01_research/sub_agents/market/", modes: ["@research/mercado", "@research/mercado tam-sam-som"], desc: "Tamanho, crescimento, tendências e calculadora TAM/SAM/SOM ancorada na capacidade real de GTM." },
+                { id: "r-competidores", label: "Competidores", kind: "sub", path: "agents/01_research/sub_agents/competitors/", modes: ["@research/competidores"], desc: "Panorama competitivo, com guarda-corpos. Perguntar antes de pesquisar concorrente." },
+                { id: "r-usuarios", label: "Usuários", kind: "sub", path: "agents/01_research/sub_agents/users/", modes: ["@research/usuarios"], desc: "Voz do usuário: reviews, reclamações, desejos e a Linguagem do Usuário que o design e o GTM usam." },
+                { id: "r-regulatorio", label: "Regulatório", kind: "sub", path: "agents/01_research/sub_agents/regulatory/", modes: ["@research/regulatorio"], desc: "Regimes e flags de risco. Nunca é parecer jurídico nem afirma que algo é legal." },
+                { id: "r-seo", label: "SEO", kind: "sub", path: "agents/01_research/sub_agents/seo/", modes: ["@research/seo", "@research/seo auditoria"], desc: "Busca orgânica, local e em IA; auditoria de site no ar. Usa a skill seo." },
+                { id: "csd", label: "Matriz CSD", kind: "file", path: "agents/01_research/csd_matrix.md", modes: ["@research csd"], desc: "Certezas, Suposições e Dúvidas do Dia 0. Dúvidas viram perguntas de pesquisa; Suposições (S-NN) viram hipóteses e alimentam o Mapa de Suposições." }
+              ] },
+            { id: "hipoteses", label: "02 Hipóteses", kind: "agent", path: "agents/02_hypotheses/", modes: ["@hipoteses", "@hipoteses persona", "@hipoteses empatia", "@hipoteses problemas", "@hipoteses arvore", "@hipoteses canvas", "@hipoteses suposicoes"], desc: "Transforma pesquisa em hipóteses testáveis e priorizadas. Bloqueio 1: sem hipóteses aprovadas, o Design não começa.",
+              children: [
+                { id: "persona", label: "Proto-persona e empatia", kind: "file", path: "agents/02_hypotheses/proto_persona.md · empathy_map.md", desc: "Persona hipótese com JTBD; mapa de empatia opcional para aprofundar." },
+                { id: "problemas", label: "Árvore de problemas", kind: "file", path: "agents/02_hypotheses/problem_tree.md", modes: ["@hipoteses problemas"], desc: "Problema central (declaração de problema do NN/g), causas pelos 5 porquês, efeitos por etapa do funil e perguntas “Como poderíamos” que viram oportunidades. Recomendada em produto novo." },
+                { id: "oportunidades", label: "Árvore de oportunidades", kind: "file", path: "agents/02_hypotheses/opportunity_tree.md", modes: ["@hipoteses arvore"], desc: "Outcome → oportunidades → soluções → experimentos (Teresa Torres). Modo produto novo: outcome de aprendizado e priorização por risco (detalhada no Mapa de Suposições)." },
+                { id: "suposicoes", label: "Mapa de Suposições", kind: "file", path: "agents/02_hypotheses/assumption_map.md", modes: ["@hipoteses suposicoes"], desc: "O que precisa ser verdade por tipo de risco (desejabilidade, viabilidade, exequibilidade e regulatória), em importância × evidência. Testa primeiro o importante sem evidência. Usa os S-NN da CSD, sem lista paralela; confirmada volta à CSD como Certeza. Fontes: David Bland e NN/g." },
+                { id: "vpc", label: "Value Proposition Canvas", kind: "file", path: "agents/02_hypotheses/value_proposition_canvas.md", modes: ["@hipoteses canvas"], desc: "Testa o fit da solução escolhida com o perfil do cliente." },
+                { id: "experimentos", label: "Desenho de experimento", kind: "file", path: "agents/02_hypotheses/experiment_design.md", desc: "Qual teste usar por tipo de pergunta: fake door, concierge, wizard of oz, A/B, piloto interno. Flag de compliance avisa, não bloqueia." }
+              ] }
+          ] },
+        { id: "f-design", kind: "group", label: "Design e validação", desc: "Desenhar a experiência ponta a ponta, prototipar, criticar e validar com pessoas.",
+          children: [
+            { id: "design", label: "03 Design", kind: "agent", path: "agents/03_design/", modes: ["@design", "@design jornada", "@design blueprint", "@design blueprint multi-cliente", "@design fail-points", "@design edge-cases", "@design ia", "@design conteudo", "@design event-storming"], desc: "Jornada, service blueprint, alternativas de UI e critérios de UX. Não produz código.",
+              children: [
+                { id: "jornada", label: "Jornada ponta a ponta", kind: "file", path: "agents/03_design/journey.md", modes: ["@design jornada"], desc: "Começa antes do produto e vai até indicar, recomprar ou sair. Atores, canal, momento de valor, etapa do funil AARRR por stage (Awareness opcional), sinal HEART, definições de usuário novo, ativo e retido, maior vazamento e ciclo. É a espinha que os outros reaproveitam." },
+                { id: "blueprint", label: "Service blueprint", kind: "file", path: "agents/03_design/service_blueprint.md", modes: ["@design blueprint", "@design blueprint multi-cliente", "@design fail-points"], desc: "8 camadas por stage, fases do serviço, máquina de estados, matriz de falhas FP-NN e linha de medição opcional (funil, operação, como detectamos)." },
+                { id: "heuristicas", label: "Heurísticas e WCAG", kind: "file", path: "agents/03_design/heuristics.md", desc: "Nielsen, vieses éticos, WCAG 2.2 e o guarda-corpo de dark pattern." },
+                { id: "dsmd", label: "Design system (ponteiro)", kind: "file", path: "agents/03_design/design_system.md", desc: "Aponta para o design system do pacote de diretrizes da empresa." },
+                { id: "eventstorming", label: "Event Storming", kind: "file", path: "agents/03_design/event_storming.md", modes: ["@design event-storming"], desc: "Workshop de domínio, só sob demanda." },
+                { id: "edgecases", label: "Edge cases de tela", kind: "file", path: "agents/03_design/output_format.md → design/edge_cases.md", modes: ["@design edge-cases"], desc: "Estados de cada tela: vazio, erro, carregando, offline, limite, sessão expirada. O @qa transforma em cenário." }
+              ] },
+            { id: "prototipo", label: "04 Protótipo", kind: "agent", path: "agents/04_prototype/", modes: ["@prototipo"], desc: "Protótipos de baixa e média fidelidade para validar hipóteses de UX." },
+            { id: "critique", label: "05 Critique", kind: "agent", path: "agents/05_critique/", modes: ["@critique", "@critique figma", "@critique seo"], desc: "Revisa protótipos e designs com sugestão para cada problema. Auditoria técnica de Figma e lente SEO." },
+            { id: "userresearch", label: "06 User Research", kind: "agent", path: "agents/06_user_research/", modes: ["@user-research", "@user-research card-sorting", "@user-research tree-test"], desc: "Planeja e sintetiza pesquisa com pessoas reais. Card sorting e tree test validam arquitetura de informação." },
+            { id: "sumario", label: "07 Sumarização", kind: "agent", path: "agents/07_summarization/", modes: ["@sumario"], desc: "Consolida achados de várias etapas numa narrativa acionável." }
+          ] },
+        { id: "f-estrategia", kind: "group", label: "Estratégia e visão", desc: "Validar o negócio no curto prazo antes de projetar o longo prazo.",
+          children: [
+            { id: "estrategia", label: "08 Estratégia", kind: "agent", path: "agents/08_strategy/", modes: ["@estrategia", "@estrategia canvas", "@estrategia stakeholders", "@estrategia swot", "@estrategia bcg", "@estrategia ciclo-vida", "@estrategia gtm", "@estrategia financeiro", "@estrategia okr", "@estrategia roadmap"], desc: "Posicionamento, crescimento (AARRR), North Star e Waves. Sempre 2 a 3 opções com trade-offs. Bloqueio 3: sem estratégia aprovada, a Visão não começa.",
+              children: [
+                { id: "bmc", label: "Business Model Canvas", kind: "file", path: "agents/08_strategy/business_model_canvas.md", modes: ["@estrategia canvas"], desc: "9 blocos; fonte oficial do ICP." },
+                { id: "gtm", label: "Go-to-Market", kind: "file", path: "agents/08_strategy/gtm.md", modes: ["@estrategia gtm"], desc: "Público (quem decide, paga e usa), mensagem, canais testados em camadas, preço, primeira experiência, lançamento e medição. Bullseye (Traction), canal pelo hábito do público, pago × orgânico por etapa. Regras do NN/g." },
+                { id: "alavancas", label: "Alavancas estratégicas", kind: "file", path: "agents/08_strategy/strategic_levers.md", desc: "Flywheel, efeito de rede, custo de troca e outras. Lente, não checklist." },
+                { id: "unit", label: "Modelagem financeira", kind: "file", path: "agents/08_strategy/unit_economics.md", modes: ["@estrategia financeiro"], desc: "CAC, LTV, payback e a escada LTV:CAC → ação (parar, otimizar, monitorar, escalar), lida por segmento e canal. Dado interno vem do PM; benchmark externo sempre com fonte." },
+                { id: "estr-swot", label: "SWOT e stakeholders", kind: "file", path: "agents/08_strategy/swot_analysis.md · stakeholder_map.md", modes: ["@estrategia swot", "@estrategia stakeholders"], desc: "SWOT do produto ou de um concorrente; mapa de stakeholders em Poder × Interesse, que alimenta o RACI." },
+                { id: "estr-okr", label: "OKR e roadmap", kind: "file", path: "agents/08_strategy/okr_facilitation.md · roadmap_now_next_later.md", modes: ["@estrategia okr", "@estrategia roadmap"], desc: "OKR a partir da North Star (escreve em context/goals.md) e roadmap Now/Next/Later para comunicar." },
+                { id: "estr-portfolio", label: "BCG e ciclo de vida", kind: "file", path: "agents/08_strategy/bcg_matrix.md · product_lifecycle.md", modes: ["@estrategia bcg", "@estrategia ciclo-vida"], desc: "Leitura de portfólio (vários produtos) e fase do produto com histórico. Condicionais." }
+              ] },
+            { id: "visao", label: "10 Visão", kind: "agent", path: "agents/10_product_vision/", modes: ["@visao"], desc: "Onde o produto estará em 3 a 5 anos. Só depois da estratégia aprovada." },
+            { id: "critvisao", label: "11 Critique da Visão", kind: "agent", path: "agents/11_critique_vision/", modes: ["@critique-visao"], desc: "Advogado do diabo da visão, mais rigoroso que o @critique." }
+          ] },
+        { id: "reporting", label: "09 Reporting", kind: "agent", path: "agents/09_reporting/", modes: ["@reporting", "@reporting briefing", "@reporting escopo"], desc: "Comunicação para stakeholders. Antes, pergunta para qual público: briefing para negócio, escopo funcional como documentação do projeto (RULES #51)." },
+        { id: "f-entrega", kind: "group", label: "Entrega", desc: "Especificar, testar, construir e homologar.",
+          children: [
+            { id: "prd", label: "12 PRD", kind: "agent", path: "agents/12_prd/", modes: ["@prd", "@prd story-map", "@prd moscow"], desc: "Especificação com critérios mensuráveis, plano de medição 🔴🟡🟢 e gate regulatório. A Wave declara a etapa do funil que pretende mover. Bloqueio 2: sem PRD aprovado, a Dev Spec não começa.",
+              children: [
+                { id: "metricsfw", label: "Frameworks de métricas", kind: "file", path: "agents/12_prd/metrics_frameworks.md", desc: "HEART por Wave, AARRR do negócio e as regras do NN/g: 2 a 4 métricas, ligadas a KPI, baseline antes de mudar." },
+                { id: "storymap", label: "Story Map", kind: "file", path: "agents/12_prd/story_map.md", modes: ["@prd story-map"], desc: "Espinha de atividades (stages da jornada) → passos (viram épicos) → detalhes (viram US-NN), escritos como ação de quem usa. Waves são fatias que atravessam a jornada até o momento de valor. Fontes: NN/g e Jeff Patton." },
+                { id: "moscow", label: "MoSCoW por Wave", kind: "file", path: "agents/12_prd/moscow.md", modes: ["@prd moscow"], desc: "Corte de escopo entre Waves, usando as fases do blueprint e os detalhes do story map. Alarme: toda atividade da espinha com um Must ou contorno manual na Wave 1." }
+              ] },
+            { id: "qa", label: "13 QA e BDD", kind: "agent", path: "agents/13_qa_bdd/", modes: ["@qa"], desc: "Cenários BDD e matriz de edge cases a partir do PRD. Ponte entre PRD e Dev Spec." },
+            { id: "devspec", label: "14 Dev Spec", kind: "agent", path: "agents/14_dev_spec/", modes: ["@dev-spec", "@dev-spec eventos"], desc: "Arquitetura, endpoints, regras e mapeamento de eventos Firebase/GA4." },
+            { id: "dev", label: "15 Desenvolvimento", kind: "agent", path: "agents/15_development/", modes: ["@dev"], desc: "Apoio a código, testes e refatoração, guiado pela Dev Spec." },
+            { id: "homolog", label: "16 Homologação", kind: "agent", path: "agents/16_homologacao/", modes: ["@homolog"], desc: "Executa os casos do @qa e formaliza o sign-off e o Go/No-Go multi-área." }
+          ] },
+        { id: "metricas", label: "17 Métricas e Aprendizado", kind: "agent", path: "agents/17_metrics_review/", modes: ["@metricas"], desc: "Fecha o ciclo: compara o real com o PRD, lê por etapa do funil e devolve o maior vazamento como outcome da próxima árvore. Etapa que caiu vira árvore de problemas; suposições testadas são re-mapeadas e o story map é atualizado. Nunca valida hipótese sem dado real." }
+      ] },
+
+    { id: "shared", branch: "shared", kind: "branch", label: "Mecânicas compartilhadas", path: "agents/_shared/",
+      desc: "Lentes e rituais sem @ próprio, usados por várias etapas.",
+      children: [
+        { id: "adr", label: "Decisões estruturais (ADR)", kind: "file", path: "agents/_shared/decision_records.md", desc: "Teste de triagem de 5 perguntas antes de tratar algo como decisão de produto. Disparou: ADR na pasta do projeto (RULES #39)." },
+        { id: "raci", label: "RACI", kind: "file", path: "agents/_shared/raci.md", desc: "Quem aprova quando a decisão envolve mais de uma área." },
+        { id: "autocheck", label: "Autocheck", kind: "file", path: "agents/_shared/self_critique.md", desc: "Checagem antes de apresentar nas etapas de maior risco, com evidência no rodapé (RULES #36, #41)." },
+        { id: "evals", label: "Evals", kind: "file", path: "agents/_shared/evals.md", desc: "Asserções ativas, destiladas das correções. Lidas em toda sessão." },
+        { id: "mece", label: "MECE", kind: "file", path: "agents/_shared/mece.md", desc: "Checa sobreposição e lacuna em qualquer decomposição. Proíbe “Outros” (RULES #48)." },
+        { id: "modularidade", label: "Modularidade", kind: "file", path: "agents/_shared/modularidade.md", desc: "Toda etapa roda sozinha; só 3 bloqueios obrigatórios." },
+        { id: "trilha", label: "Trilha", kind: "file", path: "agents/_shared/trilha.md", desc: "Ao fechar uma etapa ou retomar, sugere até 2 próximos artefatos. Sugerir nunca é rodar (RULES #52)." },
+        { id: "leitor", label: "Leitor e tom", kind: "file", path: "agents/_shared/leitor.md", desc: "Tom de voz em tudo e “pra quem é?” antes de escrever para alguém (RULES #55)." },
+        { id: "figma", label: "Auditoria de Figma", kind: "file", path: "agents/_shared/figma_audit.md", desc: "Duas lentes mecânicas sobre arquivos Figma. Exige MCP do Figma autorizado (RULES #49)." }
+      ] },
+
+    { id: "skills", branch: "skills", kind: "branch", label: "Skills", path: "skills/ (espelho em .cursor/skills/)",
+      desc: "Pacotes de conhecimento que as etapas consultam. skills/ é a cópia canônica; o espelho do Cursor é atualizado na mesma sessão (RULES #43).",
+      children: [
+        { id: "s-growth", label: "growth", kind: "skill", path: "skills/growth/", desc: "Funil AARRR: experimentos e teste A/B, conversão, ativação, retenção e réguas de comunicação (degrau, evento, reativação; WhatsApp e in-app), indicação e ciclos de crescimento × táticas lineares, métricas com definições de usuário novo/ativo/retido. Regras do NN/g e aula Growth para PMs.", files: ["SKILL.md", "references/experimentos.md", "references/conversao.md", "references/ativacao.md", "references/retencao_crm.md", "references/indicacao.md", "references/metricas.md", "_fonte.md"] },
+        { id: "s-seo", label: "seo", kind: "skill", path: "skills/seo/", desc: "Busca orgânica, local, IA, arquitetura de informação, conteúdo e técnico. Roteia por etapa." },
+        { id: "s-dic", label: "dicionario-metricas", kind: "skill", path: "skills/dicionario-metricas/", desc: "Cerca de 210 métricas com fórmula, por categoria. produto.md está organizado por etapa do AARRR." },
+        { id: "s-event", label: "event-mapping", kind: "skill", path: "skills/event-mapping/", desc: "Convenção de eventos Firebase/GA4 e geração da planilha." },
+        { id: "s-otto", label: "otto (LGPD)", kind: "skill", path: "skills/otto/", desc: "Privacidade, dado pessoal, consentimento de analytics e mensagens." },
+        { id: "s-bdd", label: "roteiro-homologacao-bdd", kind: "skill", path: "skills/roteiro-homologacao-bdd/", desc: "Cenários BDD e roteiro de homologação." },
+        { id: "s-tom", label: "tom-de-voz-thiago", kind: "skill", path: "skills/tom-de-voz-thiago.md", desc: "Tom em toda resposta e em todo texto escrito em nome do PM (RULES #55)." },
+        { id: "s-tp", label: "thinking-partner", kind: "skill", path: "skills/thinking-partner/", desc: "HBDI e perfis de quem vai ler. Sob demanda, no kickoff e ao escrever para alguém." },
+        { id: "s-gov", label: "governanca-produto", kind: "skill", path: "skills/governanca-produto/", desc: "Documento formal de governança, fora do pipeline, geralmente depois do lançamento." }
+      ] },
+
+    { id: "memoria", branch: "memoria", kind: "branch", label: "Memória do método", path: "memory/",
+      desc: "Memória do método, nunca de projeto (RULES #56).",
+      children: [
+        { id: "rules", label: "RULES.md", kind: "file", path: "memory/RULES.md", desc: "Regras permanentes #1–57. Duras, não sugestões." },
+        { id: "memorymd", label: "MEMORY.md", kind: "file", path: "memory/MEMORY.md", desc: "Estado do método, pendências e próxima sessão." },
+        { id: "corrections", label: "CORRECTIONS.md", kind: "file", path: "memory/CORRECTIONS.md", desc: "Toda correção do PM, na hora. É o dataset de eval do sistema (RULES #40)." },
+        { id: "glossary", label: "GLOSSARY.md", kind: "file", path: "memory/GLOSSARY.md", desc: "Termos do domínio e atalhos de comando." },
+        { id: "daily", label: "daily/", kind: "file", path: "memory/daily/AAAA-MM-DD.md", desc: "Registro das sessões que mudaram o método. Append-only." }
+      ] },
+
+    { id: "templates", branch: "templates", kind: "branch", label: "Templates", path: "templates/",
+      desc: "Modelos reutilizáveis. Nunca recebem dado de projeto.",
+      children: [
+        { id: "t-projeto", label: "templates/projeto/", kind: "file", path: "templates/projeto/", desc: "Modelo de pasta que todo projeto copia: CLAUDE.md, README, context/work.md, log/, decisions/, raci.md e pastas por fase." },
+        { id: "t-diretrizes", label: "templates/diretrizes/", kind: "file", path: "templates/diretrizes/", desc: "Modelo do pacote de diretrizes de uma empresa (white label)." },
+        { id: "t-prompts", label: "Prompts de início", kind: "file", path: "templates/prompts_inicio.md", desc: "Prompt A projeto novo, B herdado de outro PM, C retomar." },
+        { id: "t-checklists", label: "Checklists de projeto", kind: "file", path: "templates/new_project.md · inherited_project.md", desc: "Passos do Dia 0 para projeto novo e para projeto herdado." },
+        { id: "t-higiene", label: "Higiene de discovery", kind: "file", path: "templates/discovery_hygiene_checklist.md", desc: "Documento novo, termo novo, decisão sensível, durante o discovery (RULES #45, #46)." },
+        { id: "t-brief", label: "Research brief", kind: "file", path: "templates/research_brief.md", desc: "Entrada do @research." }
+      ] },
+
+    { id: "contexto", branch: "contexto", kind: "branch", label: "Contexto do PM", path: "context/",
+      desc: "Quem é o PM e o que persegue. Projeto não mora aqui.",
+      children: [
+        { id: "me", label: "me.md", kind: "file", path: "context/me.md", desc: "Perfil, estilo de trabalho, ferramentas." },
+        { id: "goals", label: "goals.md", kind: "file", path: "context/goals.md", desc: "OKRs e North Star. Recebe os aprendizados do @metricas." }
+      ] },
+
+    { id: "tools", branch: "tools", kind: "branch", label: "Ferramentas", path: "tools/",
+      desc: "Guias de conectores e utilitários.",
+      children: [
+        { id: "connectors", label: "Conectores", kind: "file", path: "tools/connectors/", desc: "GitHub, Google Drive, Notion, Slack, Linear, Jira, Firecrawl e o CHECKLIST de autorização." },
+        { id: "auth", label: "Autenticação e CLI", kind: "file", path: "tools/auth/ · tools/cli/", desc: "OAuth e gws CLI." },
+        { id: "utils", label: "Leitura e busca", kind: "file", path: "tools/pdf_reader.md · scraper.md · web_search.md", desc: "Como ler PDF, raspar página e pesquisar na web." }
+      ] },
+
+    { id: "externo", branch: "externo", kind: "branch", label: "Fora do Product OS", path: "projects/",
+      desc: "Onde o trabalho de verdade fica. Repositório projects, separado do product-os.",
+      children: [
+        { id: "x-projeto", label: "Pasta do projeto", kind: "external", path: "projects/{slug}/", desc: "Todo artefato, estado (context/work.md), log, decisões e RACI de um projeto. Lê o método por ../product-os/." },
+        { id: "x-diretrizes", label: "Pacote de diretrizes", kind: "external", path: "projects/diretrizes-{empresa}/", desc: "Tudo o que é de uma empresa: contexto, stakeholders, design system, deck, analytics." }
+      ] }
+  ]
+};
+
+/* Ligações entre nós (de → para, motivo). Mostradas ao selecionar um nó. */
+const LINKS = [
+  ["claude", "agentsmd", "é a fonte de"], ["claude", "cursorrules", "é a fonte de"], ["claude", "skillconta", "é a fonte de"],
+  ["claude", "rules", "manda ler"], ["claude", "memorymd", "manda ler"], ["claude", "evals", "manda ler"], ["claude", "glossary", "manda ler"], ["claude", "me", "manda ler"],
+  ["research", "hipoteses", "síntese vira hipótese"], ["research", "problemas", "CSD e pesquisa alimentam"],
+  ["r-usuarios", "design", "Linguagem do Usuário"], ["r-usuarios", "gtm", "mensagem na língua de quem usa"],
+  ["r-regulatorio", "prd", "gate regulatório"], ["r-regulatorio", "gtm", "produto regulado"],
+  ["r-seo", "s-seo", "usa"], ["r-mercado", "gtm", "SOM pela capacidade de GTM"],
+  ["problemas", "oportunidades", "perguntas viram oportunidades"],
+  ["oportunidades", "vpc", "oportunidade escolhida"], ["experimentos", "oportunidades", "experimento por solução"],
+  ["hipoteses", "design", "bloqueio 1: hipóteses aprovadas"],
+  ["jornada", "blueprint", "mesmos stages e atores"], ["jornada", "oportunidades", "maior vazamento vira outcome"],
+  ["jornada", "gtm", "canal e momento de valor"], ["jornada", "prd", "etapa do funil da Wave"], ["jornada", "devspec", "momento de valor vira evento"],
+  ["blueprint", "moscow", "fases do serviço"], ["blueprint", "qa", "fail points e estados"], ["blueprint", "devspec", "linha de medição"],
+  ["heuristicas", "s-growth", "guarda-corpo de padrão enganoso"],
+  ["dsmd", "x-diretrizes", "aponta para o design system"],
+  ["design", "prototipo", "solução escolhida"], ["prototipo", "critique", "revisão"], ["critique", "userresearch", "o que testar"], ["userresearch", "sumario", "achados"], ["sumario", "estrategia", "base da estratégia"],
+  ["critique", "figma", "@critique figma"], ["critique", "s-seo", "@critique seo"],
+  ["bmc", "gtm", "ICP e modelo de receita"], ["gtm", "unit", "CAC por canal"], ["gtm", "alavancas", "ciclo de crescimento"],
+  ["gtm", "s-growth", "experimentos, conversão, ativação"], ["gtm", "s-seo", "canal orgânico"], ["gtm", "experimentos", "teste de canal"],
+  ["estrategia", "visao", "bloqueio 3: estratégia aprovada"], ["visao", "critvisao", "desafio da visão"], ["critvisao", "prd", "visão validada"],
+  ["estrategia", "reporting", "comunicar decisões"],
+  ["metricsfw", "prd", "métricas de sucesso"], ["s-dic", "metricsfw", "fórmulas"], ["moscow", "prd", "escopo da Wave"],
+  ["prd", "qa", "user stories e critérios"], ["prd", "devspec", "bloqueio 2: PRD aprovado"], ["qa", "devspec", "cenários testáveis"],
+  ["devspec", "dev", "spec aprovada"], ["dev", "homolog", "feature pronta"], ["homolog", "metricas", "em produção"],
+  ["s-event", "devspec", "convenção de eventos"], ["s-otto", "devspec", "LGPD"], ["figma", "devspec", "handoff"],
+  ["s-bdd", "qa", "roteiro BDD"], ["s-bdd", "homolog", "roteiro de homologação"],
+  ["prd", "metricas", "promessa da Wave"], ["s-growth", "metricas", "leitura por etapa"], ["s-dic", "metricas", "fórmula de referência"],
+  ["metricas", "oportunidades", "maior vazamento volta"], ["metricas", "research", "novo ciclo"], ["metricas", "goals", "aprendizados do ciclo"],
+  ["s-otto", "s-growth", "consentimento de mensagens"],
+  ["adr", "bmc", "triagem de parcerias e receita"], ["adr", "prd", "decisões estruturais"], ["adr", "gtm", "canal com parceiro"], ["adr", "x-projeto", "ADR mora no projeto"],
+  ["raci", "hipoteses", "gate multi-área"], ["raci", "estrategia", "gate multi-área"], ["raci", "prd", "gate multi-área"], ["raci", "homolog", "sign-off"], ["raci", "gtm", "lançamento"],
+  ["autocheck", "research", "antes de apresentar"], ["autocheck", "hipoteses", "antes de apresentar"], ["autocheck", "design", "antes de apresentar"], ["autocheck", "estrategia", "antes de apresentar"], ["autocheck", "prd", "antes de apresentar"], ["autocheck", "metricas", "antes de apresentar"],
+  ["mece", "oportunidades", "oportunidades irmãs"], ["mece", "problemas", "causas irmãs"], ["mece", "estrategia", "opções exclusivas"], ["mece", "qa", "edge cases"], ["mece", "jornada", "funil sem lacuna"],
+  ["leitor", "s-tom", "usa"], ["leitor", "s-tp", "usa"], ["leitor", "reporting", "pra quem é?"],
+  ["corrections", "evals", "correção vira asserção"], ["corrections", "rules", "repetição vira regra"],
+  ["t-projeto", "x-projeto", "copiado para"], ["t-diretrizes", "x-diretrizes", "copiado para"], ["t-prompts", "t-checklists", "aponta para"],
+  ["x-diretrizes", "design", "design system e contexto"], ["x-diretrizes", "s-tp", "stakeholders.md"],
+  ["trilha", "x-projeto", "olha o que existe no projeto"],
+  ["hook", "rules", "RULES #57"],
+  ["csd", "problemas", "Certezas e Dúvidas alimentam"], ["csd", "suposicoes", "Suposições S-NN"], ["csd", "prd", "Dúvidas viram Decisões em Aberto"],
+  ["blueprint", "edgecases", "falha que aparece na tela"], ["edgecases", "qa", "estados viram cenários"],
+  ["estr-swot", "raci", "stakeholders alimentam o RACI"], ["estr-okr", "goals", "OKR do ciclo"], ["estr-portfolio", "visao", "fase e portfólio"],
+  ["research", "suposicoes", "Suposições S-NN da CSD"], ["vpc", "suposicoes", "desejabilidade"], ["bmc", "suposicoes", "viabilidade"], ["unit", "suposicoes", "viabilidade"],
+  ["suposicoes", "experimentos", "teste do quadrante testar agora"], ["suposicoes", "adr", "regulatória vai à triagem"], ["suposicoes", "hipoteses", "valida primeiro o mais arriscado"],
+  ["jornada", "storymap", "stages viram a espinha"], ["blueprint", "storymap", "recuperação de FP crítico"], ["storymap", "moscow", "detalhes viram linhas"], ["storymap", "prd", "épicos e user stories"], ["storymap", "suposicoes", "detalhes com ⚠️"],
+  ["metricas", "problemas", "métrica que caiu vira sintoma"], ["metricas", "suposicoes", "re-mapear"], ["metricas", "storymap", "atualizar o mapa"],
+  ["mece", "storymap", "espinha sem lacuna"], ["jornada", "s-growth", "definições de usuário"], ["unit", "estrategia", "escada LTV:CAC"]
+];
+
+/* ============================================================
+   GUIA POR MOMENTO DO PRODUTO — guia pessoal, sem ligação com o método.
+   Ordem das letras: zero, tracao, escala, otimizar, problema.
+   e = essencial · s = se a situação pedir · x = depois · a = sempre ligado (regra)
+   Nó sem entrada = infraestrutura (não é framework): esmaece com um momento ativo.
+   ============================================================ */
+const MOMENTOS = [
+  { id: "zero", label: "Do zero (0→1)", pergunta: "Existe o problema e alguém quer a solução?",
+    sinal: "Ainda não há produto, nem usuário, nem baseline.",
+    sequencia: ["csd", "problemas", "r-usuarios", "suposicoes", "jornada", "storymap", "moscow"],
+    empresa: "Empresa grande lançando produto novo também está aqui: o kit é o mesmo. Em early stage, use versões leves e contorno manual na Wave 1; em empresa maior, chame stakeholders e RACI cedo se envolver dinheiro ou dado sensível." },
+  { id: "tracao", label: "Primeira tração", pergunta: "As pessoas chegam ao valor e voltam?",
+    sinal: "Lançado, poucos usuários, buscando encaixe. Ativação e retenção são as dúvidas.",
+    sequencia: ["jornada", "metricas", "oportunidades", "userresearch", "experimentos", "s-growth", "prd"],
+    empresa: "Early stage: concierge e contorno manual ensinam mais que automação. Em qualquer estágio, não escale mídia paga antes de a retenção estabilizar." },
+  { id: "escala", label: "Escala", pergunta: "Como crescer de forma sustentável?",
+    sinal: "Retenção estável; a pergunta virou canal, custo e eficiência. Várias áreas envolvidas.",
+    sequencia: ["unit", "gtm", "alavancas", "estr-okr", "estr-swot", "blueprint", "estr-portfolio"],
+    empresa: "Aqui o estágio da empresa pesa mais: mais áreas, mais RACI e governança. Em early stage, só entre aqui com retenção estável e LTV:CAC medido." },
+  { id: "otimizar", label: "Otimizar (achar oportunidade)", pergunta: "Onde está o maior ganho agora?",
+    sinal: "Produto rodando, sem crise. Você quer mover uma métrica.",
+    sequencia: ["metricas", "jornada", "oportunidades", "experimentos", "prototipo", "userresearch", "prd"],
+    empresa: "Com pouco tráfego (comum em early stage), teste A/B não dá resultado confiável: prefira pesquisa qualitativa e comparação antes/depois." },
+  { id: "problema", label: "Resolver problema", pergunta: "Por que piorou e como corrigir?",
+    sinal: "Uma métrica caiu, as reclamações subiram ou um fluxo quebra.",
+    sequencia: ["metricas", "problemas", "r-usuarios", "csd", "blueprint", "edgecases", "prd"],
+    empresa: "Em empresa maior, o problema costuma cruzar áreas: blueprint e RACI ganham peso. Em fintech, falha em ação irreversível (PIX, crédito, limite) passa pela triagem estrutural." }
+];
+const SEMPRE = [["adr", "triagem estrutural"], ["r-regulatorio", "produto financeiro"], ["raci", "mais de uma área"], ["trilha", "próximo passo"], ["mece", "decomposição"], ["leitor", "tom e leitor"]];
+const MATRIZ = {
+  research: "essse", csd: "esxse", "r-mercado": "exsxx", "r-competidores": "sxesx", "r-usuarios": "eesee", "r-regulatorio": "aaaaa", "r-seo": "sssss",
+  hipoteses: "eeses", persona: "esxxx", problemas: "esxxe", oportunidades: "xeses", suposicoes: "eessx", vpc: "esxxx", experimentos: "eeees",
+  design: "eesee", jornada: "eesee", blueprint: "ssese", edgecases: "xssse", heuristicas: "sssss", dsmd: "sssss", eventstorming: "sxsxs",
+  prototipo: "esses", critique: "esses", userresearch: "eesee", sumario: "sssss",
+  estrategia: "seesx", bmc: "essxx", gtm: "seexx", alavancas: "xsesx", unit: "xsesx", "estr-swot": "sxexx", "estr-okr": "xsesx", "estr-portfolio": "xxexx",
+  reporting: "sssss", visao: "xxexx", critvisao: "xxexx",
+  prd: "eeeee", metricsfw: "eeeee", storymap: "esssx", moscow: "eesss", qa: "eeeee", devspec: "eeeee", dev: "eeeee", homolog: "eeeee", metricas: "seeee",
+  "s-growth": "xeess", "s-seo": "sssss", "s-dic": "seeee", "s-event": "eeeee", "s-otto": "aaaaa", "s-bdd": "eeeee", "s-tom": "aaaaa", "s-tp": "sssss", "s-gov": "xxsxx",
+  adr: "aaaaa", raci: "aaaaa", autocheck: "aaaaa", evals: "aaaaa", mece: "aaaaa", modularidade: "aaaaa", trilha: "aaaaa", leitor: "aaaaa", figma: "sssss"
+};
+const ESTADO = { e: "Essencial", s: "Se a situação pedir", x: "Deixar para depois", a: "Sempre ligado (regra)" };
+
+/* Faixa do fluxo do pipeline: [id, número, rótulo, bloqueio antes?] */
+const FLOW = [
+  ["research", "01", "Research"], ["hipoteses", "02", "Hipóteses"], ["design", "03", "Design", "1"], ["prototipo", "04", "Protótipo"],
+  ["critique", "05", "Critique"], ["userresearch", "06", "User Research"], ["sumario", "07", "Sumarização"], ["estrategia", "08", "Estratégia"],
+  ["reporting", "09", "Reporting"], ["visao", "10", "Visão", "3"], ["critvisao", "11", "Critique da Visão"], ["prd", "12", "PRD"],
+  ["qa", "13", "QA"], ["devspec", "14", "Dev Spec", "2"], ["dev", "15", "Desenvolvimento"], ["homolog", "16", "Homologação"], ["metricas", "17", "Métricas"]
+];
+</script>
+
+<script>
+(function () {
+  const KIND_LABEL = { root: "Raiz", branch: "Pasta", group: "Fase do pipeline", agent: "Agente", sub: "Sub-agente", file: "Arquivo", skill: "Skill", external: "Fora do Product OS" };
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#888";
+
+  document.getElementById("versao").textContent =
+    "Versão do mapa: " + VERSAO.data + " · Product OS no commit " + VERSAO.commit + " (" + VERSAO.repo + ")";
+
+  const hist = document.getElementById("historico");
+  HISTORICO.slice().reverse().forEach(([d, t]) => {
+    const li = document.createElement("li");
+    const tm = document.createElement("time"); tm.textContent = d; tm.dateTime = d;
+    li.append(tm, document.createTextNode(t)); hist.append(li);
+  });
+
+  const legend = document.getElementById("legend");
+  Object.values(BRANCHES).forEach((b) => {
+    const s = document.createElement("span"); const i = document.createElement("i");
+    i.style.background = "var(" + b.color + ")"; s.append(i, document.createTextNode(b.label)); legend.append(s);
+  });
+  const ls = document.createElement("span"); const li2 = document.createElement("i"); li2.className = "dash";
+  ls.append(li2, document.createTextNode("Ligação do nó selecionado")); legend.append(ls);
+
+  // Hierarquia
+  const root = d3.hierarchy(TREE);
+  root.each((d) => {
+    d.data.branch = d.data.branch || (d.parent ? d.parent.data.branch : null);
+    d.uid = d.data.id;
+  });
+  const byId = new Map(); root.each((d) => byId.set(d.data.id, d));
+  const branchColor = (d) => d.depth === 0 ? css("--ink") : css(BRANCHES[d.data.branch].color);
+
+  // Lados: equilibrar pelo número de folhas
+  const tops = root.children.slice();
+  const weight = new Map(tops.map((t) => [t.data.id, t.leaves().length]));
+  const narrow = () => window.matchMedia("(max-width: 700px)").matches;
+  const sideOf = new Map();
+  function computeSides() {
+    sideOf.clear();
+    if (narrow()) { tops.forEach((t) => sideOf.set(t.data.id, 1)); return; } // tela estreita: um lado só
+    let wL = 0, wR = 0;
+    tops.slice().sort((a, b) => weight.get(b.data.id) - weight.get(a.data.id)).forEach((t) => {
+      const w = weight.get(t.data.id);
+      if (wR <= wL) { sideOf.set(t.data.id, 1); wR += w; } else { sideOf.set(t.data.id, -1); wL += w; }
+    });
+  }
+  computeSides();
+  const topOf = (d) => { let n = d; while (n.depth > 1) n = n.parent; return n; };
+
+  // Estado de recolhimento: começa com sub-níveis abertos até profundidade 3
+  root.each((d) => { if (d.children && d.depth >= 3) { d._children = d.children; d.children = null; } });
+
+  const svg = d3.select("#map");
+  const gZoom = svg.append("g");
+  const gTree = gZoom.append("g").attr("class", "tree-links");
+  const gX = gZoom.append("g").attr("class", "x-links");
+  const gNodes = gZoom.append("g").attr("class", "nodes");
+  const zoom = d3.zoom().scaleExtent([0.25, 2.5]).on("zoom", (e) => gZoom.attr("transform", e.transform));
+  svg.call(zoom).on("dblclick.zoom", null);
+
+  const ROW = 26;
+  const colW = () => (narrow() ? 165 : 210);
+  let selected = null, query = "", momento = null;
+  const momIdx = () => MOMENTOS.findIndex((m) => m.id === momento);
+  const estadoDe = (id) => { if (!momento) return null; const v = MATRIZ[id]; return v ? v[momIdx()] : "n"; };
+
+  function layout() {
+    const pos = new Map();
+    pos.set("root", { x: 0, y: 0 });
+    [1, -1].forEach((side) => {
+      const kids = tops.filter((t) => sideOf.get(t.data.id) === side);
+      if (!kids.length) return;
+      const virt = { children: kids };
+      const h = d3.hierarchy(virt, (n) => n === virt ? n.children : n.children);
+      d3.tree().nodeSize([ROW, colW()]).separation((a, b) => (a.parent === b.parent ? 1 : 1.35))(h);
+      const ys = []; h.each((n) => { if (n.depth > 0) ys.push(n.x); });
+      const mid = (d3.min(ys) + d3.max(ys)) / 2;
+      h.each((n) => {
+        if (n.depth === 0) return;
+        const real = n.data; // hierarchy node of root tree
+        pos.set(real.data.id, { x: side * (n.y * 0.95 + 70), y: n.x - mid });
+      });
+    });
+    return pos;
+  }
+
+  function visibleNodes() { return root.descendants(); }
+
+  function render(animate) {
+    const pos = layout();
+    const nodes = visibleNodes();
+    nodes.forEach((d) => { const p = pos.get(d.data.id); d.px = p.x; d.py = p.y; });
+    const t = svg.transition().duration(animate && !matchMedia("(prefers-reduced-motion: reduce)").matches ? 280 : 0);
+
+    // Ligações da árvore
+    const links = root.links();
+    const lsel = gTree.selectAll("path").data(links, (l) => l.target.data.id);
+    lsel.exit().remove();
+    lsel.enter().append("path").attr("class", "tlink").merge(lsel)
+      .attr("stroke", (l) => branchColor(l.target)).style("stroke-opacity", 0.45)
+      .transition(t).attr("d", (l) => {
+        const sx = l.source.px, sy = l.source.py, tx = l.target.px, ty = l.target.py;
+        const mx = (sx + tx) / 2;
+        return "M" + sx + "," + sy + "C" + mx + "," + sy + " " + mx + "," + ty + " " + tx + "," + ty;
+      });
+
+    // Nós
+    const nsel = gNodes.selectAll("g.node").data(nodes, (d) => d.data.id);
+    nsel.exit().remove();
+    const enter = nsel.enter().append("g")
+      .attr("tabindex", 0).attr("role", "button")
+      .on("click", (e, d) => onNodeClick(d))
+      .on("keydown", (e, d) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onNodeClick(d); } });
+    enter.append("circle");
+    enter.append("text").attr("dy", "0.32em");
+    const all = enter.merge(nsel);
+    all.attr("class", (d) => "node " + (d.data.kind === "root" ? "root" : d.depth === 1 ? "branch" : "leaf"))
+      .attr("aria-label", (d) => d.data.label + " — " + (KIND_LABEL[d.data.kind] || ""))
+      .transition(t).attr("transform", (d) => "translate(" + d.px + "," + d.py + ")");
+    all.select("circle")
+      .attr("r", (d) => d.depth === 0 ? 9 : d.depth === 1 ? 7 : (d.data.kind === "agent" ? 5.5 : 4))
+      .attr("fill", (d) => (d._children ? branchColor(d) : (d.data.kind === "external" ? css("--surface") : branchColor(d))))
+      .attr("stroke", (d) => branchColor(d)).attr("stroke-width", (d) => d.data.kind === "external" ? 1.8 : 1.2)
+      .attr("stroke-dasharray", (d) => d.data.kind === "external" ? "2 2" : null);
+    all.select("text")
+      .attr("x", (d) => d.depth === 0 ? 0 : (d.px >= 0 ? 10 : -10))
+      .attr("y", (d) => d.depth === 0 ? -18 : 0)
+      .attr("text-anchor", (d) => d.depth === 0 ? "middle" : (d.px >= 0 ? "start" : "end"))
+      .text((d) => d.data.label + (d._children ? "  +" + countHidden(d) : ""));
+
+    applyHighlight();
+    drawCross();
+  }
+
+  function countHidden(d) { let c = 0; (d._children || []).forEach((k) => { c += 1 + k.descendants().length - 1; }); return c; }
+
+  function visibleProxy(id) {
+    let d = byId.get(id); if (!d) return null;
+    let n = d; while (n.parent && !isShown(n)) n = n.parent; return n;
+  }
+  function isShown(d) { let n = d; while (n.parent) { if (!n.parent.children || n.parent.children.indexOf(n) < 0) return false; n = n.parent; } return true; }
+
+  function drawCross() {
+    gX.selectAll("*").remove();
+    if (!selected) return;
+    const id = selected.data.id;
+    const rel = LINKS.filter((l) => l[0] === id || l[1] === id);
+    rel.forEach((l) => {
+      const out = l[0] === id;
+      const a = visibleProxy(l[0]), b = visibleProxy(l[1]);
+      if (!a || !b || a === b) return;
+      const sx = a.px, sy = a.py, tx = b.px, ty = b.py;
+      const mx = (sx + tx) / 2, my = (sy + ty) / 2 - Math.min(120, Math.abs(tx - sx) * 0.25 + 30);
+      gX.append("path").attr("class", "xlink" + (out ? " out" : ""))
+        .attr("d", "M" + sx + "," + sy + "Q" + mx + "," + my + " " + tx + "," + ty);
+    });
+  }
+
+  function applyHighlight() {
+    const est = (d) => (d.data.kind === "root" || d.data.kind === "branch" || d.data.kind === "group") ? null : estadoDe(d.data.id);
+    gNodes.selectAll("g.node")
+      .classed("m-e", (d) => est(d) === "e").classed("m-s", (d) => est(d) === "s").classed("m-a", (d) => est(d) === "a")
+      .classed("m-x", (d) => est(d) === "x").classed("m-n", (d) => est(d) === "n");
+    paintFlowAndList();
+    const q = query.trim().toLowerCase();
+    const relIds = new Set();
+    if (selected) { relIds.add(selected.data.id); LINKS.forEach((l) => { if (l[0] === selected.data.id) relIds.add(l[1]); if (l[1] === selected.data.id) relIds.add(l[0]); }); }
+    gNodes.selectAll("g.node")
+      .classed("hit", (d) => q && matches(d, q))
+      .classed("sel", (d) => selected && d === selected)
+      .classed("dim", (d) => {
+        if (q) return !matches(d, q) && d.depth > 0;
+        if (selected && selected.depth > 0) return !relIds.has(d.data.id) && !isAncestor(d, selected) && d.depth > 1;
+        return false;
+      });
+  }
+  function isAncestor(a, b) { let n = b; while (n) { if (n === a) return true; n = n.parent; } return false; }
+  function matches(d, q) {
+    const s = [d.data.label, d.data.path || "", d.data.desc || "", (d.data.modes || []).join(" "), (d.data.files || []).join(" ")].join(" ").toLowerCase();
+    return s.indexOf(q) >= 0;
+  }
+
+  function onNodeClick(d) {
+    if (selected === d && (d.children || d._children) && d.depth > 0) toggle(d);
+    selected = d; showPanel(d); render(true); revealPanel();
+  }
+  function revealPanel() {
+    if (!narrow()) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("panel").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
+  function toggle(d) { if (d.children) { d._children = d.children; d.children = null; } else if (d._children) { d.children = d._children; d._children = null; } }
+  function expandTo(d) { let n = d.parent; while (n) { if (n._children) { n.children = n._children; n._children = null; } n = n.parent; } }
+
+  function select(id) {
+    const d = byId.get(id); if (!d) return;
+    expandTo(d); selected = d; showPanel(d); render(true);
+    if (listMode) { markActive(id); revealPanel(); } else { focusOn(d); revealPanel(); }
+  }
+
+  // Painel
+  const panel = document.getElementById("panel");
+  function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function nameOf(id) { const d = byId.get(id); return d ? d.data.label : id; }
+
+  function showPanel(d) {
+    panel.replaceChildren();
+    const badge = el("span", "badge", KIND_LABEL[d.data.kind] || "");
+    badge.style.color = branchColor(d);
+    const h = el("h3", null, d.data.label);
+    panel.append(badge, h);
+    if (d.data.path) {
+      const p = el("div", "path"); const c = el("code", null, d.data.path); const b = el("button", null, "Copiar");
+      b.type = "button";
+      b.addEventListener("click", () => {
+        const done = () => { b.textContent = "Copiado"; setTimeout(() => (b.textContent = "Copiar"), 1400); };
+        try { navigator.clipboard.writeText(d.data.path).then(done, () => selectText(c)); } catch (e) { selectText(c); }
+      });
+      p.append(c, b); panel.append(p);
+    }
+    if (momento && !["root", "branch", "group"].includes(d.data.kind)) {
+      const v = estadoDe(d.data.id); const m = MOMENTOS[momIdx()];
+      panel.append(el("p", "pmom", m.label + ": " + (v === "n" ? "infraestrutura, não é framework" : ESTADO[v])));
+    }
+    if (d.data.desc) panel.append(el("p", "desc", d.data.desc));
+    if (d.data.modes && d.data.modes.length) {
+      const w = el("div", "rel"); w.append(el("span", "label", "Como ativar"));
+      const ch = el("div", "chips"); d.data.modes.forEach((m) => ch.append(el("span", "chip", m))); w.append(ch); panel.append(w);
+    }
+    const id = d.data.id;
+    const ins = LINKS.filter((l) => l[1] === id), outs = LINKS.filter((l) => l[0] === id);
+    panel.append(relList("Lê de / é usado por", ins.map((l) => [l[0], l[2]])));
+    panel.append(relList("Alimenta / aponta para", outs.map((l) => [l[1], l[2]])));
+    const kids = (d.children || d._children || []);
+    if (kids.length) panel.append(relList("Dentro dele", kids.map((k) => [k.data.id, KIND_LABEL[k.data.kind] || ""])));
+    if (d.data.files && d.data.files.length) {
+      const w = el("div", "rel"); w.append(el("span", "label", "Arquivos"));
+      const ul = el("ul", "files"); d.data.files.forEach((f) => ul.append(el("li", null, f))); w.append(ul); panel.append(w);
+    }
+  }
+  function relList(title, items) {
+    const w = el("div", "rel"); w.append(el("span", "label", title));
+    if (!items.length) { w.append(el("p", "empty", "Nenhuma ligação mapeada.")); return w; }
+    const ul = el("ul");
+    items.forEach(([id, why]) => {
+      const li = el("li"); const b = el("button"); b.type = "button";
+      const dot = el("i"); dot.style.cssText = "width:8px;height:8px;border-radius:50%;flex:0 0 auto;align-self:center;background:" + (byId.get(id) ? branchColor(byId.get(id)) : css("--muted"));
+      b.append(dot, el("span", "t", nameOf(id)), el("span", "why", why));
+      b.addEventListener("click", () => select(id));
+      li.append(b); ul.append(li);
+    });
+    w.append(ul); return w;
+  }
+  function selectText(node) { const r = document.createRange(); r.selectNodeContents(node); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+  // Fluxo
+  const flow = document.getElementById("flow");
+  const stageEls = new Map();
+  FLOW.forEach(([id, n, label, gate], i) => {
+    if (i > 0) flow.append(el("span", "arrow", "→"));
+    if (gate) { const g = el("span", "gate", "BLOQUEIO " + gate); g.title = "Bloqueio obrigatório " + gate; flow.append(g); flow.append(el("span", "arrow", "→")); }
+    const b = el("button", "stage"); b.type = "button";
+    b.append(el("span", "n", n), document.createTextNode(label));
+    b.addEventListener("click", () => select(id));
+    stageEls.set(id, b);
+    flow.append(b);
+  });
+  flow.append(el("span", "arrow", "↺"), el("span", "loop", "volta ao Research e às Hipóteses"));
+
+  // Barra
+  document.getElementById("busca").addEventListener("input", (e) => {
+    query = e.target.value;
+    if (query.trim()) { const q = query.trim().toLowerCase(); root.each((d) => { if (matches(d, q)) expandTo(d); }); render(false); }
+    else applyHighlight();
+    filterList();
+  });
+
+  // Visualização em lista (padrão no celular)
+  const lista = document.getElementById("lista");
+  const btnVista = document.getElementById("btn-vista");
+  const mapOnly = ["btn-expandir", "btn-recolher", "btn-ajustar"].map((i) => document.getElementById(i));
+  let listMode = false;
+  const listEls = new Map();
+
+  function buildList() {
+    lista.replaceChildren();
+    const mk = (data, depth) => {
+      const d = byId.get(data.id);
+      const color = branchColor(d);
+      const dot = el("span", "dot" + (data.kind === "external" ? " ext" : ""));
+      dot.style.background = color; dot.style.color = color;
+      const nm = el("span", "nm", data.label);
+      const k = el("span", "k", KIND_LABEL[data.kind] || "");
+      let node, row;
+      if (data.children && data.children.length) {
+        node = el("details", "depth-" + depth);
+        if (depth <= 1) node.open = true;
+        row = el("summary");
+        row.append(el("span", "chev", "▶"), dot, nm, k);
+        row.addEventListener("click", () => { selectFromList(data.id); });
+        const kids = el("div", "kids");
+        data.children.forEach((c) => kids.append(mk(c, depth + 1)));
+        node.append(row, kids);
+      } else {
+        node = el("div", "depth-" + depth);
+        row = el("div", "li-row"); row.tabIndex = 0; row.setAttribute("role", "button");
+        row.append(el("span", "chev", ""), dot, nm, k);
+        row.addEventListener("click", () => selectFromList(data.id));
+        row.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectFromList(data.id); } });
+        node.append(row);
+      }
+      listEls.set(data.id, { node, row, nm, data });
+      return node;
+    };
+    TREE.children.forEach((c) => lista.append(mk(c, 1)));
+  }
+  function selectFromList(id) {
+    const d = byId.get(id); if (!d) return;
+    expandTo(d); selected = d; showPanel(d); render(false); markActive(id);
+    if (!(d.data.children && d.data.children.length)) revealPanel();
+  }
+  function markActive(id) {
+    listEls.forEach((v) => v.row.classList.remove("active"));
+    const v = listEls.get(id); if (!v) return;
+    let n = v.node.parentElement;
+    while (n && n !== lista) { if (n.tagName === "DETAILS") n.open = true; n = n.parentElement; }
+    v.row.classList.add("active");
+  }
+  function filterList() {
+    const q = query.trim().toLowerCase();
+    const walk = (data) => {
+      const v = listEls.get(data.id);
+      const self = !q || matches(byId.get(data.id), q);
+      let kidHit = false;
+      (data.children || []).forEach((c) => { if (walk(c)) kidHit = true; });
+      const show = self || kidHit;
+      v.node.classList.toggle("nomatch", !show);
+      if (q && kidHit && v.node.tagName === "DETAILS") v.node.open = true;
+      v.nm.replaceChildren(document.createTextNode(data.label));
+      if (q && self) {
+        const i = data.label.toLowerCase().indexOf(q);
+        if (i >= 0) { v.nm.replaceChildren(document.createTextNode(data.label.slice(0, i)), el("mark", null, data.label.slice(i, i + q.length)), document.createTextNode(data.label.slice(i + q.length))); }
+      }
+      return show;
+    };
+    TREE.children.forEach(walk);
+  }
+  function setListMode(on) {
+    listMode = on;
+    if (on) svg.attr("hidden", ""); else svg.attr("hidden", null);
+    lista.hidden = !on;
+    mapOnly.forEach((b) => (b.hidden = on));
+    btnVista.textContent = on ? "Ver mapa" : "Ver em lista";
+    btnVista.setAttribute("aria-pressed", String(on));
+    if (on) { filterList(); if (selected) markActive(selected.data.id); }
+    else { render(false); fit(true); }
+  }
+  btnVista.addEventListener("click", () => setListMode(!listMode));
+  buildList();
+  document.getElementById("btn-expandir").addEventListener("click", () => {
+    root.each((d) => { if (d._children) { d.children = d._children; d._children = null; } }); render(true); fit();
+  });
+  document.getElementById("btn-recolher").addEventListener("click", () => {
+    root.each((d) => { if (d.depth >= 1 && d.children) { d._children = d.children; d.children = null; } });
+    selected = null; showIntro(); render(true); fit();
+  });
+  document.getElementById("btn-ajustar").addEventListener("click", () => fit());
+
+  function fit(instant) {
+    const nodes = root.descendants();
+    const xs = nodes.map((d) => d.px), ys = nodes.map((d) => d.py);
+    const LABEL = 190; // espaço para os rótulos nas pontas
+    const minX = d3.min(xs) - (narrow() ? 50 : LABEL), maxX = d3.max(xs) + LABEL, minY = d3.min(ys) - 30, maxY = d3.max(ys) + 20;
+    const w = svg.node().clientWidth, h = svg.node().clientHeight;
+    if (!w || !h) return;
+    let tf;
+    if (narrow()) {
+      // Celular: ajusta pela largura, legível, e começa pelo topo; o resto se vê arrastando
+      const k = Math.min(1, Math.max(0.55, w / (maxX - minX)));
+      tf = d3.zoomIdentity.translate(8 - minX * k, 12 - minY * k).scale(k);
+    } else {
+      const k = Math.min(1.3, Math.max(0.25, Math.min(w / (maxX - minX), h / (maxY - minY))));
+      const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
+      tf = d3.zoomIdentity.translate(w / 2 - cx * k, h / 2 - cy * k).scale(k);
+    }
+    if (instant === true) svg.call(zoom.transform, tf);
+    else svg.transition().duration(300).call(zoom.transform, tf);
+  }
+  function focusOn(d) {
+    const w = svg.node().clientWidth, h = svg.node().clientHeight;
+    const k = Math.max(0.7, d3.zoomTransform(svg.node()).k);
+    svg.transition().duration(350).call(zoom.transform, d3.zoomIdentity.translate(w / 2 - d.px * k, h / 2 - d.py * k).scale(k));
+  }
+
+  function showIntro() {
+    panel.replaceChildren();
+    panel.append(el("span", "label", "Como ler"), el("h3", null, "Clique num nó"));
+    panel.append(el("p", "desc", "O painel mostra o que o nó faz, como ativar, de onde ele lê e o que ele alimenta. As linhas tracejadas no mapa mostram essas ligações."));
+    panel.append(el("p", "desc", "Clique de novo num ramo para abrir ou recolher. Arraste para mover e use a roda ou o gesto de pinça para dar zoom."));
+    panel.append(relList("Bons pontos de partida", [["jornada", "a espinha do método"], ["claude", "fonte canônica"], ["metricas", "onde o ciclo fecha"], ["s-growth", "pacote Growth"]]));
+  }
+
+  // Guia por momento
+  function paintFlowAndList() {
+    stageEls.forEach((b, id) => { const v = estadoDe(id); b.classList.toggle("m-e", v === "e"); b.classList.toggle("m-x", v === "x"); });
+    listEls.forEach((v, id) => {
+      const k = v.data.kind; const st = (k === "branch" || k === "group") ? null : estadoDe(id);
+      ["m-e", "m-s", "m-x", "m-n", "m-a"].forEach((c) => v.row.classList.toggle(c, st === c.slice(2)));
+      if (st === "e") { let n = v.node.parentElement; while (n && n !== lista) { if (n.tagName === "DETAILS") n.open = true; n = n.parentElement; } }
+    });
+  }
+  const mchips = document.getElementById("mchips"), mcard = document.getElementById("mcard");
+  const chipEls = [];
+  [{ id: null, label: "Todos" }].concat(MOMENTOS).forEach((m) => {
+    const b = el("button", "mchip", m.label); b.type = "button"; b.setAttribute("role", "radio");
+    b.setAttribute("aria-checked", String(m.id === momento));
+    b.addEventListener("click", () => setMomento(m.id));
+    b.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault(); const i = chipEls.indexOf(b) + (e.key === "ArrowRight" ? 1 : -1);
+      const nb = chipEls[(i + chipEls.length) % chipEls.length]; nb.focus(); nb.click();
+    });
+    chipEls.push(b); mchips.append(b);
+  });
+  function legendaMomento() {
+    const w = el("div", "mleg");
+    [["e", "Essencial"], ["s", "Se a situação pedir"], ["x", "Depois (esmaecido)"], ["a", "Sempre ligado (itálico)"]].forEach(([c, t]) => {
+      const s = el("span"); s.append(el("i", c), document.createTextNode(t)); w.append(s);
+    });
+    return w;
+  }
+  function renderCard() {
+    mcard.replaceChildren();
+    if (!momento) {
+      const c = el("div", "mcard");
+      const a = el("div"); a.style.display = "grid"; a.style.gap = "8px";
+      a.append(el("p", "q", "Escolha o momento do produto"),
+        el("p", "muted", "Do zero, Primeira tração, Escala, Otimizar ou Resolver problema. O mapa destaca o essencial, marca o que usar se a situação pedir e esmaece o que pode esperar. Os itens “sempre ligados” valem em qualquer momento."));
+      const b = el("div"); b.style.display = "grid"; b.style.gap = "6px";
+      b.append(el("span", "label", "Sempre ligados"), seqChips(SEMPRE.map((x) => x[0]), false));
+      c.append(a, b); mcard.append(c); return;
+    }
+    const m = MOMENTOS[momIdx()];
+    const c = el("div", "mcard");
+    const a = el("div"); a.style.display = "grid"; a.style.gap = "8px";
+    a.append(el("p", "q", m.pergunta), el("p", "muted", "Sinal de que você está aqui: " + m.sinal), legendaMomento());
+    const b = el("div"); b.style.display = "grid"; b.style.gap = "8px";
+    b.append(el("span", "label", "Sequência sugerida"), seqChips(m.sequencia, true),
+      el("span", "label", "E o estágio da empresa?"), el("p", "muted", m.empresa));
+    c.append(a, b); mcard.append(c);
+  }
+  function seqChips(ids, numbered) {
+    const w = el("div", numbered ? "seq" : "chips");
+    ids.forEach((id) => {
+      const btn = el("button", null, nameOf(id)); btn.type = "button";
+      if (!numbered) { btn.className = "chip"; btn.style.cursor = "pointer"; btn.style.border = "0"; }
+      btn.addEventListener("click", () => select(id)); w.append(btn);
+    });
+    return w;
+  }
+  function setMomento(id) {
+    momento = id;
+    chipEls.forEach((b, i) => b.setAttribute("aria-checked", String((i === 0 ? null : MOMENTOS[i - 1].id) === momento)));
+    if (momento) { const i = momIdx(); byId.forEach((d) => { const v = MATRIZ[d.data.id]; if (v && v[i] === "e") expandTo(d); }); }
+    renderCard();
+    if (selected) showPanel(selected);
+    render(true);
+    if (!listMode) fit();
+  }
+  renderCard();
+
+  showIntro();
+  render(false);
+  fit(true);
+  if (window.matchMedia("(max-width: 600px)").matches) setListMode(true);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fit(true));
+  window.addEventListener("resize", () => { clearTimeout(window.__rz); window.__rz = setTimeout(() => { computeSides(); render(false); if (!listMode) fit(true); }, 150); });
+  if (window.matchMedia) {
+    const mq = matchMedia("(prefers-color-scheme: dark)");
+    const rerender = () => render(false);
+    if (mq.addEventListener) mq.addEventListener("change", rerender);
+    new MutationObserver(rerender).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  }
+})();
+</script>
+
+</body></html>
