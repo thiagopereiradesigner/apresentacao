@@ -240,9 +240,10 @@ svg#map:active { cursor: grabbing; }
    DADOS DO MAPA — editar aqui quando o Product OS mudar.
    kind: root | branch | group | agent | sub | file | skill | external
    ============================================================ */
-const VERSAO = { data: "2026-11-24", commit: "a6d2b6f + alterações de 24/11 ainda sem commit", repo: "thiagopereiradesigner/product-os" };
+const VERSAO = { data: "2026-11-27", commit: "6f84957 + alterações de 27/11 ainda sem commit", repo: "thiagopereiradesigner/product-os" };
 
 const HISTORICO = [
+  ["2026-11-27", "Curso AI Product Sense: novos nós Árvore de Métricas (@estrategia arvore-metricas) e Product Sense (lente de julgamento, regra #58), com ligações e lugar no guia por momento. Blueprint: fontes antes de fechar a matriz de falhas e modos de falha ampliados (ordem, vencimento no meio da jornada, recusa de terceiro)."],
   ["2026-11-24", "Guia por momento do produto: escolha Do zero, Primeira tração, Escala, Otimizar ou Resolver problema e o mapa destaca o essencial, marca o opcional e esmaece o que fica para depois, com pergunta, sequência sugerida e nota sobre o estágio da empresa. Novos nós: Matriz CSD e Edge cases; o nó de estratégia foi separado em SWOT e stakeholders, OKR e roadmap, BCG e ciclo de vida."],
   ["2026-11-24", "Story Map (@prd story-map, entre blueprint e MoSCoW) e Mapa de Suposições (@hipoteses suposicoes, usa os S-NN da CSD) entram com suas ligações. Aula Growth para PMs no pacote growth: ciclos × táticas lineares, réguas de comunicação, definições de usuário novo/ativo/retido, Awareness opcional, Bullseye no GTM, escada LTV:CAC e árvore de problemas a partir de métrica que caiu."],
   ["2026-11-19", "Correção do responsivo: a página passa a declarar a largura do aparelho (antes o celular a desenhava com 980px e encolhia) e o mapa some de verdade quando a lista está aberta."],
@@ -306,7 +307,7 @@ const TREE = {
             { id: "design", label: "03 Design", kind: "agent", path: "agents/03_design/", modes: ["@design", "@design jornada", "@design blueprint", "@design blueprint multi-cliente", "@design fail-points", "@design edge-cases", "@design ia", "@design conteudo", "@design event-storming"], desc: "Jornada, service blueprint, alternativas de UI e critérios de UX. Não produz código.",
               children: [
                 { id: "jornada", label: "Jornada ponta a ponta", kind: "file", path: "agents/03_design/journey.md", modes: ["@design jornada"], desc: "Começa antes do produto e vai até indicar, recomprar ou sair. Atores, canal, momento de valor, etapa do funil AARRR por stage (Awareness opcional), sinal HEART, definições de usuário novo, ativo e retido, maior vazamento e ciclo. É a espinha que os outros reaproveitam." },
-                { id: "blueprint", label: "Service blueprint", kind: "file", path: "agents/03_design/service_blueprint.md", modes: ["@design blueprint", "@design blueprint multi-cliente", "@design fail-points"], desc: "8 camadas por stage, fases do serviço, máquina de estados, matriz de falhas FP-NN e linha de medição opcional (funil, operação, como detectamos)." },
+                { id: "blueprint", label: "Service blueprint", kind: "file", path: "agents/03_design/service_blueprint.md", modes: ["@design blueprint", "@design blueprint multi-cliente", "@design fail-points"], desc: "8 camadas por stage, fases do serviço, máquina de estados, matriz de falhas FP-NN e linha de medição opcional (funil, operação, como detectamos). Antes de fechar a matriz: documentação técnica dos parceiros, flags regulatórias e escopo funcional como fontes; a que faltar vira [cobertura incompleta]. Modos de falha cobrem ordem, vencimento no meio da jornada e recusa de terceiro." },
                 { id: "heuristicas", label: "Heurísticas e WCAG", kind: "file", path: "agents/03_design/heuristics.md", desc: "Nielsen, vieses éticos, WCAG 2.2 e o guarda-corpo de dark pattern." },
                 { id: "dsmd", label: "Design system (ponteiro)", kind: "file", path: "agents/03_design/design_system.md", desc: "Aponta para o design system do pacote de diretrizes da empresa." },
                 { id: "eventstorming", label: "Event Storming", kind: "file", path: "agents/03_design/event_storming.md", modes: ["@design event-storming"], desc: "Workshop de domínio, só sob demanda." },
@@ -319,12 +320,13 @@ const TREE = {
           ] },
         { id: "f-estrategia", kind: "group", label: "Estratégia e visão", desc: "Validar o negócio no curto prazo antes de projetar o longo prazo.",
           children: [
-            { id: "estrategia", label: "08 Estratégia", kind: "agent", path: "agents/08_strategy/", modes: ["@estrategia", "@estrategia canvas", "@estrategia stakeholders", "@estrategia swot", "@estrategia bcg", "@estrategia ciclo-vida", "@estrategia gtm", "@estrategia financeiro", "@estrategia okr", "@estrategia roadmap"], desc: "Posicionamento, crescimento (AARRR), North Star e Waves. Sempre 2 a 3 opções com trade-offs. Bloqueio 3: sem estratégia aprovada, a Visão não começa.",
+            { id: "estrategia", label: "08 Estratégia", kind: "agent", path: "agents/08_strategy/", modes: ["@estrategia", "@estrategia canvas", "@estrategia stakeholders", "@estrategia swot", "@estrategia bcg", "@estrategia ciclo-vida", "@estrategia gtm", "@estrategia financeiro", "@estrategia okr", "@estrategia roadmap", "@estrategia arvore-metricas"], desc: "Posicionamento, crescimento (AARRR), North Star e Waves. Sempre 2 a 3 opções com trade-offs. Bloqueio 3: sem estratégia aprovada, a Visão não começa.",
               children: [
                 { id: "bmc", label: "Business Model Canvas", kind: "file", path: "agents/08_strategy/business_model_canvas.md", modes: ["@estrategia canvas"], desc: "9 blocos; fonte oficial do ICP." },
                 { id: "gtm", label: "Go-to-Market", kind: "file", path: "agents/08_strategy/gtm.md", modes: ["@estrategia gtm"], desc: "Público (quem decide, paga e usa), mensagem, canais testados em camadas, preço, primeira experiência, lançamento e medição. Bullseye (Traction), canal pelo hábito do público, pago × orgânico por etapa. Regras do NN/g." },
                 { id: "alavancas", label: "Alavancas estratégicas", kind: "file", path: "agents/08_strategy/strategic_levers.md", desc: "Flywheel, efeito de rede, custo de troca e outras. Lente, não checklist." },
                 { id: "unit", label: "Modelagem financeira", kind: "file", path: "agents/08_strategy/unit_economics.md", modes: ["@estrategia financeiro"], desc: "CAC, LTV, payback e a escada LTV:CAC → ação (parar, otimizar, monitorar, escalar), lida por segmento e canal. Dado interno vem do PM; benchmark externo sempre com fonte." },
+                { id: "arvoremetricas", label: "Árvore de Métricas", kind: "file", path: "agents/08_strategy/metrics_tree.md → strategy/arvore_metricas.md", modes: ["@estrategia arvore-metricas"], desc: "Input (iniciativa) → Output (comportamento) → Outcome (resultado no produto) → Impact (negócio), com camada de quem responde (Controle, Influência, Contribuição), dono e leading/lagging por nó, rótulo dado pelo PM. A North Star é o nó de Impact; cada PRD aponta para um nó, nenhum cria a própria árvore. Fonte: curso AI Product Sense." },
                 { id: "estr-swot", label: "SWOT e stakeholders", kind: "file", path: "agents/08_strategy/swot_analysis.md · stakeholder_map.md", modes: ["@estrategia swot", "@estrategia stakeholders"], desc: "SWOT do produto ou de um concorrente; mapa de stakeholders em Poder × Interesse, que alimenta o RACI." },
                 { id: "estr-okr", label: "OKR e roadmap", kind: "file", path: "agents/08_strategy/okr_facilitation.md · roadmap_now_next_later.md", modes: ["@estrategia okr", "@estrategia roadmap"], desc: "OKR a partir da North Star (escreve em context/goals.md) e roadmap Now/Next/Later para comunicar." },
                 { id: "estr-portfolio", label: "BCG e ciclo de vida", kind: "file", path: "agents/08_strategy/bcg_matrix.md · product_lifecycle.md", modes: ["@estrategia bcg", "@estrategia ciclo-vida"], desc: "Leitura de portfólio (vários produtos) e fase do produto com histórico. Condicionais." }
@@ -360,6 +362,7 @@ const TREE = {
         { id: "modularidade", label: "Modularidade", kind: "file", path: "agents/_shared/modularidade.md", desc: "Toda etapa roda sozinha; só 3 bloqueios obrigatórios." },
         { id: "trilha", label: "Trilha", kind: "file", path: "agents/_shared/trilha.md", desc: "Ao fechar uma etapa ou retomar, sugere até 2 próximos artefatos. Sugerir nunca é rodar (RULES #52)." },
         { id: "leitor", label: "Leitor e tom", kind: "file", path: "agents/_shared/leitor.md", desc: "Tom de voz em tudo e “pra quem é?” antes de escrever para alguém (RULES #55)." },
+        { id: "productsense", label: "Product Sense", kind: "file", path: "agents/_shared/product_sense.md", desc: "Lente de julgamento quando um número vira conclusão: comparado com o quê? o que mais mudou? o que faria abandonar? quem perde? Variação sem baseline é [correlação], nunca resultado (RULES #58). Em @metricas e no Go/No-Go, a leitura do PM vem antes da do agente. Não bloqueia. Fonte: curso AI Product Sense." },
         { id: "figma", label: "Auditoria de Figma", kind: "file", path: "agents/_shared/figma_audit.md", desc: "Duas lentes mecânicas sobre arquivos Figma. Exige MCP do Figma autorizado (RULES #49)." }
       ] },
 
@@ -380,7 +383,7 @@ const TREE = {
     { id: "memoria", branch: "memoria", kind: "branch", label: "Memória do método", path: "memory/",
       desc: "Memória do método, nunca de projeto (RULES #56).",
       children: [
-        { id: "rules", label: "RULES.md", kind: "file", path: "memory/RULES.md", desc: "Regras permanentes #1–57. Duras, não sugestões." },
+        { id: "rules", label: "RULES.md", kind: "file", path: "memory/RULES.md", desc: "Regras permanentes #1–58. Duras, não sugestões." },
         { id: "memorymd", label: "MEMORY.md", kind: "file", path: "memory/MEMORY.md", desc: "Estado do método, pendências e próxima sessão." },
         { id: "corrections", label: "CORRECTIONS.md", kind: "file", path: "memory/CORRECTIONS.md", desc: "Toda correção do PM, na hora. É o dataset de eval do sistema (RULES #40)." },
         { id: "glossary", label: "GLOSSARY.md", kind: "file", path: "memory/GLOSSARY.md", desc: "Termos do domínio e atalhos de comando." },
@@ -465,6 +468,10 @@ const LINKS = [
   ["csd", "problemas", "Certezas e Dúvidas alimentam"], ["csd", "suposicoes", "Suposições S-NN"], ["csd", "prd", "Dúvidas viram Decisões em Aberto"],
   ["blueprint", "edgecases", "falha que aparece na tela"], ["edgecases", "qa", "estados viram cenários"],
   ["estr-swot", "raci", "stakeholders alimentam o RACI"], ["estr-okr", "goals", "OKR do ciclo"], ["estr-portfolio", "visao", "fase e portfólio"],
+  ["arvoremetricas", "estrategia", "North Star é o nó de Impact"], ["arvoremetricas", "oportunidades", "outcome da árvore é um nó"], ["arvoremetricas", "hipoteses", "cada H declara o nó"],
+  ["arvoremetricas", "prd", "métricas de sucesso citam o nó"], ["arvoremetricas", "metricas", "atribuição pelo nó"], ["s-dic", "arvoremetricas", "fórmula e leading/lagging"],
+  ["productsense", "hipoteses", "comparado com / abandonamos se"], ["productsense", "estrategia", "quem perde"], ["productsense", "prd", "baseline antes de lançar"],
+  ["productsense", "metricas", "correlação não é resultado"], ["productsense", "homolog", "leitura do PM no Go/No-Go"], ["productsense", "research", "o que mais mudou"], ["productsense", "rules", "RULES #58"],
   ["research", "suposicoes", "Suposições S-NN da CSD"], ["vpc", "suposicoes", "desejabilidade"], ["bmc", "suposicoes", "viabilidade"], ["unit", "suposicoes", "viabilidade"],
   ["suposicoes", "experimentos", "teste do quadrante testar agora"], ["suposicoes", "adr", "regulatória vai à triagem"], ["suposicoes", "hipoteses", "valida primeiro o mais arriscado"],
   ["jornada", "storymap", "stages viram a espinha"], ["blueprint", "storymap", "recuperação de FP crítico"], ["storymap", "moscow", "detalhes viram linhas"], ["storymap", "prd", "épicos e user stories"], ["storymap", "suposicoes", "detalhes com ⚠️"],
@@ -489,18 +496,18 @@ const MOMENTOS = [
     empresa: "Early stage: concierge e contorno manual ensinam mais que automação. Em qualquer estágio, não escale mídia paga antes de a retenção estabilizar." },
   { id: "escala", label: "Escala", pergunta: "Como crescer de forma sustentável?",
     sinal: "Retenção estável; a pergunta virou canal, custo e eficiência. Várias áreas envolvidas.",
-    sequencia: ["unit", "gtm", "alavancas", "estr-okr", "estr-swot", "blueprint", "estr-portfolio"],
+    sequencia: ["unit", "gtm", "alavancas", "arvoremetricas", "estr-okr", "blueprint", "estr-portfolio"],
     empresa: "Aqui o estágio da empresa pesa mais: mais áreas, mais RACI e governança. Em early stage, só entre aqui com retenção estável e LTV:CAC medido." },
   { id: "otimizar", label: "Otimizar (achar oportunidade)", pergunta: "Onde está o maior ganho agora?",
     sinal: "Produto rodando, sem crise. Você quer mover uma métrica.",
-    sequencia: ["metricas", "jornada", "oportunidades", "experimentos", "prototipo", "userresearch", "prd"],
+    sequencia: ["metricas", "arvoremetricas", "jornada", "oportunidades", "experimentos", "userresearch", "prd"],
     empresa: "Com pouco tráfego (comum em early stage), teste A/B não dá resultado confiável: prefira pesquisa qualitativa e comparação antes/depois." },
   { id: "problema", label: "Resolver problema", pergunta: "Por que piorou e como corrigir?",
     sinal: "Uma métrica caiu, as reclamações subiram ou um fluxo quebra.",
     sequencia: ["metricas", "problemas", "r-usuarios", "csd", "blueprint", "edgecases", "prd"],
     empresa: "Em empresa maior, o problema costuma cruzar áreas: blueprint e RACI ganham peso. Em fintech, falha em ação irreversível (PIX, crédito, limite) passa pela triagem estrutural." }
 ];
-const SEMPRE = [["adr", "triagem estrutural"], ["r-regulatorio", "produto financeiro"], ["raci", "mais de uma área"], ["trilha", "próximo passo"], ["mece", "decomposição"], ["leitor", "tom e leitor"]];
+const SEMPRE = [["adr", "triagem estrutural"], ["r-regulatorio", "produto financeiro"], ["raci", "mais de uma área"], ["trilha", "próximo passo"], ["mece", "decomposição"], ["productsense", "número vira conclusão"], ["leitor", "tom e leitor"]];
 const MATRIZ = {
   research: "essse", csd: "esxse", "r-mercado": "exsxx", "r-competidores": "sxesx", "r-usuarios": "eesee", "r-regulatorio": "aaaaa", "r-seo": "sssss",
   hipoteses: "eeses", persona: "esxxx", problemas: "esxxe", oportunidades: "xeses", suposicoes: "eessx", vpc: "esxxx", experimentos: "eeees",
@@ -510,6 +517,7 @@ const MATRIZ = {
   reporting: "sssss", visao: "xxexx", critvisao: "xxexx",
   prd: "eeeee", metricsfw: "eeeee", storymap: "esssx", moscow: "eesss", qa: "eeeee", devspec: "eeeee", dev: "eeeee", homolog: "eeeee", metricas: "seeee",
   "s-growth": "xeess", "s-seo": "sssss", "s-dic": "seeee", "s-event": "eeeee", "s-otto": "aaaaa", "s-bdd": "eeeee", "s-tom": "aaaaa", "s-tp": "sssss", "s-gov": "xxsxx",
+  arvoremetricas: "xsees", productsense: "aaaaa",
   adr: "aaaaa", raci: "aaaaa", autocheck: "aaaaa", evals: "aaaaa", mece: "aaaaa", modularidade: "aaaaa", trilha: "aaaaa", leitor: "aaaaa", figma: "sssss"
 };
 const ESTADO = { e: "Essencial", s: "Se a situação pedir", x: "Deixar para depois", a: "Sempre ligado (regra)" };
